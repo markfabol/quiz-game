@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Knowledge Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap');
+        body { 
+            font-family: 'Nunito', sans-serif; 
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+        .floating-card {
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .option-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: scale(1);
+        }
+        .option-card:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        .correct-option {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border: 3px solid #4ade80;
+            transform: scale(1.08);
+        }
+        .incorrect-option {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            border: 3px solid #f87171;
+            transform: scale(0.95);
+        }
+        .progress-wave {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 200% 100%;
+            animation: wave 3s ease-in-out infinite;
+        }
+        @keyframes wave {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .bounce-in {
+            animation: bounceIn 0.8s ease-out;
+        }
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .soft-shadow {
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+        }
+    </style>
+</head>
+<body class="min-h-screen p-6">
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-12 bounce-in">
+            <div class="inline-block mb-6">
+                <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center text-4xl soft-shadow floating-card">
+                    🏡
+                </div>
+            </div>
+            <h1 class="text-5xl font-bold gradient-text mb-3">Knowledge Test</h1>
+            <p class="text-gray-600 text-lg font-medium">Real Estate Terminology Quiz</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-6 text-center soft-shadow floating-card" style="animation-delay: 0.1s;">
+                <div class="text-3xl font-bold text-purple-600 mb-1" id="question-num">1</div>
+                <div class="text-gray-500 text-sm font-medium">Question</div>
+            </div>
+            <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-6 text-center soft-shadow floating-card" style="animation-delay: 0.2s;">
+                <div class="text-3xl font-bold text-green-500 mb-1" id="correct-answers">0</div>
+                <div class="text-gray-500 text-sm font-medium">Correct</div>
+            </div>
+            <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-6 text-center soft-shadow floating-card" style="animation-delay: 0.3s;">
+                <div class="text-3xl font-bold text-red-400 mb-1" id="wrong-answers">0</div>
+                <div class="text-gray-500 text-sm font-medium">Wrong</div>
+            </div>
+            <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-6 text-center soft-shadow floating-card" style="animation-delay: 0.4s;">
+                <div class="text-3xl font-bold text-blue-500 mb-1" id="score-percent">100%</div>
+                <div class="text-gray-500 text-sm font-medium">Score</div>
+            </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-6 mb-8 soft-shadow floating-card" style="animation-delay: 0.5s;">
+            <div class="flex justify-between items-center mb-3">
+                <span class="text-gray-600 font-medium">Progress</span>
+                <span class="text-gray-600 font-medium" id="progress-text">1 of 20</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
+                <div class="progress-wave h-full rounded-full transition-all duration-700" id="progress-fill" style="width: 5%"></div>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div id="quiz-section" class="bounce-in">
+            <div class="bg-white/90 backdrop-blur-sm rounded-3xl p-8 mb-6 soft-shadow floating-card">
+                <div class="mb-8">
+                    <div class="inline-block bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold mb-4" id="question-badge">
+                        Question 1 of 20
+                    </div>
+                    <h2 class="text-2xl font-semibold text-gray-800 leading-relaxed" id="question-text"></h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="answers-container">
+                    <!-- Answer options will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results-section" class="hidden">
+            <div class="bg-white/90 backdrop-blur-sm rounded-3xl p-12 text-center soft-shadow">
+                <div class="text-8xl mb-6" id="result-emoji">🎉</div>
+                <h2 class="text-4xl font-bold gradient-text mb-4">Quiz Complete!</h2>
+                <div class="text-6xl font-bold text-gray-700 mb-2" id="final-score">0%</div>
+                <p class="text-xl text-gray-600 mb-8 font-medium" id="result-message"></p>
+                
+                <div class="grid grid-cols-3 gap-6 mb-8">
+                    <div class="bg-green-50 rounded-2xl p-6 text-center">
+                        <div class="text-3xl font-bold text-green-600 mb-1" id="final-correct">0</div>
+                        <div class="text-green-500 font-medium">Correct</div>
+                    </div>
+                    <div class="bg-red-50 rounded-2xl p-6 text-center">
+                        <div class="text-3xl font-bold text-red-500 mb-1" id="final-wrong">0</div>
+                        <div class="text-red-400 font-medium">Wrong</div>
+                    </div>
+                    <div class="bg-blue-50 rounded-2xl p-6 text-center">
+                        <div class="text-3xl font-bold text-blue-600 mb-1">20</div>
+                        <div class="text-blue-500 font-medium">Total</div>
+                    </div>
+                </div>
+                
+                <button onclick="restartQuiz()" 
+                        class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 soft-shadow">
+                    🔄 Take Quiz Again
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                question: "The voluntary surrender of a right, claim, or interest in a piece of property without naming a successor as owner or tenant.",
+                options: ["Accession", "Abandonment", "Actual eviction", "Assumption"],
+                correct: 1
+            },
+            {
+                question: "An estimate of the rate at which a particular classification of properties for sale or lease can be successfully marketed in a given area.",
+                options: ["Abstract of title", "Acknowledgment", "Absorption rate", "Accessibility"],
+                correct: 2
+            },
+            {
+                question: "A certified summary of the history of a title to a particular parcel of real estate that includes the original grant and all subsequent transfers.",
+                options: ["Acceleration clause", "Addendum", "Ad valorem tax", "Abstract of title"],
+                correct: 3
+            },
+            {
+                question: "A method of valuing land in which the appraiser estimates ratios of land values to total property value, also known as the extraction method.",
+                options: ["Abstraction", "Accession", "Accumulated depreciation", "Actual notice"],
+                correct: 0
+            },
+            {
+                question: "Sharing a common boundary; adjoining.",
+                options: ["Access", "Abutting", "Actual age", "Addendum"],
+                correct: 1
+            },
+            {
+                question: "A clause that permits the lender to declare the entire amount of principal and accrued interest due immediately in the event of default.",
+                options: ["Acknowledgment", "Abstract of title", "Acceleration clause", "Accessibility"],
+                correct: 2
+            },
+            {
+                question: "The indication by a party receiving an offer that they agree to the terms of the offer.",
+                options: ["Accession", "Actual notice", "Addendum", "Acceptance"],
+                correct: 3
+            },
+            {
+                question: "The means of physical entrance into or upon a property.",
+                options: ["Access", "Accretion", "Acknowledgment", "Assumption"],
+                correct: 0
+            },
+            {
+                question: "The ease with which a person can enter or exit a particular tract of land.",
+                options: ["Actual eviction", "Accessibility", "Abstract of title", "Accumulated depreciation"],
+                correct: 1
+            },
+            {
+                question: "The transfer of ownership of fixtures or land as a result of the attachment of those fixtures to another property.",
+                options: ["Accretion", "Ad valorem tax", "Accession", "Acknowledgment"],
+                correct: 2
+            },
+            {
+                question: "The increase or addition of land resulting from the natural deposit of sand or soil by streams, lakes, or rivers.",
+                options: ["Accumulated depreciation", "Addendum", "Accessibility", "Accretion"],
+                correct: 3
+            },
+            {
+                question: "The difference between an improvement's reproduction cost and its market value as of the date of appraisal.",
+                options: ["Accrued depreciation", "Actual eviction", "Abstract of title", "Adverse possession"],
+                correct: 0
+            },
+            {
+                question: "A list of expenses that have been incurred but not yet paid, included on a closing statement.",
+                options: ["Accumulated depreciation", "Accrued items", "Acknowledgment", "Assignment"],
+                correct: 1
+            },
+            {
+                question: "Another term for accrued depreciation.",
+                options: ["Actual age", "Abstract of title", "Accumulated depreciation", "Accessibility"],
+                correct: 2
+            },
+            {
+                question: "A formal declaration before a public official that the execution of a document was a voluntary act.",
+                options: ["Addendum", "Adverse possession", "Assumption", "Acknowledgment"],
+                correct: 3
+            },
+            {
+                question: "A measure of land equal to 43,560 square feet or 4,840 square yards.",
+                options: ["Acre", "Actual age", "Abstract of title", "Accessibility"],
+                correct: 0
+            },
+            {
+                question: "The number of years that have elapsed since construction was completed, also known as chronological age.",
+                options: ["Accumulated depreciation", "Actual age", "Adverse possession", "Addendum"],
+                correct: 1
+            },
+            {
+                question: "The result of legal action where a tenant is physically removed from property by court order.",
+                options: ["Acknowledgment", "Accession", "Actual eviction", "Assumption"],
+                correct: 2
+            },
+            {
+                question: "The actual knowledge that a person has of a particular fact.",
+                options: ["Addendum", "Abstract of title", "Accessibility", "Actual notice"],
+                correct: 3
+            },
+            {
+                question: "Any provision added to a contract that expands, modifies, or enhances the clarity of the agreement.",
+                options: ["Addendum", "Acknowledgment", "Actual notice", "Accessibility"],
+                correct: 0
+            }
+        ];
+
+        let currentQuestion = 0;
+        let correctCount = 0;
+        let wrongCount = 0;
+
+        function startQuiz() {
+            currentQuestion = 0;
+            correctCount = 0;
+            wrongCount = 0;
+            updateStats();
+            displayQuestion();
+        }
+
+        function displayQuestion() {
+            if (currentQuestion >= quizData.length) {
+                showResults();
+                return;
+            }
+
+            const question = quizData[currentQuestion];
+            document.getElementById('question-text').textContent = question.question;
+            document.getElementById('question-badge').textContent = Question ${currentQuestion + 1} of ${quizData.length};
+            
+            const container = document.getElementById('answers-container');
+            container.innerHTML = '';
+            
+            question.options.forEach((option, index) => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'option-card bg-white rounded-2xl p-6 cursor-pointer border-2 border-gray-100 hover:border-purple-200';
+                optionDiv.innerHTML = `
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 flex items-center justify-center text-white font-bold text-lg">
+                            ${String.fromCharCode(65 + index)}
+                        </div>
+                        <div class="text-gray-700 font-medium text-lg flex-1">${option}</div>
+                    </div>
+                `;
+                optionDiv.onclick = () => selectOption(index);
+                container.appendChild(optionDiv);
+            });
+        }
+
+        function selectOption(selectedIndex) {
+            const question = quizData[currentQuestion];
+            const isCorrect = selectedIndex === question.correct;
+            const options = document.querySelectorAll('.option-card');
+            
+            // Disable all options
+            options.forEach(option => {
+                option.style.pointerEvents = 'none';
+            });
+            
+            // Apply styling
+            if (isCorrect) {
+                options[selectedIndex].classList.add('correct-option');
+                correctCount++;
+            } else {
+                options[selectedIndex].classList.add('incorrect-option');
+                options[question.correct].classList.add('correct-option');
+                wrongCount++;
+            }
+            
+            updateStats();
+            
+            setTimeout(() => {
+                currentQuestion++;
+                displayQuestion();
+            }, 2000);
+        }
+
+        function updateStats() {
+            document.getElementById('question-num').textContent = currentQuestion + 1;
+            document.getElementById('correct-answers').textContent = correctCount;
+            document.getElementById('wrong-answers').textContent = wrongCount;
+            
+            const totalAnswered = correctCount + wrongCount;
+            const percentage = totalAnswered > 0 ? Math.round((correctCount / totalAnswered) * 100) : 100;
+            document.getElementById('score-percent').textContent = percentage + '%';
+            
+            // Update progress
+            const progress = ((currentQuestion + 1) / quizData.length) * 100;
+            document.getElementById('progress-fill').style.width = progress + '%';
+            document.getElementById('progress-text').textContent = ${currentQuestion + 1} of ${quizData.length};
+        }
+
+        function showResults() {
+            document.getElementById('quiz-section').classList.add('hidden');
+            document.getElementById('results-section').classList.remove('hidden');
+            
+            const percentage = Math.round((correctCount / quizData.length) * 100);
+            document.getElementById('final-score').textContent = percentage + '%';
+            document.getElementById('final-correct').textContent = correctCount;
+            document.getElementById('final-wrong').textContent = wrongCount;
+            
+            let emoji, message;
+            if (percentage >= 90) {
+                emoji = '🏆';
+                message = 'Outstanding! You\'re a real estate expert!';
+            } else if (percentage >= 80) {
+                emoji = '🎉';
+                message = 'Excellent work! You really know your stuff!';
+            } else if (percentage >= 70) {
+                emoji = '👏';
+                message = 'Great job! Keep up the good work!';
+            } else if (percentage >= 60) {
+                emoji = '👍';
+                message = 'Good effort! A bit more study will help!';
+            } else {
+                emoji = '📚';
+                message = 'Keep learning! Practice makes perfect!';
+            }
+            
+            document.getElementById('result-emoji').textContent = emoji;
+            document.getElementById('result-message').textContent = message;
+        }
+
+        function restartQuiz() {
+            document.getElementById('results-section').classList.add('hidden');
+            document.getElementById('quiz-section').classList.remove('hidden');
+            startQuiz();
+        }
+
+        // Initialize the quiz
+        startQuiz();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97391b81c17bbc52',t:'MTc1NTkzNjM1NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
