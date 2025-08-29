@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Hub - Choose Your Challenge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .option-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+        }
+        .option-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .quiz-category-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .quiz-category-card:hover {
+            transform: translateY(-8px) scale(1.05);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .correct-answer {
+            background: linear-gradient(135deg, #10b981, #34d399);
+            color: white;
+            transform: scale(1.05);
+        }
+        .wrong-answer {
+            background: linear-gradient(135deg, #ef4444, #f87171);
+            color: white;
+            transform: scale(0.98);
+        }
+        .progress-ring {
+            transition: stroke-dasharray 0.5s ease-in-out;
+        }
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+        .shape:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .shape:nth-child(2) { top: 20%; right: 10%; animation-delay: 2s; }
+        .shape:nth-child(3) { bottom: 10%; left: 20%; animation-delay: 4s; }
+        .shape:nth-child(4) { bottom: 20%; right: 20%; animation-delay: 1s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+    </style>
+</head>
+<body class="min-h-screen relative">
+    <!-- Floating Background Shapes -->
+    <div class="floating-shapes">
+        <div class="shape w-32 h-32 bg-white rounded-full"></div>
+        <div class="shape w-24 h-24 bg-purple-300 rounded-lg"></div>
+        <div class="shape w-20 h-20 bg-blue-300 triangle"></div>
+        <div class="shape w-28 h-28 bg-pink-300 rounded-full"></div>
+    </div>
+
+    <div class="container mx-auto px-4 py-8 max-w-6xl relative z-10">
+        <!-- Home Page -->
+        <div id="home-page">
+            <div class="text-center mb-12">
+                <div class="glass-card rounded-3xl p-12 mb-8">
+                    <h1 class="text-6xl font-bold text-white mb-6 drop-shadow-lg">🎯 Azeron Quiz</h1>
+                    <p class="text-white/90 text-2xl font-light mb-4">Choose Your Learning Adventure</p>
+                    <p class="text-white/70 text-lg">Test your knowledge across different subjects</p>
+                </div>
+            </div>
+
+            <!-- Quiz Categories -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-8">
+                <!-- Real Estate Quiz -->
+                <div class="quiz-category-card rounded-3xl p-8 cursor-pointer" onclick="startQuiz('real-estate')">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">🏠</div>
+                        <h3 class="text-2xl font-bold text-white mb-3">QUIZ 1</h3>
+                        <p class="text-white/80 mb-4">Master real estate terminology and concepts</p>
+                        <div class="bg-white/20 rounded-full px-4 py-2 text-white text-sm font-medium inline-block mb-4">
+                            25 Questions
+                        </div>
+                        <p class="text-white/60 text-sm">Learn about property terms, legal concepts, and industry jargon</p>
+                    </div>
+                </div>
+
+                <!-- Medical Terminology Quiz -->
+                <div class="quiz-category-card rounded-3xl p-8 cursor-pointer" onclick="startQuiz('medical')">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">🧠</div>
+                        <h3 class="text-2xl font-bold text-white mb-3">QUIZ 2</h3>
+                        <p class="text-white/80 mb-4">Essential medical terminology and definitions</p>
+                        <div class="bg-white/20 rounded-full px-4 py-2 text-white text-sm font-medium inline-block mb-4">
+                            25 Questions
+                        </div>
+                        <p class="text-white/60 text-sm">Body systems, medical procedures, and healthcare vocabulary</p>
+                    </div>
+                </div>
+
+                <!-- Business Terms Quiz -->
+                <div class="quiz-category-card rounded-3xl p-8 cursor-pointer" onclick="startQuiz('business')">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">📚</div>
+                        <h3 class="text-2xl font-bold text-white mb-3">QUIZ 3</h3>
+                        <p class="text-white/80 mb-4">Key business and finance terminology</p>
+                        <div class="bg-white/20 rounded-full px-4 py-2 text-white text-sm font-medium inline-block mb-4">
+                            25 Questions
+                        </div>
+                        <p class="text-white/60 text-sm">Marketing, finance, management, and corporate concepts</p>
+                    </div>
+                </div>
+
+                <!-- Computer Science Quiz -->
+                <div class="quiz-category-card rounded-3xl p-8 cursor-pointer" onclick="startQuiz('computer')">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">🤝</div>
+                        <h3 class="text-2xl font-bold text-white mb-3">QUIZ 4</h3>
+                        <p class="text-white/80 mb-4">Programming and technology concepts</p>
+                        <div class="bg-white/20 rounded-full px-4 py-2 text-white text-sm font-medium inline-block mb-4">
+                            25 Questions
+                        </div>
+                        <p class="text-white/60 text-sm">Programming languages, algorithms, and tech terminology</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Page -->
+        <div id="quiz-page" class="hidden">
+            <!-- Header with Home Button -->
+            <div class="flex items-center justify-between mb-8">
+                <button onclick="goHome()" class="bg-white/20 text-white px-6 py-3 rounded-xl font-medium hover:bg-white/30 transition-all duration-200 flex items-center space-x-2">
+                    <span>🏠</span>
+                    <span>Home</span>
+                </button>
+                <div class="glass-card rounded-2xl px-6 py-3">
+                    <h2 class="text-2xl font-bold text-white" id="quiz-title">Quiz</h2>
+                </div>
+            </div>
+
+            <!-- Progress Section -->
+            <div class="glass-card rounded-2xl p-6 mb-8">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <div class="relative w-16 h-16">
+                            <svg class="w-16 h-16 transform -rotate-90" viewBox="0 0 36 36">
+                                <path class="text-white/30" stroke="currentColor" stroke-width="3" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                <path class="text-yellow-400 progress-ring" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" 
+                                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" 
+                                      id="progress-circle" stroke-dasharray="0, 100"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-white font-bold text-sm" id="progress-percent">0%</span>
+                            </div>
+                        </div>
+                        <div class="text-white">
+                            <p class="text-sm opacity-90">Progress</p>
+                            <p class="font-semibold" id="question-counter">Question 1 of 20</p>
+                        </div>
+                    </div>
+                    <div class="text-right text-white">
+                        <p class="text-sm opacity-90">Current Score</p>
+                        <p class="font-bold text-2xl" id="score-display">0 / 0</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Container -->
+            <div id="quiz-container">
+                <!-- Question will be inserted here -->
+            </div>
+
+            <!-- Final Score Display -->
+            <div id="final-score-container" class="hidden">
+                <div class="glass-card rounded-3xl p-12 text-center">
+                    <div class="mb-8">
+                        <div class="text-8xl mb-6" id="final-emoji">🎉</div>
+                        <h2 class="text-4xl font-bold text-white mb-4">Quiz Complete!</h2>
+                        <div class="bg-white/20 rounded-2xl p-6 mb-6">
+                            <p class="text-white text-2xl font-semibold" id="final-score-text"></p>
+                            <p class="text-white/80 text-lg mt-2" id="performance-message"></p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button onclick="restartQuiz()" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:from-purple-600 hover:to-pink-600 transform hover:scale-105 transition-all duration-200 shadow-lg">
+                            🔄 Try Again
+                        </button>
+                        <button onclick="goHome()" class="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:from-blue-600 hover:to-cyan-600 transform hover:scale-105 transition-all duration-200 shadow-lg">
+                            🏠 Choose Another Quiz
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="flex justify-between items-center mt-8" id="navigation">
+                <button id="prev-btn" onclick="previousQuestion()" class="bg-white/20 text-white px-6 py-3 rounded-xl font-medium hover:bg-white/30 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                    ← Previous
+                </button>
+                <button id="next-btn" onclick="nextQuestion()" class="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-6 py-3 rounded-xl font-medium hover:from-green-600 hover:to-emerald-600 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                    Next →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quizData = {
+            'real-estate': {
+                title: '🏠 QUIZ 1',
+                questions: [
+                    {
+                        id: 1,
+                        definition: "The voluntary surrender of a right, claim, or interest in a piece of property without naming a successor as owner or tenant.",
+                        options: ["Assumption", "Abandonment", "Accession", "Actual eviction"],
+                        correct: 1
+                    },
+                    {
+                        id: 2,
+                        definition: "An estimate of the rate at which a particular classification of properties for sale or lease can be successfully marketed in a given area; it is often requested in a feasibility study or an appraisal in connection with a request for financing.",
+                        options: ["Acknowledgment", "Accessibility", "Absorption rate", "Abstract of title"],
+                        correct: 2
+                    },
+                    {
+                        id: 3,
+                        definition: "A certified summary of the history of a title to a particular parcel of real estate that includes the original grant and all subsequent transfers, encumbrances, and releases.",
+                        options: ["Addendum", "Abstract of title", "Acceleration clause", "Ad valorem tax"],
+                        correct: 1
+                    },
+                    {
+                        id: 4,
+                        definition: "Sometimes known as the extraction or allocation method; a method of valuing land in which the appraiser estimates ratios of land values to total property value. This ratio is typically determined from comparable sales data.",
+                        options: ["Actual notice", "Accumulated depreciation", "Abstraction", "Accession"],
+                        correct: 2
+                    },
+                    {
+                        id: 5,
+                        definition: "Sharing a common boundary; adjoining.",
+                        options: ["Access", "Addendum", "Abutting", "Actual age"],
+                        correct: 2
+                    },
+                    {
+                        id: 6,
+                        definition: "The appraisal principle that states that property value is a function of contrasting, opposing, or interacting elements and their state of equilibrium.",
+                        options: ["Balance", "Band of Investment", "Balloon Mortgage", "Bankruptcy"],
+                        correct: 0
+                    },
+                    {
+                        id: 7,
+                        definition: "a loan in which the periodic payments do not fully amortize the loan, so that a final payment (a balloon payment) is substantially larger than the amount of the periodic payments that must be made to satisfy the debt.",
+                        options: ["Balance", "Balloon Mortgage", "Balloon Payment", "Bankruptcy"],
+                        correct: 1
+                    },
+                    {
+                        id: 8,
+                        definition: "The final, lump-sum payment that is due at the termination of a balloon mortgage.",
+                        options: ["Balloon Payment", "Balance", "Bankruptcy", "Agency"],
+                        correct: 0
+                    },
+                    {
+                        id: 9,
+                        definition: " an appraisal technique used in the income approach, where the overall rate is derived from the weighted-average rates attributable to the components of the capital investment. The tech- nique can be based on mortgage-equity components or land-building components. Note: The term is often used to refer only to the mortgage-equity approach. In this case, the overall rate is found by a weighted average of the mortgage loan constant and the equity dividend rate. ",
+                        options: ["Balance", "Balloon Payment", "Band of Investment", "Agency"],
+                        correct: 2
+                    },
+                    {
+                        id: 10,
+                        definition: "  an individual or individuals can restructure or relieve themselves of debts and liabilities by filing in federal bankruptcy court. There are many types of bankruptcies, and the most common for an individual is Chapter 7 No Asset, which relieves the borrower of most types of debt.",
+                        options: ["Agency", "Bankruptcy", "Balance", "Alienation"],
+                        correct: 1
+                    },
+                    {
+                        id: 11,
+                        definition: "a provision in a lease that confers on one or all parties to the lease the right to terminate the parties' obligations, should the occurrence of the condition or contingency set forth in the clause happen.",
+                        options: ["Cancellation Clause", "Cap", "Capital", "Cap Rate"],
+                        correct: 0
+                    },
+                    {
+                        id: 12,
+                        definition: "The practice of searching for prospective clients by making unsolicited phone calls and/or visiting homes door to door.",
+                        options: ["Canvassing", "Capital", "Cap Rate", "Cancellation Clause"],
+                        correct: 0
+                    },
+                    {
+                        id: 13,
+                        definition: "The limit on fluctuation rates regarding adjustable-rate mortgages (ARMs), Limitations, or caps, may apply to how much the loan may adjust over a six-month period, an annual period, and the life of the loan. There is also a limit on how much that payment can change each year.",
+                        options: ["Cap", "Capital", "Canvassing", "Cap Rate"],
+                        correct: 0
+                    },
+                    {
+                        id: 14,
+                        definition: "An abbreviation for capitalization rate.",
+                        options: ["Cap", "Cap Rate", "Capital", "Cancellation Clause"],
+                        correct: 1
+                    },
+                    {
+                        id: 15,
+                        definition: "Money used to create income, or the net worth of a business as represented by the amount by whitch its assets exceed its liabilities.",
+                        options: ["Cap Rate", "Capital", "Cap", "Canvassing"],
+                        correct: 1
+                    },
+                    {
+                        id: 16,
+                        definition: "The amount of money recoverable by a person who has been injured by the actions of another.",
+                        options: ["Datum", "DBA", "Damages", "Date of Value"],
+                        correct: 2
+                    },
+                    {
+                        id: 17,
+                        definition: "The date of the transmittal letter of a written report or the date a written report lacking a transmittal letter is prepared by the appraiser. The date of an oral report is the date it is communicated to or for the client. The date of the report may or may not be the same as the effective date of the appraisal. ",
+                        options: ["Date of the Report", "Date of Value", "Damages", "DBA"],
+                        correct: 0
+                    },
+                    {
+                        id: 18,
+                        definition: "The date at which the value of the property is estimated in the appraisal report, It is not always the same as the date of the report and can be retrospective (past), current, or prospective (future).",
+                        options: ["Date of the Report", "Date of Value", "Damages", "Datum"],
+                        correct: 1
+                    },
+                    {
+                        id: 19,
+                        definition: "A specific point used in surveying.",
+                        options: ["Datum", "Damages", "Date of Value", "DBA"],
+                        correct: 0
+                    },
+                    {
+                        id: 20,
+                        definition: "The abbreviation for 'doing business as.'",
+                        options: ["Datum", "Date of the Report", "Damages", "DBA"],
+                        correct: 3
+                    },
+                    {
+                        id: 21,
+                        definition: "A clause in a note, mortgage, or deed of trust that permits the lender to declare the entire amount of principal and accrued interest due and payable immediately in the event of default.",
+                        options: ["Acceptance","Acceleration clause","Addendum","Adjusted basis"],
+                        correct: 1
+                    },
+                    {
+                        id: 22,
+                        definition: "the indication by a party receiving an offer that they agree to the terms of the offer. In most states, the offer and acceptance must be reduced to writing when real property is involved.",
+                        options: ["Acceptance","Access","Agency","Alienation"],
+                        correct: 1
+                    },
+                    {
+                        id: 23,
+                        definition: "the means of physical entrance into or upon a property.",
+                        options: ["A. Accession","Accessibility","Access","Adjustment date"],
+                        correct: 2
+                    },
+                    {
+                        id: 24,
+                        definition: "the ease with which a person can enter or exit a particular tract of land.",
+                        options: ["Access","Accessibility","Accretion","Ad valorem tax"],
+                        correct: 1
+                    },
+                    {
+                        id: 25,
+                        definition: " the transfer of ownership of fixtures or land as a result of the attachment of those fixtures or land to another property.",
+                        options: [" Accession","Adverse possession","Alienation","Adjusted sales price"],
+                        correct: 0
+                    },
+                ]
+            },
+            'medical': {
+                title: '🧠 QUIZ 2',
+                questions: [
+                    {
+                        id: 1,
+                        definition: " the increase or addition of land resulting from the natural deposit of sand or soil by streams, lakes, or rivers.",
+                        options: [" Accretion, Accrued items", "Accessibility", "Ad valorem tax"],
+                        correct: 0
+                    },
+                    {
+                        id: 2,
+                        definition: "the difference between an improvement's reproduction or replacement cost and its market value as of the date of appraisal. It represents the total depreciation accumulated since the improvement was constructed.",
+                        options: ["Accrued depreciation", "Accumulated depreciation", "Abstraction", "Actual age"],
+                        correct: 0
+                    },
+                    {
+                        id: 3,
+                        definition: "a list of expenses that have been incurred but have not yet been paid, such as interest on a mortgage loan, that are included on a closing statement.",
+                        options: ["Accrued items", "Accrued depreciation", "Adjusted sales price"," Affidavit"],
+                        correct: 0
+                    },
+                    {
+                        id: 4,
+                        definition: " see accrued depreciation.",
+                        options: ["Accrued depreciation", "Accumulated depreciation", "Abandonment", "Addendum"],
+                        correct: 0
+                    },
+                    {
+                        id: 5,
+                        definition: " a formal declaration before a public official, usually a notary public, by a person who has signed a deed, contract, or other document that the execution was a voluntary act.",
+                        options: ["Affidavit", "Acknowledgment","Acceptance", "Adjustment date"],
+                        correct: 1
+                    },
+                    {
+                        id: 6,
+                        definition: " a measure of land equal to 43,560 square feet or 4,840 square yards. There are 640 acres of land in a section. ",
+                        options: ["Acre", "Section", "Lot", "Parcel"],
+                        correct: 0
+                    },
+                    {
+                        id: 7,
+                        definition: "also known as chronological or historical age; the number of years that have elapsed since construction was completed.",
+                        options: [" Actual age", "Actual notice", "Accretion", "Accrued depreciation"],
+                        correct: 0
+                    },
+                    {
+                        id: 8,
+                        definition: " the result of legal action brought by a landlord against a defaulted tenant, whereby the tenant is physically removed from rented or leased property by a court order.",
+                        options: ["Actual eviction", "Actual age", "Accrued items", "Accession"],
+                        correct: 0
+                    },
+                    {
+                        id: 9,
+                        definition: " the actual knowledge that a person has of a particular fact.",
+                        options: ["Actual notice", "Accessibility", "Acceleration clause", "Addendum"],
+                        correct: 0
+                    },
+                    {
+                        id: 10,
+                        definition: " any provision added to a contract, or an addition to a contract that expands, modifies, or enhances the clarity of the agreement. To be a part of the contract and legally enforceable, an addendum must be referenced within the contract.",
+                        options: ["Addendum", "Acceptance", "Acceleration clause", "Adjusted basis"],
+                        correct: 0
+                    },
+                    {
+                        id: 11,
+                        definition: " a deed that conveys title, but does not necessarily carry warranties against liens or encumbrances.",
+                        options: ["Bargain and Sale Deed", "Baseline", "Base Rent", "Basis Point"],
+                        correct: 0
+                    },
+                    {
+                        id: 12,
+                        definition: " the minimum rent stipulated in the lease. Many times, it is the initial rent in the lease.",
+                        options: ["Base Rent", "Bargain and Sale Deed", "Before-Tax Cash Flow", "Basis Point"],
+                        correct: 0
+                    },
+                    {
+                        id: 13,
+                        definition: " one of the imaginary east-west lines used as a reference point when describing property with the rectangular or government survey method of property description.",
+                        options: ["Baseline", "Basis Point", "Base Rent", "Before-Tax Cash Flow"],
+                        correct: 0
+                    },
+                    {
+                        id: 14,
+                        definition: " one-hundredth of 1%; used to indicate a change in the interest rate. Hence, if the interest increases from 8% to 8.5%, this is an increase in 50 basis points.",
+                        options: ["Basis Point", "Baseline", "Before-Tax Cash Flow", "Bargain and Sale Deed"],
+                        correct: 0
+                    },
+                    {
+                        id: 15,
+                        definition: "also referred to as pretax cash flow; the cash flow remaining after deduction of debt service (principal and interest) and any other cash outflows from net operating income. BTCF considers all cash flows that could affect the investor, except federal income tax. For example, leasing commissions and the cost of tenant improvements would be subtracted when calculating BTCF",
+                        options: ["Before-Tax Cash Flow ", "Basis Point", "Base Rent", "Baseline"],
+                        correct: 0
+                    },
+                    {
+                        id: 16,
+                        definition: "The cost of a betterment to a property.",
+                        options: ["Capital Expenditure", "Capital Gains Tax", "Capitalization", "Capitalize"],
+                        correct: 0
+                    },
+                    {
+                        id: 17,
+                        definition: "A tax charged on the profit gained from the sale of a capital asset.",
+                        options: ["Capital Gains Tax", "Capitalization", "Capital Expenditure", "Capitalization Rate"],
+                        correct: 0
+                    },
+                    {
+                        id: 18,
+                        definition: "a technique used in the income approach to convert income into an estimate of value. See direct capitalization and yield capitalization.",
+                        options: ["Capitalization", "Capitalize", "Capital Gains Tax", "Capitalization Rate"],
+                        correct: 0
+                    },
+                    {
+                        id: 19,
+                        definition: "A rate used in the income approach to convert income to value.",
+                        options: ["Capitalization Rate", "Capital Gains Tax", "Capital Expenditure", "Capitalize"],
+                        correct: 0
+                    },
+                    {
+                        id: 20,
+                        definition: "in appraisal, the process of determining an estimate of value based on the income produced by the property. The value can be estimated by yield capitalization, or by direct capitalization.",
+                        options: ["Capitalize", "Capitalization", "Capital Gains Tax", "Capital Expenditure"],
+                        correct: 0
+                    },
+                    {
+                        id: 21,
+                        definition: "An amount owed to another.",
+                        options: ["Debt", "Debt Service", "Decedent", "Debt Equity Ratio"],
+                        correct: 0
+                    },
+                    {
+                        id: 22,
+                        definition: "The annual net operating income divided by the annual debt service; often used as a criterion in underwriting income property loans.",
+                        options: ["Debt Coverage Ratio ", "Debt Service", "Debt Equity Ratio", "Debt"],
+                        correct: 0
+                    },
+                    {
+                        id: 23,
+                        definition: "The relationship between the total amount of the loan and the invested capital (equity) of the owner(s).",
+                        options: ["Debt Equity Ratio", "Debt Coverage Ratio", "Debt Service", "Debt"],
+                        correct: 0
+                    },
+                    {
+                        id: 24,
+                        definition: "The dollar amount of the annual loan payment.",
+                        options: ["Debt Service", "Debt Equity Ratio", "Debt Coverage Ratio", "Debt"],
+                        correct: 0
+                    },
+                    {
+                        id: 25,
+                        definition: "A person who dies.",
+                        options: ["Decedent", "Debt", "Debt Service", "Debt Coverage Ratio"],
+                        correct: 0
+                    },
+                ]
+            },
+            'business': {
+                title: '📚 QUIZ 3',
+                questions: [
+                    {
+                        id: 1,
+                        definition: "Lying near but not necessarily in actual contact with.",
+                        options: ["Adjacent", "Adjoining", "Adjacent Land", "Adjustment Date"],
+                        correct: 0
+                    },
+                    {
+                        id: 2,
+                        definition: "Land physically located close to or near another parcel of land.",
+                        options: ["Adjacent Land", "Adjoining", "Administrator", "Adjusted Basis"],
+                        correct: 0
+                    },
+                    {
+                        id: 3,
+                        definition: "Contiguous or attached; in actual contact with.",
+                        options: ["Adjoining", "Adjacent", "Adjusted Sales Price", "Adjustments"],
+                        correct: 0
+                    },
+                    {
+                        id: 4,
+                        definition: "A mortgage in which the interest changes periodically, according to corresponding fluctuations in an index. All ARMS are tied to indexes. For example, a seven-year, adjustable-rate mortgage is a loan in which the rate remains fixed for the first seven years, and then fluctuates according to the index to which it is tied.",
+                        options: ["Adjustable-Rate Mortgage ", "Adjusted Basis", "Accumulated Depreciation", "Ad Valorem Tax"],
+                        correct: 0
+                    },
+                    {
+                        id: 5,
+                        definition: "The original cost of a property, plus acquisition costs, plus the value of added improvements to the property, minus accrued depreciation.",
+                        options: ["Adjusted Basis", "Adjusted Sales Price", "Administrator", "Accession"],
+                        correct: 0
+                    },
+                    {
+                        id: 6,
+                        definition: "The estimated sales price of a comparable property after additions and/or subtractions have been made to the actual sales price to allow for differences.",
+                        options: ["Adjusted Sales Price", "Adjusted Basis", "Adjustment Date", "Adjoining"],
+                        correct: 0
+                    },
+                    {
+                        id: 7,
+                        definition: "The date the interest rate changes on an adjustable-rate mortgage.",
+                        options: ["Adjustment Date", "Adjustments", "Administrator", "Ad Valorem Tax"],
+                        correct: 0
+                    },
+                    {
+                        id: 8,
+                        definition: "the dollar value or percentage amounts added to or subtracted from the sales price of a comparable property, to arrive at an indicated value for the property being appraised (subject property). Real estate elements of comparison are typically adjusted in the following order: property rights, financing terms, conditions of sale, market conditions, location, and physical characteristics.",
+                        options: ["Adjustments", "Adjusted Basis", "Adjustment Date", "Adjacent Land"],
+                        correct: 0
+                    },
+                    {
+                        id: 9,
+                        definition: "A person appointed by a court to settle the estate of a person who has died without leaving a will.",
+                        options: ["Administrator", "Adjoining", "Ad Valorem Tax", "Adjustment Date"],
+                        correct: 0
+                    },
+                    {
+                        id: 10,
+                        definition: "Tax in proportion to the value of a property. Real property tax is based on the assessed valuation of the property.",
+                        options: ["Ad Valorem Tax", "Adjusted Sales Price", "Adjustment Date", "Accession"],
+                        correct: 0
+                    },
+                    {
+                        id: 11,
+                        definition: "A permanently marked point with a known elevation, used as a reference by surveyors to measure elevations.",
+                        options: ["Benchmark", "Baseline", "Base Rent", "Basis Point"],
+                        correct: 0
+                    },
+                    {
+                        id: 12,
+                        definition: "(1) One who benefits from the acts of another; (2) the lender in a deed of trust.",
+                        options: ["Beneficiary", "Bequest", "Betterment", "Bias"],
+                        correct: 0
+                    },
+                    {
+                        id: 13,
+                        definition: "Personal property given by provision of a will.",
+                        options: ["Bequest", "Beneficiary", "Benchmark", "Base Rent"],
+                        correct: 0
+                    },
+                    {
+                        id: 14,
+                        definition: "An improvement to property that increases its value.",
+                        options: ["Betterment", "Basis Point", "Bias", "Benchmark"],
+                        correct: 0
+                    },
+                    {
+                        id: 15,
+                        definition: "A prejudicial partiality or inclination that obstructs objective consideration of an appraisal question.",
+                        options: ["Bias", "Beneficiary", "Baseline", "Bequest"],
+                        correct: 0
+                    },
+                    {
+                        id: 16,
+                        definition: "The procedure in which the sales prices of comparable properties with atypical financing terms are adjusted to reflect typical market terms.",
+                        options: ["Cash Equivalency Analysis", "Cash Flow", "Cash Flow Analysis", "Cash-on-Cash Return"],
+                        correct: 0
+                    },
+                    {
+                        id: 17,
+                        definition: "The net income produced by an investment property, calculated by deducting operating and fixed expenses from gross income.",
+                        options: ["Cash Flow", "Cash Equivalency Analysis", "Caveat Emptor", "Cash Flow Analysis"],
+                        correct: 0
+                    },
+                    {
+                        id: 18,
+                        definition: "A study of the anticipated movement of cash into or out of an investment.",
+                        options: ["Cash Flow Analysis", "Cash Flow", "Cash Equivalency Analysis", "Cash-on-Cash Return"],
+                        correct: 0
+                    },
+                    {
+                        id: 19,
+                        definition: "see equity dividend rate.",
+                        options: ["Cash-on-Cash Return", "Cash Flow", "Cash Flow Analysis", "Caveat Emptor"],
+                        correct: 0
+                    },
+                    {
+                        id: 20,
+                        definition: "A Latin phrase meaning 'let the buyer beware.'",
+                        options: ["Caveat Emptor", "Cash Flow Analysis", "Cash Equivalency Analysis", "Cash-on-Cash Return"],
+                        correct: 0
+                    },
+                    {
+                        id: 21,
+                        definition: "The donation of private property by its owner to a governmental body for public use.",
+                        options: ["Dedication", "Deed", "Deed in Lieu", "Deed of Trust"],
+                        correct: 0
+                    },
+                    {
+                        id: 22,
+                        definition: "A written document that, when properly signed and delivered, conveys title to real property from the grantor to the grantee.",
+                        options: ["Deed", "Dedication", "Deed of Trust", "Deed Restriction"],
+                        correct: 0
+                    },
+                    {
+                        id: 23,
+                        definition: "A foreclosure instrument used to convey title to the lender when the borrower is in default and wants to avoid foreclosure.",
+                        options: ["Deed in Lieu", "Deed", "Deed of Trust", "Dedication"],
+                        correct: 0
+                    },
+                    {
+                        id: 24,
+                        definition: "A deed in which the title to property is transferred to a third party trustee to secure repayment of a loan; three-party mortgage arrangement.",
+                        options: ["Deed of Trust", "Deed", "Deed Restriction", "Dedication"],
+                        correct: 0
+                    },
+                    {
+                        id: 25,
+                        definition: "An imposed restriction for the purpose of limiting the use of land, such as the size or type of improvements to be allowed. Also called a restrictive covenant.",
+                        options: ["Deed Restriction", "Deed", "Deed of Trust", "Dedication"],
+                        correct: 0
+                    }
+                ]
+            },
+            'computer': {
+                title: '🤝 QUIZ 4',
+                questions: [
+                    {
+                        id: 1,
+                        definition: "A method of acquiring title to another person's property through court action after taking actual, open, hostile, and continuous possession for a statutory period of time; may require payment of property taxes during the period of possession.",
+                        options: ["Adverse Possession", "Agency", "Agreement of Sale", "Air Rights"],
+                        correct: 0
+                    },
+                    {
+                        id: 2,
+                        definition: "The act of supporting an idea, cause, or interest of another.",
+                        options: ["Advocacy", "Affidavit", "Alienation", "Agent"],
+                        correct: 0
+                    },
+                    {
+                        id: 3,
+                        definition: "A written statement made under oath and signed before a licensed public official, usually a notary public.",
+                        options: ["Affidavit", "Agency", "Air Rights", "Agreement of Sale"],
+                        correct: 0
+                    },
+                    {
+                        id: 4,
+                        definition: "The cash flow remaining after debt service and ordinary income tax on operations are subtracted from net operating income.",
+                        options: ["After-Tax Cash Flow (ATCF)", "Adverse Possession", "Advocacy", "Affidavit"],
+                        correct: 0
+                    },
+                    {
+                        id: 5,
+                        definition: "A law that protects individuals 40 years of age and older from discrimination.",
+                        options: ["Age Discrimination in Employment Act of 1967", "Agent", "Agency", "Air Rights"],
+                        correct: 0
+                    },
+                    {
+                        id: 6,
+                        definition: "The legal relationship between principal and agent that arises out of a contract wherein an agent is employed to do certain acts on behalf of the principal, who has retained the agent to deal with a third party.",
+                        options: ["Agency", "Affidavit", "Agreement of Sale", "Alienation"],
+                        correct: 0
+                    },
+                    {
+                        id: 7,
+                        definition: "One who has been granted the authority to act on behalf of another.",
+                        options: ["Agent", "Agency", "Air Rights", "Adverse Possession"],
+                        correct: 0
+                    },
+                    {
+                        id: 8,
+                        definition: "A written agreement between a seller and a purchaser whereby the purchaser agrees to buy a certain piece of property from the seller for a specified price.",
+                        options: ["Agreement of Sale", "Advocacy", "Alienation", "Affidavit"],
+                        correct: 0
+                    },
+                    {
+                        id: 9,
+                        definition: "The right to use the open space above a particular property.",
+                        options: ["Air Rights", "Agency", "After-Tax Cash Flow", "Agent"],
+                        correct: 0
+                    },
+                    {
+                        id: 10,
+                        definition: "The transfer of ownership of a property to another, either voluntarily or involuntarily.",
+                        options: ["Alienation", "Agreement of Sale", "Advocacy", "Adverse Possession"],
+                        correct: 0
+                    },
+                    {
+                        id: 11,
+                        definition: "A contract in which each party promises to perform an act in exchange for the other party's promise to also perform an act.",
+                        options: ["Bilateral Contract", "Binder", "Bill of Sale", "Blanket Mortgage"],
+                        correct: 0
+                    },
+                    {
+                        id: 12,
+                        definition: "A written instrument that transfers ownership of personal property. A bill of sale cannot be used to transfer ownership of real property, which is passed by deed.",
+                        options: ["Bill of Sale", "Bilateral Contract", "Binder", "Biweekly Mortgage"],
+                        correct: 0
+                    },
+                    {
+                        id: 13,
+                        definition: "An agreement, accompanied by an earnest money deposit, for the purchase of a piece of real estate to show the purchaser's good faith intent to complete a transaction.",
+                        options: ["Binder", "Bill of Sale", "Blanket Mortgage", "Biweekly Mortgage"],
+                        correct: 0
+                    },
+                    {
+                        id: 14,
+                        definition: "A mortgage in which payments are made every two weeks instead of once a month. Therefore, instead of making 12 monthly payments during the year, the borrower makes the equivalent of 13 monthly payments. The extra payment reduces the principal, thereby reducing the time it takes to pay off a 30-year mortgage.",
+                        options: ["Biweekly Mortgage", "Binder", "Bilateral Contract", "Bill of Sale"],
+                        correct: 0
+                    },
+                    {
+                        id: 15,
+                        definition: "A mortgage in which more than one parcel of real estate is pledged to cover a single debt.",
+                        options: ["Blanket Mortgage", "Biweekly Mortgage", "Binder", "Bill of Sale"],
+                        correct: 0
+                    },
+                                        {
+                        id: 15,
+                        definition: "A prejudicial partiality or inclination that obstructs objective consideration of an appraisal question.",
+                        options: ["Bias", "Beneficiary", "Baseline", "Bequest"],
+                        correct: 0
+                    },
+                    {
+                        id: 16,
+                        definition: "covenants, conditions, and restrictions of a cooperative or condominium development.",
+                        options: ["CC&R, Certificate of eligibility, Certificate of discharge, Central business district"],
+                        correct: 0
+                    },
+                    {
+                        id: 17,
+                        definition: "The net income produced by an investment property, calculated by deducting operating and fixed expenses from gross income.",
+                        options: ["Cash Flow", "Cash Equivalency Analysis", "Caveat Emptor", "Cash Flow Analysis"],
+                        correct: 0
+                    },
+                    {
+                        id: 18,
+                        definition: "A study of the anticipated movement of cash into or out of an investment.",
+                        options: ["Cash Flow Analysis", "Cash Flow", "Cash Equivalency Analysis", "Cash-on-Cash Return"],
+                        correct: 0
+                    },
+                    {
+                        id: 19,
+                        definition: "see equity dividend rate.",
+                        options: ["Cash-on-Cash Return", "Cash Flow", "Cash Flow Analysis", "Caveat Emptor"],
+                        correct: 0
+                    },
+                    {
+                        id: 20,
+                        definition: "A Latin phrase meaning 'let the buyer beware.'",
+                        options: ["Caveat Emptor", "Cash Flow Analysis", "Cash Equivalency Analysis", "Cash-on-Cash Return"],
+                        correct: 0
+                    },
+                ]
+            }
+        };
+
+        let currentQuizType = '';
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+        let userAnswers = [];
+        let questions = [];
+
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        function shuffleQuestionOptions(question) {
+            const correctAnswer = question.options[question.correct];
+            const shuffledOptions = shuffleArray(question.options);
+            const newCorrectIndex = shuffledOptions.indexOf(correctAnswer);
+            
+            return {
+                ...question,
+                options: shuffledOptions,
+                correct: newCorrectIndex
+            };
+        }
+
+        function startQuiz(quizType) {
+            currentQuizType = quizType;
+            // Shuffle both questions and their answer options
+            const originalQuestions = quizData[quizType].questions;
+            const shuffledQuestions = shuffleArray(originalQuestions);
+            questions = shuffledQuestions.map(question => shuffleQuestionOptions(question));
+            
+            currentQuestion = 0;
+            score = 0;
+            answered = false;
+            userAnswers = [];
+
+            document.getElementById('home-page').classList.add('hidden');
+            document.getElementById('quiz-page').classList.remove('hidden');
+            document.getElementById('quiz-title').textContent = quizData[quizType].title;
+            
+            displayQuestion();
+        }
+
+        function goHome() {
+            document.getElementById('quiz-page').classList.add('hidden');
+            document.getElementById('final-score-container').classList.add('hidden');
+            document.getElementById('quiz-container').classList.remove('hidden');
+            document.getElementById('navigation').classList.remove('hidden');
+            document.getElementById('home-page').classList.remove('hidden');
+        }
+
+        function displayQuestion() {
+            const question = questions[currentQuestion];
+            const container = document.getElementById('quiz-container');
+            
+            container.innerHTML = `
+                <div class="glass-card rounded-3xl p-8 mb-8">
+                    <div class="mb-8">
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="bg-gradient-to-r from-yellow-400 to-orange-400 text-gray-800 px-4 py-2 rounded-full text-sm font-semibold">
+                                📝 Question ${currentQuestion + 1}
+                            </span>
+                            <span class="text-white/80 text-sm font-medium">
+                                ${questions.length - currentQuestion - 1} remaining
+                            </span>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white leading-relaxed mb-2">
+                            ${question.definition}
+                        </h3>
+                        <p class="text-white/70 text-sm">Choose the correct answer:</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        ${question.options.map((option, index) => `
+                            <button 
+                                class="option-card text-left p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+                                onclick="selectAnswer(${index})"
+                                id="option-${index}"
+                            >
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                                        ${String.fromCharCode(65 + index)}
+                                    </div>
+                                    <span class="text-gray-800 font-medium text-lg">${option}</span>
+                                </div>
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            updateProgress();
+            updateNavigation();
+            answered = false;
+        }
+
+        function selectAnswer(selectedIndex) {
+            // Prevent selecting if already answered or if this question was already answered before
+            if (answered || userAnswers[currentQuestion] !== undefined) return;
+            
+            answered = true;
+            const question = questions[currentQuestion];
+            const isCorrect = selectedIndex === question.correct;
+            
+            userAnswers[currentQuestion] = selectedIndex;
+            
+            if (isCorrect) {
+                score++;
+            }
+
+            // Update button styles with animations
+            question.options.forEach((option, index) => {
+                const button = document.getElementById(`option-${index}`);
+                button.disabled = true;
+                
+                if (index === question.correct) {
+                    button.classList.add('correct-answer');
+                    button.innerHTML = `
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                                ✓
+                            </div>
+                            <span class="text-white font-medium text-lg">${option}</span>
+                        </div>
+                    `;
+                } else if (index === selectedIndex && !isCorrect) {
+                    button.classList.add('wrong-answer');
+                    button.innerHTML = `
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                                ✗
+                            </div>
+                            <span class="text-white font-medium text-lg">${option}</span>
+                        </div>
+                    `;
+                } else {
+                    button.classList.add('opacity-50');
+                }
+            });
+
+            updateScore();
+            updateNavigation();
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                displayQuestion();
+                
+                // If this question was already answered, show the previous answer
+                if (userAnswers[currentQuestion] !== undefined) {
+                    const selectedIndex = userAnswers[currentQuestion];
+                    const question = questions[currentQuestion];
+                    
+                    answered = true;
+                    
+                    question.options.forEach((option, index) => {
+                        const button = document.getElementById(`option-${index}`);
+                        button.disabled = true;
+                        
+                        if (index === question.correct) {
+                            button.classList.add('correct-answer');
+                            button.innerHTML = `
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                                        ✓
+                                    </div>
+                                    <span class="text-white font-medium text-lg">${option}</span>
+                                </div>
+                            `;
+                        } else if (index === selectedIndex && selectedIndex !== question.correct) {
+                            button.classList.add('wrong-answer');
+                            button.innerHTML = `
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                                        ✗
+                                    </div>
+                                    <span class="text-white font-medium text-lg">${option}</span>
+                                </div>
+                            `;
+                        } else {
+                            button.classList.add('opacity-50');
+                        }
+                    });
+                } else {
+                    // Question not answered yet, so answered should be false
+                    answered = false;
+                }
+                
+                updateNavigation();
+            }
+        }
+
+        function updateProgress() {
+            const progressCircle = document.getElementById('progress-circle');
+            const progressPercent = document.getElementById('progress-percent');
+            const questionCounter = document.getElementById('question-counter');
+            
+            const percentage = ((currentQuestion + 1) / questions.length) * 100;
+            const circumference = 2 * Math.PI * 15.9155;
+            const strokeDasharray = `${(percentage / 100) * circumference}, ${circumference}`;
+            
+            progressCircle.style.strokeDasharray = strokeDasharray;
+            progressPercent.textContent = `${Math.round(percentage)}%`;
+            questionCounter.textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+        }
+
+        function updateScore() {
+            const scoreDisplay = document.getElementById('score-display');
+            scoreDisplay.textContent = `${score} / ${currentQuestion + 1}`;
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                displayQuestion();
+            } else {
+                showFinalScore();
+            }
+        }
+
+        function updateNavigation() {
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            // Previous button: disabled only if on first question
+            prevBtn.disabled = currentQuestion === 0;
+            
+            // Next button: disabled if current question hasn't been answered yet
+            nextBtn.disabled = userAnswers[currentQuestion] === undefined;
+            
+            if (currentQuestion === questions.length - 1 && userAnswers[currentQuestion] !== undefined) {
+                nextBtn.textContent = 'Finish Quiz';
+            } else {
+                nextBtn.textContent = 'Next →';
+            }
+        }
+
+        function showFinalScore() {
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('navigation').classList.add('hidden');
+            document.getElementById('final-score-container').classList.remove('hidden');
+            
+            const percentage = Math.round((score / questions.length) * 100);
+            const finalScoreText = document.getElementById('final-score-text');
+            const performanceMessage = document.getElementById('performance-message');
+            const finalEmoji = document.getElementById('final-emoji');
+            
+            finalScoreText.textContent = `${score} out of ${questions.length} correct (${percentage}%)`;
+            
+            if (percentage >= 90) {
+                finalEmoji.textContent = '🏆';
+                performanceMessage.textContent = 'Outstanding! You\'re an expert in this field!';
+            } else if (percentage >= 80) {
+                finalEmoji.textContent = '🎉';
+                performanceMessage.textContent = 'Excellent work! You have strong knowledge!';
+            } else if (percentage >= 70) {
+                finalEmoji.textContent = '👍';
+                performanceMessage.textContent = 'Good job! You have a solid understanding!';
+            } else if (percentage >= 60) {
+                finalEmoji.textContent = '📚';
+                performanceMessage.textContent = 'Not bad! Keep studying to improve!';
+            } else {
+                finalEmoji.textContent = '💪';
+                performanceMessage.textContent = 'Keep practicing! You\'ll get better!';
+            }
+        }
+
+        function restartQuiz() {
+            // Re-shuffle both questions and answer options for a fresh experience
+            const originalQuestions = quizData[currentQuizType].questions;
+            const shuffledQuestions = shuffleArray(originalQuestions);
+            questions = shuffledQuestions.map(question => shuffleQuestionOptions(question));
+            
+            currentQuestion = 0;
+            score = 0;
+            answered = false;
+            userAnswers = [];
+            
+            document.getElementById('quiz-container').classList.remove('hidden');
+            document.getElementById('navigation').classList.remove('hidden');
+            document.getElementById('final-score-container').classList.add('hidden');
+            
+            displayQuestion();
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97681ea4d417bc3f',t:'MTc1NjQyOTMxMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
