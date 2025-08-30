@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Quiz Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+        
+        body { 
+            font-family: 'Rajdhani', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        .neon-bg {
+            background: radial-gradient(circle at 20% 50%, #120a8f 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, #8b5cf6 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, #06b6d4 0%, transparent 50%),
+                        #0a0a0a;
+        }
+        
+        .glass-card {
+            background: rgba(15, 15, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .neon-border {
+            border: 2px solid transparent;
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00, #00ffff) border-box;
+            background-clip: padding-box, border-box;
+        }
+        
+        .category-card {
+            background: rgba(20, 20, 20, 0.9);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .category-card:hover::before {
+            left: 100%;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #00ffff;
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3),
+                        0 0 20px rgba(0, 255, 255, 0.2);
+        }
+        
+        .neon-glow {
+            text-shadow: 0 0 10px currentColor;
+        }
+        
+        .neon-text {
+            font-family: 'Orbitron', monospace;
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: neonPulse 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes neonPulse {
+            from { filter: brightness(1) saturate(1); }
+            to { filter: brightness(1.2) saturate(1.5); }
+        }
+        
+        .option-btn {
+            background: rgba(30, 30, 30, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .option-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.3s;
+        }
+        
+        .option-btn:hover::before {
+            transform: translateX(100%);
+        }
+        
+        .option-btn:hover {
+            border-color: #00ffff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .option-correct {
+            background: rgba(34, 197, 94, 0.2) !important;
+            border-color: #22c55e !important;
+            box-shadow: 0 0 30px rgba(34, 197, 94, 0.5) !important;
+            animation: correctPulse 0.6s ease-out;
+        }
+        
+        .option-incorrect {
+            background: rgba(239, 68, 68, 0.2) !important;
+            border-color: #ef4444 !important;
+            box-shadow: 0 0 30px rgba(239, 68, 68, 0.5) !important;
+            animation: incorrectShake 0.6s ease-out;
+        }
+        
+        @keyframes correctPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes incorrectShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+        
+        .progress-ring circle {
+            transition: stroke-dashoffset 0.5s ease-in-out;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .slide-in {
+            animation: slideIn 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+        
+        @keyframes slideIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(50px) scale(0.9); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+        
+        .neon-button {
+            background: rgba(0, 255, 255, 0.1);
+            border: 2px solid #00ffff;
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .neon-button:hover {
+            background: rgba(0, 255, 255, 0.2);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .score-display {
+            font-family: 'Orbitron', monospace;
+            background: rgba(255, 255, 0, 0.1);
+            border: 2px solid #ffff00;
+            color: #ffff00;
+            text-shadow: 0 0 10px #ffff00;
+            box-shadow: 0 0 20px rgba(255, 255, 0, 0.3);
+        }
+        
+        .result-card {
+            background: rgba(20, 20, 20, 0.9);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            animation: resultAppear 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        @keyframes resultAppear {
+            0% { 
+                opacity: 0; 
+                transform: scale(0.3) rotate(180deg); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: scale(1) rotate(0deg); 
+            }
+        }
+        
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #00ffff;
+            border-radius: 50%;
+            animation: particle 8s linear infinite;
+        }
+        
+        @keyframes particle {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="neon-bg min-h-screen">
+    <!-- Animated Particles Background -->
+    <div class="particles">
+        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 40%; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 50%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+        <div class="particle" style="left: 70%; animation-delay: 6s;"></div>
+        <div class="particle" style="left: 80%; animation-delay: 7s;"></div>
+        <div class="particle" style="left: 90%; animation-delay: 8s;"></div>
+    </div>
+
+    <div class="container mx-auto px-6 py-8 max-w-6xl relative z-10">
+        
+        <!-- Main Menu -->
+        <div id="main-menu" class="text-center">
+            <!-- Header -->
+            <div class="glass-card p-16 rounded-3xl mb-12 floating">
+                <h1 class="text-8xl font-bold mb-8 neon-text">
+                    AZERON QUIZ GAME
+                </h1>
+                <p class="text-2xl text-gray-300 mb-8 font-light">Enter the digital realm of knowledge</p>
+                
+                <div class="flex justify-center items-center space-x-12 text-gray-400">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-4xl neon-glow text-cyan-400">🎯</span>
+                        <span class="font-medium">20 LEVELS</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span class="text-4xl neon-glow text-purple-400">⚡</span>
+                        <span class="font-medium">INSTANT FEEDBACK</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span class="text-4xl neon-glow text-yellow-400">🏆</span>
+                        <span class="font-medium">NEON SCORES</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Categories Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Science -->
+                <div class="category-card p-8 rounded-2xl" onclick="startQuiz('science')">
+                    <div class="text-7xl mb-6 floating neon-glow text-cyan-400">🧬</div>
+                    <h3 class="text-3xl font-bold mb-4 text-cyan-400">QUIZ 1</h3>
+                    <p class="text-gray-400 mb-6 text-lg">Decode the mysteries of the universe</p>
+                    <div class="bg-cyan-400/20 border border-cyan-400/50 px-4 py-2 rounded-full text-sm font-semibold text-cyan-400">
+                        PHYSICS • CHEMISTRY • BIOLOGY
+                    </div>
+                </div>
+                
+                <!-- History -->
+                <div class="category-card p-8 rounded-2xl" onclick="startQuiz('history')">
+                    <div class="text-7xl mb-6 floating neon-glow text-purple-400">⚔️</div>
+                    <h3 class="text-3xl font-bold mb-4 text-purple-400">QUIZ 2</h3>
+                    <p class="text-gray-400 mb-6 text-lg">Travel through digital time archives</p>
+                    <div class="bg-purple-400/20 border border-purple-400/50 px-4 py-2 rounded-full text-sm font-semibold text-purple-400">
+                        ANCIENT • WARS • CIVILIZATIONS
+                    </div>
+                </div>
+                
+                <!-- Geography -->
+                <div class="category-card p-8 rounded-2xl" onclick="startQuiz('geography')">
+                    <div class="text-7xl mb-6 floating neon-glow text-blue-400">🌐</div>
+                    <h3 class="text-3xl font-bold mb-4 text-blue-400">QUIZ 3</h3>
+                    <p class="text-gray-400 mb-6 text-lg">Navigate the digital world map</p>
+                    <div class="bg-blue-400/20 border border-blue-400/50 px-4 py-2 rounded-full text-sm font-semibold text-blue-400">
+                        COUNTRIES • CAPITALS • OCEANS
+                    </div>
+                </div>
+                
+                <!-- Sports -->
+                <div class="category-card p-8 rounded-2xl" onclick="startQuiz('sports')">
+                    <div class="text-7xl mb-6 floating neon-glow text-green-400">🏆</div>
+                    <h3 class="text-3xl font-bold mb-4 text-green-400">QUIZ 4</h3>
+                    <p class="text-gray-400 mb-6 text-lg">Enter the digital arena</p>
+                    <div class="bg-green-400/20 border border-green-400/50 px-4 py-2 rounded-full text-sm font-semibold text-green-400">
+                        FOOTBALL • BASKETBALL • OLYMPICS
+                    </div>
+                </div>
+                
+                <!-- General -->
+                <div class="category-card p-8 rounded-2xl" onclick="startQuiz('general')">
+                    <div class="text-7xl mb-6 floating neon-glow text-yellow-400">🎲</div>
+                    <h3 class="text-3xl font-bold mb-4 text-yellow-400">QUIZ 5</h3>
+                    <p class="text-gray-400 mb-6 text-lg">Random data from the matrix</p>
+                    <div class="bg-yellow-400/20 border border-yellow-400/50 px-4 py-2 rounded-full text-sm font-semibold text-yellow-400">
+                        ANIMALS • CULTURE • FACTS
+                    </div>
+                </div>
+                
+                <!-- Mixed -->
+                <div class="category-card p-8 rounded-2xl" onclick="startQuiz('mixed')">
+                    <div class="text-7xl mb-6 floating neon-glow text-pink-400">🌈</div>
+                    <h3 class="text-3xl font-bold mb-4 text-pink-400">QUIZ 6</h3>
+                    <p class="text-gray-400 mb-6 text-lg">Ultimate challenge mode</p>
+                    <div class="bg-pink-400/20 border border-pink-400/50 px-4 py-2 rounded-full text-sm font-semibold text-pink-400">
+                        ALL CATEGORIES • RANDOM
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="hidden">
+            <!-- Quiz Header -->
+            <div class="glass-card p-8 rounded-3xl mb-8 slide-in">
+                <div class="flex justify-between items-center mb-8">
+                    <button onclick="goToMainMenu()" class="neon-button px-8 py-3 rounded-xl font-bold text-lg transition-all">
+                        ← BACK
+                    </button>
+                    
+                    <div class="text-center">
+                        <h2 class="text-4xl font-bold neon-glow" id="category-title">SCIENCE QUIZ</h2>
+                        <p class="text-gray-400 text-xl font-mono" id="question-counter">LEVEL 1 / 10</p>
+                    </div>
+                    
+                    <div class="score-display px-8 py-3 rounded-xl font-bold text-xl" id="current-score">
+                        SCORE: 0
+                    </div>
+                </div>
+                
+                <!-- Circular Progress -->
+                <div class="flex justify-center">
+                    <div class="relative w-32 h-32">
+                        <svg class="w-32 h-32 progress-ring">
+                            <circle cx="64" cy="64" r="56" stroke="rgba(255,255,255,0.1)" stroke-width="8" fill="none"/>
+                            <circle cx="64" cy="64" r="56" stroke="url(#gradient)" stroke-width="8" fill="none" 
+                                    stroke-dasharray="351.86" stroke-dashoffset="316.67" id="progress-circle"/>
+                            <defs>
+                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#ff00ff;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#ffff00;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-white font-bold text-2xl font-mono neon-glow" id="progress-text">10%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div id="question-card" class="glass-card p-12 rounded-3xl mb-8 slide-in">
+                <div class="text-center mb-12">
+                    <div class="text-8xl mb-8 floating neon-glow" id="question-emoji">🤔</div>
+                    <h3 class="text-3xl font-bold mb-6 leading-relaxed" id="question-text">Loading question...</h3>
+                    <div class="text-gray-400 text-xl font-mono">SELECT YOUR ANSWER</div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="options-container">
+                    <!-- Options will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Navigation Controls -->
+            <div class="flex justify-center items-center space-x-6 mb-6">
+                <button id="prev-button" onclick="goToPreviousQuestion()" 
+                        class="hidden bg-gray-600/20 border-2 border-gray-400 text-gray-400 hover:bg-gray-600/30 px-8 py-3 rounded-xl text-lg font-bold transition-all">
+                    ← PREVIOUS
+                </button>
+                
+                <div id="auto-advance-indicator" class="hidden text-gray-400 text-lg font-mono">
+                    AUTO-ADVANCING IN <span id="countdown">2</span>...
+                </div>
+                
+                <button id="current-button" onclick="goToCurrentQuestion()" 
+                        class="hidden neon-button px-8 py-3 rounded-xl text-lg font-bold transition-all">
+                    CURRENT →
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="results-screen" class="hidden text-center">
+            <div class="result-card p-16 rounded-3xl">
+                <div class="text-9xl mb-8 floating neon-glow" id="result-emoji">🎉</div>
+                <h2 class="text-7xl font-bold mb-8 neon-text" id="result-title">MISSION COMPLETE!</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                    <!-- Score Card -->
+                    <div class="glass-card p-8 rounded-2xl border-2 border-yellow-400">
+                        <div class="text-6xl font-bold mb-4 text-yellow-400 neon-glow font-mono" id="final-score">80</div>
+                        <div class="text-xl text-yellow-400">FINAL SCORE</div>
+                    </div>
+                    
+                    <!-- Percentage Card -->
+                    <div class="glass-card p-8 rounded-2xl border-2 border-cyan-400">
+                        <div class="text-6xl font-bold mb-4 text-cyan-400 neon-glow font-mono" id="percentage-score">80%</div>
+                        <div class="text-xl text-cyan-400">ACCURACY</div>
+                    </div>
+                    
+                    <!-- Rank Card -->
+                    <div class="glass-card p-8 rounded-2xl border-2 border-purple-400">
+                        <div class="text-6xl font-bold mb-4 text-purple-400 neon-glow font-mono" id="rank-display">A</div>
+                        <div class="text-xl text-purple-400">RANK</div>
+                    </div>
+                </div>
+                
+                <!-- Performance Stats -->
+                <div class="grid grid-cols-3 gap-6 mb-12">
+                    <div class="glass-card p-6 rounded-xl border border-green-400/50">
+                        <div class="text-4xl font-bold text-green-400 mb-2 neon-glow font-mono" id="correct-count">8</div>
+                        <div class="text-green-400">CORRECT</div>
+                    </div>
+                    <div class="glass-card p-6 rounded-xl border border-red-400/50">
+                        <div class="text-4xl font-bold text-red-400 mb-2 neon-glow font-mono" id="incorrect-count">2</div>
+                        <div class="text-red-400">INCORRECT</div>
+                    </div>
+                    <div class="glass-card p-6 rounded-xl border border-blue-400/50">
+                        <div class="text-4xl font-bold text-blue-400 mb-2 neon-glow font-mono">20</div>
+                        <div class="text-blue-400">TOTAL</div>
+                    </div>
+                </div>
+                
+                <div class="text-2xl text-gray-300 mb-12 font-mono" id="performance-message">
+                    EXCELLENT PERFORMANCE! YOU'RE A DIGITAL MASTER! 🚀
+                </div>
+                
+                <div class="flex justify-center space-x-8">
+                    <button onclick="restartQuiz()" 
+                            class="bg-green-500/20 border-2 border-green-400 text-green-400 hover:bg-green-500/30 px-12 py-4 rounded-2xl text-xl font-bold transition-all neon-glow">
+                        🔄 RETRY MISSION
+                    </button>
+                    <button onclick="goToMainMenu()" 
+                            class="bg-purple-500/20 border-2 border-purple-400 text-purple-400 hover:bg-purple-500/30 px-12 py-4 rounded-2xl text-xl font-bold transition-all neon-glow">
+                        🏠 MAIN MENU
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz Data (same as before)
+        const quizData = {
+            science: {
+                title: "QUIZ 1",
+                emoji: "",
+                questions: [
+                    {
+                        question: "the clause in a mortgage or deed of trust that permits the lender to declare all unpaid principal and accrued interest due and payable if the borrower transfers title to the property.",
+                        options: ["Acceleration clause", "Alienation clause", "Defeasance clause", "Subordination clause"],
+                        correct: 1,
+                    },
+                    {
+                        question: " method to determine site value by treating the land as a percent of the total property value (site value to total property value ratio). See abstraction.",
+                        options: ["Abstraction", "Allocation", "Substitution", "Reconciliation"],
+                        correct: 1,
+                    },
+                    {
+                        question: "a system of land ownership in the United States in which land is held free and clear of any rent or services due to the government; commonly contrasted with the feudal system, in which ownership is held by a monarch.",
+                        options: ["Tenancy in common", "Allodial system", "Feudal tenure", "Eminent domain"],
+                        correct: 1,
+                    },
+                    {
+                        question: "the process of changing one zoning classification to another.",
+                        options: [" Variance", "Amendment", "Nonconforming use", "Spot zoning"],
+                        correct: 1,
+                    },
+                    {
+                        question: " features or benefits of a particular property that enhance the property's desirability and value,such as a scenic view or a pool.",
+                        options: ["Fixtures", "Amenities", "Easements", "Appurtenances"],
+                        correct: 1,
+                    },
+                    {
+                        question: "the illegal and discriminatory practice of inducing homeowners to sell their properties by suggesting or implying the introduction of members of a protected class into the neighborhood.",
+                        options: ["Blockbusting", "Steering", "Redlining", "Panic selling"],
+                        correct: 0,
+                    },
+                    {
+                        question: "in good faith, honest.",
+                        options: [" Bona fide", "Fiduciary", "Ethical", "Legitimate"],
+                        correct: 0,
+                    },
+                    {
+                        question: "evidence of personal debt secured by a mortgage or other lien on real estate.",
+                        options: ["Bond", "Deed", "Note", "Mortgage"],
+                        correct: 0,
+                    },
+                    {
+                        question: "the amount of capital recapture charged on an owner's books.",
+                        options: ["Book depreciation", "Accrued depreciation", "Economic obsolescence", "Salvage value"],
+                        correct: 0,
+                    },
+                    {
+                        question: "the amount at which property is carried on the books of a company. Usually equal to the original cost, less accounting depreciation, plus any addition to the capital.",
+                        options: ["Book value"," Market value", "Assessed value", "Investment value"],
+                        correct: 0,
+                    },
+                    {
+                        question: "the document given to a purchaser of real estate that is sold at a tax foreclosure sale. ",
+                        options: ["Certificate of sale", "Certificate of title", "Sheriff's deed", "Tax deed"],
+                        correct: 0,
+                    },
+                    {
+                        question: " a report stating an opinion on the status of a title, based on the examination of public records.",
+                        options: ["Certificate of title", "Abstract of title", "Title insurance", "Deed of trust"],
+                        correct: 0,
+                    },
+                    {
+                        question: "the recorded history of conveyances and encumbrances that affect the title to a parcel of land.",
+                        options: ["Chain of title", "Title search", "Title record", "Title abstract"],
+                        correct: 0,
+                    },
+                    {
+                        question: "the appraisal principle that states that the cause and effect of economic and social forces are constantly causing property values to be in transition.",
+                        options: ["Change", "Progression", "Regression", "Substitution"],
+                        correct: 0,
+                    },
+                    {
+                        question: "a loan in which personal property is pledged to secure the debt.",
+                        options: ["Chattel mortgage", "Blanket mortgage", "Package mortgage", "Collateral loan"],
+                        correct: 0,
+                    },
+                    {
+                        question: "quantity of real property desired at a certain price or rent at a specific time in a given market.",
+                        options: ["Demand", "Supply", "Absorption", "Market trend"],
+                        correct: 0,
+                    },
+                    {
+                        question: "a zoning ordinance that restricts the number of houses or dwelling units that can be built per acre in a particular area, such as a subdivision.",
+                        options: ["Density zoning", "Cumulative zoning", "Bulk zoning", "Incentive zoning"],
+                        correct: 0,
+                    },
+                    {
+                        question: "loss in property value from any cause; the difference between reproduction cost or replacement cost and market value. In appraisal, depreciation is divided into three classes: physical deterioration, functional obsolescence, and external obsolescence. The term depreciation is also used to refer to tax depreciation, which is a deduction from NOI (see net operating income) when calculating taxable income. Tax depreciation is a function of the current tax law and is not necessarily related to actual depreciation in the value of the asset.",
+                        options: ["Depreciation", "Obsolescence", "Capital loss", "Depletion"],
+                        correct: 0,
+                    },
+                    {
+                        question: "the transfer of property to an owner's heirs when the owner dies intestate.",
+                        options: ["Descent", "Devise", "Bequest", "Escheat"],
+                        correct: 0,
+                    },
+                    {
+                        question: "sum of money a developer expects to receive in addition to the costs for the time and effort, coordination, and risks involved to develop real estate. The portion associated with the creation of the real estate by a developer is referred to as the developer's profit. See entrepreneurial profit.",
+                        options: ["Developer's profit"," Entrepreneurial profit", "Return on investment", "Capital gain"],
+                        correct: 0,
+                    }
+                ]
+            },
+            history: {
+                title: "QUIZ 2",
+                emoji: "⚔️",
+                questions: [
+                    {
+                        question: " federal legislation designed to integrate people with disabilities fully into the mainstream of American life.",
+                        options: ["Americans with Disabilities Act", "Fair Housing Act", "Civil Rights Act", "Equal Opportunity Act"],
+                        correct: 0,
+                    },
+                    {
+                        question: " the method of repaying a loan or debt by making periodic installment payments composed of both principal and interest. When all principal has been repaid, it is considered fully amortized.",
+                        options: [" Amortization", "Acceleration", "Ballooning"," Refinancing"],
+                        correct: 0,
+                    },
+                    {
+                        question: "a table that shows how much of each loan payment will be applied toward principal and how much toward interest over the lifespan of the loan. It also shows the gradual decrease of the outstanding loan balance until it reaches zero.",
+                        options: ["Amortization schedule", "Payment chart", "Loan breakdown", "Installment schedule"],
+                        correct: 0,
+                    },
+                     {
+                        question: "to repay a loan through regular payments that consist of principal and interest.",
+                        options: ["Amortize", "Accelerate", "Refinance"," Hypothecate"],
+                        correct: 0,
+                    },
+                     {
+                        question: "the major tenant in a shopping center that attracts or generates foot traffic. In a ",
+                        options: ["Anchor tenant", "Lead tenant", "Primary tenant", "Major lessee"],
+                        correct: 0,
+                    },
+                     {
+                        question: "money or property provided to make up a difference in value or equity between two properties in an exchange.",
+                        options: ["Boot", "Consideration", "Earnest money", "Equity adjustment"],
+                        correct: 0,
+                    },
+                     {
+                        question: "a place of business secondary to a principal office. The branch office is a satellite office generally run by a licensed broker, for the benefit of the broker running the principal office, as well as the associate broker's convenience.",
+                        options: ["Branch office", "Satellite office", "Sub-office", "Regional office"],
+                        correct: 0,
+                    },
+                     {
+                        question: "violation of any conditions or terms in a contract without legal excuse. ",
+                        options: ["Breach of contract"," Default", "Nonperformance", "Failure to act"],
+                        correct: 0,
+                    },
+                     {
+                        question: "the term broker can mean many things, but in terms of real estate, it is the owner-manager of a business that brings together the parties to a real estate transaction for a fee. The roles of brokers and brokers' associates are defined by state law. In the mortgage industry, broker usually refers to a company or individual who does not lend the money for the loans directly, but that brokers loans to larger lenders or investors.",
+                        options: ["Broker", "Agent", "Realtor", "Associate"],
+                        correct: 0,
+                    },
+                     {
+                        question: " the business of bringing together buyers and sellers or other participants in a real estate transaction.",
+                        options: [" Brokerage", "Mediation", "Agency", "Facilitation"],
+                        correct: 0,
+                    },
+                     {
+                        question: "real all interests in real estate that do not constitute a freehold estate in land, such as a leasehold estate.",
+                        options: ["Chattels", "Fixtures", "Appurtenances", "Easements"],
+                        correct: 0,
+                    },
+                     {
+                        question: "the actual or true age of an item.",
+                        options: ["Chronological age", "Effective age", "Economic age", "Physical age"],
+                        correct: 0,
+                    },
+                     {
+                        question: "a large municipality governed under a charter and granted by the state.",
+                        options: ["City", "County", "Town", "Borough"],
+                        correct: 0,
+                    },
+                     {
+                        question: "law that prohibits employment discrimination based on race, color, sex, or national origin.",
+                        options: ["Civil Rights Act of 1964", "Civil Rights Act of 1968", "Fair Housing Act", "Equal Opportunity Act"],
+                        correct: 0,
+                    },
+                     {
+                        question: "law that provides monetary damages for intentional employment discrimination.",
+                        options: ["Civil Rights Act of 1991", "Civil Rights Act of 1968", "Fair Employment Act", "Equal Pay Act"],
+                        correct: 0,
+                    },
+                     {
+                        question: " the transfer of title to real estate by will.",
+                        options: [" Devise", "Descent", "Bequest", "Conveyance"],
+                        correct: 0,
+                    },
+                     {
+                        question: "one who receives a bequest of real estate by will.",
+                        options: ["Devisee", "Beneficiary", "Heir", "Grantee"],
+                        correct: 0,
+                    },
+                     {
+                        question: "one who grants real estate by will.",
+                        options: [" Devisor", "Grantor", "Testator", "Trustor"],
+                        correct: 0,
+                    },
+                     {
+                        question: " in the income approach, the method used to convert a single year's income into an estimate of property value (V). This can be accomplished by dividing the net operating income (NOI) by a market-derived overall capitalization rate (OAR), or by multiplying the income by a market-derived income multiplier. V = NOI ÷ OAR",
+                        options: ["Direct capitalization", "Gross rent multiplier", "Income approach", "Yield capitalization"],
+                        correct: 0,
+                    },
+                     {
+                        question: " Also known as hard cost; cost for labor and materials, including contractor's overhead and profit.",
+                        options: ["Direct costs", "Indirect costs", "Soft costs", "Operating costs"],
+                        correct: 0,
+                    }
+                ]
+            },
+            geography: {
+                title: "QUIZ 3",
+                emoji: "🌐",
+                questions: [
+                    {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    }
+                ]
+            },
+            sports: {
+                title: "QUIZ 4",
+                emoji: "🏆",
+                questions: [
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    }
+                ]
+            },
+            general: {
+                title: "QUIZ 5",
+                emoji: "🎲",
+                questions: [
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    }
+                ]
+            },
+            mixed: {
+                title: "QUIZ 6",
+                emoji: "🌈",
+                questions: [
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    },
+                     {
+                        question: "In which year did World War II end?",
+                        options: ["1944", "1945", "1946", "1947"],
+                        correct: 1,
+                    }
+                ]
+            }
+        };
+
+        // Game State
+        let gameState = {
+            currentCategory: null,
+            currentQuestionIndex: 0,
+            score: 0,
+            correctAnswers: 0,
+            incorrectAnswers: 0,
+            totalQuestions: 20,
+            selectedAnswer: null,
+            questions: [],
+            userAnswers: [], // Track all user answers
+            isReviewing: false, // Track if we're in review mode
+            highestQuestionReached: 0 // Track progress
+        };
+
+        function goToMainMenu() {
+            document.getElementById('quiz-screen').classList.add('hidden');
+            document.getElementById('results-screen').classList.add('hidden');
+            document.getElementById('main-menu').classList.remove('hidden');
+            resetGame();
+        }
+
+        // Shuffle function
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        // Shuffle options while keeping track of correct answer
+        function shuffleQuestionOptions(question) {
+            const correctAnswer = question.options[question.correct];
+            const shuffledOptions = shuffleArray(question.options);
+            const newCorrectIndex = shuffledOptions.indexOf(correctAnswer);
+            
+            return {
+                ...question,
+                options: shuffledOptions,
+                correct: newCorrectIndex
+            };
+        }
+
+        function startQuiz(category) {
+            gameState.currentCategory = category;
+            
+            // Shuffle questions first
+            const shuffledQuestions = shuffleArray(quizData[category].questions);
+            
+            // Then shuffle options for each question
+            gameState.questions = shuffledQuestions.map(question => shuffleQuestionOptions(question));
+            
+            gameState.currentQuestionIndex = 0;
+            gameState.score = 0;
+            gameState.correctAnswers = 0;
+            gameState.incorrectAnswers = 0;
+            gameState.selectedAnswer = null;
+            gameState.userAnswers = new Array(gameState.questions.length).fill(null);
+            gameState.isReviewing = false;
+            gameState.highestQuestionReached = 0;
+
+            document.getElementById('main-menu').classList.add('hidden');
+            document.getElementById('quiz-screen').classList.remove('hidden');
+            document.getElementById('results-screen').classList.add('hidden');
+
+            setupQuiz();
+            displayQuestion();
+        }
+
+        function setupQuiz() {
+            const categoryData = quizData[gameState.currentCategory];
+            document.getElementById('category-title').textContent = categoryData.title;
+            updateUI();
+        }
+
+        function displayQuestion() {
+            const question = gameState.questions[gameState.currentQuestionIndex];
+            const userAnswer = gameState.userAnswers[gameState.currentQuestionIndex];
+            
+            document.getElementById('question-emoji').textContent = question.emoji;
+            document.getElementById('question-text').textContent = question.question;
+            
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.className = 'option-btn p-6 rounded-xl text-left font-semibold text-white text-lg';
+                button.id = `option-${index}`;
+                
+                // If reviewing and this question was answered, show the results
+                if (gameState.isReviewing && userAnswer !== null) {
+                    button.disabled = true;
+                    if (index === question.correct) {
+                        button.classList.add('option-correct');
+                    } else if (index === userAnswer && userAnswer !== question.correct) {
+                        button.classList.add('option-incorrect');
+                    } else {
+                        button.classList.add('opacity-30');
+                    }
+                } else if (!gameState.isReviewing) {
+                    button.onclick = () => selectAnswer(index);
+                }
+                
+                button.innerHTML = `
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-purple-500 text-white rounded-full flex items-center justify-center font-bold mr-4 text-xl neon-glow">
+                            ${String.fromCharCode(65 + index)}
+                        </div>
+                        <span class="font-mono">${option}</span>
+                    </div>
+                `;
+                
+                optionsContainer.appendChild(button);
+            });
+            
+            updateNavigationButtons();
+            document.getElementById('auto-advance-indicator').classList.add('hidden');
+            gameState.selectedAnswer = userAnswer;
+        }
+
+        function selectAnswer(selectedIndex) {
+            if (gameState.selectedAnswer !== null || gameState.isReviewing) return;
+            
+            gameState.selectedAnswer = selectedIndex;
+            gameState.userAnswers[gameState.currentQuestionIndex] = selectedIndex;
+            
+            // Update highest question reached
+            if (gameState.currentQuestionIndex > gameState.highestQuestionReached) {
+                gameState.highestQuestionReached = gameState.currentQuestionIndex;
+            }
+            
+            const question = gameState.questions[gameState.currentQuestionIndex];
+            const isCorrect = selectedIndex === question.correct;
+            
+            // Disable all buttons and show results
+            for (let i = 0; i < question.options.length; i++) {
+                const button = document.getElementById(`option-${i}`);
+                button.disabled = true;
+                button.classList.remove('hover:border-cyan-400');
+                
+                if (i === question.correct) {
+                    button.classList.add('option-correct');
+                } else if (i === selectedIndex && !isCorrect) {
+                    button.classList.add('option-incorrect');
+                } else {
+                    button.classList.add('opacity-30');
+                }
+            }
+            
+            // Update score and stats only if this is a new answer
+            if (isCorrect) {
+                gameState.score += 20;
+                gameState.correctAnswers++;
+            } else {
+                gameState.incorrectAnswers++;
+            }
+            
+            updateUI();
+            updateNavigationButtons();
+            
+            // Show countdown and auto-advance
+            document.getElementById('auto-advance-indicator').classList.remove('hidden');
+            let countdown = 2;
+            document.getElementById('countdown').textContent = countdown;
+            
+            const countdownInterval = setInterval(() => {
+                countdown--;
+                document.getElementById('countdown').textContent = countdown;
+                
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById('auto-advance-indicator').classList.add('hidden');
+                    nextQuestion();
+                }
+            }, 1000);
+        }
+
+        function nextQuestion() {
+            gameState.currentQuestionIndex++;
+            gameState.isReviewing = false;
+            
+            if (gameState.currentQuestionIndex >= gameState.totalQuestions) {
+                showResults();
+            } else {
+                displayQuestion();
+                updateUI();
+            }
+        }
+
+        function goToPreviousQuestion() {
+            if (gameState.currentQuestionIndex > 0) {
+                gameState.currentQuestionIndex--;
+                gameState.isReviewing = true;
+                displayQuestion();
+                updateUI();
+            }
+        }
+
+        function goToCurrentQuestion() {
+            gameState.currentQuestionIndex = gameState.highestQuestionReached + 1;
+            gameState.isReviewing = false;
+            
+            if (gameState.currentQuestionIndex >= gameState.totalQuestions) {
+                showResults();
+            } else {
+                displayQuestion();
+                updateUI();
+            }
+        }
+
+        function updateNavigationButtons() {
+            const prevButton = document.getElementById('prev-button');
+            const currentButton = document.getElementById('current-button');
+            
+            // Show previous button if not on first question
+            if (gameState.currentQuestionIndex > 0) {
+                prevButton.classList.remove('hidden');
+            } else {
+                prevButton.classList.add('hidden');
+            }
+            
+            // Show current button if reviewing and not at current question
+            if (gameState.isReviewing && gameState.currentQuestionIndex <= gameState.highestQuestionReached) {
+                currentButton.classList.remove('hidden');
+            } else {
+                currentButton.classList.add('hidden');
+            }
+        }
+
+        function updateUI() {
+            // Update question counter
+            document.getElementById('question-counter').textContent = 
+                `LEVEL ${gameState.currentQuestionIndex + 1} / ${gameState.totalQuestions}`;
+            
+            // Update score
+            document.getElementById('current-score').textContent = `SCORE: ${gameState.score}`;
+            
+            // Update circular progress
+            const progress = ((gameState.currentQuestionIndex + 1) / gameState.totalQuestions) * 100;
+            const circumference = 2 * Math.PI * 56;
+            const offset = circumference - (progress / 100) * circumference;
+            
+            document.getElementById('progress-circle').style.strokeDashoffset = offset;
+            document.getElementById('progress-text').textContent = `${Math.round(progress)}%`;
+        }
+
+        function showResults() {
+            document.getElementById('quiz-screen').classList.add('hidden');
+            document.getElementById('results-screen').classList.remove('hidden');
+            
+            const percentage = Math.round((gameState.correctAnswers / gameState.totalQuestions) * 100);
+            
+            // Set result emoji, title and grade based on performance
+            let resultEmoji = "🎉";
+            let resultTitle = "MISSION COMPLETE!";
+            let grade = "B";
+            let performanceMessage = "";
+            
+            if (percentage >= 90) {
+                resultEmoji = "🏆";
+                resultTitle = "LEGENDARY!";
+                grade = "S+";
+                performanceMessage = "PERFECT EXECUTION! YOU'RE A DIGITAL LEGEND! 🌟";
+            } else if (percentage >= 80) {
+                resultEmoji = "⚡";
+                resultTitle = "EXCELLENT!";
+                grade = "A";
+                performanceMessage = "OUTSTANDING PERFORMANCE! NEON MASTER! 🎯";
+            } else if (percentage >= 70) {
+                resultEmoji = "🔥";
+                resultTitle = "GREAT JOB!";
+                grade = "B";
+                performanceMessage = "SOLID PERFORMANCE! KEEP GLOWING! 💪";
+            } else if (percentage >= 60) {
+                resultEmoji = "⭐";
+                resultTitle = "GOOD EFFORT!";
+                grade = "C";
+                performanceMessage = "DECENT RUN! UPGRADE YOUR SKILLS! 📚";
+            } else {
+                resultEmoji = "🚀";
+                resultTitle = "KEEP TRAINING!";
+                grade = "D";
+                performanceMessage = "SYSTEM NEEDS UPGRADE! TRY AGAIN! 🔄";
+            }
+            
+            document.getElementById('result-emoji').textContent = resultEmoji;
+            document.getElementById('result-title').textContent = resultTitle;
+            document.getElementById('final-score').textContent = gameState.score;
+            document.getElementById('percentage-score').textContent = `${percentage}%`;
+            document.getElementById('rank-display').textContent = grade;
+            document.getElementById('performance-message').textContent = performanceMessage;
+            document.getElementById('correct-count').textContent = gameState.correctAnswers;
+            document.getElementById('incorrect-count').textContent = gameState.incorrectAnswers;
+        }
+
+        function restartQuiz() {
+            startQuiz(gameState.currentCategory);
+        }
+
+        function resetGame() {
+            gameState = {
+                currentCategory: null,
+                currentQuestionIndex: 0,
+                score: 0,
+                correctAnswers: 0,
+                incorrectAnswers: 0,
+                totalQuestions: 10,
+                selectedAnswer: null,
+                questions: [],
+                userAnswers: [],
+                isReviewing: false,
+                highestQuestionReached: 0
+            };
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97711405e55ebc3f',t:'MTc1NjUyMzI1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
