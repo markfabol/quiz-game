@@ -286,9 +286,11 @@
                     </div>
                     <div class="flex items-center space-x-3">
                         <span class="text-4xl neon-glow text-yellow-400">🏆</span>
-                        <span class="font-medium">NEON SCORES</span>
-                    </div>
+                        <span class="font-medium">SCORES</span>
+                    </diV>
                 </div>
+                 <p class="text-indent: 100px mb-8 font-light neon-glow text-red-400"></p>
+                  <p class="text-indent: 20px mb-8 font-light neon-glow text-red-400">THESE TERMS WILL help you not only as you study for your appraisal exam, but also after you pass your exam and are on the job every day.</p>
             </div>
             
             <!-- Categories Grid -->
@@ -297,9 +299,9 @@
                 <div class="category-card p-8 rounded-2xl" onclick="startQuiz('science')">
                     <div class="text-7xl mb-6 floating neon-glow text-cyan-400">🧬</div>
                     <h3 class="text-3xl font-bold mb-4 text-cyan-400">QUIZ 1</h3>
-                    <p class="text-gray-400 mb-6 text-lg">Decode the mysteries of the universe</p>
+                    <p class="text-gray-400 mb-6 text-lg"></p>
                     <div class="bg-cyan-400/20 border border-cyan-400/50 px-4 py-2 rounded-full text-sm font-semibold text-cyan-400">
-                        PHYSICS • CHEMISTRY • BIOLOGY
+                        START - QUIZ 1 
                     </div>
                 </div>
                 
@@ -309,7 +311,7 @@
                     <h3 class="text-3xl font-bold mb-4 text-purple-400">QUIZ 2</h3>
                     <p class="text-gray-400 mb-6 text-lg">Travel through digital time archives</p>
                     <div class="bg-purple-400/20 border border-purple-400/50 px-4 py-2 rounded-full text-sm font-semibold text-purple-400">
-                        ANCIENT • WARS • CIVILIZATIONS
+                        START - QUIZ 2 
                     </div>
                 </div>
                 
