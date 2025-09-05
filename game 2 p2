@@ -270,15 +270,47 @@
         <div id="main-menu" class="text-center">
             <!-- Header -->
             <div class="glass-card p-16 rounded-3xl mb-12 floating">
-                <h1 class="text-8xl font-bold mb-8 neon-text">
-                    AZERON QUIZ GAME
-                </h1>
+                <div class="flex items-center justify-center mb-8">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-4 border-cyan-400 neon-glow mr-6 floating">
+                        <svg viewBox="0 0 100 100" class="w-full h-full">
+                            <!-- Azeron Avatar -->
+                            <defs>
+                                <linearGradient id="avatarGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#ff00ff;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Background circle -->
+                            <circle cx="50" cy="50" r="50" fill="url(#avatarGradient)"/>
+                            <!-- Face -->
+                            <circle cx="50" cy="45" r="35" fill="#1a1a1a"/>
+                            <!-- Eyes -->
+                            <circle cx="42" cy="38" r="3" fill="#00ffff"/>
+                            <circle cx="58" cy="38" r="3" fill="#00ffff"/>
+                            <!-- Nose -->
+                            <path d="M50 45 L48 50 L52 50 Z" fill="#333"/>
+                            <!-- Mouth -->
+                            <path d="M45 55 Q50 60 55 55" stroke="#00ffff" stroke-width="2" fill="none"/>
+                            <!-- Hair/Hood -->
+                            <path d="M20 35 Q50 15 80 35 L75 25 Q50 10 25 25 Z" fill="#333"/>
+                            <!-- Gaming headset -->
+                            <rect x="15" y="35" width="8" height="15" rx="4" fill="#00ffff"/>
+                            <rect x="77" y="35" width="8" height="15" rx="4" fill="#00ffff"/>
+                            <!-- Neon accents -->
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(0,255,255,0.3)" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h1 class="text-8xl font-bold neon-text">
+                         AZERON QUIZ GAME 
+                    </h1>
+                </div>
                 <p class="text-2xl text-gray-300 mb-8 font-light">Enter the digital realm of knowledge</p>
                 
                 <div class="flex justify-center items-center space-x-12 text-gray-400">
                     <div class="flex items-center space-x-3">
                         <span class="text-4xl neon-glow text-cyan-400">🎯</span>
-                        <span class="font-medium">20 LEVELS</span>
+                        <span class="font-medium">10 LEVELS</span>
                     </div>
                     <div class="flex items-center space-x-3">
                         <span class="text-4xl neon-glow text-purple-400">⚡</span>
@@ -287,12 +319,10 @@
                     <div class="flex items-center space-x-3">
                         <span class="text-4xl neon-glow text-yellow-400">🏆</span>
                         <span class="font-medium">SCORES</span>
-                    </diV>
+                    </div>
                 </div>
-                 <p class="text-indent: 100px mb-8 font-light neon-glow text-red-400"></p>
-                  <p class="text-indent: 20px mb-8 font-light neon-glow text-red-400">THESE TERMS WILL help you not only as you study for your appraisal exam, but also after you pass your exam and are on the job every day.</p>
             </div>
-            
+                       
             <!-- Categories Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Science -->
@@ -309,7 +339,7 @@
                 <div class="category-card p-8 rounded-2xl" onclick="startQuiz('history')">
                     <div class="text-7xl mb-6 floating neon-glow text-purple-400">⚔️</div>
                     <h3 class="text-3xl font-bold mb-4 text-purple-400">QUIZ 2</h3>
-                    <p class="text-gray-400 mb-6 text-lg">Travel through digital time archives</p>
+                    <p class="text-gray-400 mb-6 text-lg"></p>
                     <div class="bg-purple-400/20 border border-purple-400/50 px-4 py-2 rounded-full text-sm font-semibold text-purple-400">
                         START - QUIZ 2 
                     </div>
@@ -319,9 +349,9 @@
                 <div class="category-card p-8 rounded-2xl" onclick="startQuiz('geography')">
                     <div class="text-7xl mb-6 floating neon-glow text-blue-400">🌐</div>
                     <h3 class="text-3xl font-bold mb-4 text-blue-400">QUIZ 3</h3>
-                    <p class="text-gray-400 mb-6 text-lg">Navigate the digital world map</p>
+                    <p class="text-gray-400 mb-6 text-lg"></p>
                     <div class="bg-blue-400/20 border border-blue-400/50 px-4 py-2 rounded-full text-sm font-semibold text-blue-400">
-                        COUNTRIES • CAPITALS • OCEANS
+                        START - QUIZ 3
                     </div>
                 </div>
                 
@@ -329,9 +359,9 @@
                 <div class="category-card p-8 rounded-2xl" onclick="startQuiz('sports')">
                     <div class="text-7xl mb-6 floating neon-glow text-green-400">🏆</div>
                     <h3 class="text-3xl font-bold mb-4 text-green-400">QUIZ 4</h3>
-                    <p class="text-gray-400 mb-6 text-lg">Enter the digital arena</p>
+                    <p class="text-gray-400 mb-6 text-lg"></p>
                     <div class="bg-green-400/20 border border-green-400/50 px-4 py-2 rounded-full text-sm font-semibold text-green-400">
-                        FOOTBALL • BASKETBALL • OLYMPICS
+                        START - QUIZ 4
                     </div>
                 </div>
                 
@@ -339,9 +369,9 @@
                 <div class="category-card p-8 rounded-2xl" onclick="startQuiz('general')">
                     <div class="text-7xl mb-6 floating neon-glow text-yellow-400">🎲</div>
                     <h3 class="text-3xl font-bold mb-4 text-yellow-400">QUIZ 5</h3>
-                    <p class="text-gray-400 mb-6 text-lg">Random data from the matrix</p>
+                    <p class="text-gray-400 mb-6 text-lg"></p>
                     <div class="bg-yellow-400/20 border border-yellow-400/50 px-4 py-2 rounded-full text-sm font-semibold text-yellow-400">
-                        ANIMALS • CULTURE • FACTS
+                        START - QUIZ 5
                     </div>
                 </div>
                 
@@ -349,9 +379,9 @@
                 <div class="category-card p-8 rounded-2xl" onclick="startQuiz('mixed')">
                     <div class="text-7xl mb-6 floating neon-glow text-pink-400">🌈</div>
                     <h3 class="text-3xl font-bold mb-4 text-pink-400">QUIZ 6</h3>
-                    <p class="text-gray-400 mb-6 text-lg">Ultimate challenge mode</p>
+                    <p class="text-gray-400 mb-6 text-lg"></p>
                     <div class="bg-pink-400/20 border border-pink-400/50 px-4 py-2 rounded-full text-sm font-semibold text-pink-400">
-                        ALL CATEGORIES • RANDOM
+                        START - QUIZ 6
                     </div>
                 </div>
             </div>
