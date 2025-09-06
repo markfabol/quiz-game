@@ -89,6 +89,8 @@
                     <h1 class="text-6xl font-bold text-white mb-6 drop-shadow-lg">🎯 Azeron Quiz</h1>
                     <p class="text-white/90 text-2xl font-light mb-4">Choose Your Learning Adventure</p>
                     <p class="text-white/70 text-lg">Test your knowledge across different subjects</p>
+                    <p class="text-white/80 mb-4">THESE TERMS WILL help you not only as you study for your appraisal exam, but also after you pass your exam and are on the job every day</p>
+
                 </div>
             </div>
 
@@ -99,11 +101,9 @@
                     <div class="text-center">
                         <div class="text-6xl mb-4">🏠</div>
                         <h3 class="text-2xl font-bold text-white mb-3">QUIZ 1</h3>
-                        <p class="text-white/80 mb-4">Master real estate terminology and concepts</p>
                         <div class="bg-white/20 rounded-full px-4 py-2 text-white text-sm font-medium inline-block mb-4">
                             25 Questions
                         </div>
-                        <p class="text-white/60 text-sm">Learn about property terms, legal concepts, and industry jargon</p>
                     </div>
                 </div>
 
@@ -112,11 +112,9 @@
                     <div class="text-center">
                         <div class="text-6xl mb-4">🧠</div>
                         <h3 class="text-2xl font-bold text-white mb-3">QUIZ 2</h3>
-                        <p class="text-white/80 mb-4">Essential medical terminology and definitions</p>
                         <div class="bg-white/20 rounded-full px-4 py-2 text-white text-sm font-medium inline-block mb-4">
                             25 Questions
                         </div>
-                        <p class="text-white/60 text-sm">Body systems, medical procedures, and healthcare vocabulary</p>
                     </div>
                 </div>
 
@@ -125,11 +123,9 @@
                     <div class="text-center">
                         <div class="text-6xl mb-4">📚</div>
                         <h3 class="text-2xl font-bold text-white mb-3">QUIZ 3</h3>
-                        <p class="text-white/80 mb-4">Key business and finance terminology</p>
                         <div class="bg-white/20 rounded-full px-4 py-2 text-white text-sm font-medium inline-block mb-4">
                             25 Questions
                         </div>
-                        <p class="text-white/60 text-sm">Marketing, finance, management, and corporate concepts</p>
                     </div>
                 </div>
 
@@ -138,11 +134,9 @@
                     <div class="text-center">
                         <div class="text-6xl mb-4">🤝</div>
                         <h3 class="text-2xl font-bold text-white mb-3">QUIZ 4</h3>
-                        <p class="text-white/80 mb-4">Programming and technology concepts</p>
                         <div class="bg-white/20 rounded-full px-4 py-2 text-white text-sm font-medium inline-block mb-4">
                             25 Questions
                         </div>
-                        <p class="text-white/60 text-sm">Programming languages, algorithms, and tech terminology</p>
                     </div>
                 </div>
             </div>
@@ -822,6 +816,36 @@
                         definition: "A Latin phrase meaning 'let the buyer beware.'",
                         options: ["Caveat Emptor", "Cash Flow Analysis", "Cash Equivalency Analysis", "Cash-on-Cash Return"],
                         correct: 0
+                    },
+                    {
+                        id: 21,
+                        definition: "quantity of real property desired at a certain price or rent at a specific time in a given market.",
+                        options: ["Supply", "Market value", "Demand", "Capitalization"],
+                        correct: 2
+                    },
+                    {
+                        id: 22,
+                        definition: "a zoning ordinance that restricts the number of houses or dwelling units that can be built per acre in a particular area, such as a subdivision.",
+                        options: ["Spot zoning", "Bulk zoning", "Density zoning", "Setback requirement"],
+                        correct: 2
+                    },
+                    {
+                        id: 23,
+                        definition: "loss in property value from any cause; the difference between reproduction cost or replacement cost and market value.",
+                        options: ["Appreciation", "Amortization", "Depreciation", "Equity"],
+                        correct: 2
+                    },
+                    {
+                        id: 24,
+                        definition: "the transfer of property to an owner's heirs when the owner dies intestate.",
+                        options: ["Devise", "Bequest", "Descent", "Conveyance"],
+                        correct: 2
+                    },
+                    {
+                        id: 25,
+                        definition: "sum of money a developer expects to receive in addition to the costs for the time and effort, coordination, and risks involved to develop real estate.",
+                        options: ["Return on investment", "Net operating income", "Developer's profit", "Capital gain"],
+                        correct: 2
                     },
                 ]
             }
