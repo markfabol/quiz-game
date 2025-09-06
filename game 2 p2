@@ -339,7 +339,7 @@
                 <!-- History -->
                 <div class="category-card p-8 rounded-2xl" onclick="startQuiz('history')">
                     <div class="text-7xl mb-6 floating neon-glow text-purple-400">⚖️</div>
-                    <h3 class="text-3xl font-bold mb-4 text-purple-400">QUIZ 2</h3>
+                    <h3 class="text-3xl font-bold mb-4 text-purple-400">QUIZ 2</h3>️
                     <p class="text-gray-400 mb-6 text-lg"></p>
                     <div class="bg-purple-400/20 border border-purple-400/50 px-4 py-2 rounded-full text-sm font-semibold text-purple-400">
                         START - QUIZ 2 
@@ -525,7 +525,7 @@
         const quizData = {
             science: {
                 title: "QUIZ 1",
-                emoji: "",
+                emoji: "🧬",
                 questions: [
                     {
                         question: "the clause in a mortgage or deed of trust that permits the lender to declare all unpaid principal and accrued interest due and payable if the borrower transfers title to the property.",
@@ -631,7 +631,7 @@
             },
             history: {
                 title: "QUIZ 2",
-                emoji: "⚔️",
+                emoji: "⚖️",
                 questions: [
                     {
                         question: " federal legislation designed to integrate people with disabilities fully into the mainstream of American life.",
@@ -739,323 +739,323 @@
                 title: "QUIZ 3",
                 emoji: "🌐",
                 questions: [
-                    {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    }
+                      {
+                        question: "the total mortgage payments required in one year in regard to a particular loan.",
+                        options: ["Annual Debt Service", "Annual Loan Constant", "Annual Percentage Rate (APR)", "Annuity"],
+                        correct: 0
+                      },
+                      {
+                        question: "the ratio of annual debt service or yearly loan payment to the original principal on the loan.",
+                        options: ["Annual Loan Constant", "Annual Debt Service", "Amortization", "Anticipation"],
+                        correct: 0
+                      },
+                      {
+                        question: "the total or effective amount of interest charged on a loan, expressed as a percentage, on a yearly basis.",
+                        options: ["Annual Percentage Rate (APR)", "Annual Loan Constant", "Simple Interest", "Annuity"],
+                        correct: 0
+                      },
+                      {
+                        question: "a series of periodic equal cash flows.",
+                        options: ["Annuity", "Anticipation", "Annual Debt Service", "Compounding"],
+                        correct: 0
+                      },
+                      {
+                        question: "the appraisal principle that states that value is created by the expectation of benefits to be received in the future and is the basis of the income approach.",
+                        options: ["Anticipation", "Substitution", "Contribution", "Progression"],
+                        correct: 0
+                      },
+                      {
+                        question: "a broker's opinion of value based on a comparative market analysis, rather than a certified appraisal.",
+                        options: ["Broker's Price Opinion", "Building Line", "Building Codes", "Appraisal"],
+                        correct: 0
+                      },
+                      {
+                        question: "geographic areas used to physically separate two incompatible uses.",
+                        options: ["Buffer Zone", "Zoning Ordinance", "Building Line", "Subdivision"],
+                        correct: 0
+                      },
+                      {
+                        question: "the ratio of the building income to the building value. In the income approach to value, the rate is used in both the band of investment and residual techniques to convert income into estimated value.",
+                        options: ["Building Capitalization Rate", "Annual Loan Constant", "Gross Rent Multiplier", "Depreciation Rate"],
+                        correct: 0
+                      },
+                      {
+                        question: "building codes - rules and ordinances created by a municipal government to regulate the design, construction, quality, use, occupancy, location, and maintenance of buildings to provide minimum standards to safeguard the public's welfare.",
+                        options: ["Building Codes", "Zoning Laws", "Easements", "Restrictive Covenants"],
+                        correct: 0
+                      },
+                      {
+                        question: "the distance from the front, rear, or sides of a building lot beyond which no structures may extend.",
+                        options: ["Building Line", "Buffer Zone", "Setback Ordinance", "Boundary Line"],
+                        correct: 0
+                      },
+                      {
+                        question: "a title that is free of liens and legal questions as to ownership of a property that is a requirement for the sale of real estate; sometimes referred to as just title, good title, or free and clear.",
+                        options: ["Clear Title", "Cloud on Title", "Marketable Title", "Abstract of Title"],
+                        correct: 0
+                      },
+                      {
+                        question: "a person or group that uses the services of an appraiser for an assignment.",
+                        options: ["Client", "Customer", "Principal", "Agent"],
+                        correct: 0
+                      },
+                      {
+                        question: "the point in a real estate transaction when the purchase price is paid to the seller and the deed to the property is transferred from the seller to the buyer.",
+                        options: ["Closing", "Settlement Statement", "Escrow", "Contract Signing"],
+                        correct: 0
+                      },
+                      {
+                        question: "there are two kinds: (1) nonrecurring closing costs and (2) prepaid items. Nonrecurring closing costs are any items paid once as a result of buying the property or obtaining a loan. Prepaid items are items that recur over time, such as property taxes and homeowners insurance.",
+                        options: ["Closing Costs", "Down Payment", "Loan Origination Fee", "Escrow Funds"],
+                        correct: 0
+                      },
+                      {
+                        question: "the date on which the buyer takes over the property.",
+                        options: ["Closing Date", "Possession Date", "Contract Date", "Recording Date"],
+                        correct: 0
+                      },
+                       {
+                        question: "the direction toward which certain residential sections of a city are expected to grow.",
+                        options: ["Directional Growth", "Progression", "Substitution", "Conformity"],
+                        correct: 0
+                      },
+                      {
+                        question: "(1) fee paid at the origination of a debt for the use of capital during the period, and commonly deducted from the principal when the funds are advanced; (2) Conversion of future payments to a present value with the use of a discount rate.",
+                        options: ["Discount", "Discount Rate", "Discount Point", "Amortization"],
+                        correct: 0
+                      },
+                      {
+                        question: "1% of the loan amount charged by a lender at closing to increase a loan's effective yield and lower the fare rate to the borrower.",
+                        options: ["Discount Point", "Discount Rate", "Loan Origination Fee", "Mortgage Insurance"],
+                        correct: 0
+                      },
+                      {
+                        question: "the rate that lenders pay for mortgage funds; a higher rate is passed on to the borrower.",
+                        options: ["Discount Rate", "Interest Rate", "Capitalization Rate", "Market Rate"],
+                        correct: 0
+                      },
+                      {
+                        question: "the use of discounting in appraisal or investment analysis to calculate a present value, net present value, internal rate of return (IRR), or other measures that consider the time value of money.",
+                        options: ["Discounted Cash Flow Analysis", "Income Approach", "Depreciation Analysis", "Future Value Method"],
+                        correct: 0
+                      }
                 ]
             },
             sports: {
                 title: "QUIZ 4",
-                emoji: "🏆",
+                emoji: "⏳",
                 questions: [
+                       {
+                        question: "laws used in some states to limit the claim of a lender on default on payment of a purchase money mortgage on owner-occupied residential property to the value of the collateral.",
+                        options: ["Anti-Deficiency Laws", "Foreclosure Laws", "Lien Laws", "Bankruptcy Laws"],
+                        correct: 0
+                      },
+                      {
+                        question: "laws designed to protect free enterprise and the open marketplace by prohibiting certain business practices that restrict competition. In reference to real estate, these laws would prevent such practices as price fixing or agreements by brokers to limit their areas of trade.",
+                        options: ["Anti-Trust Laws", "Contract Laws", "Fair Housing Laws", "Sherman Laws"],
+                        correct: 0
+                      },
+                      {
+                        question: "adjustment of income, expenses, or carrying charges related to real estate, usually computed to the date of closing so that the seller pays all expenses to date, and then the buyer pays all expenses beginning on the closing date.",
+                        options: ["Apportionments", "Closing Costs", "Proration", "Escrow Adjustments"],
+                        correct: 0
+                      },
+                      {
+                        question: "an estimate or opinion of the value of an adequately described property, as of a specific date.",
+                        options: ["Appraisal", "Market Analysis", "Broker’s Price Opinion", "Assessment"],
+                        correct: 0
+                      },
+                      {
+                        question: "valuation services conducted by a qualified real estate appraiser.",
+                        options: ["Appraisal Practice", "Appraisal Report", "Appraisal Theory", "Valuation Process"],
+                        correct: 0
+                      },
+                      {
+                        question: "the ratio of building value to total property value; used in band of investment techniques in the income approach to appraisal.",
+                        options: ["Building Ratio", "Capitalization Rate", "Loan-to-Value Ratio", "Debt Ratio"],
+                        correct: 0
+                      },
+                      {
+                        question: "a method used to find property value in the income approach, when the value of land and net operating income are known. The income attributable to land is subtracted from the net operating income. This figure is then capitalized and added to the land value to estimate the property value.",
+                        options: ["Building Residual Technique", "Land Residual Technique", "Capitalization Technique", "Cost Approach"],
+                        correct: 0
+                      },
+                      {
+                        question: "limitations listed in zoning ordinances or deed restrictions on the size and type of improvements allowed on a property.",
+                        options: ["Building Restrictions", "Buffer Zone", "Easements", "Setback Ordinance"],
+                        correct: 0
+                      },
+                      {
+                        question: "the concept that ownership of a property includes certain rights regarding the property, such as possession, enjoyment, control of use, and disposition.",
+                        options: ["Bundle of Rights", "Easement Rights", "Air Rights", "Riparian Rights"],
+                        correct: 0
+                      },
+                      {
+                        question: "usually refers to a fixed-rate mortgage where the interest rate is bought down for a temporary period, usually one to three years. After that time and for the remainder of the term, the borrower's payment is calculated at the note rate.",
+                        options: ["Buydown", "Balloon Payment", "Amortization", "Discount Point"],
+                        correct: 0
+                      },
                      {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    }
+                        question: "a written accounting of funds received and disbursed during a real estate transaction. The buyer and seller receive separate closing statements.",
+                        options: ["Closing Statement", "Settlement Sheet", "Escrow Report", "Good Faith Estimate"],
+                        correct: 0
+                      },
+                      {
+                        question: "an outstanding claim or encumbrance that can affect or impair the owner's title.",
+                        options: ["Cloud on the Title", "Clear Title", "Abstract of Title", "Marketable Title"],
+                        correct: 0
+                      },
+                      {
+                        question: "the grouping of home sites within a subdivision on smaller lots than normal, with the remaining land slated for use as common areas.",
+                        options: ["Clustering", "Subdivision", "Zoning Ordinance", "Buffer Zone"],
+                        correct: 0
+                      },
+                      {
+                        question: "a supplement or addition to a will that modifies the original instrument.",
+                        options: ["Codicil", "Will", "Trust", "Probate"],
+                        correct: 0
+                      },
+                      {
+                        question: "a clause in an insurance policy that requires the insured to pay a portion of any loss experienced.",
+                        options: ["Coinsurance Clause", "Deductible Clause", "Liability Clause", "Coverage Exclusion"],
+                        correct: 0
+                      },
+                       {
+                        question: "to remove a tenant from property by legal process.",
+                        options: ["Dispossess", "Evict", "Foreclose", "Condemnation"],
+                        correct: 0
+                      },
+                      {
+                        question: "property that includes the right to use an easement on adjoining property.",
+                        options: ["Dominant Estate (Tenement)", "Servient Estate", "Fee Simple Estate", "Leasehold Estate"],
+                        correct: 0
+                      },
+                      {
+                        question: "the right of a widow to the property of her husband upon his death in noncommunity property states.",
+                        options: ["Dower", "Curtesy", "Homestead", "Community Property"],
+                        correct: 0
+                      },
+                      {
+                        question: "the part of the purchase price that the buyer pays in cash and is not financed with a mortgage or loan.",
+                        options: ["Down Payment", "Earnest Money", "Closing Costs", "Escrow Deposit"],
+                        correct: 0
+                      },
+                      {
+                        question: "an agent who represents both parties in a transaction.",
+                        options: ["Dual Agency", "Single Agency", "Designated Agency", "Transaction Brokerage"],
+                        correct: 0
+                      }
                 ]
             },
             general: {
                 title: "QUIZ 5",
-                emoji: "🎲",
+                emoji: "📖",
                 questions: [
+                    {
+                      question: "appraisal principles - concepts that provide the rationale of market behavior, which affects value. Appraisal principles include anticipation, change, supply and demand, substitution, and balance.",
+                      options: ["Appraisal Principles", "Appraisal Process", "Appraisal Practice", "Valuation Standards"],
+                      correct: 0
+                    },
+                    {
+                      question: "appraisal process - the step-by-step analysis undertaken by an appraiser for the purpose of accurately estimating an opinion of value.",
+                      options: ["Appraisal Process", "Appraisal Principles", "Appraisal Method", "Appraisal Review"],
+                      correct: 0
+                    },
+                    {
+                      question: "appraisal report - a report, written or oral, that contains the results of an appraisal assignment.",
+                      options: ["Appraisal Report", "Appraisal Review", "Market Report", "Valuation Statement"],
+                      correct: 0
+                    },
+                    {
+                      question: "appraisal review - the act or process of developing and communicating an opinion about the quality of another appraiser's work. The subject of an appraisal review assignment may be all or part of a report, workfile, or a combination of these.",
+                      options: ["Appraisal Review", "Appraisal Report", "Appraisal Process", "Quality Assurance"],
+                      correct: 0
+                    },
+                    {
+                      question: "Appraiser - a professional who conducts valuation services in a competent, ethical, and impartial manner.",
+                      options: ["Appraiser", "Assessor", "Broker", "Inspector"],
+                      correct: 0
+                    },
+                      {
+                        question: "buyer's broker - real estate broker retained by a prospective buyer; this buyer becomes the broker's client to whom fiduciary duties are owed.",
+                        options: ["Buyer's Broker", "Seller's Broker", "Dual Agent", "Transaction Broker"],
+                        correct: 0
+                      },
+                      {
+                        question: "Bylaws - rules and regulations adopted by an association—for example, a condominium association.",
+                        options: ["Bylaws", "CC&Rs", "Ordinances", "Articles of Incorporation"],
+                        correct: 0
+                      },
                      {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
+                      question: "collateral - something of value hypothecated (real property) or pledged (personal property) by a borrower as security for a debt.",
+                      options: ["Collateral", "Lien", "Escrow", "Trust Deed"],
+                      correct: 0
+                    },
+                    {
+                      question: "collection - when a borrower falls behind, the lender contacts the borrower in an effort to bring the loan current.",
+                      options: ["Collection", "Foreclosure", "Acceleration", "Default"],
+                      correct: 0
+                    },
+                    {
+                      question: "collection loss - a loss in income when payment from tenants is not collected.",
+                      options: ["Collection Loss", "Vacancy Rate", "Credit Loss", "Operating Expense"],
+                      correct: 0
+                    },
+                    {
+                      question: "color of title - an instrument that gives evidence of title, but may not be legally adequate to convey title.",
+                      options: ["Color of Title", "Clear Title", "Marketable Title", "Abstract of Title"],
+                      correct: 0
+                    },
+                    {
+                      question: "Commercial Mortgage Backed Securities (CMBS) - securities issued to investors backed by pools of commercial mortgages.",
+                      options: ["Commercial Mortgage Backed Securities (CMBS)", "Mortgage Bonds", "Real Estate Investment Trust (REIT)", "Debentures"],
+                      correct: 0
+                    },
+                    {
+                      question: "commercial property - property used to produce income, such as an office building or a restaurant.",
+                      options: ["Commercial Property", "Residential Property", "Industrial Property", "Special Use Property"],
+                      correct: 0
+                    },
+                    {
+                      question: "Commingling - the illegal act of an agent mixing a client's monies with personal funds, or placing separate property in a community account.",
+                      options: ["Commingling", "Conversion", "Fraud", "Escrow Violation"],
+                      correct: 0
+                    },
+                    {
+                      question: "Commission - the fee paid to a broker for services rendered in a real estate transaction.",
+                      options: ["Commission", "Brokerage Fee", "Service Charge", "Compensation"],
+                      correct: 0
+                    },
+                    {
+                      question: "a provision in a mortgage that allows the lender to demand repayment in full if the borrower sells the property that serves as security for the mortgage.",
+                      options: ["Due-on-Sale Clause", "Acceleration Clause", "Alienation Clause", "Prepayment Penalty"],
+                      correct: 0
+                    },
+                    {
+                      question: "the use of unlawful means to force a person to act or to refrain from an action against his or her will.",
+                      options: ["Duress", "Fraud", "Undue Influence", "Misrepresentation"],
+                      correct: 0
+                    },
+                    {
+                      question: "a room or rooms containing a single kitchen and constituting an independent unit for living space of a single-family dwelling. Motel and hotel units are not considered dwelling units.",
+                      options: ["Dwelling Units", "Residential Units", "Accessory Units", "Multi-Family Housing"],
+                      correct: 0
                     },
                      {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
+                      question: "earnest money - down payment made by a buyer of real estate as evidence of good faith.",
+                      options: ["Earnest Money", "Security Deposit", "Option Money", "Escrow Funds"],
+                      correct: 0
                     },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
+                    {
+                      question: "Easement - the right of one party to use the land of another for a particular purpose, such as to lay utility lines.",
+                      options: ["Easement", "Right of Way", "Encroachment", "License"],
+                      correct: 0
                     }
                 ]
             },
             mixed: {
                 title: "QUIZ 6",
-                emoji: "🌈",
+                emoji: "🎓",
                 questions: [
                      {
                         question: "In which year did World War II end?",
