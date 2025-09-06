@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameHub - Your Personal Gaming Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        
+        body { 
+            font-family: 'Poppins', sans-serif; 
+        }
+        
+        .game-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .add-game-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: 2px dashed rgba(255, 255, 255, 0.4);
+        }
+        
+        .add-game-card:hover {
+            border-color: rgba(255, 255, 255, 0.8);
+            transform: translateY(-8px) scale(1.02);
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(2) { animation-delay: 2s; }
+        .floating-element:nth-child(3) { animation-delay: 4s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stats-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 relative overflow-x-hidden">
+    <!-- Floating Background Elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="floating-element absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full"></div>
+        <div class="floating-element absolute top-40 right-20 w-16 h-16 bg-white/10 rounded-lg"></div>
+        <div class="floating-element absolute bottom-32 left-32 w-12 h-12 bg-white/10 rounded-full"></div>
+        <div class="floating-element absolute bottom-20 right-16 w-24 h-24 bg-white/10 rounded-lg"></div>
+    </div>
+
+    <div class="container mx-auto px-6 py-8 relative z-10">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <div class="mb-6">
+                <div class="text-8xl mb-4">🎮</div>
+                <h1 class="text-6xl font-bold text-white mb-4">
+                    Game<span class="gradient-text">Hub</span>
+                </h1>
+                <p class="text-xl text-white/80 max-w-2xl mx-auto">
+                    Your personal gaming collection. Add your HTML games and play them instantly!
+                </p>
+            </div>
+        </header>
+
+        <!-- Stats Section -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="stats-card rounded-2xl p-6 text-center text-white">
+                <div class="text-4xl mb-2">🎯</div>
+                <div class="text-3xl font-bold" id="totalGames">0</div>
+                <div class="text-white/70">Total Games</div>
+            </div>
+            <div class="stats-card rounded-2xl p-6 text-center text-white">
+                <div class="text-4xl mb-2">⭐</div>
+                <div class="text-3xl font-bold">∞</div>
+                <div class="text-white/70">Fun Level</div>
+            </div>
+            <div class="stats-card rounded-2xl p-6 text-center text-white">
+                <div class="text-4xl mb-2">🚀</div>
+                <div class="text-3xl font-bold">Ready</div>
+                <div class="text-white/70">Status</div>
+            </div>
+        </div>
+
+        <!-- Games Section -->
+        <section>
+            <div class="text-center mb-8">
+                <h2 class="text-4xl font-bold text-white mb-4">My Games</h2>
+                <p class="text-white/70 text-lg">Click on any game to start playing</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6" id="gamesGrid">
+                <!-- Add Game Card -->
+                <div class="add-game-card game-card rounded-2xl p-8 text-center cursor-pointer text-white" onclick="addGame()">
+                    <div class="text-5xl mb-4">➕</div>
+                    <h3 class="text-xl font-semibold mb-2">Add Game</h3>
+                    <p class="text-sm opacity-80">Upload your HTML game</p>
+                </div>
+            </div>
+            
+            <!-- Empty State -->
+            <div id="emptyState" class="text-center py-16 hidden">
+                <div class="text-6xl mb-4">🎮</div>
+                <h3 class="text-2xl font-semibold text-white mb-2">No games yet!</h3>
+                <p class="text-white/70">Add your first HTML game to get started</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Game Player Modal -->
+    <div id="gameModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-6xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
+            <div class="bg-gradient-to-r from-purple-600 to-pink-600 p-6 flex justify-between items-center">
+                <h3 class="text-2xl font-bold text-white" id="modalTitle">Game Player</h3>
+                <button onclick="closeGameModal()" class="text-white hover:text-gray-200 text-3xl font-bold">×</button>
+            </div>
+            <div class="h-[75vh]">
+                <iframe id="gameFrame" class="w-full h-full border-0" src=""></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Game Modal -->
+    <div id="addGameModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full shadow-2xl">
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 p-6">
+                <h3 class="text-2xl font-bold text-white">🎮 Add New Game</h3>
+            </div>
+            <div class="p-8">
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-semibold mb-3">Game Name</label>
+                    <input type="text" id="gameName" class="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none transition-colors" placeholder="Enter your game name">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-semibold mb-3">Description</label>
+                    <input type="text" id="gameDescription" class="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none transition-colors" placeholder="Brief description of your game">
+                </div>
+                <div class="mb-8">
+                    <label class="block text-gray-700 font-semibold mb-3">HTML Code</label>
+                    <textarea id="gameCode" rows="8" class="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none transition-colors font-mono text-sm" placeholder="Paste your complete HTML game code here..."></textarea>
+                </div>
+                <div class="flex gap-4">
+                    <button onclick="saveGame()" class="flex-1 bg-gradient-to-r from-green-500 to-blue-500 text-white py-4 px-6 rounded-xl font-semibold hover:from-green-600 hover:to-blue-600 transition-all transform hover:scale-105">
+                        Save Game
+                    </button>
+                    <button onclick="closeAddGameModal()" class="flex-1 bg-gray-500 text-white py-4 px-6 rounded-xl font-semibold hover:bg-gray-600 transition-all">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let games = [];
+
+        // Load games from localStorage
+        function loadGames() {
+            const savedGames = localStorage.getItem('gameHubCollection');
+            if (savedGames) {
+                games = JSON.parse(savedGames);
+                renderGames();
+                updateStats();
+            }
+        }
+
+        // Save games to localStorage
+        function saveGames() {
+            localStorage.setItem('gameHubCollection', JSON.stringify(games));
+        }
+
+        // Add new game
+        function addGame() {
+            document.getElementById('addGameModal').classList.remove('hidden');
+        }
+
+        // Save game
+        function saveGame() {
+            const name = document.getElementById('gameName').value.trim();
+            const description = document.getElementById('gameDescription').value.trim();
+            const code = document.getElementById('gameCode').value.trim();
+
+            if (!name || !code) {
+                alert('Please fill in the game name and HTML code!');
+                return;
+            }
+
+            const game = {
+                id: Date.now(),
+                name: name,
+                description: description || 'No description provided',
+                code: code
+            };
+
+            games.push(game);
+            saveGames();
+            renderGames();
+            updateStats();
+            closeAddGameModal();
+        }
+
+        // Close add game modal
+        function closeAddGameModal() {
+            document.getElementById('addGameModal').classList.add('hidden');
+            document.getElementById('gameName').value = '';
+            document.getElementById('gameDescription').value = '';
+            document.getElementById('gameCode').value = '';
+        }
+
+        // Play game
+        function playGame(gameId) {
+            const game = games.find(g => g.id === gameId);
+            if (game) {
+                document.getElementById('modalTitle').textContent = game.name;
+                const gameFrame = document.getElementById('gameFrame');
+                
+                const blob = new Blob([game.code], { type: 'text/html' });
+                const url = URL.createObjectURL(blob);
+                gameFrame.src = url;
+                
+                document.getElementById('gameModal').classList.remove('hidden');
+            }
+        }
+
+        // Close game modal
+        function closeGameModal() {
+            document.getElementById('gameModal').classList.add('hidden');
+            const gameFrame = document.getElementById('gameFrame');
+            if (gameFrame.src) {
+                URL.revokeObjectURL(gameFrame.src);
+                gameFrame.src = '';
+            }
+        }
+
+        // Delete game
+        function deleteGame(gameId) {
+            if (confirm('Are you sure you want to delete this game?')) {
+                games = games.filter(g => g.id !== gameId);
+                saveGames();
+                renderGames();
+                updateStats();
+            }
+        }
+
+        // Render games
+        function renderGames() {
+            const container = document.getElementById('gamesGrid');
+            const emptyState = document.getElementById('emptyState');
+            const addButton = container.querySelector('.add-game-card');
+            
+            // Clear existing games but keep add button
+            container.innerHTML = '';
+            container.appendChild(addButton);
+
+            if (games.length === 0) {
+                emptyState.classList.remove('hidden');
+                return;
+            }
+            
+            emptyState.classList.add('hidden');
+
+            games.forEach(game => {
+                const gameCard = document.createElement('div');
+                gameCard.className = 'game-card rounded-2xl p-6 cursor-pointer relative group text-white';
+                gameCard.innerHTML = `
+                    <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button onclick="deleteGame(${game.id})" class="bg-red-500 hover:bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
+                            ×
+                        </button>
+                    </div>
+                    <div class="text-4xl mb-4 text-center">🎮</div>
+                    <h3 class="text-lg font-semibold mb-2 text-center">${game.name}</h3>
+                    <p class="text-sm opacity-80 mb-4 text-center line-clamp-2">${game.description}</p>
+                    <button onclick="playGame(${game.id})" class="w-full bg-white/20 hover:bg-white/30 backdrop-blur-sm px-4 py-2 rounded-lg font-medium transition-all">
+                        Play Now
+                    </button>
+                `;
+                container.appendChild(gameCard);
+            });
+        }
+
+        // Update statistics
+        function updateStats() {
+            document.getElementById('totalGames').textContent = games.length;
+        }
+
+        // Close modals when clicking outside
+        document.getElementById('gameModal').addEventListener('click', function(e) {
+            if (e.target === this) closeGameModal();
+        });
+
+        document.getElementById('addGameModal').addEventListener('click', function(e) {
+            if (e.target === this) closeAddGameModal();
+        });
+
+        // Initialize the app
+        loadGames();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97aa68ce7379bc3d',t:'MTc1NzEyNDQxMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
