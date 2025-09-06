@@ -310,7 +310,7 @@
                 <div class="flex justify-center items-center space-x-12 text-gray-400">
                     <div class="flex items-center space-x-3">
                         <span class="text-4xl neon-glow text-cyan-400">🎯</span>
-                        <span class="font-medium">10 LEVELS</span>
+                        <span class="font-medium">20 LEVELS</span>
                     </div>
                     <div class="flex items-center space-x-3">
                         <span class="text-4xl neon-glow text-purple-400">⚡</span>
@@ -321,6 +321,7 @@
                         <span class="font-medium">SCORES</span>
                     </div>
                 </div>
+               <span class="text-1xl neon-glow text-red-400">THESE TERMS WILL help you not only as you study for your appraisal exam, but also after you pass your exam and are on the job every day.</span>
             </div>
                        
             <!-- Categories Grid -->
@@ -337,7 +338,7 @@
                 
                 <!-- History -->
                 <div class="category-card p-8 rounded-2xl" onclick="startQuiz('history')">
-                    <div class="text-7xl mb-6 floating neon-glow text-purple-400">⚔️</div>
+                    <div class="text-7xl mb-6 floating neon-glow text-purple-400">⚖️</div>
                     <h3 class="text-3xl font-bold mb-4 text-purple-400">QUIZ 2</h3>
                     <p class="text-gray-400 mb-6 text-lg"></p>
                     <div class="bg-purple-400/20 border border-purple-400/50 px-4 py-2 rounded-full text-sm font-semibold text-purple-400">
@@ -357,7 +358,7 @@
                 
                 <!-- Sports -->
                 <div class="category-card p-8 rounded-2xl" onclick="startQuiz('sports')">
-                    <div class="text-7xl mb-6 floating neon-glow text-green-400">🏆</div>
+                    <div class="text-7xl mb-6 floating neon-glow text-green-400">⏳</div>
                     <h3 class="text-3xl font-bold mb-4 text-green-400">QUIZ 4</h3>
                     <p class="text-gray-400 mb-6 text-lg"></p>
                     <div class="bg-green-400/20 border border-green-400/50 px-4 py-2 rounded-full text-sm font-semibold text-green-400">
@@ -367,7 +368,7 @@
                 
                 <!-- General -->
                 <div class="category-card p-8 rounded-2xl" onclick="startQuiz('general')">
-                    <div class="text-7xl mb-6 floating neon-glow text-yellow-400">🎲</div>
+                    <div class="text-7xl mb-6 floating neon-glow text-yellow-400">📖</div>
                     <h3 class="text-3xl font-bold mb-4 text-yellow-400">QUIZ 5</h3>
                     <p class="text-gray-400 mb-6 text-lg"></p>
                     <div class="bg-yellow-400/20 border border-yellow-400/50 px-4 py-2 rounded-full text-sm font-semibold text-yellow-400">
@@ -377,7 +378,7 @@
                 
                 <!-- Mixed -->
                 <div class="category-card p-8 rounded-2xl" onclick="startQuiz('mixed')">
-                    <div class="text-7xl mb-6 floating neon-glow text-pink-400">🌈</div>
+                    <div class="text-7xl mb-6 floating neon-glow text-pink-400">🎓</div>
                     <h3 class="text-3xl font-bold mb-4 text-pink-400">QUIZ 6</h3>
                     <p class="text-gray-400 mb-6 text-lg"></p>
                     <div class="bg-pink-400/20 border border-pink-400/50 px-4 py-2 rounded-full text-sm font-semibold text-pink-400">
@@ -398,7 +399,7 @@
                     
                     <div class="text-center">
                         <h2 class="text-4xl font-bold neon-glow" id="category-title">SCIENCE QUIZ</h2>
-                        <p class="text-gray-400 text-xl font-mono" id="question-counter">LEVEL 1 / 10</p>
+                        <p class="text-gray-400 text-xl font-mono" id="question-counter">LEVEL 1 / 20</p>
                     </div>
                     
                     <div class="score-display px-8 py-3 rounded-xl font-bold text-xl" id="current-score">
@@ -1469,7 +1470,7 @@
                 score: 0,
                 correctAnswers: 0,
                 incorrectAnswers: 0,
-                totalQuestions: 10,
+                totalQuestions: 20,
                 selectedAnswer: null,
                 questions: [],
                 userAnswers: [],
@@ -1480,3 +1481,4 @@
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97711405e55ebc3f',t:'MTc1NjUyMzI1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
