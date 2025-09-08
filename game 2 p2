@@ -952,77 +952,77 @@
                 emoji: "📖",
                 questions: [
                     {
-                      question: "appraisal principles - concepts that provide the rationale of market behavior, which affects value. Appraisal principles include anticipation, change, supply and demand, substitution, and balance.",
+                      question: "concepts that provide the rationale of market behavior, which affects value. Appraisal principles include anticipation, change, supply and demand, substitution, and balance.",
                       options: ["Appraisal Principles", "Appraisal Process", "Appraisal Practice", "Valuation Standards"],
                       correct: 0
                     },
                     {
-                      question: "appraisal process - the step-by-step analysis undertaken by an appraiser for the purpose of accurately estimating an opinion of value.",
+                      question: "the step-by-step analysis undertaken by an appraiser for the purpose of accurately estimating an opinion of value.",
                       options: ["Appraisal Process", "Appraisal Principles", "Appraisal Method", "Appraisal Review"],
                       correct: 0
                     },
                     {
-                      question: "appraisal report - a report, written or oral, that contains the results of an appraisal assignment.",
+                      question: "a report, written or oral, that contains the results of an appraisal assignment.",
                       options: ["Appraisal Report", "Appraisal Review", "Market Report", "Valuation Statement"],
                       correct: 0
                     },
                     {
-                      question: "appraisal review - the act or process of developing and communicating an opinion about the quality of another appraiser's work. The subject of an appraisal review assignment may be all or part of a report, workfile, or a combination of these.",
+                      question: "the act or process of developing and communicating an opinion about the quality of another appraiser's work. The subject of an appraisal review assignment may be all or part of a report, workfile, or a combination of these.",
                       options: ["Appraisal Review", "Appraisal Report", "Appraisal Process", "Quality Assurance"],
                       correct: 0
                     },
                     {
-                      question: "Appraiser - a professional who conducts valuation services in a competent, ethical, and impartial manner.",
+                      question: "a professional who conducts valuation services in a competent, ethical, and impartial manner.",
                       options: ["Appraiser", "Assessor", "Broker", "Inspector"],
                       correct: 0
                     },
                       {
-                        question: "buyer's broker - real estate broker retained by a prospective buyer; this buyer becomes the broker's client to whom fiduciary duties are owed.",
+                        question: "real estate broker retained by a prospective buyer; this buyer becomes the broker's client to whom fiduciary duties are owed.",
                         options: ["Buyer's Broker", "Seller's Broker", "Dual Agent", "Transaction Broker"],
                         correct: 0
                       },
                       {
-                        question: "Bylaws - rules and regulations adopted by an association—for example, a condominium association.",
+                        question: "rules and regulations adopted by an association—for example, a condominium association.",
                         options: ["Bylaws", "CC&Rs", "Ordinances", "Articles of Incorporation"],
                         correct: 0
                       },
                      {
-                      question: "collateral - something of value hypothecated (real property) or pledged (personal property) by a borrower as security for a debt.",
+                      question: "something of value hypothecated (real property) or pledged (personal property) by a borrower as security for a debt.",
                       options: ["Collateral", "Lien", "Escrow", "Trust Deed"],
                       correct: 0
                     },
                     {
-                      question: "collection - when a borrower falls behind, the lender contacts the borrower in an effort to bring the loan current.",
+                      question: "when a borrower falls behind, the lender contacts the borrower in an effort to bring the loan current.",
                       options: ["Collection", "Foreclosure", "Acceleration", "Default"],
                       correct: 0
                     },
                     {
-                      question: "collection loss - a loss in income when payment from tenants is not collected.",
+                      question: "a loss in income when payment from tenants is not collected.",
                       options: ["Collection Loss", "Vacancy Rate", "Credit Loss", "Operating Expense"],
                       correct: 0
                     },
                     {
-                      question: "color of title - an instrument that gives evidence of title, but may not be legally adequate to convey title.",
+                      question: " instrument that gives evidence of title, but may not be legally adequate to convey title.",
                       options: ["Color of Title", "Clear Title", "Marketable Title", "Abstract of Title"],
                       correct: 0
                     },
                     {
-                      question: "Commercial Mortgage Backed Securities (CMBS) - securities issued to investors backed by pools of commercial mortgages.",
-                      options: ["Commercial Mortgage Backed Securities (CMBS)", "Mortgage Bonds", "Real Estate Investment Trust (REIT)", "Debentures"],
+                      question: "securities issued to investors backed by pools of commercial mortgages.",
+                      options: ["Commercial Mortgage Backed Securities", "Mortgage Bonds", "Real Estate Investment Trust (REIT)", "Debentures"],
                       correct: 0
                     },
                     {
-                      question: "commercial property - property used to produce income, such as an office building or a restaurant.",
+                      question: "property used to produce income, such as an office building or a restaurant.",
                       options: ["Commercial Property", "Residential Property", "Industrial Property", "Special Use Property"],
                       correct: 0
                     },
                     {
-                      question: "Commingling - the illegal act of an agent mixing a client's monies with personal funds, or placing separate property in a community account.",
+                      question: "the illegal act of an agent mixing a client's monies with personal funds, or placing separate property in a community account.",
                       options: ["Commingling", "Conversion", "Fraud", "Escrow Violation"],
                       correct: 0
                     },
                     {
-                      question: "Commission - the fee paid to a broker for services rendered in a real estate transaction.",
+                      question: "the fee paid to a broker for services rendered in a real estate transaction.",
                       options: ["Commission", "Brokerage Fee", "Service Charge", "Compensation"],
                       correct: 0
                     },
@@ -1042,12 +1042,12 @@
                       correct: 0
                     },
                      {
-                      question: "earnest money - down payment made by a buyer of real estate as evidence of good faith.",
+                      question: "down payment made by a buyer of real estate as evidence of good faith.",
                       options: ["Earnest Money", "Security Deposit", "Option Money", "Escrow Funds"],
                       correct: 0
                     },
                     {
-                      question: "Easement - the right of one party to use the land of another for a particular purpose, such as to lay utility lines.",
+                      question: "the right of one party to use the land of another for a particular purpose, such as to lay utility lines.",
                       options: ["Easement", "Right of Way", "Encroachment", "License"],
                       correct: 0
                     }
@@ -1057,105 +1057,105 @@
                 title: "QUIZ 6",
                 emoji: "🎓",
                 questions: [
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
+                      {
+                      definition: "an increase in the market value of a property.",
+                      options: ["Appreciation", "Depreciation", "Capitalization", "Equity"],
+                      correct: 0
+                    },
+                    {
+                      definition: "various methods typically used by an appraiser in preparing an appraisal report. Of the three traditional approaches to value, the cost approach bases value on the reproduction or replacement cost of improvements, less depreciation, plus the value of the land. The income approach bases value on the capitalization of future cash flows, from a property, at an acceptable market rate. The market approach (or sale comparison) bases value on a comparative analysis of recent sales prices of similar properties, after making adjustments for seller concessions, time, and any difference in properties.",
+                      options: ["Highest and Best Use", "Approaches to Value", "Market Value", "Comparative Market Analysis"],
+                      correct: 1
+                    },
+                    {
+                      definition: "items that have been affixed to a property and thus have become an inherent part of the property. Such items usually pass with the property when title is transferred, even though they are not part of the property (e.g., easements, water rights, condominium parking stalls).",
+                      options: ["Fixtures", "Trade Fixtures", "Appurtenances", "Encumbrances"],
+                      correct: 2
+                    },
+                    {
+                      definition: "the process of settling a dispute in which the parties submit their differences to an impartial third party, whose decision on the matter is binding.",
+                      options: ["Mediation", "Litigation", "Arbitration", "Conciliation"],
+                      correct: 2
+                    },
+                    {
+                      definition: "the Association of Real Estate License Law Officials.",
+                      options: ["NAR", "ARELLO", "FHA", "HUD"],
+                      correct: 1
                     },
                      {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
+                      definition: "a pledge in writing affirming an agreement.",
+                      options: ["Commitment Letter", "Letter of Intent", "Purchase Agreement", "Affidavit"],
+                      correct: 0
+                    },
+                    {
+                      definition: "portions of a building, land, and amenities owned (or managed) by a planned unit development or condominium project's homeowners association or a cooperative project's cooperative corporation. These areas are used by all of the unit owners, who share in the common expenses of their operation and maintenance. Common areas may include swimming pools, tennis courts, and other recreational facilities, as well as common corridors of buildings, parking areas, and lobbies.",
+                      options: ["Common Areas", "Common Elements", "Community Property", "Easements"],
+                      correct: 0
+                    },
+                    {
+                      definition: "the part of the land and buildings in a condominium form of ownership that is jointly owned and used with other unit owners.",
+                      options: ["Common Elements", "Common Areas", "Community Property", "Fixtures"],
+                      correct: 0
+                    },
+                    {
+                      definition: "the body of laws derived from local custom and judicial precedent.",
+                      options: ["Statutory Law", "Civil Code", "Common Law", "Administrative Law"],
+                      correct: 2
+                    },
+                    {
+                      definition: "a system of property ownership in which each spouse has equal interest in property acquired during the marriage; recognized in nine states.",
+                      options: ["Joint Tenancy", "Tenancy in Common", "Community Property", "Severalty"],
+                      correct: 2
                     },
                      {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
+                       definition: "an easement, granted by law and requiring court action that is deemed necessary for the full enjoyment of a parcel of land. An example would be an easement allowing access from landlocked property to a road.",
+                       options: ["Easement Appurtenant", "Easement by Necessity", "Easement in Gross", "Easement by Prescription"],
+                       correct: 1
                     },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
+                    {
+                      definition: "a means of acquiring an easement by continued, open, and hostile use of someone else's property for a statutorily defined period of time.",
+                      options: ["Easement by Necessity", "Easement in Gross", "Easement by Prescription", "Adverse Possession"],
+                      correct: 2
                     },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
+                    {
+                      definition: "a personal right granted by an owner with no requirement that the easement holder own adjoining land.",
+                      options: ["Easement Appurtenant", "Easement in Gross", "Easement by Necessity", "Easement by Prescription"],
+                      correct: 1
                     },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
+                    {
+                      definition: "method of estimating accrued depreciation in which the ratio of effective age to total economic life is multiplied by the reproduction or replacement cost to calculate the accrued depreciation.",
+                      options: ["Market Approach", "Cost Approach", "Economic Age-Life Method", "Straight-Line Depreciation"],
+                      correct: 2
                     },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
+                    {
+                      definition: "economic activity of a community that allows local businesses to generate income from markets outside the community's borders. Economic base analysis is a survey of the industries and businesses that generate employment and income in a community.",
+                      options: ["Economic Rent", "Economic Base", "Feasibility Study", "Highest and Best Use"],
+                      correct: 1
                     },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
+                    {
+                      definition: "federal legislation protecting consumers from the reporting of inaccurate credit information to credit reporting agencies.",
+                      options: ["Fair Housing Law", "Truth in Lending Act", "Fair Credit Reporting Act ", "Equal Credit Opportunity Act"],
+                      correct: 2
                     },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
+                    {
+                      definition: "a term used to refer to federal and state laws prohibiting discrimination in the sale or rental of residential property.",
+                      options: ["Civil Rights Act of 1866", "Equal Credit Opportunity Act", "Fair Credit Reporting Act", "Fair Housing Law"],
+                      correct: 3
                     },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
+                    {
+                      definition: "the highest price that a buyer, willing but not compelled to buy, would pay, and the lowest a seller, willing but not compelled to sell, would accept.",
+                      options: ["Market Price", "Fair Market Value", "Appraised Value", "Assessed Value"],
+                      correct: 1
                     },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
+                    {
+                      definition: "a study of the cost-benefit relationship of an economic endeavor.",
+                      options: ["Feasibility Analysis", "Economic Base Study", "Market Analysis", "Investment Analysis"],
+                      correct: 0
                     },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
-                    },
-                     {
-                        question: "In which year did World War II end?",
-                        options: ["1944", "1945", "1946", "1947"],
-                        correct: 1,
+                    {
+                      definition: "federal agency that identifies floodprone areas.",
+                      options: ["HUD", "FHA", "Fannie Mae", "FEMA"],
+                      correct: 3
                     }
                 ]
             }
@@ -1481,4 +1481,4 @@
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97711405e55ebc3f',t:'MTc1NjUyMzI1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-
+ 
