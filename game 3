@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Quiz Arena - 6 Kategorya</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0a0a0a;
+            color: #00ff88;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, #00ff8820 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, #ff006620 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, #0066ff20 0%, transparent 50%);
+            animation: backgroundPulse 4s ease-in-out infinite alternate;
+            z-index: -1;
+        }
+        
+        @keyframes backgroundPulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+        
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #00ff88;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0; }
+            50% { transform: translateY(-100px) rotate(180deg); opacity: 1; }
+        }
+        
+        .game-container {
+            background: rgba(10, 10, 10, 0.9);
+            border: 2px solid #00ff88;
+            border-radius: 20px;
+            box-shadow: 
+                0 0 30px #00ff8850,
+                inset 0 0 30px rgba(0, 255, 136, 0.1);
+            max-width: 900px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .game-container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00ff88, #ff0066, #0066ff, #00ff88);
+            border-radius: 20px;
+            z-index: -1;
+            animation: borderGlow 3s linear infinite;
+        }
+        
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.2; }
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            color: #00ff88;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid #00ff88;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ff88, transparent);
+            animation: scanLine 2s ease-in-out infinite;
+        }
+        
+        @keyframes scanLine {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+        
+        .cyber-logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px auto;
+            position: relative;
+            animation: logoSpin 8s linear infinite;
+        }
+        
+        @keyframes logoSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px #00ff88;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        .score {
+            font-size: 1.4rem;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid #00ff88;
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            box-shadow: 0 0 15px #00ff8830;
+        }
+        
+        .content {
+            padding: 50px;
+        }
+        
+        .category-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .category-btn {
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+            border: 2px solid #00ff88;
+            padding: 25px 20px;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .category-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .category-btn:hover::before {
+            left: 100%;
+        }
+        
+        .category-btn:hover {
+            background: rgba(0, 255, 136, 0.2);
+            box-shadow: 0 0 25px #00ff88;
+            transform: translateY(-5px);
+        }
+        
+        .category-btn:nth-child(2) {
+            border-color: #ff0066;
+            color: #ff0066;
+            background: rgba(255, 0, 102, 0.1);
+        }
+        
+        .category-btn:nth-child(2):hover {
+            background: rgba(255, 0, 102, 0.2);
+            box-shadow: 0 0 25px #ff0066;
+        }
+        
+        .category-btn:nth-child(3) {
+            border-color: #0066ff;
+            color: #0066ff;
+            background: rgba(0, 102, 255, 0.1);
+        }
+        
+        .category-btn:nth-child(3):hover {
+            background: rgba(0, 102, 255, 0.2);
+            box-shadow: 0 0 25px #0066ff;
+        }
+        
+        .category-btn:nth-child(4) {
+            border-color: #ffaa00;
+            color: #ffaa00;
+            background: rgba(255, 170, 0, 0.1);
+        }
+        
+        .category-btn:nth-child(4):hover {
+            background: rgba(255, 170, 0, 0.2);
+            box-shadow: 0 0 25px #ffaa00;
+        }
+        
+        .category-btn:nth-child(5) {
+            border-color: #aa00ff;
+            color: #aa00ff;
+            background: rgba(170, 0, 255, 0.1);
+        }
+        
+        .category-btn:nth-child(5):hover {
+            background: rgba(170, 0, 255, 0.2);
+            box-shadow: 0 0 25px #aa00ff;
+        }
+        
+        .category-btn:nth-child(6) {
+            border-color: #00aaff;
+            color: #00aaff;
+            background: rgba(0, 170, 255, 0.1);
+        }
+        
+        .category-btn:nth-child(6):hover {
+            background: rgba(0, 170, 255, 0.2);
+            box-shadow: 0 0 25px #00aaff;
+        }
+        
+        .quiz-section {
+            display: none;
+        }
+        
+        .quiz-section.active {
+            display: block;
+        }
+        
+        .question-card {
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid #00ff88;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+        }
+        
+        .question-card::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 15px;
+            pointer-events: none;
+        }
+        
+        .level-indicator {
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+            border: 1px solid #00ff88;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Courier New', monospace;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+            display: inline-block;
+        }
+        
+        .percentage-indicator {
+            background: rgba(255, 170, 0, 0.2);
+            color: #ffaa00;
+            border: 1px solid #ffaa00;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 25px;
+            margin-left: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Courier New', monospace;
+            box-shadow: 0 0 15px rgba(255, 170, 0, 0.3);
+            display: inline-block;
+        }
+        
+        .indicators-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .question {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: #ffffff;
+            text-shadow: 0 0 10px #00ff88;
+        }
+        
+        .answers {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .answer-btn {
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            border: 1px solid #333;
+            padding: 20px 25px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            position: relative;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .answer-btn:hover {
+            border-color: #00ff88;
+            background: rgba(0, 255, 136, 0.1);
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+            transform: translateX(10px);
+        }
+        
+        .answer-btn.correct {
+            background: rgba(0, 255, 136, 0.3);
+            border-color: #00ff88;
+            box-shadow: 0 0 20px #00ff88;
+        }
+        
+        .answer-btn.incorrect {
+            background: rgba(255, 0, 102, 0.3);
+            border-color: #ff0066;
+            box-shadow: 0 0 20px #ff0066;
+        }
+        
+        .next-btn {
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+            border: 2px solid #00ff88;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 25px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .next-btn:hover {
+            background: rgba(0, 255, 136, 0.4);
+            box-shadow: 0 0 25px #00ff88;
+            transform: translateY(-3px);
+        }
+        
+        .prev-btn {
+            background: rgba(255, 170, 0, 0.2);
+            color: #ffaa00;
+            border: 2px solid #ffaa00;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 25px;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .prev-btn:hover {
+            background: rgba(255, 170, 0, 0.4);
+            box-shadow: 0 0 25px #ffaa00;
+            transform: translateY(-3px);
+        }
+        
+        .prev-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        .timer-display {
+            background: rgba(255, 0, 102, 0.2);
+            color: #ff0066;
+            border: 1px solid #ff0066;
+            padding: 10px 20px;
+            border-radius: 15px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Courier New', monospace;
+            box-shadow: 0 0 15px rgba(255, 0, 102, 0.3);
+        }
+        
+        .back-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid #666;
+            padding: 12px 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .back-btn:hover {
+            border-color: #00ff88;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+        }
+        
+        .progress {
+            background: rgba(255, 255, 255, 0.1);
+            height: 8px;
+            border-radius: 4px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #00ff88, #00aaff);
+            height: 100%;
+            transition: width 0.5s ease;
+            border-radius: 4px;
+            box-shadow: 0 0 10px #00ff88;
+        }
+        
+        .results {
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .results h2 {
+            color: #00ff88;
+            margin-bottom: 25px;
+            font-size: 2.5rem;
+            text-shadow: 0 0 20px #00ff88;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .final-score {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #00ff88;
+            margin-bottom: 25px;
+            text-shadow: 0 0 30px #00ff88;
+            animation: scoreGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes scoreGlow {
+            0% { text-shadow: 0 0 30px #00ff88; }
+            100% { text-shadow: 0 0 50px #00ff88, 0 0 70px #00ff88; }
+        }
+        
+        .restart-btn {
+            background: rgba(255, 0, 102, 0.2);
+            color: #ff0066;
+            border: 2px solid #ff0066;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .restart-btn:hover {
+            background: rgba(255, 0, 102, 0.4);
+            box-shadow: 0 0 25px #ff0066;
+            transform: translateY(-3px);
+        }
+        
+        .emoji {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <div class="game-container">
+        <div class="header">
+            <div class="cyber-logo">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Outer ring -->
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="#00ff88" stroke-width="2" opacity="0.6"/>
+                    <!-- Inner circuits -->
+                    <circle cx="50" cy="50" r="35" fill="none" stroke="#0066ff" stroke-width="1.5" opacity="0.8"/>
+                    <circle cx="50" cy="50" r="25" fill="none" stroke="#ff0066" stroke-width="1" opacity="0.7"/>
+                    <!-- Central core -->
+                    <circle cx="50" cy="50" r="15" fill="#00ff88" opacity="0.3"/>
+                    <!-- Circuit lines -->
+                    <line x1="20" y1="50" x2="35" y2="50" stroke="#00ff88" stroke-width="2"/>
+                    <line x1="65" y1="50" x2="80" y2="50" stroke="#00ff88" stroke-width="2"/>
+                    <line x1="50" y1="20" x2="50" y2="35" stroke="#0066ff" stroke-width="2"/>
+                    <line x1="50" y1="65" x2="50" y2="80" stroke="#0066ff" stroke-width="2"/>
+                    <!-- Corner connectors -->
+                    <circle cx="30" cy="30" r="3" fill="#ff0066"/>
+                    <circle cx="70" cy="30" r="3" fill="#ff0066"/>
+                    <circle cx="30" cy="70" r="3" fill="#ff0066"/>
+                    <circle cx="70" cy="70" r="3" fill="#ff0066"/>
+                    <!-- Central lightning bolt -->
+                    <path d="M45 35 L55 35 L50 45 L55 45 L45 65 L50 55 L45 55 Z" fill="#ffaa00" opacity="0.9"/>
+                </svg>
+            </div>
+                        <h1>AZERON QUIZ GAME</h1>
+        </div>
+        
+        <div class="content">
+            <!-- Category Selection -->
+            <div id="categorySelection" class="category-selection">
+                <button class="category-btn" onclick="startQuiz('agham')">
+                    <span class="emoji">🔬</span>QUIZ 1 
+                </button>
+                <button class="category-btn" onclick="startQuiz('kasaysayan')">
+                    <span class="emoji">📚</span>QUIZ 2 
+                </button>
+                <button class="category-btn" onclick="startQuiz('heograpiya')">
+                    <span class="emoji">🌍</span>QUIZ 3
+                </button>
+                <button class="category-btn" onclick="startQuiz('sports')">
+                    <span class="emoji">⚽</span>QUIZ 4
+                </button>
+                <button class="category-btn" onclick="startQuiz('pelikula')">
+                    <span class="emoji">🎬</span>QUIZ 5
+                </button>
+                <button class="category-btn" onclick="startQuiz('teknolohiya')">
+                    <span class="emoji">💻</span>QUIZ 6
+                </button>
+            </div>
+            
+            <!-- Quiz Section -->
+            <div id="quizSection" class="quiz-section">
+                <button class="back-btn" onclick="backToCategories()">← BACK TO CATEGORIES</button>
+                <div class="progress">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <div class="question-card">
+                    <div class="indicators-container">
+                        <div class="level-indicator" id="levelIndicator">LEVEL 1 / 5</div>
+                        <div class="percentage-indicator" id="percentageIndicator">ACCURACY: 0%</div>
+                    </div>
+                    <div class="question" id="question"></div>
+                    <div class="answers" id="answers"></div>
+                    <div class="timer-display" id="timerDisplay">AUTO NEXT IN: 5</div>
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <button class="prev-btn" id="prevBtn" onclick="previousQuestion()">← PREVIOUS</button>
+                        <button class="next-btn" id="nextBtn" onclick="nextQuestion()" style="display: none;">NEXT QUESTION →</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Results Section -->
+            <div id="resultsSection" class="quiz-section">
+                <div class="results">
+                    <h2>MISSION COMPLETE! ⚡</h2>
+                    <div class="final-score" id="finalScore" style="font-size: 2.5rem; font-weight: bold; color: #00ff88; margin-bottom: 20px; text-shadow: 0 0 20px #00ff88; text-transform: uppercase; letter-spacing: 2px;">CORRECT: 0/5</div>
+                    <div class="final-accuracy" id="finalAccuracy" style="font-size: 3rem; font-weight: bold; color: #ffaa00; margin-bottom: 25px; text-shadow: 0 0 20px #ffaa00; text-transform: uppercase; letter-spacing: 2px; animation: scoreGlow 2s ease-in-out infinite alternate;">ACCURACY: 0%</div>
+                    <p id="resultMessage" style="font-size: 1.3rem; margin-bottom: 30px; color: #ffffff; text-shadow: 0 0 10px #00ff88;"></p>
+                    <button class="restart-btn" onclick="restartGame()">🔄 RESTART MISSION</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        createParticles();
+
+        const quizData = {
+            agham: [
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                 },
+                  {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                }
+            ],
+            kasaysayan: [
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                }
+            ],
+                heograpiya: [
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                 {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                }
+              ],
+            sports: [
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                }
+            ],
+            pelikula: [
+               {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                }
+            ],
+            teknolohiya: [
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Ano ang chemical symbol ng ginto?",
+                    answers: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                }
+            ]
+        };
+
+        let currentCategory = '';
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let answered = false;
+        let autoNextTimer = null;
+        let timeLeft = 5;
+        let userAnswers = []; // Store user answers for each question
+
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        function shuffleAnswers(question) {
+            const originalAnswers = [...question.answers];
+            const correctAnswer = originalAnswers[question.correct];
+            
+            // Create array of answer objects with original indices
+            const answerObjects = originalAnswers.map((answer, index) => ({
+                text: answer,
+                isCorrect: index === question.correct
+            }));
+            
+            // Shuffle the answers
+            const shuffledAnswers = shuffleArray(answerObjects);
+            
+            // Find new correct index
+            const newCorrectIndex = shuffledAnswers.findIndex(answer => answer.isCorrect);
+            
+            return {
+                answers: shuffledAnswers.map(answer => answer.text),
+                correct: newCorrectIndex
+            };
+        }
+
+        function startQuiz(category) {
+            currentCategory = category;
+            currentQuestionIndex = 0;
+            score = 0;
+            answered = false;
+            userAnswers = []; // Reset answer history
+            
+            // Shuffle questions and their answers
+            const originalQuestions = quizData[category];
+            const shuffledQuestions = shuffleArray(originalQuestions);
+            
+            // Shuffle answers for each question and update correct indices
+            shuffledQuestions.forEach(question => {
+                const shuffledData = shuffleAnswers(question);
+                question.answers = shuffledData.answers;
+                question.correct = shuffledData.correct;
+            });
+            
+            // Store shuffled questions for this quiz session
+            quizData[category + '_shuffled'] = shuffledQuestions;
+            currentCategory = category + '_shuffled';
+            
+            document.getElementById('categorySelection').style.display = 'none';
+            document.getElementById('quizSection').classList.add('active');
+            
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const questions = quizData[currentCategory];
+            const question = questions[currentQuestionIndex];
+            
+            document.getElementById('question').textContent = question.question;
+            
+            const answersContainer = document.getElementById('answers');
+            answersContainer.innerHTML = '';
+            
+            question.answers.forEach((answer, index) => {
+                const button = document.createElement('button');
+                button.className = 'answer-btn';
+                button.textContent = answer;
+                
+                // Check if this question was already answered
+                const previousAnswer = userAnswers[currentQuestionIndex];
+                if (previousAnswer !== undefined) {
+                    // Question was already answered, show the results
+                    if (index === question.correct) {
+                        button.classList.add('correct');
+                    } else if (index === previousAnswer && index !== question.correct) {
+                        button.classList.add('incorrect');
+                    }
+                    button.style.pointerEvents = 'none';
+                } else {
+                    // Question not answered yet, allow clicking
+                    button.onclick = () => selectAnswer(index);
+                }
+                
+                answersContainer.appendChild(button);
+            });
+            
+            // Show/hide buttons based on whether question was answered
+            const wasAnswered = userAnswers[currentQuestionIndex] !== undefined;
+            if (wasAnswered) {
+                document.getElementById('nextBtn').style.display = 'block';
+                document.getElementById('timerDisplay').style.display = 'none';
+                answered = true;
+            } else {
+                document.getElementById('nextBtn').style.display = 'none';
+                document.getElementById('timerDisplay').style.display = 'none';
+                answered = false;
+            }
+            
+            // Update progress bar
+            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            
+            // Update level indicator
+            document.getElementById('levelIndicator').textContent = `LEVEL ${currentQuestionIndex + 1} / ${questions.length}`;
+            
+            // Update percentage indicator
+            updatePercentageIndicator();
+            
+            // Update previous button
+            const prevBtn = document.getElementById('prevBtn');
+            if (currentQuestionIndex === 0) {
+                prevBtn.disabled = true;
+                prevBtn.style.opacity = '0.3';
+            } else {
+                prevBtn.disabled = false;
+                prevBtn.style.opacity = '1';
+            }
+        }
+
+        function selectAnswer(selectedIndex) {
+            if (answered) return;
+            
+            answered = true;
+            const questions = quizData[currentCategory];
+            const question = questions[currentQuestionIndex];
+            const buttons = document.querySelectorAll('.answer-btn');
+            
+            // Save the user's answer
+            userAnswers[currentQuestionIndex] = selectedIndex;
+            
+            buttons.forEach((button, index) => {
+                if (index === question.correct) {
+                    button.classList.add('correct');
+                } else if (index === selectedIndex && index !== question.correct) {
+                    button.classList.add('incorrect');
+                }
+                button.style.pointerEvents = 'none';
+            });
+            
+            if (selectedIndex === question.correct) {
+                score += 10;
+            }
+            
+            // Update percentage after answering
+            updatePercentageIndicator();
+            
+            document.getElementById('nextBtn').style.display = 'block';
+            document.getElementById('timerDisplay').style.display = 'block';
+            
+            // Start auto-next timer
+            startAutoNextTimer();
+        }
+        
+        function startAutoNextTimer() {
+            timeLeft = 5;
+            document.getElementById('timerDisplay').textContent = `AUTO NEXT IN: ${timeLeft}`;
+            
+            autoNextTimer = setInterval(() => {
+                timeLeft--;
+                document.getElementById('timerDisplay').textContent = `AUTO NEXT IN: ${timeLeft}`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(autoNextTimer);
+                    nextQuestion();
+                }
+            }, 1000);
+        }
+        
+        function clearAutoNextTimer() {
+            if (autoNextTimer) {
+                clearInterval(autoNextTimer);
+                autoNextTimer = null;
+            }
+        }
+        
+        function updatePercentageIndicator() {
+            const answeredQuestions = userAnswers.filter(answer => answer !== undefined).length;
+            
+            if (answeredQuestions === 0) {
+                document.getElementById('percentageIndicator').textContent = 'ACCURACY: 0%';
+                return;
+            }
+            
+            const questions = quizData[currentCategory];
+            let correctAnswers = 0;
+            
+            userAnswers.forEach((userAnswer, index) => {
+                if (userAnswer !== undefined && userAnswer === questions[index].correct) {
+                    correctAnswers++;
+                }
+            });
+            
+            const percentage = Math.round((correctAnswers / answeredQuestions) * 100);
+            document.getElementById('percentageIndicator').textContent = `ACCURACY: ${percentage}%`;
+        }
+        
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                clearAutoNextTimer();
+                currentQuestionIndex--;
+                showQuestion();
+            }
+        }
+
+        function nextQuestion() {
+            clearAutoNextTimer();
+            currentQuestionIndex++;
+            const questions = quizData[currentCategory];
+            
+            if (currentQuestionIndex < questions.length) {
+                showQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('quizSection').classList.remove('active');
+            document.getElementById('resultsSection').classList.add('active');
+            
+            const totalQuestions = quizData[currentCategory].length;
+            const correctAnswers = score / 10; // Since each correct answer gives 10 points
+            const percentage = Math.round((correctAnswers / totalQuestions) * 100);
+            
+            document.getElementById('finalScore').textContent = `CORRECT: ${correctAnswers}/${totalQuestions}`;
+            document.getElementById('finalAccuracy').textContent = `ACCURACY: ${percentage}%`;
+            
+            let message = '';
+            if (percentage >= 80) {
+                message = '🏆 LEGENDARY PERFORMANCE! CYBER MASTER ACHIEVED!';
+            } else if (percentage >= 60) {
+                message = '🌟 EXCELLENT EXECUTION! MISSION SUCCESS!';
+            } else if (percentage >= 40) {
+                message = '👍 GOOD ATTEMPT! UPGRADE YOUR SKILLS!';
+            } else {
+                message = '📖 SYSTEM ERROR! REBOOT AND TRY AGAIN!';
+            }
+            
+            document.getElementById('resultMessage').textContent = message;
+        }
+
+        function backToCategories() {
+            clearAutoNextTimer();
+            document.getElementById('quizSection').classList.remove('active');
+            document.getElementById('categorySelection').style.display = 'grid';
+        }
+
+        function restartGame() {
+            document.getElementById('resultsSection').classList.remove('active');
+            document.getElementById('categorySelection').style.display = 'grid';
+            score = 0;
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97bd1822d661fd96',t:'MTc1NzMyMDMzNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
