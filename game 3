@@ -563,7 +563,11 @@
                     <path d="M45 35 L55 35 L50 45 L55 45 L45 65 L50 55 L45 55 Z" fill="#ffaa00" opacity="0.9"/>
                 </svg>
             </div>
+                        
                         <h1>AZERON QUIZ GAME</h1>
+                        <h2>SABER WORLD</h2>
+                                       <span class="text-1xl neon-glow text-red-400">THESE TERMS WILL help you not only as you study for your appraisal exam, but also after you pass your exam and are on the job every day.</span>
+
         </div>
         
         <div class="content">
@@ -579,10 +583,10 @@
                     <span class="emoji">🌍</span>QUIZ 3
                 </button>
                 <button class="category-btn" onclick="startQuiz('sports')">
-                    <span class="emoji">⚽</span>QUIZ 4
+                    <span class="emoji">🤖</span>QUIZ 4
                 </button>
                 <button class="category-btn" onclick="startQuiz('pelikula')">
-                    <span class="emoji">🎬</span>QUIZ 5
+                    <span class="emoji">🌐</span>QUIZ 5
                 </button>
                 <button class="category-btn" onclick="startQuiz('teknolohiya')">
                     <span class="emoji">💻</span>QUIZ 6
@@ -602,7 +606,7 @@
                     </div>
                     <div class="question" id="question"></div>
                     <div class="answers" id="answers"></div>
-                    <div class="timer-display" id="timerDisplay">AUTO NEXT IN: 5</div>
+                    <div class="timer-display" id="timerDisplay">AUTO NEXT IN: 3</div>
                     <div style="display: flex; align-items: center; justify-content: center;">
                         <button class="prev-btn" id="prevBtn" onclick="previousQuestion()">← PREVIOUS</button>
                         <button class="next-btn" id="nextBtn" onclick="nextQuestion()" style="display: none;">NEXT QUESTION →</button>
@@ -638,768 +642,767 @@
         }
         
         createParticles();
-
         const quizData = {
             agham: [
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
                  {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                    question: "A transaction occurring in a competitive market, with reasonable exposure, under conditions requisite to a fair sale with a willing buyer and seller each acting prudently, knowledgeably, and for self-interest. An arm's-length transaction assumes that neither buyer nor seller is under undue duress or is related.",
+                    answers: ["Arm's-Length Transaction", "Market Value", "Appraised Sale", "Forced Sale"],
+                    correct: 0
+                 },
+                  {
+                    question: "The price at which the owner offers to sell the property.",
+                    answers: ["Listing Price", "Market Value", "Asking Price", "Offer Price"],
                     correct: 2
                  },
                   {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
+                    question: "In appraising real property, the combining of parcels, usually but not necessarily contiguous, into one ownership or use. When appraising personal property, the combining of properties (e.g., items or components) into units, sets, or groups. When appraising business enterprises, the integration or combination under unified control of business entities.",
+                    answers: ["Assemblage", "Plottage", "Merger", "Joint Venture"],
+                    correct: 0
                 },
                  {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                    question: "The value or worth of a property on which ad valorem taxes are based. Assessed value times rate equals the property tax.",
+                    answers: ["Appraised Value", "Assessed Value", "Market Value", "Fair Market Value"],
+                    correct: 1
+                 },
+                 {
+                    question: "The process of assigning value on property for taxation purposes.",
+                    answers: ["Assessment", "Valuation", "Appraisal", "Tax Rate"],
+                    correct: 0
+                 },
+                 {
+                    question: "A pledge in writing affirming an agreement.",
+                    answers: ["Commitment Letter", "Letter of Intent", "Promissory Note", "Purchase Agreement"],
+                    correct: 0
+                },
+                {
+                    question: "Portions of a building, land, and amenities owned (or managed) by a planned unit development or condominium project's homeowners association or a cooperative project's cooperative corporation. These areas are used by all of the unit owners, who share in the common expenses of their operation and maintenance. Common areas may include swimming pools, tennis courts, and other recreational facilities, as well as common corridors of buildings, parking areas, and lobbies.",
+                    answers: ["Common Elements", "Common Areas", "Community Property", "Limited Common Areas"],
+                    correct: 1
+                },
+                {
+                    question: "The part of the land and buildings in a condominium form of ownership that is jointly owned and used with other unit owners.",
+                    answers: ["Common Areas", "Common Law", "Common Elements", "Community Property"],
                     correct: 2
                 },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                {
+                    question: "The body of laws derived from local custom and judicial precedent.",
+                    answers: ["Statutory Law", "Civil Law", "Common Law", "Regulatory Law"],
                     correct: 2
                 },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                {
+                    question: "A system of property ownership in which each spouse has equal interest in property acquired during the marriage; recognized in nine states.",
+                    answers: ["Joint Tenancy", "Tenancy by the Entirety", "Community Property", "Partnership Property"],
                     correct: 2
                 },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                {
+                    question: "Loss of value from all causes outside the boundaries of the property itself.",
+                    answers: ["Physical Depreciation", "Economic Depreciation", "Functional Obsolescence", "Economic Life"],
+                    correct: 1
+                },
+                {
+                    question: "The period of time over which an improved property will generate sufficient income to justify its continued existence.",
+                    answers: ["Effective Age", "Economic Life", "Remaining Life", "Chronological Age"],
+                    correct: 1
+                },
+                {
+                    question: "See external obsolescence.",
+                    answers: ["Functional Obsolescence", "Economic Obsolescence", "Physical Depreciation", "External Wear"],
+                    correct: 1
+                },
+                {
+                    question: "An appraiser's estimate of the physical condition of a building. The actual age may be different from its effective age.",
+                    answers: ["Chronological Age", "Remaining Life", "Effective Age", "Economic Life"],
                     correct: 2
                 },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                {
+                    question: "The date at which the analyses, opinions, and advice in an appraisal, review, or service apply.",
+                    answers: ["Report Date", "Inspection Date", "Effective Date", "Closing Date"],
                     correct: 2
                 },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                {
+                    question: "Federal legislation that makes it illegal to discriminate on the basis of race, color, religion, sex, or national origin in connection with the sale or rental of housing or vacant land offered for residential construction or use.",
+                    answers: ["Federal Fair Housing Act", "Civil Rights Property Act", "Equal Housing Opportunity Act", "HUD Anti-Discrimination Law"],
+                    correct: 0
+                },
+                {
+                    question: "(Also known as Freddie Mac) independent agency that purchases conventional mortgages from S&Ls and commercial banks.",
+                    answers: ["Fannie Mae", "FHLMC", "Ginnie Mae", "HUD"],
+                    correct: 1
+                },
+                {
+                    question: "An agency within the U.S. Department of Housing and Urban Development (HUD) that insures mortgage loans by FHA-approved lenders to make loans available to buyers with limited cash.",
+                    answers: ["FHA", "FNMA", "VA", "FHLMC"],
+                    correct: 0
+                },
+                {
+                    question: "Federal legislation requiring land developers to register subdivisions of 100 or more nonexempt lots with HUD and to provide each purchaser with a disclosure document called a property report.",
+                    answers: ["Interstate Land Disclosure Act", "Federal Land Use Act", "Federal Interstate Land Sales Full Disclosure Act", "HUD Land Subdivision Act"],
                     correct: 2
                 },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                {
+                    question: "Also known as Fannie Mae; independent agency that purchases mortgages from the primary markets and issues long-term debentures and short-term discount notes.",
+                    answers: ["Freddie Mac", "FNMA", "FHA", "Ginnie Mae"],
+                    correct: 1
+                },
+                {
+                    question: "An agent who is authorized to act for and obligate a principal in a specific range of matters, as specified by their mutual agreement.",
+                    answers: ["Special Agent", "General Agent", "Universal Agent", "Designated Agent"],
+                    correct: 1
+                },
+                {
+                    question: "A claim on all property, real and personal, owned by a debtor.",
+                    answers: ["Specific Lien", "General Lien", "Voluntary Lien", "Mechanic's Lien"],
+                    correct: 1
+                },
+                {
+                    question: "A type of company in which two or more persons share profits and liabilities.",
+                    answers: ["Limited Partnership", "Joint Venture", "General Partnership", "Corporation"],
                     correct: 2
                 },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                {
+                    question: "An instrument in which the grantor guarantees the grantee that the title being conveyed is good and free of other claims or encumbrances.",
+                    answers: ["Quitclaim Deed", "Special Warranty Deed", "General Warranty Deed", "Bargain and Sale Deed"],
                     correct: 2
                 },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
+                {
+                    question: "Process of renewal and rebuilding accompanying the influx of middle class or highly affluent people into deteriorating areas that displaces poorer residents.",
+                    answers: ["Urban Renewal", "Gentrification", "Suburbanization", "Rezoning"],
+                    correct: 1
                 }
-            ],
+                ],
             kasaysayan: [
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                {
+                    question: "The ratio of the assessed value to full market value as set by the taxing authority.",
+                    answers: ["Assessment Ratio", "Tax Rate", "Assessed Value", "Effective Tax Rate"],
+                    correct: 0
+                },
+                {
+                    question: "A public official who establishes the value of a property for taxation purposes.",
+                    answers: ["Appraiser", "Assessor", "Auditor", "Tax Collector"],
+                    correct: 1
+                },
+                {
+                    question: "An item of value owned by an individual. Assets that can be quickly converted into cash are considered liquid assets, such as bank accounts and stock portfolios. Other assets include real estate, personal property, and debts owed.",
+                    answers: ["Asset", "Liability", "Capital", "Equity"],
+                    correct: 0
+                },
+                {
+                    question: "(1) A valuation service provided by an appraiser for a client. (2) The transfer of all the lessee's rights to another party. The assignor is still liable for the performance of the agreement, unless the lessor releases him or her.",
+                    answers: ["Sublease", "Assignment", "Delegation", "Transfer of Title"],
+                    correct: 1
+                },
+                {
+                    question: "The opinions and conclusions reached by an appraiser for an assignment.",
+                    answers: ["Appraisal Report", "Assignment Result", "Valuation", "Assessment"],
+                    correct: 1
+                },
+                {
+                    question: "Also known as comps; properties used to determine an estimate of value for a subject property. Such properties have been recently sold or leased and are similar to the property being evaluated. The comparable need not be identical to the subject, but should be similar or relatively easy to adjust for differences in comparison.",
+                    answers: ["Comparative Unit Method", "Comparable", "Comparable Sales", "Competition"],
+                    correct: 1
+                },
+                {
+                    question: "Recent sales of similar properties in nearby areas that are used to help estimate the current market value of a property.",
+                    answers: ["Comparable", "Comparable Sales", "Market Approach", "Appraisal Report"],
+                    correct: 1
+                },
+                {
+                    question: "Method used to estimate building costs in which components of the building are summed on a unit basis, such as dollars per square foot or cubic foot of area, and are based on known costs of similar structures adjusted for time and physical differences.",
+                    answers: ["Cost Approach", "Comparative Unit Method", "Unit-in-Place Method", "Quantity Survey Method"],
+                    correct: 1
+                },
+                {
+                    question: "People who are legally qualified to enter a contract, usually meaning that they are of legal age, of sound mind, and not under the influence of drugs or other mind-altering substances.",
+                    answers: ["Competent Parties", "Consideration", "Legality of Object", "Mutual Consent"],
+                    correct: 0
+                },
+                {
+                    question: "An appraisal principle that states that competition is a function of supply and demand.",
+                    answers: ["Conformity", "Contribution", "Competition", "Anticipation"],
                     correct: 2
                 },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                {
+                    question: "The date at which the value opinion in an appraisal applies, which may or may not be the date of inspection; the date of the market conditions that provide the context for the value opinion.",
+                    answers: ["Report Date", "Effective Date of the Appraisal", "Inspection Date", "Closing Date"],
+                    correct: 1
+                },
+                {
+                    question: "Potential gross income less vacancy and collection losses.",
+                    answers: ["Net Operating Income", "Effective Gross Income", "Potential Gross Income", "Cash Flow"],
+                    correct: 1
+                },
+                {
+                    question: "The sales price or value divided by the effective gross income.",
+                    answers: ["Gross Rent Multiplier", "Effective Gross Income Multiplier", "Capitalization Rate", "Debt Coverage Ratio"],
+                    correct: 1
+                },
+                {
+                    question: "Rate of return on an investment. The higher effective rate has the shortest compounding periods.",
+                    answers: ["Nominal Rate", "Effective Rate", "Discount Rate", "Capitalization Rate"],
+                    correct: 1
+                },
+                {
+                    question: "A categorization of property characteristics that cause real estate prices to vary. Examples include property rights, financing terms, conditions of sale, date of sale (or market conditions), location, and physical characteristics.",
+                    answers: ["Principle of Substitution", "Elements of Comparison", "Units of Comparison", "Adjustment Grid"],
+                    correct: 1
+                },
+                {
+                    question: "The central banking system of the United States that controls the monetary policy and, therefore, the money supply, interest rates, and availability of credit.",
+                    answers: ["Federal Deposit Insurance Corporation", "Federal Reserve System", "Federal Housing Finance Agency", "U.S. Treasury"],
+                    correct: 1
+                },
+                {
+                    question: "Person who charges a fee for rendering an opinion of value rather than basing compensation on the derived value.",
+                    answers: ["Staff Appraiser", "Fee Appraiser", "Independent Contractor", "Assessor"],
+                    correct: 1
+                },
+                {
+                    question: "The most complete form of ownership of real estate.",
+                    answers: ["Life Estate", "Leasehold Estate", "Fee Simple Absolute", "Fee Simple Defeasible"],
                     correct: 2
                 },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                {
+                    question: "Freehold estate that is subject to a condition that, if it occurs, automatically reverts the estate back to the grantor or his or her heirs.",
+                    answers: ["Fee Simple Absolute", "Fee Simple Defeasible", "Determinable Estate", "Life Estate"],
+                    correct: 1
+                },
+                {
+                    question: "Ownership of a property that is unencumbered by any other interest or estate.",
+                    answers: ["Leasehold Estate", "Life Estate", "Fee Simple Estate", "Conditional Estate"],
                     correct: 2
                 },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                {
+                    question: "The value created by a proven business operation; includes an intangible value that is not considered as a part of the real estate.",
+                    answers: ["Market Value", "Book Value", "Going-Concern Value", "Investment Value"],
                     correct: 2
                 },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                {
+                    question: "A mortgage that is insured by the Federal Housing Administration (FHA) or guaranteed by the Department of Veterans Affairs (VA) or the Rural Housing Service (RHS). Mortgages that are not government loans are identified as conventional loans.",
+                    answers: ["Conventional Mortgage", "Government-Backed Mortgage", "Balloon Mortgage", "Adjustable-Rate Mortgage"],
+                    correct: 1
+                },
+                {
+                    question: "Also known as Ginnie Mae; a government-owned corporation within the U.S. Department of Housing and Urban Development (HUD). Ginnie Mae manages and liquidates government-backed loans and assists HUD in special lending projects.",
+                    answers: ["Federal National Mortgage Association", "Federal Home Loan Mortgage Corporation", "Government National Mortgage Association", "Department of Housing and Urban Development"],
                     correct: 2
                 },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                {
+                    question: "Legal description of land that divides land into townships by range lines (north-south lines) and tier lines (east-west lines). These lines are based on true east-west lines (baselines) and true north-south lines (principle meridians). Townships are six miles square, each containing 36 sections, which are one mile square, or 640 acres.",
+                    answers: ["Lot and Block System", "Metes and Bounds", "Government Rectangular Survey", "Recorded Plat System"],
                     correct: 2
                 },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                {
+                    question: "A lease that calls for periodic, stated changes in rent during the term of the lease.",
+                    answers: ["Gross Lease", "Net Lease", "Graduated Lease", "Percentage Lease"],
                     correct: 2
                 }
             ],
                 heograpiya: [
                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                    question: "A written agreement in which the buyer will pay the mortgage and is obligated to the seller. The seller may still be liable to the lender.",
+                    answers: ["Assignment", "Assumption", "Novation", "Mortgage Transfer"],
+                    correct: 1
+                },
+                {
+                    question: "The act of acquiring the title to a property that has an existing mortgage and agreeing to be liable for the payment of any debt still existing on that mortgage. However, the lender must accept the transfer of liability for the original borrower to be relieved of the debt.",
+                    answers: ["Foreclosure", "Assumption of Mortgage", "Refinancing", "Mortgage Release"],
+                    correct: 1
+                },
+                {
+                    question: "The process whereby a court takes custody of a debtor's property until the creditor's debt is satisfied.",
+                    answers: ["Attachment", "Lien", "Judgment", "Seizure"],
+                    correct: 0
+                },
+                {
+                    question: "To bear witness by providing a signature.",
+                    answers: ["Notarize", "Certify", "Attest", "Authenticate"],
                     correct: 2
                 },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                {
+                    question: "A person who is authorized under a power of attorney to act on behalf of another.",
+                    answers: ["Executor", "Attorney-in-Fact", "Guardian", "Trustee"],
+                    correct: 1
+                },
+                {
+                    question: "The removal of land from one owner to another when a stream or other body of water suddenly changes its channel.",
+                    answers: ["Accretion", "Avulsion", "Reliction", "Erosion"],
+                    correct: 1
+                },
+                {
+                    question: "An analysis intended to assist a seller or buyer in determining a property's range of value.",
+                    answers: ["Comparative Market Analysis ", "Feasibility Study", "Appraisal", "Market Survey"],
+                    correct: 0
+                },
+                {
+                    question: "Service or discount given to prospective tenants to induce them to lease the property. Concession includes things such as tenant improvements paid by the landlord or free rent.",
+                    answers: ["Incentives", "Rebates", "Concessions", "Leasehold Improvements"],
                     correct: 2
                 },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                {
+                    question: "The judicial process by which the government exercises its power of eminent domain.",
+                    answers: ["Condemnation", "Foreclosure", "Confiscation", "Requisition"],
+                    correct: 0
+                },
+                {
+                    question: "Element of comparison in the sales comparison approach that refers to the motivation of the buyer and seller in a sales transaction. Examples include the relationship between buyer and seller, financial needs of the buyer and seller (a 'quick' sale), and lack of exposure on the market.",
+                    answers: ["Condition of Title", "Condition of Sale", "Terms of Financing", "Market Conditions"],
+                    correct: 1
+                },
+                {
+                    question: "Views of the front, back, and sides of a property.",
+                    answers: ["Elevation", "Blueprint", "Plat Map", "Survey"],
+                    correct: 0
+                },
+                {
+                    question: "Cultivated crops; generally considered to be personal property.",
+                    answers: ["Fixtures", "Emblements", "Chattels", "Real Property"],
+                    correct: 1
+                },
+                {
+                    question: "The right of a government to take private property for public use upon payment of its fair market value. Eminent domain is the basis for condemnation proceedings.",
+                    answers: ["Police Power", "Escheat", "Eminent Domain", "Zoning"],
                     correct: 2
                 },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                {
+                    question: "A trespass caused when a structure, such as a wall or fence, invades another person's land or air space.",
+                    answers: ["Encumbrance", "Encroachment", "Easement", "Lien"],
+                    correct: 1
+                }, 
+                {
+                    question: "Anything that affects or limits the title to a property, such as easements, leases, mortgages, or restrictions.",
+                    answers: ["Encumbrance", "Restriction", "Cloud on Title", "Lien"],
+                    correct: 0
+                },
+                {
+                    question: "A loan insured by the Federal Housing Administration.",
+                    answers: ["VA Loan", "Conventional Loan", "FHA-insured Loan", "USDA Loan"],
                     correct: 2
                 },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                {
+                    question: "A legal relationship with an obligation of trust, as that of agent and principal.",
+                    answers: ["Trust Deed", "Agency", "Fiduciary Relationship", "Escrow"],
                     correct: 2
                 },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                {
+                    question: "Variant of the internal rate of return in which negative cash flows are discounted to a present value at a safe rate and positive cash flows are compounded forward to the end of the holding period at a reinvestment rate. The FMRR is the rate that equates the present value to the future value of the positive cash flows.",
+                    answers: ["Capitalization Rate", "Financial Management Rate of Return ", "Discount Rate", "Cash-on-Cash Return"],
+                    correct: 1
+                },
+                {
+                    question: "A fee or commission paid to a mortgage broker for finding a mortgage loan for a prospective borrower.",
+                    answers: ["Commission", "Brokerage Fee", "Finder's Fee", "Origination Fee"],
                     correct: 2
                 },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                {
+                    question: "A mortgage that has priority to be satisfied over all other mortgages.",
+                    answers: ["First Mortgage", "Junior Mortgage", "Wraparound Mortgage", "Second Mortgage"],
+                    correct: 0
+                },
+                {
+                    question: "Loan in which payments start low and increase over the term of the loan. It is designed to help borrowers match payments with projected increases in income.",
+                    answers: ["Adjustable-Rate Mortgage (ARM)", "Balloon Mortgage", "Graduated-Payment Mortgage (GPM)", "Interest-Only Loan"],
                     correct: 2
                 },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
+                {
+                    question: "Rent that graduates (usually increases) periodically during a lease term based on changes specified in the lease.",
+                    answers: ["Gross Lease", "Graduated Rental", "Net Lease", "Percentage Lease"],
+                    correct: 1
                 },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
+                {
+                    question: "The transfer of title to real property by deed.",
+                    answers: ["Grant", "Conveyance", "Quitclaim", "Assignment"],
+                    correct: 0
                 },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
+                {
+                    question: "A deed that includes three warranties: (1) that the owner has the right to convey title to the property, (2) that there are no encumbrances other than those noted specifically in the deed, and (3) that the owner will convey any future interest that he or she may acquire in the property.",
+                    answers: ["Special Warranty Deed", "Grant Deed", "Bargain and Sale Deed", "Quitclaim Deed"],
+                    correct: 1
+                }, 
+                {
+                    question: "One who receives title to real property.",
+                    answers: ["Grantor", "Grantee", "Mortgagee", "Lessor"],
+                    correct: 1
                 }
               ],
             sports: [
                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                    question: "Permission granted for special or conditional land use (e.g., church, hospital) in specific zones. These uses require special permits.",
+                    answers: ["Variance", "Conditional Use (Special Use)", "Nonconforming Use", "Eminent Domain"],
+                    correct: 1
+                },
+                {
+                    question: "A form of ownership in which an individual owns a specific unit in a multiunit building and shares ownership of common areas with other unit owners.",
+                    answers: ["Cooperative", "Condominium", "Timeshare", "Tenancy in Common"],
+                    correct: 1
+                },
+                {
+                    question: "Changing the ownership of an existing building (usually a multi-dwelling rental unit) from single ownership to condominium ownership.",
+                    answers: ["Condominium Conversion", "Subdivision", "Rezoning", "Assemblage"],
+                    correct: 0
+                },
+                {
+                    question: "An appraisal principle that asserts that property achieves its maximum value when a neighborhood is homogeneous in its use of land; the basis for zoning ordinances.",
+                    answers: ["Contribution", "Conformity", "Substitution", "Progression"],
+                    correct: 1
+                },
+                {
+                    question: "Something of value that induces parties to enter into a contract, such as money or services.",
+                    answers: ["Offer", "Acceptance", "Consideration", "Breach"],
                     correct: 2
                 },
                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                    question: "Sum of money an entrepreneur expects to receive in addition to costs for time, effort, and risk required to create a project or operate a business. It is associated with 'going-concern value' or a business property. The going-concern value includes inventory, fixtures, and goodwill.",
+                    answers: ["Capital Gain", "Entrepreneurial Profit", "Cash Flow", "Operating Income"],
+                    correct: 1
+                },
+                {
+                    question: "In appraisal theory, one of four categories of forces that affect property value; environmental forces include climate, location, topography, natural barriers, and transportation systems.",
+                    answers: ["Environmental Forces", "Economic Forces", "Governmental Forces", "Social Forces"],
+                    correct: 0
+                },
+                {
+                    question: "Enforces environmental laws.",
+                    answers: ["FEMA", "OSHA", "Environmental Protection Agency", "HUD"],
                     correct: 2
                 },
                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                    question: "Federal agency that enforces antidiscrimination laws governing employment.",
+                    answers: ["EEOC", "EPA", "FHA", "FTC"],
+                    correct: 0
+                },
+                {
+                    question: "Law that requires that men and women who perform the same work receive the same pay.",
+                    answers: ["Civil Rights Act", "Fair Labor Standards Act", "Equal Pay Act of 1963", "Americans with Disabilities Act"],
                     correct: 2
                 },
                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                    question: "Expenses that don't vary with occupancy (e.g., property taxes, casualty insurance).",
+                    answers: ["Variable Expenses", "Fixed Expenses", "Operating Income", "Capital Expenses"],
+                    correct: 1
+                },
+                {
+                    question: "A loan with an interest rate that does not change during the entire term of the loan.",
+                    answers: ["Adjustable-Rate Mortgage", "Fixed-Rate Loan", "Balloon Loan", "Graduated-Payment Mortgage"],
+                    correct: 1
+                },
+                {
+                    question: "Characteristic of a real estate market that says each parcel of land is unique and fixed in its location.",
+                    answers: ["Mobility", "Fixity", "Scarcity", "Situs"],
+                    correct: 1
+                },
+                {
+                    question: "An article of personal property that has been permanently attached to the real estate so as to become an integral part of the real estate.",
+                    answers: ["Chattel", "Fixture", "Trade Fixture", "Improvement"],
+                    correct: 1
+                },
+                {
+                    question: "A lease with rents that are constant; doesn't compensate landlord for inflation.",
+                    answers: ["Flat Lease", "Graduated Lease", "Net Lease", "Percentage Lease"],
+                    correct: 0
+                },
+                {
+                    question: "One who conveys title to real property; the present owner.",
+                    answers: ["Grantee", "Grantor", "Lessee", "Mortgagee"],
+                    correct: 1
+                },
+                {
+                    question: "Total floor area of a building measured from the exterior of the walls.",
+                    answers: ["Gross Leasable Area (GLA)", "Net Rentable Area", "Gross Building Area (GBA)", "Living Area"],
                     correct: 2
                 },
                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                    question: "The total income received from a property before deducting expenses.",
+                    answers: ["Net Operating Income (NOI)", "Gross Rent Multiplier", "Effective Gross Income", "Gross Income"],
+                    correct: 3
+                },
+                {
+                    question: "Also known as gross rent multiplier; ratio of sales price to gross income at the time of sale.",
+                    answers: ["Capitalization Rate", "Gross Income Multiplier ", "Operating Expense Ratio", "Cash-on-Cash Return"],
+                    correct: 1
+                },
+                {
+                    question: "A lease in which a tenant pays only a fixed amount for rental and the landlord pays all operating expenses and taxes.",
+                    answers: ["Net Lease", "Percentage Lease", "Gross Lease", "Graduated Lease"],
                     correct: 2
                 },
                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                    question: "The clause in a deed, beginning with the words to have and to hold, that defines or limits the exact interest in the estate granted by the deed.",
+                    answers: ["Granting Clause", "Habendum Clause", "Seisin Clause", "Consideration Clause"],
+                    correct: 1
+                },
+                {
+                    question: "A small village.",
+                    answers: ["Hamlet", "Township", "Subdivision", "Municipality"],
+                    correct: 0
+                },
+                {
+                    question: "One who is legally entitled to receive property when the owner dies intestate.",
+                    answers: ["Trustee", "Grantee", "Heir", "Executor"],
                     correct: 2
                 },
                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                    question: "The legally permitted use of a parcel of land that will yield the greatest return to the owner in terms of money or amenities.",
+                    answers: ["Zoning Ordinance", "Conformity Principle", "Highest and Best Use", "Substitution Principle"],
                     correct: 2
                 },
                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                    question: "A tenancy in which a lessee retains possession of the property after the lease has expired, and the landlord, by continuing to accept rent, agrees to the tenant's continued occupancy.",
+                    answers: ["Tenancy at Will", "Periodic Tenancy", "Holdover Tenancy", "Tenancy at Sufferance"],
                     correct: 2
                 }
             ],
             pelikula: [
-               {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                {
+                    question: "Principle that states land must be valued for the same use as its improvements.",
+                    answers: ["Conformity", "Consistent Use", "Contribution", "Competition"],
+                    correct: 1
+                },
+                {
+                    question: "A short term loan used to finance the building of improvements to real estate.",
+                    answers: ["Permanent Mortgage", "Construction Mortgage", "Wraparound Mortgage", "Graduated Payment Mortgage"],
+                    correct: 1
+                },
+                {
+                    question: "Action or inaction by a landlord that renders a property uninhabitable, forcing a tenant to move out with no further liability for rent.",
+                    answers: ["Actual Eviction", "Constructive Eviction", "Quiet Enjoyment", "Eminent Domain"],
+                    correct: 1
+                },
+                {
+                    question: "Notice of a fact given by making the fact part of the public record. All persons are responsible for knowing the information, whether or not they have actually seen the record.",
+                    answers: ["Actual Notice", "Constructive Notice", "Implied Notice", "Express Notice"],
+                    correct: 1
+                },
+                {
+                    question: "A statistical measure of the change in price levels of a predetermined mix of consumer goods and services. The CPI is often used as a means for annual rental adjustments to the lease from the initial base rent.",
+                    answers: ["Inflation Rate", "Consumer Price Index", "Producer Price Index", "Market Rent Index"],
+                    correct: 1
+                },
+                {
+                    question: "The interest in a piece of real estate held by a buyer who has agreed to purchase the property, but has not yet completed the transaction; the interest of a buyer under a contract for deed.",
+                    answers: ["Legal Title", "Equitable Title", "Fee Simple Title", "Defeasible Title"],
+                    correct: 1
+                },
+                {
+                    question: "The difference between the current market value of a property and the outstanding indebtedness due on it.",
+                    answers: ["Equity", "Capital Gain", "Net Income", "Appraised Value"],
+                    correct: 0
+                },
+                {
+                    question: "See equity dividend rate.",
+                    answers: ["Internal Rate of Return", "Net Present Value", "Equity Capitalization Rate", "Payback Period"],
                     correct: 2
                 },
                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                    question: "Also known as equity capitalization rate and cash on cash return; ratio of before-tax cash flow to the equity investment.",
+                    answers: ["Return on Investment", "Equity Dividend Rate", "Gross Rent Multiplier", "Capitalization Rate"],
+                    correct: 1
+                },
+                {
+                    question: "The right of a borrower to stop the foreclosure process.",
+                    answers: ["Statutory Right of Redemption", "Equity of Redemption", "Right of Survivorship", "Quiet Title"],
+                    correct: 1
+                },
+                {
+                    question: "Ratio of floor space to land area.",
+                    answers: ["Floor Area Ratio (FAR)", "Gross Building Area (GBA)", "Gross Leasable Area (GLA)", "Effective Area"],
+                    correct: 0
+                },
+                {
+                    question: "An estimate of outcome of future occurrences based on market research.",
+                    answers: ["Projection", "Forecast", "Estimation", "Trend Analysis"],
+                    correct: 1
+                },
+                {
+                    question: "The legal process by which a borrower in default of a mortgage is deprived of interest in the mortgaged property. This usually involves a forced sale of the property at public auction, where the proceeds of the sale are applied to the mortgage debt.",
+                    answers: ["Forfeiture", "Bankruptcy", "Foreclosure", "Repossession"],
                     correct: 2
                 },
                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                    question: "The loss of money, property, rights, or privileges because of a breach of legal obligation.",
+                    answers: ["Forfeiture", "Confiscation", "Default", "Foreclosure"],
+                    correct: 0
+                },
+                {
+                    question: "Federal legislation requiring that a buyer withhold 10% of the gross sales price and send it to the IRS if the seller is a 'foreign person.’",
+                    answers: ["FIRPTA", "FHA", "Fannie Mae", "Freddie Mac"],
+                    correct: 0
+                },
+                {
+                    question: "Total floor area designed for the occupancy of tenants; it does not include common areas.",
+                    answers: ["Gross Building Area (GBA)", "Gross Living Area (GLA)", "Gross Leasable Area (GLA)", "Net Rentable Area"],
                     correct: 2
                 },
                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                    question: "Residential space measured by finished and habitable above-grade areas.",
+                    answers: ["Gross Income", "Gross Living Area (GLA)", "Gross Rent Multiplier", "Effective Area"],
+                    correct: 1
+                },
+                {
+                    question: "Similar to gross income multiplier, except that it looks at the relationship between sales price and monthly gross rent.",
+                    answers: ["Gross Rent Multiplier", "Effective Gross Income Multiplier", "Capitalization Rate", "Equity Dividend Rate"],
+                    correct: 0
+                },
+                {
+                    question: "A lease of land only, on which a tenant already owns a building or will construct improvements.",
+                    answers: ["Gross Lease", "Ground Lease", "Graduated Lease", "Net Lease"],
+                    correct: 1
+                },
+                {
+                    question: "An agreement between a broker and a seller that the broker will buy the seller's property if it does not sell within a specified period of time.",
+                    answers: ["Exclusive Right to Sell Agreement", "Guaranteed Sale Plan", "Open Listing Agreement", "Net Listing Agreement"],
+                    correct: 1
+                },
+                {
+                    question: "One who is legally responsible for the care of another person's rights and/or property.",
+                    answers: ["Executor", "Trustee", "Guardian", "Attorney-in-Fact"],
                     correct: 2
                 },
                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                    question: "A will that is entirely handwritten, dated, and signed by the testator.",
+                    answers: ["Living Will", "Formal Will", "Holographic Will", "Oral Will"],
                     correct: 2
                 },
                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
+                    question: "Often called a reverse-annuity mortgage; instead of making payments to a lender, the lender makes payments to you. It enables older homeowners to convert the equity they have in their homes to cash, usually in the form of monthly payments. Unlike traditional home equity loans, a borrower does not qualify on the basis of income but on the value of his or her home. In addition, the loan does not have to be repaid until the borrower no longer occupies the property.",
+                    answers: ["Home Equity Loan", "Reverse Mortgage (HECM)", "Second Mortgage", "Home Equity Line of Credit"],
+                    correct: 1
                 },
                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
+                    question: "A mortgage loan that allows the borrower to obtain cash drawn against the equity of his or her home, up to a predetermined amount.",
+                    answers: ["Home Equity Line of Credit", "Reverse Mortgage", "Bridge Loan", "Construction Loan"],
+                    correct: 0
                 },
                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
+                    question: "A thorough inspection by a professional that evaluates the structural and mechanical condition of a property. A satisfactory home inspection is often included as a contingency by the purchaser.",
+                    answers: ["Property Appraisal", "Home Inspection", "Building Survey", "Site Analysis"],
+                    correct: 1
                 }
             ],
             teknolohiya: [
                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                    question: "An adjustment used in leases in which the rent payment is periodically adjusted by a percentage increase in the CPI. These adjustments are used to protect the lessor (landlord) from inflation increases.",
+                    answers: ["Rent Control", "Consumer Price Index (CPI) Adjustment", "Graduated Rent", "Escalation Clause"],
+                    correct: 1
+                },
+                {
+                    question: "A condition that must be met before a contract is legally binding. A satisfactory home inspection report from a qualified home inspector is an example of a common type of contingency.",
+                    answers: ["Condition Precedent", "Addendum", "Contingency", "Consideration"],
                     correct: 2
                 },
                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                    question: "Lots that are touching.",
+                    answers: ["Corner Lots", "Contiguous Lots", "Interior Lots", "Through Lots"],
+                    correct: 1
+                },
+                {
+                    question: "An agreement between two or more legally competent parties to do or to refrain from doing some legal act in exchange for a consideration.",
+                    answers: ["Covenant", "Deed", "Contract", "Lease"],
                     correct: 2
                 },
                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                    question: "A contract for the sale of a parcel of real estate in which the buyer makes periodic payments to the seller and receives title to the property only after all, or a substantial part, of the purchase price has been paid, or regular payments have been made for one year or longer.",
+                    answers: ["Contract for Deed", "Installment Loan", "Promissory Note", "Lease Option"],
+                    correct: 0
+                },
+                {
+                    question: "Rate of return on equity capital; the equity investor's internal rate of return based on before-tax cash flows and the equity investment.",
+                    answers: ["Equity Dividend Rate", "Equity Yield Rate", "Capitalization Rate", "Discount Rate"],
+                    correct: 1
+                },
+                {
+                    question: "The gradual wearing away of land by wind, water, and other natural processes.",
+                    answers: ["Erosion", "Avulsion", "Accretion", "Reliction"],
+                    correct: 0
+                },
+                {
+                    question: "A clause in a lease allowing the lessor to charge more rent based on an increase in costs; sometimes called a pass-through clause.",
+                    answers: ["Graduated Lease", "Escalation Clause", "Step-Up Rent", "Index Lease"],
+                    correct: 1
+                },
+                {
+                    question: "The claim to property by the state when the owner dies intestate and no heirs can be found.",
+                    answers: ["Eminent Domain", "Escheat", "Condemnation", "Forfeiture"],
+                    correct: 1
+                },
+                {
+                    question: "The deposit of funds and/or documents with a disinterested third party for safekeeping until the terms of the escrow agreement have been met.",
+                    answers: ["Escrow", "Trust Fund", "Mortgage Account", "Reserve Fund"],
+                    correct: 0
+                },
+                {
+                    question: "The form of ownership that results when a group of individuals pool their resources to buy a property.",
+                    answers: ["Joint Tenancy", "Fractional Ownership", "Tenancy in Common", "Partnership Ownership"],
+                    correct: 1
+                },
+                {
+                    question: "In real estate, an organization that lends a standardized trade name, operating procedures, referral services, and supplies to member brokerages.",
+                    answers: ["Independent Brokerage", "Franchise", "Syndicate", "Cooperative"],
+                    correct: 1
+                },
+                {
+                    question: "A deliberate misstatement of material fact or an act or omission made with deliberate intent to deceive (active fraud) or gross disregard for the truth (constructive fraud).",
+                    answers: ["Fraud", "Misrepresentation", "Error", "Negligence"],
+                    correct: 0
+                },
+                {
+                    question: "An estate of ownership in real property.",
+                    answers: ["Leasehold Estate", "Freehold Estate", "Life Estate", "Periodic Tenancy"],
+                    correct: 1
+                },  
+                {
+                    question: "Linear distance of land that abuts a lake, river, street, or highway.",
+                    answers: ["Frontage", "Depth", "Easement", "Setback"],
+                    correct: 0
+                },
+                {
+                    question: "An insurance policy specifically designed to protect residential property owners against financial loss from common risks such as fire, theft, and liability.",
+                    answers: ["Homeowners Warranty", "Hazard Insurance", "Homeowners Insurance", "Mortgage Insurance"],
                     correct: 2
                 },
                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                    question: "An insurance policy that protects purchasers of newly constructed or pre-owned homes against certain structural and mechanical defects.",
+                    answers: ["Title Insurance", "Homeowners Warranty", "Mortgage Insurance", "Builders Risk Insurance"],
+                    correct: 1
+                },
+                {
+                    question: "The parcel of land and improvements legally qualifying as the owner's principal residence.",
+                    answers: ["Homestead", "Primary Residence", "Freehold Estate", "Leasehold Estate"],
+                    correct: 0
+                },
+                {
+                    question: "An acronym for the Department of Housing and Urban Development, a federal agency that enforces federal fair housing laws and oversees agencies such as FHA and GNMA.",
+                    answers: ["FHA", "HUD", "GNMA", "VA"],
+                    correct: 1
+                },
+                {
+                    question: "That which is contrary to what exists but is supposed for the purpose of analysis.",
+                    answers: ["Extraordinary Assumption", "Hypothetical Condition", "Market Assumption", "Constructive Notice"],
+                    correct: 1
+                },
+                {
+                    question: "A contract by which the agreement of the parties is created by their conduct.",
+                    answers: ["Express Contract", "Implied Contract", "Unilateral Contract", "Bilateral Contract"],
+                    correct: 1
+                },
+                {
+                    question: "Human-made addition to real estate.",
+                    answers: ["Fixture", "Improvement", "Appurtenance", "Constructive Notice"],
+                    correct: 1
+                },
+                {
+                    question: "Also called the income capitalization approach; one of three approaches to value in appraisal theory; property value is estimated based on the property's anticipated future benefits.",
+                    answers: ["Sales Comparison Approach", "Cost Approach", "Income Approach", "Market Value Approach"],
                     correct: 2
                 },
                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
+                    question: "A method of estimating the value of income-producing property by dividing the expected annual net operating income of the property by a capitalization rate.",
+                    answers: ["Cost Approach", "Gross Rent Multiplier", "Income Capitalization Approach", "Sales Comparison Approach"],
                     correct: 2
                 },
                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
+                    question: "Real estate developed or improved to produce income.",
+                    answers: ["Investment Property", "Personal Property", "Residential Property", "Income Property"],
+                    correct: 3
                 }
             ]
         };
@@ -1571,7 +1574,7 @@
         }
         
         function startAutoNextTimer() {
-            timeLeft = 5;
+            timeLeft = 3;
             document.getElementById('timerDisplay').textContent = `AUTO NEXT IN: ${timeLeft}`;
             
             autoNextTimer = setInterval(() => {
