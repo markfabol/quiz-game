@@ -1,1 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detective Quiz Bureau</title>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Crimson+Text:wght@400;600;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Crimson Text', serif;
+            background: linear-gradient(135deg, #2c1810 0%, #1a0f08 100%);
+            color: #f4f1e8;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(139, 69, 19, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(160, 82, 45, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .paper-texture {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(139, 69, 19, 0.03) 2px,
+                    rgba(139, 69, 19, 0.03) 4px
+                );
+            pointer-events: none;
+            z-index: 2;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 3;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .detective-bureau {
+            background: linear-gradient(145deg, #3d2914, #2c1810);
+            border: 4px solid #8b4513;
+            border-radius: 15px;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.7),
+                inset 0 0 30px rgba(139, 69, 19, 0.2);
+            max-width: 1100px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .bureau-header {
+            background: linear-gradient(90deg, #8b4513, #a0522d, #8b4513);
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            border-bottom: 3px solid #654321;
+        }
+        
+        .bureau-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="wood" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="20" height="20" fill="%23654321"/><path d="M0 10h20M0 20h20" stroke="%23543018" stroke-width="0.5" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23wood)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .bureau-title {
+            font-family: 'Special Elite', cursive;
+            font-size: 3.2rem;
+            font-weight: 400;
+            color: #f4f1e8;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .bureau-subtitle {
+            font-size: 1.4rem;
+            color: #d4af37;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+        
+        .case-files {
+            padding: 40px;
+        }
+        
+        .files-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .case-file {
+            background: linear-gradient(145deg, #f4f1e8, #e8e5d8);
+            color: #2c1810;
+            border: 2px solid #8b4513;
+            border-radius: 10px;
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .case-file::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 20px;
+            width: 40px;
+            height: 15px;
+            background: #d4af37;
+            border-radius: 0 0 5px 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .case-file::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle, #dc143c 40%, transparent 40%);
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+        
+        .case-file:hover {
+            transform: translateY(-8px) rotateX(5deg);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            border-color: #d4af37;
+        }
+        
+        .case-stamp {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 60px;
+            height: 60px;
+            border: 3px solid #dc143c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Special Elite', cursive;
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: #dc143c;
+            transform: rotate(-15deg);
+            opacity: 0.7;
+        }
+        
+        .case-number {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.9rem;
+            color: #8b4513;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .case-title {
+            font-family: 'Special Elite', cursive;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 12px;
+            color: #2c1810;
+        }
+        
+        .case-description {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #4a3728;
+            margin-bottom: 15px;
+        }
+        
+        .case-difficulty {
+            display: inline-block;
+            background: #8b4513;
+            color: #f4f1e8;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .investigation-section {
+            display: none;
+        }
+        
+        .investigation-section.active {
+            display: block;
+        }
+        
+        .investigation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .close-case-btn {
+            background: linear-gradient(45deg, #8b4513, #a0522d);
+            color: #f4f1e8;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Special Elite', cursive;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .close-case-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .case-info {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .info-badge {
+            background: linear-gradient(45deg, #d4af37, #b8941f);
+            color: #2c1810;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .evidence-board {
+            background: linear-gradient(145deg, #654321, #4a3728);
+            border: 3px solid #8b4513;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .evidence-board::before {
+            content: 'EVIDENCE BOARD';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: #d4af37;
+            color: #2c1810;
+            padding: 5px 15px;
+            font-family: 'Special Elite', cursive;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 3px;
+        }
+        
+        .evidence-progress {
+            background: #2c1810;
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 2px solid #8b4513;
+        }
+        
+        .evidence-fill {
+            background: linear-gradient(90deg, #d4af37, #ffd700, #d4af37);
+            height: 100%;
+            transition: width 0.6s ease;
+            border-radius: 4px;
+            position: relative;
+        }
+        
+        .evidence-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .case-document {
+            background: linear-gradient(145deg, #f4f1e8, #e8e5d8);
+            color: #2c1810;
+            border: 3px solid #8b4513;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+        
+        .case-document::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: repeating-linear-gradient(
+                90deg,
+                #dc143c 0px,
+                #dc143c 10px,
+                transparent 10px,
+                transparent 20px
+            );
+        }
+        
+        .question-text {
+            font-family: 'Special Elite', cursive;
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            line-height: 1.4;
+            color: #2c1810;
+        }
+        
+        .clues-list {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .clue-option {
+            background: linear-gradient(145deg, #3d2914, #2c1810);
+            color: #f4f1e8;
+            border: 2px solid #8b4513;
+            padding: 20px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            text-align: left;
+            transition: all 0.3s ease;
+            position: relative;
+            font-family: 'Crimson Text', serif;
+        }
+        
+        .clue-option::before {
+            content: '🔍';
+            position: absolute;
+            left: -5px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .clue-option:hover::before {
+            opacity: 1;
+            left: 10px;
+        }
+        
+        .clue-option:hover {
+            transform: translateX(15px);
+            border-color: #d4af37;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+            padding-left: 45px;
+        }
+        
+        .clue-option.correct {
+            background: linear-gradient(145deg, #2d5016, #1a3009);
+            border-color: #4caf50;
+            animation: solvedCase 0.8s ease;
+        }
+        
+        .clue-option.incorrect {
+            background: linear-gradient(145deg, #5d1616, #3d0909);
+            border-color: #f44336;
+            animation: wrongClue 0.6s ease;
+        }
+        
+        @keyframes solvedCase {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes wrongClue {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+        
+        .investigation-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+        
+        .control-button {
+            background: linear-gradient(45deg, #654321, #4a3728);
+            color: #f4f1e8;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Special Elite', cursive;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .control-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .control-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .control-button.primary {
+            background: linear-gradient(45deg, #d4af37, #b8941f);
+            color: #2c1810;
+        }
+        
+        .case-closed {
+            text-align: center;
+            padding: 50px;
+        }
+        
+        .case-status {
+            font-size: 5rem;
+            margin-bottom: 25px;
+            animation: caseClosedPulse 2s infinite;
+        }
+        
+        @keyframes caseClosedPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .final-verdict {
+            font-family: 'Special Elite', cursive;
+            font-size: 2.8rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #d4af37;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+        
+        .case-score {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #4caf50;
+            margin-bottom: 15px;
+            font-family: 'Courier Prime', monospace;
+        }
+        
+        .solve-rate {
+            font-size: 2rem;
+            color: #8b4513;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        
+        .detective-rank {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            color: #f4f1e8;
+        }
+        
+        .new-case-btn {
+            background: linear-gradient(45deg, #d4af37, #ffd700);
+            color: #2c1810;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 10px;
+            font-family: 'Special Elite', cursive;
+            font-size: 1.2rem;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        .new-case-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .bureau-title {
+                font-size: 2.2rem;
+            }
+            
+            .case-files {
+                padding: 20px;
+            }
+            
+            .files-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .case-document {
+                padding: 25px;
+            }
+            
+            .question-text {
+                font-size: 1.3rem;
+            }
+            
+            .case-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="paper-texture"></div>
+    
+    <div class="container">
+        <div class="detective-bureau">
+            <div class="bureau-header">
+                <div class="bureau-title">🕵️ DETECTIVE QUIZ BUREAU 🕵️</div>
+                <div class="bureau-subtitle">Solve Mysteries Through Knowledge</div>
+            </div>
+            
+            <div class="case-files">
+                <!-- Case Files Selection -->
+                <div id="caseFiles">
+                    <div class="files-grid">
+                        <div class="case-file" onclick="openCase('murder')">
+                            <div class="case-stamp">URGENT</div>
+                            <div class="case-number">CASE #001-M</div>
+                            <div class="case-title">Murder Mystery Cases</div>
+                            <div class="case-description">Investigate suspicious deaths and solve complex murder cases using forensic knowledge.</div>
+                            <div class="case-difficulty">EXPERT</div>
+                        </div>
+                        
+                        <div class="case-file" onclick="openCase('theft')">
+                            <div class="case-stamp">ACTIVE</div>
+                            <div class="case-number">CASE #002-T</div>
+                            <div class="case-title">Theft & Robbery Files</div>
+                            <div class="case-description">Track down stolen goods and identify perpetrators in these property crime cases.</div>
+                            <div class="case-difficulty">MEDIUM</div>
+                        </div>
+                        
+                        <div class="case-file" onclick="openCase('missing')">
+                            <div class="case-stamp">PRIORITY</div>
+                            <div class="case-number">CASE #003-MP</div>
+                            <div class="case-title">Missing Person Reports</div>
+                            <div class="case-description">Find clues and piece together the disappearance of missing individuals.</div>
+                            <div class="case-difficulty">HARD</div>
+                        </div>
+                        
+                        <div class="case-file" onclick="openCase('fraud')">
+                            <div class="case-stamp">OPEN</div>
+                            <div class="case-number">CASE #004-F</div>
+                            <div class="case-title">Fraud Investigation</div>
+                            <div class="case-description">Uncover financial crimes and expose fraudulent schemes and scams.</div>
+                            <div class="case-difficulty">MEDIUM</div>
+                        </div>
+                        
+                        <div class="case-file" onclick="openCase('cold')">
+                            <div class="case-stamp">COLD</div>
+                            <div class="case-number">CASE #005-CC</div>
+                            <div class="case-title">Cold Case Files</div>
+                            <div class="case-description">Revisit unsolved cases with fresh eyes and new investigative techniques.</div>
+                            <div class="case-difficulty">EASY</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Investigation Section -->
+                <div id="investigationSection" class="investigation-section">
+                    <div class="investigation-header">
+                        <button class="close-case-btn" onclick="closeCase()">← CLOSE CASE</button>
+                        <div class="case-info">
+                            <div class="info-badge" id="clueCounter">CLUE 1/5</div>
+                            <div class="info-badge" id="evidenceCounter">EVIDENCE: 0</div>
+                        </div>
+                    </div>
+                    
+                    <div class="evidence-board">
+                        <div class="evidence-progress">
+                            <div class="evidence-fill" id="evidenceFill"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="case-document">
+                        <div class="question-text" id="questionText"></div>
+                        <div class="clues-list" id="cluesList"></div>
+                    </div>
+                    
+                    <div class="investigation-controls">
+                        <button class="control-button" id="prevClue" onclick="previousClue()" disabled>← PREVIOUS CLUE</button>
+                        <button class="control-button primary" id="nextClue" onclick="nextClue()" style="display: none;">NEXT CLUE →</button>
+                    </div>
+                </div>
+                
+                <!-- Case Closed Section -->
+                <div id="caseClosedSection" class="investigation-section">
+                    <div class="case-closed">
+                        <div class="case-status" id="caseStatusIcon">🎯</div>
+                        <div class="final-verdict">CASE CLOSED!</div>
+                        <div class="case-score" id="finalEvidence">0/5</div>
+                        <div class="solve-rate" id="solveRate">0%</div>
+                        <div class="detective-rank" id="detectiveRank"></div>
+                        <button class="new-case-btn" onclick="newCase()">INVESTIGATE NEW CASE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const caseData = {
+            murder: [
+                {
+                    question: "What is the most common cause of death in murder cases?",
+                    options: ["Poisoning", "Gunshot wounds", "Stabbing", "Strangulation"],
+                    correct: 1
+                },
+                {
+                    question: "What does 'rigor mortis' refer to?",
+                    options: ["Time of death", "Stiffening of muscles after death", "Blood pooling", "Body temperature drop"],
+                    correct: 1
+                },
+                {
+                    question: "Which forensic technique is used to determine time of death?",
+                    options: ["DNA analysis", "Fingerprinting", "Body temperature measurement", "Blood spatter analysis"],
+                    correct: 2
+                },
+                {
+                    question: "What is the term for the pattern of blood at a crime scene?",
+                    options: ["Blood evidence", "Blood spatter", "Hemoglobin trace", "Plasma pattern"],
+                    correct: 1
+                },
+                {
+                    question: "Which professional typically performs autopsies?",
+                    options: ["Detective", "Medical examiner", "Crime scene investigator", "Police officer"],
+                    correct: 1
+                }
+            ],
+            theft: [
+                {
+                    question: "What is the difference between burglary and robbery?",
+                    options: ["Amount stolen", "Burglary involves breaking in, robbery involves force", "Time of day", "Type of property"],
+                    correct: 1
+                },
+                {
+                    question: "What is the most commonly stolen item in home burglaries?",
+                    options: ["Jewelry", "Electronics", "Cash", "Artwork"],
+                    correct: 1
+                },
+                {
+                    question: "What does 'fence' mean in criminal terms?",
+                    options: ["Barrier", "Someone who sells stolen goods", "Prison wall", "Security system"],
+                    correct: 1
+                },
+                {
+                    question: "Which type of theft involves using someone's credit card information?",
+                    options: ["Pickpocketing", "Identity theft", "Shoplifting", "Embezzlement"],
+                    correct: 1
+                },
+                {
+                    question: "What is grand theft typically defined by?",
+                    options: ["Type of item", "Value of stolen property", "Location of theft", "Method used"],
+                    correct: 1
+                }
+            ],
+            missing: [
+                {
+                    question: "How long must someone be missing before police will investigate?",
+                    options: ["24 hours", "48 hours", "72 hours", "Immediately if circumstances are suspicious"],
+                    correct: 3
+                },
+                {
+                    question: "What is an Amber Alert used for?",
+                    options: ["Missing adults", "Missing children", "Missing pets", "Missing vehicles"],
+                    correct: 1
+                },
+                {
+                    question: "What percentage of missing persons cases are resolved?",
+                    options: ["About 50%", "About 75%", "About 90%", "About 99%"],
+                    correct: 3
+                },
+                {
+                    question: "What is the most common reason adults go missing?",
+                    options: ["Kidnapping", "Voluntary disappearance", "Accident", "Mental health issues"],
+                    correct: 1
+                },
+                {
+                    question: "Which age group has the highest rate of missing persons?",
+                    options: ["Children under 12", "Teenagers", "Young adults 18-25", "Adults over 65"],
+                    correct: 1
+                }
+            ],
+            fraud: [
+                {
+                    question: "What is a Ponzi scheme?",
+                    options: ["Identity theft", "Investment fraud using new investors' money", "Credit card fraud", "Tax evasion"],
+                    correct: 1
+                },
+                {
+                    question: "What does 'phishing' refer to?",
+                    options: ["Fishing for information", "Stealing personal information online", "Bank robbery", "Insurance fraud"],
+                    correct: 1
+                },
+                {
+                    question: "What is embezzlement?",
+                    options: ["Stealing from strangers", "Stealing from your employer", "Tax fraud", "Insurance fraud"],
+                    correct: 1
+                },
+                {
+                    question: "What is the most common type of fraud?",
+                    options: ["Credit card fraud", "Identity theft", "Insurance fraud", "Investment fraud"],
+                    correct: 0
+                },
+                {
+                    question: "What is a 'shell company'?",
+                    options: ["Oil company", "Company with no real business operations", "Seafood business", "Construction company"],
+                    correct: 1
+                }
+            ],
+            cold: [
+                {
+                    question: "What makes a case 'cold'?",
+                    options: ["It happened in winter", "No active leads or suspects", "The victim died", "It's very old"],
+                    correct: 1
+                },
+                {
+                    question: "Which technology has helped solve many cold cases?",
+                    options: ["Computers", "DNA analysis", "Cameras", "Phones"],
+                    correct: 1
+                },
+                {
+                    question: "How long do police typically keep evidence?",
+                    options: ["1 year", "5 years", "10 years", "Indefinitely for serious crimes"],
+                    correct: 3
+                },
+                {
+                    question: "What is the oldest cold case ever solved?",
+                    options: ["10 years old", "25 years old", "50+ years old", "100+ years old"],
+                    correct: 2
+                },
+                {
+                    question: "Who can reopen a cold case?",
+                    options: ["Only the original detective", "Any detective", "Only the family", "The district attorney"],
+                    correct: 1
+                }
+            ]
+        };
+
+        let currentCase = '';
+        let currentClue = 0;
+        let evidence = 0;
+        let answered = false;
+        let userAnswers = [];
+
+        function openCase(caseType) {
+            currentCase = caseType;
+            currentClue = 0;
+            evidence = 0;
+            answered = false;
+            userAnswers = [];
+            
+            document.getElementById('caseFiles').style.display = 'none';
+            document.getElementById('investigationSection').classList.add('active');
+            
+            showClue();
+        }
+
+        function showClue() {
+            const clues = caseData[currentCase];
+            const clue = clues[currentClue];
+            
+            document.getElementById('questionText').textContent = clue.question;
+            
+            const cluesList = document.getElementById('cluesList');
+            cluesList.innerHTML = '';
+            
+            clue.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.className = 'clue-option';
+                button.textContent = option;
+                
+                const previousAnswer = userAnswers[currentClue];
+                if (previousAnswer !== undefined) {
+                    if (index === clue.correct) {
+                        button.classList.add('correct');
+                    } else if (index === previousAnswer && index !== clue.correct) {
+                        button.classList.add('incorrect');
+                    }
+                    button.style.pointerEvents = 'none';
+                } else {
+                    button.onclick = () => selectClue(index);
+                }
+                
+                cluesList.appendChild(button);
+            });
+            
+            updateInvestigation();
+        }
+
+        function selectClue(selectedIndex) {
+            if (answered) return;
+            
+            answered = true;
+            const clues = caseData[currentCase];
+            const clue = clues[currentClue];
+            const buttons = document.querySelectorAll('.clue-option');
+            
+            userAnswers[currentClue] = selectedIndex;
+            
+            buttons.forEach((button, index) => {
+                if (index === clue.correct) {
+                    button.classList.add('correct');
+                } else if (index === selectedIndex && index !== clue.correct) {
+                    button.classList.add('incorrect');
+                }
+                button.style.pointerEvents = 'none';
+            });
+            
+            if (selectedIndex === clue.correct) {
+                evidence++;
+            }
+            
+            document.getElementById('nextClue').style.display = 'block';
+            updateInvestigation();
+        }
+
+        function updateInvestigation() {
+            const clues = caseData[currentCase];
+            
+            document.getElementById('clueCounter').textContent = `CLUE ${currentClue + 1}/${clues.length}`;
+            document.getElementById('evidenceCounter').textContent = `EVIDENCE: ${evidence}`;
+            
+            const progress = ((currentClue + 1) / clues.length) * 100;
+            document.getElementById('evidenceFill').style.width = progress + '%';
+            
+            const prevBtn = document.getElementById('prevClue');
+            prevBtn.disabled = currentClue === 0;
+            
+            const wasAnswered = userAnswers[currentClue] !== undefined;
+            if (wasAnswered) {
+                document.getElementById('nextClue').style.display = 'block';
+                answered = true;
+            } else {
+                document.getElementById('nextClue').style.display = 'none';
+                answered = false;
+            }
+        }
+
+        function previousClue() {
+            if (currentClue > 0) {
+                currentClue--;
+                answered = false;
+                showClue();
+            }
+        }
+
+        function nextClue() {
+            currentClue++;
+            const clues = caseData[currentCase];
+            
+            if (currentClue < clues.length) {
+                answered = false;
+                showClue();
+            } else {
+                closeCaseResults();
+            }
+        }
+
+        function closeCaseResults() {
+            document.getElementById('investigationSection').classList.remove('active');
+            document.getElementById('caseClosedSection').classList.add('active');
+            
+            const totalClues = caseData[currentCase].length;
+            const percentage = Math.round((evidence / totalClues) * 100);
+            
+            document.getElementById('finalEvidence').textContent = `${evidence}/${totalClues}`;
+            document.getElementById('solveRate').textContent = `${percentage}%`;
+            
+            let rank = '';
+            let icon = '';
+            
+            if (percentage >= 80) {
+                rank = 'MASTER DETECTIVE! Your investigative skills are exceptional. You solved this case with remarkable precision.';
+                icon = '🏆';
+            } else if (percentage >= 60) {
+                rank = 'SKILLED INVESTIGATOR! You have strong detective abilities and solved most of the case successfully.';
+                icon = '🎯';
+            } else if (percentage >= 40) {
+                rank = 'JUNIOR DETECTIVE! You\'re developing good investigative instincts. Keep practicing your skills.';
+                icon = '🔍';
+            } else {
+                rank = 'ROOKIE INVESTIGATOR! Every great detective started somewhere. Study the evidence more carefully next time.';
+                icon = '📋';
+            }
+            
+            document.getElementById('detectiveRank').textContent = rank;
+            document.getElementById('caseStatusIcon').textContent = icon;
+        }
+
+        function closeCase() {
+            document.getElementById('investigationSection').classList.remove('active');
+            document.getElementById('caseFiles').style.display = 'block';
+        }
+
+        function newCase() {
+            document.getElementById('caseClosedSection').classList.remove('active');
+            document.getElementById('caseFiles').style.display = 'block';
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97feb641b4c6fed7',t:'MTc1ODAwODM4Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
 
