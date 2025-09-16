@@ -635,31 +635,25 @@
                     <path d="M65 82 Q70 77 75 82" stroke="#7cb342" stroke-width="2" fill="none"/>
                 </svg>
             </div>
-            <h1>🌳 FOREST QUIZ GROVE 🌳</h1>
-            <p>Discover wisdom in nature's classroom</p>
+            <h1>🌳 AZERON FOREST QUIZ GROVE 🌳</h1>
+            <p>THESE TERMS WILL help you not only as you study for your appraisal exam, but also after you pass your exam and are on the job every day.</p>
         </div>
         
         <div class="content">
             <!-- Category Selection -->
             <div id="categorySelection" class="category-selection">
                 <button class="category-btn" onclick="startQuiz('agham')">
-                    <span class="emoji">🔬</span>AGHAM
+                    <span class="emoji"></span>GROVE 1 
                 </button>
                 <button class="category-btn" onclick="startQuiz('kasaysayan')">
-                    <span class="emoji">📚</span>KASAYSAYAN
+                    <span class="emoji"></span>GROVE 2
                 </button>
                 <button class="category-btn" onclick="startQuiz('heograpiya')">
-                    <span class="emoji">🌍</span>HEOGRAPIYA
+                    <span class="emoji"></span>GROVE 3
                 </button>
                 <button class="category-btn" onclick="startQuiz('sports')">
-                    <span class="emoji">⚽</span>SPORTS
-                </button>
-                <button class="category-btn" onclick="startQuiz('pelikula')">
-                    <span class="emoji">🎬</span>PELIKULA
-                </button>
-                <button class="category-btn" onclick="startQuiz('teknolohiya')">
-                    <span class="emoji">💻</span>TEKNOLOHIYA
-                </button>
+                    <span class="emoji"></span>GROVE 4
+                    </button>
             </div>
             
             <!-- Quiz Section -->
@@ -700,166 +694,513 @@
         const quizData = {
             agham: [
                 {
-                    question: "Ano ang chemical symbol ng ginto?",
-                    answers: ["Go", "Gd", "Au", "Ag"],
-                    correct: 2
-                },
-                {
-                    question: "Ilang buto ang nasa katawan ng isang adult na tao?",
-                    answers: ["206", "208", "204", "210"],
+                    question: "liquidity - the ability to convert an asset into cash.",
+                    answers: ["Liquidity", "Leverage", "Capital", "Equity"],
                     correct: 0
                 },
                 {
-                    question: "Anong planeta ang kilala bilang Red Planet?",
-                    answers: ["Venus", "Mars", "Jupiter", "Saturn"],
-                    correct: 1
+                    question: "lis pendens-  a Latin phrase meaning 'suit pending'; a public notice that a lawsuit has been filed that affect the title to a particular piece of property.",
+                    answers: ["Lis Pendens", "Lien", "Abstract of Title", "Quiet Title"],
+                    correct: 0
                 },
                 {
-                    question: "Ano ang pinakamabilis na hayop sa mundo?",
-                    answers: ["Cheetah", "Peregrine Falcon", "Sailfish", "Golden Eagle"],
-                    correct: 1
+                    question: "listing agreement - a contract between the owner and a licensed real estate broker wherein the broker is employed to sell real estate on the owner's terms within a given time, for which service the owner agrees to pay the broker an agreed-upon fee.",
+                    answers: ["Listing Agreement", "Exclusive Right to Sell", "Purchase Agreement", "Lease Agreement"],
+                    correct: 0
                 },
                 {
-                    question: "Ano ang pinakamataas na bundok sa mundo?",
-                    answers: ["K2", "Mount Everest", "Kangchenjunga", "Lhotse"],
-                    correct: 1
+                    question: "listing broker - a broker who contracts with a property owner to sell or lease the described property; the listing agreement typically may provide for the broker to make property available through a multiple-listing system.",
+                    answers: ["Listing Broker", "Selling Broker", "Associate Broker", "Managing Broker"],
+                    correct: 0
+                },
+                {
+                    question: "littoral rights - landowner's claim to use water in large, navigable lakes and oceans adjacent to property; ownership rights to land-bordering bodies of water up to the high-water mark.",
+                    answers: ["Littoral Rights", "Riparian Rights", "Water Easement", "Navigational Rights"],
+                    correct: 0
+                },
+                {
+                    question: "modified economic age-life method - a method of estimating accrued depreciation in which the ratio of effective age to total economic life is multiplied by the reproduction or replacement cost minus curable physical and functional obsolescence.",
+                    answers: ["Modified Economic Age-Life Method", "Physical Age-Life Method", "Cost Approach", "Income Capitalization Method"],
+                    correct: 0
+                },
+                {
+                    question: "money judgment - a court order to settle a claim with a monetary payment rather than specific performance.",
+                    answers: ["Money Judgment", "Lien", "Levy", "Foreclosure"],
+                    correct: 0
+                },
+                {
+                    question: "money market - often referred to as the safe rate or risk free rate of return; investments in short-term debt securities such as CDs, government securities, and Treasury bills.",
+                    answers: ["Money Market", "Capital Market", "Equity Market", "Bond Market"],
+                    correct: 0
+                },
+                {
+                    question: "month-to-month tenancy - tenancy in which the tenant rents for only one month at a time.",
+                    answers: ["Month-to-Month Tenancy", "Periodic Estate", "Tenancy at Will", "Estate for Years"],
+                    correct: 0
+                },
+                {
+                    question: "monument - a fixed, visible marker used to establish boundaries for a survey.",
+                    answers: ["Monument", "Benchmark", "Meridian", "Marker"],
+                    correct: 0
+                },
+                {
+                    question: "no cash out refinance - a refinance transaction in which the new mortgage amount is limited to the sum of the remaining balance of the existing first mortgage.",
+                    answers: ["No Cash Out Refinance", "Cash-Out Refinance", "Blanket Mortgage", "Open-End Mortgage"],
+                    correct: 0
+                },
+                {
+                    question: "non-conforming use - a use of land that is permitted to continue, or grandfathered, even after a zoning ordinance is passed that prohibits the use.",
+                    answers: ["Non-Conforming Use", "Variance", "Spot Zoning", "Conditional Use"],
+                    correct: 0
+                },
+                {
+                    question: "nonliquid asset - an asset that cannot easily be converted into cash.",
+                    answers: ["Nonliquid Asset", "Liquid Asset", "Equity Asset", "Cash Equivalent"],
+                    correct: 0
+                },
+                {
+                    question: "notarize - to have a document certified by a notary public.",
+                    answers: ["Notarize", "Authenticate", "Record", "File"],
+                    correct: 0
+                },
+                {
+                    question: "notary public - a person who is authorized to administer oaths and take acknowledgments.",
+                    answers: ["Notary Public", "Attorney", "Clerk", "Recorder"],
+                    correct: 0
+                },
+                {
+                    question: "note - a written instrument acknowledging a debt, with a promise to repay, including an outline of the terms of repayment.",
+                    answers: ["Note", "Mortgage", "Deed", "Bond"],
+                    correct: 0
+                },
+                {
+                    question: "note rate - the interest rate on a promissory note.",
+                    answers: ["Note Rate", "APR", "Cap Rate", "Discount Rate"],
+                    correct: 0
+                },
+                {
+                    question: "obligee - person on whose favor an obligation is entered.",
+                    answers: ["Obligee", "Obligor", "Grantor", "Grantee"],
+                    correct: 0
+                },
+                {
+                    question: "obligor - person who is bound to another by an obligation.",
+                    answers: ["Obligor", "Obligee", "Trustor", "Beneficiary"],
+                    correct: 0
+                },
+                {
+                    question: "Obsolescence - a loss in the value of a property because of functional or external factors.",
+                    answers: ["Obsolescence", "Depreciation", "Deterioration", "Vacancy"],
+                    correct: 0
+                },
+                {
+                    question: "offer - to propose as payment; to place a bid on property.",
+                    answers: ["Offer", "Option", "Contract", "Consideration"],
+                    correct: 0
+                },
+                {
+                    question: "offer and acceptance - two of the necessary elements for the creation of a contract.",
+                    answers: ["Offer and Acceptance", "Consideration", "Mutual Consent", "Legal Purpose"],
+                    correct: 0
+                },
+                {
+                    question: "Payor - one who makes payment to another.",
+                    answers: ["Payor", "Payee", "Maker", "Drawer"],
+                    correct: 0
+                },
+                {
+                    question: "percentage lease - a lease in which the rental rate is based on a percentage of the tenant's gross sales. This type of lease is most often used for retail space.",
+                    answers: ["Percentage Lease", "Net Lease", "Gross Lease", "Graduated Lease"],
+                    correct: 0
+                },
+                {
+                    question: "periodic estate - tenancy that automatically renews itself until either the landlord or tenant gives notice to terminate it.",
+                    answers: ["Periodic Estate", "Estate at Will", "Estate for Years", "Tenancy at Sufferance"],
+                    correct: 0
                 }
             ],
             kasaysayan: [
                 {
-                    question: "Kailan natapos ang World War II?",
-                    answers: ["1944", "1945", "1946", "1947"],
-                    correct: 1
+                    question: "Loan - a sum of borrowed money, or principal, that is generally repaid with interest.",
+                    answers: ["Loan", "Savings", "Equity", "Deposit"],
+                    correct: 0
                 },
                 {
-                    question: "Sino ang unang taong nakalakad sa buwan?",
-                    answers: ["Buzz Aldrin", "Neil Armstrong", "John Glenn", "Alan Shepard"],
-                    correct: 1
+                    question: "loan officer - (or lender) serves several functions and has various responsibilities, such as soliciting loans; a loan officer both represents the lending institution and represents the borrower to the lending institution.",
+                    answers: ["Loan officer", "Broker", "Appraiser", "Investor"],
+                    correct: 0
                 },
                 {
-                    question: "Kailan nakamit ng Pilipinas ang kalayaan mula sa Espanya?",
-                    answers: ["1896", "1898", "1899", "1901"],
-                    correct: 1
+                    question: "loan-to-value ratio (LTV) - the ratio of the current loan balance to the property value.",
+                    answers: ["Loan-to-value ratio", "Debt ratio", "Equity rate", "Capitalization rate"],
+                    correct: 0
                 },
                 {
-                    question: "Sino ang sumulat ng 'Noli Me Tangere'?",
-                    answers: ["Andres Bonifacio", "Jose Rizal", "Emilio Aguinaldo", "Apolinario Mabini"],
-                    correct: 1
+                    question: "lock-in - an agreement in which the lender guarantees a specified interest rate for a certain period of time.",
+                    answers: ["Lock-in", "Refinance", "Escrow", "Amortization"],
+                    correct: 0
                 },
                 {
-                    question: "Anong taon namatay si Jose Rizal?",
-                    answers: ["1895", "1896", "1897", "1898"],
-                    correct: 1
+                    question: "lock-in period - the time period during which the lender has guaranteed an interest rate to a borrower.",
+                    answers: ["Lock-in period", "Grace period", "Loan term", "Balloon period"],
+                    correct: 0
+                },
+                {
+                    question: "lot and block description - a method of describing a particular property by referring to a lot and block number within a subdivision recorded in the public record.",
+                    answers: ["Lot and block description", "Metes and bounds", "Rectangular survey", "Plat map"],
+                    correct: 0
+                },
+                {
+                    question: "Mortgage - a written instrument that pledges property to secure payment of a debt obligation as evidenced by a promissory note.",
+                    answers: ["Mortgage", "Lease", "Deed", "Lien"],
+                    correct: 0
+                },
+                {
+                    question: "mortgage banker - an entity that originates, funds, and services loans to be sold into the secondary money market.",
+                    answers: ["Mortgage banker", "Mortgage broker", "Underwriter", "Investor"],
+                    correct: 0
+                },
+                {
+                    question: "mortgage broker - an entity that, for a fee, brings borrowers together with lenders.",
+                    answers: ["Mortgage broker", "Mortgage banker", "Loan officer", "Appraiser"],
+                    correct: 0
+                },
+                {
+                    question: "mortgage constant or mortgage capitalization rate - annual debt service divided by the loan amount.",
+                    answers: ["Mortgage constant", "Loan ratio", "Capital gain", "Operating ratio"],
+                    correct: 0
+                },
+                {
+                    question: "notice of default - a formal written notice to a borrower that a default has occurred on a loan and that legal action may be taken.",
+                    answers: ["Notice of default", "Deed notice", "Lien waiver", "Foreclosure"],
+                    correct: 0
+                },
+                {
+                    question: "novation - the substitution of a new contract for an existing one.",
+                    answers: ["Novation", "Consideration", "Assignment", "Option"],
+                    correct: 0
+                },
+                {
+                    question: "open-end mortgage - a loan containing a clause that allows the mortgagor to borrow additional funds from the lender.",
+                    answers: ["Open-end mortgage", "Balloon loan", "Fixed mortgage", "Bridge loan"],
+                    correct: 0
+                },
+                {
+                    question: "open listing - a listing contract given to one or more brokers in which a commission is paid only to the broker who procures a sale.",
+                    answers: ["Open listing", "Exclusive listing", "Net listing", "Multiple listing"],
+                    correct: 0
+                },
+                {
+                    question: "operating expense ratio (OER) - total operating expenses divided by effective gross income (EGI).",
+                    answers: ["Operating expense ratio", "Loan ratio", "Debt coverage", "Equity rate"],
+                    correct: 0
+                },
+                {
+                    question: "operating expenses - expenses incurred to maintain the property plus an allowance for replacing certain items.",
+                    answers: ["Operating expenses", "Capital expenses", "Loan costs", "Taxes"],
+                    correct: 0
+                },
+                {
+                    question: "opinion of title - an opinion, usually given by an attorney, regarding the status of a title to property.",
+                    answers: ["Opinion of title", "Certificate of occupancy", "Title deed", "Abstract of title"],
+                    correct: 0
+                },
+                {
+                    question: "opportunity cost - represents the cost of passing up an opportunity.",
+                    answers: ["Opportunity cost", "Equity cost", "Interest", "Capital loss"],
+                    correct: 0
+                },
+                {
+                    question: "option - an agreement that gives a prospective buyer the right to purchase a seller's property within a specified period of time for a specified price.",
+                    answers: ["Option", "Contract", "Lease", "Escrow"],
+                    correct: 0
+                },
+                {
+                    question: "Optionee - one who receives or holds an option.",
+                    answers: ["Optionee", "Optionor", "Lessee", "Mortgagor"],
+                    correct: 0
+                },
+                {
+                    question: "plat number - a number that identifies a parcel of real estate for which a plat has been recorded in the public record.",
+                    answers: ["Plat number", "Block number", "Lot number", "Parcel code"],
+                    correct: 0
+                },
+                {
+                    question: "plottage - increment of value that results when extra utility is created by combining two or more sites under a single ownership.",
+                    answers: ["Plottage", "Assemblage", "Integration", "Combination"],
+                    correct: 0
+                },
+                {
+                    question: "point - 1% of the loan.",
+                    answers: ["Point", "Basis point", "Margin", "Interest rate"],
+                    correct: 0
+                },
+                {
+                    question: "point of beginning - the starting point for a survey using the metes and bounds method of description.",
+                    answers: ["Point of beginning", "Benchmark", "Base point", "Meridian"],
+                    correct: 0
+                },
+                {
+                    question: "police power - the right of the government to enact laws, ordinances, and regulations to protect the public health, safety, welfare, and morals.",
+                    answers: ["Police power", "Eminent domain", "Taxation", "Escheat"],
+                    correct: 0
                 }
             ],
             heograpiya: [
                 {
-                    question: "Ano ang kabisera ng Australia?",
-                    answers: ["Sydney", "Melbourne", "Canberra", "Perth"],
-                    correct: 2
+                    question: "mortgage lien - an encumbrance created by recording a mortgage.",
+                    answers: ["Mortgage lien", "Deed", "Easement", "Lease"],
+                    correct: 0
                 },
                 {
-                    question: "Alin ang pinakamahabang ilog sa mundo?",
-                    answers: ["Amazon", "Nile", "Mississippi", "Yangtze"],
-                    correct: 1
+                    question: "mortgagee - the lender who benefits from the mortgage.",
+                    answers: ["Mortgagee", "Mortgagor", "Trustee", "Beneficiary"],
+                    correct: 0
                 },
                 {
-                    question: "Ilang kontinente ang mayroon sa mundo?",
-                    answers: ["5", "6", "7", "8"],
-                    correct: 2
+                    question: "mortgagor - the borrower who pledges the property as collateral.",
+                    answers: ["Mortgagor", "Mortgagee", "Tenant", "Grantor"],
+                    correct: 0
                 },
                 {
-                    question: "Ano ang pinakamalaking isla sa Pilipinas?",
-                    answers: ["Mindanao", "Luzon", "Visayas", "Palawan"],
-                    correct: 1
+                    question: "most probable selling price - most likely price at which a property would sell if exposed in a competitive market for a reasonable period of time, under the market conditions at the date of the appraisal.",
+                    answers: ["Most probable selling price", "Cost approach", "Market rent", "List price"],
+                    correct: 0
                 },
                 {
-                    question: "Ano ang pinakamaliit na bansa sa mundo?",
-                    answers: ["Monaco", "San Marino", "Vatican City", "Liechtenstein"],
-                    correct: 2
+                    question: "multi-dwelling units - properties that provide separate housing units for more than one family that secure only a single mortgage.",
+                    answers: ["Multi-dwelling units", "Single-family home", "Condominium", "Townhouse"],
+                    correct: 0
+                },
+                {
+                    question: "multiple-listing system (MLS) - the method of marketing a property listing to all participants in the MLS.",
+                    answers: ["Multiple-listing system", "Exclusive listing", "Net listing", "Pocket listing"],
+                    correct: 0
+                },
+                {
+                    question: "mutual rescission - an agreement by all parties to a contract to release one another from the obligations of the contract.",
+                    answers: ["Mutual rescission", "Novation", "Consideration", "Option"],
+                    correct: 0
+                },
+                {
+                    question: "optionor - one who grants an option; the property owner.",
+                    answers: ["Optionor", "Optionee", "Lessor", "Mortgagor"],
+                    correct: 0
+                },
+                {
+                    question: "ordinance - a municipal regulation.",
+                    answers: ["Ordinance", "Statute", "Decree", "Resolution"],
+                    correct: 0
+                },
+                {
+                    question: "original cost - actual cost of a property to its present owner.",
+                    answers: ["Original cost", "Book value", "Market value", "Replacement cost"],
+                    correct: 0
+                },
+                {
+                    question: "original principal balance - the total amount of principal owed on a loan before any payments are made.",
+                    answers: ["Original principal balance", "Loan-to-value ratio", "Amortization", "Equity"],
+                    correct: 0
+                },
+                {
+                    question: "origination fee - the amount charged by a lender to cover the cost of assembling the loan package and originating the loan.",
+                    answers: ["Origination fee", "Processing fee", "Discount point", "Application fee"],
+                    correct: 0
+                },
+                {
+                    question: "overage rent - amount paid over and above the minimum rent (e.g., percentage lease).",
+                    answers: ["Overage rent", "Gross rent", "Net rent", "Base rent"],
+                    correct: 0
+                },
+                {
+                    question: "overall capitalization rate (OAR) - net operating income from a single year or average of several years divided by the sales price or property value.",
+                    answers: ["Overall capitalization rate", "Debt ratio", "Equity dividend rate", "Cash-on-cash return"],
+                    correct: 0
+                },
+                {
+                    question: "owner financing - a real estate transaction in which the property seller provides all or part of the financing.",
+                    answers: ["Owner financing", "Mortgage loan", "Bridge loan", "Lease-purchase"],
+                    correct: 0
+                },
+                {
+                    question: "package mortgage - a mortgage that pledges both real and personal property as collateral.",
+                    answers: ["Package mortgage", "Blanket mortgage", "Chattel mortgage", "Open-end mortgage"],
+                    correct: 0
+                },
+                {
+                    question: "paired sales analysis - procedure used in the sales comparison approach to estimate values of specific property characteristics.",
+                    answers: ["Paired sales analysis", "Cost approach", "Income approach", "Regression analysis"],
+                    correct: 0
+                },
+                {
+                    question: "parcel - a lot or specific portion of a large tract of real estate.",
+                    answers: ["Parcel", "Plat", "Block", "Lot"],
+                    correct: 0
+                },
+                {
+                    question: "partial release - mortgage clause in a blanket mortgage in which the lender agrees to release certain parcels from the mortgage lien.",
+                    answers: ["Partial release", "Satisfaction", "Subordination", "Defeasance"],
+                    correct: 0
+                },
+                {
+                    question: "partial taking - in eminent domain, when only a portion of a parcel of land is taken.",
+                    answers: ["Partial taking", "Condemnation", "Full taking", "Escheat"],
+                    correct: 0
+                },
+                {
+                    question: "real estate agent - a real estate broker who has been appointed to market a property for the owner or represent a buyer.",
+                    answers: ["Real estate agent", "Mortgage broker", "Loan officer", "Appraiser"],
+                    correct: 0
+                },
+                {
+                    question: "real estate board - an organization whose members consist primarily of real estate sales agents, brokers, and administrators.",
+                    answers: ["Real estate board", "Trade union", "Chamber of commerce", "Association"],
+                    correct: 0
+                },
+                {
+                    question: "real estate broker - a licensed person or entity who negotiates real estate transactions for others for a fee.",
+                    answers: ["Real estate broker", "Real estate agent", "Investor", "Trustee"],
+                    correct: 0
+                },
+                {
+                    question: "real estate market - interaction of buyers and sellers exchanging real property rights for money.",
+                    answers: ["Real estate market", "Stock market", "Capital market", "Commodity market"],
+                    correct: 0
+                },
+                {
+                    question: "scope of work - amount and type of information researched and the analysis applied in an assignment.",
+                    answers: ["Scope of work", "Statement of work", "Appraisal report", "Assignment brief"],
+                    correct: 0
                 }
             ],
             sports: [
                 {
-                    question: "Ilang manlalaro ang nasa basketball court sa isang team?",
-                    answers: ["4", "5", "6", "7"],
-                    correct: 1
-                },
-                {
-                    question: "Anong sport ang ginagawa ang slam dunk?",
-                    answers: ["Volleyball", "Tennis", "Basketball", "Baseball"],
-                    correct: 2
-                },
-                {
-                    question: "Gaano kadalas ang Summer Olympics?",
-                    answers: ["Bawat 2 taon", "Bawat 3 taon", "Bawat 4 na taon", "Bawat 5 taon"],
-                    correct: 2
-                },
-                {
-                    question: "Sino ang kilalang boxer na Pilipino?",
-                    answers: ["Nonito Donaire", "Manny Pacquiao", "Jerwin Ancajas", "Lahat ng nabanggit"],
-                    correct: 3
-                },
-                {
-                    question: "Sa soccer, ilang manlalaro ang nasa field para sa bawat team?",
-                    answers: ["10", "11", "12", "9"],
-                    correct: 1
-                }
-            ],
-            pelikula: [
-                {
-                    question: "Anong pelikulang Pilipino ang naging sikat worldwide?",
-                    answers: ["Heneral Luna", "Goyo", "Parasite", "Miracle in Cell No. 7"],
+                    question: "participation mortgage - a type of mortgage in which the lender receives a certain percentage of the income or resale proceeds from a property, as well as interest on the loan.",
+                    answers: ["Participation mortgage", "Package mortgage", "Blanket mortgage", "Shared equity mortgage"],
                     correct: 0
                 },
                 {
-                    question: "Sino ang direktor ng pelikulang 'Jaws'?",
-                    answers: ["George Lucas", "Steven Spielberg", "Martin Scorsese", "Francis Ford Coppola"],
-                    correct: 1
-                },
-                {
-                    question: "Sa 'The Matrix', anong kulay ng pill ang kinuha ni Neo?",
-                    answers: ["Asul", "Pula", "Berde", "Dilaw"],
-                    correct: 1
-                },
-                {
-                    question: "Anong animated movie ang may kantang 'Let It Go'?",
-                    answers: ["Moana", "Tangled", "Frozen", "Brave"],
-                    correct: 2
-                },
-                {
-                    question: "Sino ang sikat na action star na Pilipino sa Hollywood?",
-                    answers: ["Lou Diamond Phillips", "Dante Basco", "Tia Carrere", "Dave Bautista"],
-                    correct: 3
-                }
-            ],
-            teknolohiya: [
-                {
-                    question: "Ano ang ibig sabihin ng 'WWW'?",
-                    answers: ["World Wide Web", "World Wide Wire", "Web World Wide", "Wide World Web"],
+                    question: "partition - the division of property held by co-owners into individual shares.",
+                    answers: ["Partition", "Conveyance", "Subdivision", "Severance"],
                     correct: 0
                 },
                 {
-                    question: "Sino ang nagtatag ng Facebook?",
-                    answers: ["Steve Jobs", "Bill Gates", "Mark Zuckerberg", "Larry Page"],
-                    correct: 2
+                    question: "partnership - an agreement between two parties to conduct business for profit. In a partnership, property is owned by the partnership, not the individual partners.",
+                    answers: ["Partnership", "Joint tenancy", "Corporation", "Tenancy in common"],
+                    correct: 0
                 },
                 {
-                    question: "Ano ang ibig sabihin ng 'AI' sa teknolohiya?",
-                    answers: ["Automated Intelligence", "Artificial Intelligence", "Advanced Intelligence", "Applied Intelligence"],
-                    correct: 1
+                    question: "party wall - a common wall used to separate two adjoining properties.",
+                    answers: ["Party wall", "Boundary wall", "Retaining wall", "Dividing fence"],
+                    correct: 0
                 },
                 {
-                    question: "Anong kumpanya ang gumawa ng iPhone?",
-                    answers: ["Samsung", "Google", "Apple", "Microsoft"],
-                    correct: 2
+                    question: "payee - one who receives payment from another.",
+                    answers: ["Payee", "Payor", "Obligor", "Obligee"],
+                    correct: 0
                 },
                 {
-                    question: "Ano ang pinakaunang social media platform?",
-                    answers: ["Facebook", "MySpace", "Friendster", "Six Degrees"],
-                    correct: 3
+                    question: "physical deterioration - a loss in the value of a property because of impairment of its physical condition.",
+                    answers: ["Physical deterioration", "Functional obsolescence", "Economic obsolescence", "Depreciation"],
+                    correct: 0
+                },
+                {
+                    question: "PITI - principal, interest, taxes, and insurance - components of a regular mortgage payment.",
+                    answers: ["PITI", "LTV", "PMI", "OER"],
+                    correct: 0
+                },
+                {
+                    question: "planned unit development (PUD) - a type of zoning that provides for residential and commercial uses within a specified area.",
+                    answers: ["Planned unit development", "Mixed-use zoning", "Cluster zoning", "Commercial zoning"],
+                    correct: 0
+                },
+                {
+                    question: "Plat - a map of subdivided land showing the boundaries of individual parcels or lots.",
+                    answers: ["Plat", "Parcel", "Survey", "Topographic map"],
+                    correct: 0
+                },
+                {
+                    question: "plat book - a group of maps located in the public record showing the division of land into subdivisions, blocks, and lots.",
+                    answers: ["Plat book", "Title record", "Abstract", "Survey book"],
+                    correct: 0
+                },
+                {
+                    question: "range - an area of land six miles wide, numbered east or west from a principal meridian in the rectangular survey system.",
+                    answers: ["Range", "Tier", "Baseline", "Township"],
+                    correct: 0
+                },
+                {
+                    question: "range lines - in the rectangular survey system, the north-south lines spaced six miles apart, used to define a township.",
+                    answers: ["Range lines", "Baseline", "Meridians", "Tier lines"],
+                    correct: 0
+                },
+                {
+                    question: "range of value - in an appraisal report, the confidence interval in which the final estimate of a property's value may lie.",
+                    answers: ["Range of value", "Market value", "Sale price", "Appraised value"],
+                    correct: 0
+                },
+                {
+                    question: "ready, willing, and able - the state of being able to pay the asking price for a property and being prepared to complete the transaction.",
+                    answers: ["Ready, willing, and able", "Prequalified", "Preapproved", "Qualified buyer"],
+                    correct: 0
+                },
+                {
+                    question: "real estate - land, the earth below it, the air above it, and anything permanently attached to it.",
+                    answers: ["Real estate", "Real property", "Personal property", "Fixture"],
+                    correct: 0
+                },
+                {
+                    question: "safety clause - a contract provision that provides a time period following expiration of a listing agreement during which the agent will still be compensated if a sale occurs.",
+                    answers: ["Safety clause", "Protection clause", "Extension clause", "Contingency clause"],
+                    correct: 0
+                },
+                {
+                    question: "Sale-leaseback - a transaction in which the owner sells improved property and, as part of the same transaction, leases it back to remain as tenant.",
+                    answers: ["Sale-leaseback", "Lease-option", "Lease-purchase", "Ground lease"],
+                    correct: 0
+                },
+                {
+                    question: "sale price - the amount of money paid or asked for in a specific transaction; may include nonrealty items.",
+                    answers: ["Sale price", "Market value", "Appraised value", "List price"],
+                    correct: 0
+                },
+                {
+                    question: "sales comparison approach - one of three approaches to value in appraisal theory; value is estimated by comparing similar recently sold properties.",
+                    answers: ["Sales comparison approach", "Cost approach", "Income approach", "Capitalization approach"],
+                    correct: 0
+                },
+                {
+                    question: "sales contract - a contract between a buyer and a seller outlining the terms of the sale.",
+                    answers: ["Sales contract", "Listing agreement", "Option contract", "Lease agreement"],
+                    correct: 0
+                },
+                {
+                    question: "salesperson - one who is licensed to sell real estate in a given territory.",
+                    answers: ["Salesperson", "Broker", "Agent", "Associate broker"],
+                    correct: 0
+                },
+                {
+                    question: "salvage value - the value of a property at the end of its economic life.",
+                    answers: ["Salvage value", "Book value", "Depreciated value", "Residual value"],
+                    correct: 0
+                },
+                {
+                    question: "sandwich lease - sublease that occurs when a lessee leases a property to another and becomes a lessor.",
+                    answers: ["Sandwich lease", "Sublease", "Net lease", "Percentage lease"],
+                    correct: 0
+                },
+                {
+                    question: "satisfaction - an instrument acknowledging that a debt has been paid in full.",
+                    answers: ["Satisfaction", "Release", "Defeasance", "Discharge"],
+                    correct: 0
+                },
+                {
+                    question: "scope of work - amount and type of information researched and the analysis applied in an assignment.",
+                    answers: ["Scope of work", "Statement of work", "Appraisal report", "Assignment brief"],
+                    correct: 0
                 }
-            ]
+            ],
+
         };
 
         let currentCategory = '';
