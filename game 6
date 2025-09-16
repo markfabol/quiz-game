@@ -1,1 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia Battle Arena</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background: radial-gradient(ellipse at center, #1a0033 0%, #000000 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #ffffff;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        .container {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .game-arena {
+            background: linear-gradient(145deg, #2a0845, #1a0033);
+            border: 3px solid #ff00ff;
+            border-radius: 30px;
+            box-shadow: 
+                0 0 50px rgba(255, 0, 255, 0.5),
+                inset 0 0 50px rgba(255, 0, 255, 0.1);
+            max-width: 1000px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .arena-header {
+            background: linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .arena-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .game-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            font-weight: 900;
+            color: #000;
+            text-shadow: 2px 2px 0px #fff;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .game-subtitle {
+            font-size: 1.3rem;
+            color: #000;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .arena-content {
+            padding: 40px;
+        }
+        
+        .category-arena {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .battle-card {
+            background: linear-gradient(145deg, #4a0e4e, #2a0845);
+            border: 2px solid #00ffff;
+            border-radius: 20px;
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .battle-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+        
+        .battle-card:hover::before {
+            left: 100%;
+        }
+        
+        .battle-card:hover {
+            transform: scale(1.05) rotateY(5deg);
+            border-color: #ff00ff;
+            box-shadow: 0 15px 40px rgba(255, 0, 255, 0.4);
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+            text-align: center;
+        }
+        
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #00ffff;
+        }
+        
+        .card-desc {
+            font-size: 1rem;
+            opacity: 0.8;
+            text-align: center;
+            line-height: 1.4;
+        }
+        
+        .battle-section {
+            display: none;
+        }
+        
+        .battle-section.active {
+            display: block;
+        }
+        
+        .battle-hud {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .exit-btn {
+            background: linear-gradient(45deg, #ff4444, #cc0000);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4);
+        }
+        
+        .exit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 68, 68, 0.6);
+        }
+        
+        .hud-stats {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .stat-display {
+            background: linear-gradient(45deg, #00ffff, #0099cc);
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
+        }
+        
+        .timer-display {
+            background: linear-gradient(45deg, #ffff00, #ff8800);
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(255, 255, 0, 0.4);
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        .timer-display.warning {
+            background: linear-gradient(45deg, #ff4444, #cc0000);
+            color: white;
+            animation: pulse 0.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .energy-bar {
+            background: #1a0033;
+            height: 12px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            border: 2px solid #00ffff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+        
+        .energy-fill {
+            background: linear-gradient(90deg, #00ffff, #ff00ff, #00ffff);
+            height: 100%;
+            transition: width 0.8s ease;
+            border-radius: 4px;
+            animation: energyFlow 2s infinite;
+        }
+        
+        @keyframes energyFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .battle-zone {
+            background: linear-gradient(145deg, #1a0033, #2a0845);
+            border: 3px solid #ff00ff;
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 25px;
+            box-shadow: inset 0 0 30px rgba(255, 0, 255, 0.2);
+        }
+        
+        .question-display {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 35px;
+            line-height: 1.5;
+            text-align: center;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+        
+        .battle-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .battle-btn {
+            background: linear-gradient(145deg, #4a0e4e, #2a0845);
+            color: #ffffff;
+            border: 3px solid #00ffff;
+            padding: 25px 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .battle-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.3), transparent);
+            transition: all 0.4s ease;
+            transform: translate(-50%, -50%);
+        }
+        
+        .battle-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .battle-btn:hover {
+            transform: translateY(-5px);
+            border-color: #ff00ff;
+            box-shadow: 0 10px 30px rgba(255, 0, 255, 0.5);
+        }
+        
+        .battle-btn.correct {
+            background: linear-gradient(145deg, #00ff00, #008800);
+            border-color: #00ff00;
+            animation: correctPulse 0.6s ease;
+        }
+        
+        .battle-btn.incorrect {
+            background: linear-gradient(145deg, #ff0000, #880000);
+            border-color: #ff0000;
+            animation: incorrectShake 0.6s ease;
+        }
+        
+        @keyframes correctPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        @keyframes incorrectShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+        
+        .battle-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+        
+        .control-btn {
+            background: linear-gradient(45deg, #666666, #333333);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+        
+        .control-btn:hover {
+            background: linear-gradient(45deg, #888888, #555555);
+            transform: translateY(-2px);
+        }
+        
+        .control-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .control-btn.primary {
+            background: linear-gradient(45deg, #ff00ff, #cc00cc);
+        }
+        
+        .control-btn.primary:hover {
+            background: linear-gradient(45deg, #ff44ff, #dd00dd);
+        }
+        
+        .victory-arena {
+            text-align: center;
+            padding: 50px;
+        }
+        
+        .victory-icon {
+            font-size: 5rem;
+            margin-bottom: 25px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+        
+        .victory-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #00ffff;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+        }
+        
+        .victory-score {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #ff00ff;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
+        }
+        
+        .victory-percent {
+            font-size: 2rem;
+            color: #ffff00;
+            margin-bottom: 30px;
+            text-shadow: 0 0 15px rgba(255, 255, 0, 0.8);
+        }
+        
+        .victory-message {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .replay-btn {
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            color: #000;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(255, 0, 255, 0.4);
+        }
+        
+        .replay-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 0, 255, 0.6);
+        }
+        
+        @media (max-width: 768px) {
+            .game-title {
+                font-size: 2rem;
+            }
+            
+            .arena-content {
+                padding: 20px;
+            }
+            
+            .category-arena {
+                grid-template-columns: 1fr;
+            }
+            
+            .battle-zone {
+                padding: 25px;
+            }
+            
+            .question-display {
+                font-size: 1.3rem;
+            }
+            
+            .battle-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .hud-stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <div class="game-arena">
+            <div class="arena-header">
+                <div class="game-title">⚡ TRIVIA BATTLE ARENA ⚡</div>
+                <div class="game-subtitle">Ultimate Knowledge Showdown</div>
+            </div>
+            
+            <div class="arena-content">
+                <!-- Category Selection -->
+                <div id="categoryArena">
+                    <div class="category-arena">
+                        <div class="battle-card" onclick="startBattle('popculture')">
+                            <span class="card-icon">🌟</span>
+                            <div class="card-title">Pop Culture & Celebrities</div>
+                            <div class="card-desc">Latest trends, famous people, and viral moments</div>
+                        </div>
+                        
+                        <div class="battle-card" onclick="startBattle('movies')">
+                            <span class="card-icon">🎬</span>
+                            <div class="card-title">Movies & TV Shows</div>
+                            <div class="card-desc">Hollywood blockbusters and binge-worthy series</div>
+                        </div>
+                        
+                        <div class="battle-card" onclick="startBattle('music')">
+                            <span class="card-icon">🎵</span>
+                            <div class="card-title">Music & Artists</div>
+                            <div class="card-desc">Chart-toppers, legends, and musical knowledge</div>
+                        </div>
+                        
+                        <div class="battle-card" onclick="startBattle('gaming')">
+                            <span class="card-icon">🎮</span>
+                            <div class="card-title">Video Games</div>
+                            <div class="card-desc">Gaming culture, characters, and epic adventures</div>
+                        </div>
+                        
+                        <div class="battle-card" onclick="startBattle('internet')">
+                            <span class="card-icon">💻</span>
+                            <div class="card-title">Internet & Memes</div>
+                            <div class="card-desc">Digital culture, viral content, and online trends</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Battle Section -->
+                <div id="battleSection" class="battle-section">
+                    <div class="battle-hud">
+                        <button class="exit-btn" onclick="exitBattle()">← EXIT ARENA</button>
+                        <div class="hud-stats">
+                            <div class="stat-display" id="roundDisplay">ROUND 1/5</div>
+                            <div class="stat-display" id="scoreDisplay">SCORE: 0</div>
+                            <div class="timer-display" id="timerDisplay">15</div>
+                        </div>
+                    </div>
+                    
+                    <div class="energy-bar">
+                        <div class="energy-fill" id="energyFill"></div>
+                    </div>
+                    
+                    <div class="battle-zone">
+                        <div class="question-display" id="questionDisplay"></div>
+                        <div class="battle-options" id="battleOptions"></div>
+                    </div>
+                    
+                    <div class="battle-controls">
+                        <button class="control-btn" id="prevBtn" onclick="previousRound()" disabled>← PREVIOUS</button>
+                        <button class="control-btn primary" id="nextBtn" onclick="nextRound()" style="display: none;">NEXT ROUND →</button>
+                    </div>
+                </div>
+                
+                <!-- Victory Section -->
+                <div id="victorySection" class="battle-section">
+                    <div class="victory-arena">
+                        <div class="victory-icon" id="victoryIcon">🏆</div>
+                        <div class="victory-title">BATTLE COMPLETE!</div>
+                        <div class="victory-score" id="finalScore">0/5</div>
+                        <div class="victory-percent" id="finalPercent">0%</div>
+                        <div class="victory-message" id="victoryMessage"></div>
+                        <button class="replay-btn" onclick="returnToArena()">ENTER NEW BATTLE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create animated stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        createStars();
+
+        const battleData = {
+            popculture: [
+                {
+                    question: "Which social media platform is known for its 15-second videos?",
+                    options: ["Instagram", "TikTok", "Snapchat", "Twitter"],
+                    correct: 1
+                },
+                {
+                    question: "Who is known as 'Queen B' in the music industry?",
+                    options: ["Britney Spears", "Beyoncé", "Billie Eilish", "Barbra Streisand"],
+                    correct: 1
+                },
+                {
+                    question: "What does 'going viral' mean on the internet?",
+                    options: ["Getting sick", "Spreading rapidly online", "Computer virus", "Video quality"],
+                    correct: 1
+                },
+                {
+                    question: "Which reality TV family is famous for 'Keeping Up'?",
+                    options: ["The Smiths", "The Kardashians", "The Johnsons", "The Williams"],
+                    correct: 1
+                },
+                {
+                    question: "What platform is known for 280-character messages?",
+                    options: ["Facebook", "Instagram", "Twitter", "LinkedIn"],
+                    correct: 2
+                }
+            ],
+            movies: [
+                {
+                    question: "Which movie features the line 'May the Force be with you'?",
+                    options: ["Star Trek", "Star Wars", "Guardians of the Galaxy", "Interstellar"],
+                    correct: 1
+                },
+                {
+                    question: "In 'The Lion King', what kind of animal is Timon?",
+                    options: ["Warthog", "Meerkat", "Mongoose", "Prairie Dog"],
+                    correct: 1
+                },
+                {
+                    question: "Which superhero is known as the 'Dark Knight'?",
+                    options: ["Superman", "Spider-Man", "Batman", "Iron Man"],
+                    correct: 2
+                },
+                {
+                    question: "What streaming service produced 'Stranger Things'?",
+                    options: ["Hulu", "Netflix", "Amazon Prime", "Disney+"],
+                    correct: 1
+                },
+                {
+                    question: "In 'Finding Nemo', what type of fish is Nemo?",
+                    options: ["Angelfish", "Clownfish", "Goldfish", "Pufferfish"],
+                    correct: 1
+                }
+            ],
+            music: [
+                {
+                    question: "Which instrument does Ed Sheeran primarily play?",
+                    options: ["Piano", "Drums", "Guitar", "Violin"],
+                    correct: 2
+                },
+                {
+                    question: "What genre of music did Elvis Presley help popularize?",
+                    options: ["Jazz", "Rock and Roll", "Country", "Blues"],
+                    correct: 1
+                },
+                {
+                    question: "Which artist released the album 'Thriller'?",
+                    options: ["Prince", "Michael Jackson", "Whitney Houston", "Stevie Wonder"],
+                    correct: 1
+                },
+                {
+                    question: "What does 'BTS' stand for?",
+                    options: ["Behind The Scenes", "Bangtan Sonyeondan", "Best Top Songs", "Big Time Stars"],
+                    correct: 1
+                },
+                {
+                    question: "Which music streaming service is known for its green logo?",
+                    options: ["Apple Music", "Spotify", "Pandora", "YouTube Music"],
+                    correct: 1
+                }
+            ],
+            gaming: [
+                {
+                    question: "Which game features characters named Mario and Luigi?",
+                    options: ["Sonic", "Super Mario Bros", "Pac-Man", "Donkey Kong"],
+                    correct: 1
+                },
+                {
+                    question: "What is the best-selling video game of all time?",
+                    options: ["Tetris", "Minecraft", "Grand Theft Auto V", "Fortnite"],
+                    correct: 1
+                },
+                {
+                    question: "Which company created the PlayStation?",
+                    options: ["Nintendo", "Microsoft", "Sony", "Sega"],
+                    correct: 2
+                },
+                {
+                    question: "In Pokémon, what type is Pikachu?",
+                    options: ["Fire", "Water", "Electric", "Grass"],
+                    correct: 2
+                },
+                {
+                    question: "What does 'RPG' stand for in gaming?",
+                    options: ["Real Player Game", "Role Playing Game", "Rapid Play Gaming", "Random Player Generator"],
+                    correct: 1
+                }
+            ],
+            internet: [
+                {
+                    question: "What does 'LOL' commonly mean online?",
+                    options: ["Lots of Love", "Laugh Out Loud", "Loss of Life", "Level of Learning"],
+                    correct: 1
+                },
+                {
+                    question: "Which meme features a dog with broken English?",
+                    options: ["Grumpy Cat", "Doge", "Success Kid", "Distracted Boyfriend"],
+                    correct: 1
+                },
+                {
+                    question: "What does 'WWW' stand for?",
+                    options: ["World Wide Web", "World War Won", "Wild Wild West", "We Will Win"],
+                    correct: 0
+                },
+                {
+                    question: "Which platform is known for professional networking?",
+                    options: ["Facebook", "Instagram", "LinkedIn", "Snapchat"],
+                    correct: 2
+                },
+                {
+                    question: "What does 'DM' mean on social media?",
+                    options: ["Don't Message", "Direct Message", "Daily Message", "Delete Message"],
+                    correct: 1
+                }
+            ]
+        };
+
+        let currentCategory = '';
+        let currentRound = 0;
+        let score = 0;
+        let answered = false;
+        let userAnswers = [];
+        let timer = 15;
+        let timerInterval;
+
+        function startBattle(category) {
+            currentCategory = category;
+            currentRound = 0;
+            score = 0;
+            answered = false;
+            userAnswers = [];
+            
+            document.getElementById('categoryArena').style.display = 'none';
+            document.getElementById('battleSection').classList.add('active');
+            
+            showRound();
+        }
+
+        function showRound() {
+            const questions = battleData[currentCategory];
+            const question = questions[currentRound];
+            
+            document.getElementById('questionDisplay').textContent = question.question;
+            
+            const optionsContainer = document.getElementById('battleOptions');
+            optionsContainer.innerHTML = '';
+            
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.className = 'battle-btn';
+                button.textContent = option;
+                
+                const previousAnswer = userAnswers[currentRound];
+                if (previousAnswer !== undefined) {
+                    if (index === question.correct) {
+                        button.classList.add('correct');
+                    } else if (index === previousAnswer && index !== question.correct) {
+                        button.classList.add('incorrect');
+                    }
+                    button.style.pointerEvents = 'none';
+                } else {
+                    button.onclick = () => selectAnswer(index);
+                }
+                
+                optionsContainer.appendChild(button);
+            });
+            
+            startTimer();
+            updateHUD();
+        }
+
+        function startTimer() {
+            if (userAnswers[currentRound] !== undefined) {
+                document.getElementById('timerDisplay').textContent = '--';
+                return;
+            }
+            
+            timer = 15;
+            const timerDisplay = document.getElementById('timerDisplay');
+            
+            timerInterval = setInterval(() => {
+                timer--;
+                timerDisplay.textContent = timer;
+                
+                if (timer <= 5) {
+                    timerDisplay.classList.add('warning');
+                } else {
+                    timerDisplay.classList.remove('warning');
+                }
+                
+                if (timer <= 0) {
+                    clearInterval(timerInterval);
+                    if (!answered) {
+                        selectAnswer(-1); // Auto-fail on timeout
+                    }
+                }
+            }, 1000);
+        }
+
+        function selectAnswer(selectedIndex) {
+            if (answered) return;
+            
+            clearInterval(timerInterval);
+            answered = true;
+            const questions = battleData[currentCategory];
+            const question = questions[currentRound];
+            const buttons = document.querySelectorAll('.battle-btn');
+            
+            userAnswers[currentRound] = selectedIndex;
+            
+            buttons.forEach((button, index) => {
+                if (index === question.correct) {
+                    button.classList.add('correct');
+                } else if (index === selectedIndex && index !== question.correct) {
+                    button.classList.add('incorrect');
+                }
+                button.style.pointerEvents = 'none';
+            });
+            
+            if (selectedIndex === question.correct) {
+                score++;
+            }
+            
+            document.getElementById('nextBtn').style.display = 'block';
+            document.getElementById('timerDisplay').textContent = '--';
+            updateHUD();
+        }
+
+        function updateHUD() {
+            const questions = battleData[currentCategory];
+            
+            document.getElementById('roundDisplay').textContent = `ROUND ${currentRound + 1}/${questions.length}`;
+            document.getElementById('scoreDisplay').textContent = `SCORE: ${score}`;
+            
+            const progress = ((currentRound + 1) / questions.length) * 100;
+            document.getElementById('energyFill').style.width = progress + '%';
+            
+            const prevBtn = document.getElementById('prevBtn');
+            prevBtn.disabled = currentRound === 0;
+            
+            const wasAnswered = userAnswers[currentRound] !== undefined;
+            if (wasAnswered) {
+                document.getElementById('nextBtn').style.display = 'block';
+                answered = true;
+            } else {
+                document.getElementById('nextBtn').style.display = 'none';
+                answered = false;
+            }
+        }
+
+        function previousRound() {
+            if (currentRound > 0) {
+                clearInterval(timerInterval);
+                currentRound--;
+                answered = false;
+                showRound();
+            }
+        }
+
+        function nextRound() {
+            clearInterval(timerInterval);
+            currentRound++;
+            const questions = battleData[currentCategory];
+            
+            if (currentRound < questions.length) {
+                answered = false;
+                showRound();
+            } else {
+                showVictory();
+            }
+        }
+
+        function showVictory() {
+            document.getElementById('battleSection').classList.remove('active');
+            document.getElementById('victorySection').classList.add('active');
+            
+            const totalQuestions = battleData[currentCategory].length;
+            const percentage = Math.round((score / totalQuestions) * 100);
+            
+            document.getElementById('finalScore').textContent = `${score}/${totalQuestions}`;
+            document.getElementById('finalPercent').textContent = `${percentage}%`;
+            
+            let message = '';
+            let icon = '';
+            
+            if (percentage >= 80) {
+                message = 'LEGENDARY PERFORMANCE! You are a true trivia champion!';
+                icon = '👑';
+            } else if (percentage >= 60) {
+                message = 'EXCELLENT BATTLE! You fought well in the arena!';
+                icon = '🏆';
+            } else if (percentage >= 40) {
+                message = 'GOOD EFFORT! Train harder for your next battle!';
+                icon = '⚔️';
+            } else {
+                message = 'KEEP FIGHTING! Every champion started somewhere!';
+                icon = '🛡️';
+            }
+            
+            document.getElementById('victoryMessage').textContent = message;
+            document.getElementById('victoryIcon').textContent = icon;
+        }
+
+        function exitBattle() {
+            clearInterval(timerInterval);
+            document.getElementById('battleSection').classList.remove('active');
+            document.getElementById('categoryArena').style.display = 'block';
+        }
+
+        function returnToArena() {
+            document.getElementById('victorySection').classList.remove('active');
+            document.getElementById('categoryArena').style.display = 'block';
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97fea0cfb653fecc',t:'MTc1ODAwNzUwOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
 
