@@ -1,104 +1,335 @@
-Corporation - a type of company with multiple ownership governed by a corporate charter. Two types of corporations are C-corporations and S-corporations.
-cost approach - one of three traditional approaches to value in appraisal theory. In the cost approach, value is based on the estimated land value plus the current cost to reproduce or replace the existing structure, deducting for all accrued depreciation in the property.
-cost service index - an adjustment in the subject improvement cost from the original cost to the current cost.
-Counteroffer - an offer submitted in response to an offer. It has the effect of overriding the original offer. 
-Credit - an agreement in which a borrower receives something of value in exchange for a promise to repay the lender.
-evaluation - an analysis of a parcel of real estate in which a value estimate is not necessarily required. The study may be based on the nature, quality, or utility of an interest in the parcel or entire parcel. 
-eviction - the lawful expulsion of an occupant from real property.
-evidence of title - a document that identifies ownership of property.
-examination of title -a review of an abstract to determine current condition of title.
-excess land - on an unimproved site, land that is not needed to accommodate a site's highest and best use. On an improved site, the surplus land that is not needed to serve or support the existing improvement. 
-installment loan - borrowed money that is repaid in periodic payments, known as installments. 
-installment sale - a transaction in which the sales price is paid to the seller in two or more installments over more than one calendar year.
-insurable value - portion of asset value recognized under the provisions of a loss insurance policy. 
-Insurance - a contract that provides indemnification from specific losses in exchange for a periodic payment. The individual contract is known as an insurance policy, and the periodic payment is known as an insurance premium.
-insurance binder - a document that states that temporary insurance is in effect until a permanent insurance policy is issued.
-Landlocked - property surrounded on all sides by property belonging to another.
-landlord - also called lessor; one who leases a property to another.
-lease - a contract between a landlord and a tenant wherein the landlord grants the tenant possession and use of the property for a specified period of time and for a consideration.
-leased fee estate - the landlord's interest in a parcel of leased property.
-lease option - a financing option that allows homebuyers to lease a home with an option to buy. Each month's rent payment may consist of rent, plus an additional amount that can be applied toward the down payment on an already specified price.
-management agreement - a contract between the owner of an income property and a firm or individual who agrees to manage the property.
-margin - the difference between the interest rate and the index on an adjustable-rate mortgage. The margin remains stable over the life of the loan, while the index fluctuates.
-market approach - one of three approaches to value in appraisal theory; value is estimated by comparing sales of similar properties recently sold to the subject property and adjusting the comparable sales for differences in characteristics to indicate a final value estimate for the subject property.
-market conditions - characteristics of the market such as vacancy rates, interest rates, employment levels, and so forth.
-market rent - the rent income a property would most probably command if offered in the competitive Market.
+game 5
 
-credit history - a record of an individual's repayment of debt.
-Cul-de-sac - a dead-end street that widens at the end, creating a circular turnaround area.
-curable functional obsolescence - a defect caused by a flaw in the structure, material, or design in which the cost to cure the item is less than or the same as the anticipated increase in value afte the item is cured.
-curable physical deterioration - an item in need of repair; deferred maintenance. To be curable, the cost of curing the item must be reasonable and economically feasible.
-Curtesy - the statutory or common law right of a husband to all or part of real estate owned by his deceased wife, regardless of will provisions, recognized in some states.
-Curtilage - area of land occupied by a building, its outbuildings, and yard, either actually enclosed or considered enclosed.
-excess rent - the amount of contract rent over market rent; probably created by a favorable lease with a locational advantage, unusual management, or lease origination in a stronger market.
-Exchange - a transaction in which property is traded for another property rather than sold for money or other consideration.
-exclusive agency listing - a contract between a property owner and one broker that gives the broker the right to sell the property for a fee within a specified period of time but does not obligate the owner to pay the broker a fee if the owner produces his or her own buyer without the broker's assistance. The owner is barred only from appointing another broker within this period.
-exclusive right - to sell a contract between a property owner and a broker that gives the broker the right to collect a commission regardless of who sells the property during the specified period of time of the agreement.
-insured mortgage - a mortgage that is protected by the Federal Housing Administration (FHA) or by private mortgage insurance (PMI). If the borrower defaults on the loan, the insurer must pay the lender the insured amount.
-Interest - a fee charged by a lender for the use of the money loaned; or a share of ownership in real estate.
-interest accrual rate - the percentage rate at which interest accrues on the mortgage. 
-interest rate - the rent or rate charged to use funds belonging to another.
-interest rate buydown plan - an arrangement in which the property seller (or any other party) deposits money to an account so that it can be released each month to reduce the mortgagor's monthly payments during the early years of a mortgage. During the specified period, the mortgagor's effective interest rate is bought down below the actual interest rate.
-leasehold estate - a tenant's right to occupy a parcel of real estate for the term of a lease.
-legal description - a description of a parcel of real estate that is specific and complete enough for an independent surveyor to locate and identify it.
-lessee - the one who receives that right to use and occupy the property during the term of the leasehold estate.
-lessor - the owner of the property who grants the right of possession to the lessee.
-Leverage - the use of borrowed funds to purchase an asset.
-market segmentation - analysis of submarkets within a larger market.
-marketable title - title to property that is free from encumbrances and reasonable doubts and that a court would compel a buyer to accept.
-mass appraisal - estimate of value for a large number of properties as of a given date; similar properties are valued in a uniform manner by property types with standard methodology.
-mean the average in a set of numbers.
-mechanic's lien - a statutory lien created to secure payment for those who supply labor or materials for the construction of an improvement to land.
-Median - middle figure in a numerically ordered set of data, such that an equal number of values lie above and below the middle figure.
-
-execution - the signing of a contract.
-executor/executrix - a person named in a will to administer an estate. The court will appoint an administrator if no executor is named. "Executrix" is the feminine form.
-executory contract - a contract in which one or more of the obligations have yet to be performed. 
-executed contract - a contract in which all obligations have been fully performed.
-express contract - an oral or written contract in which the terms are expressed in words.
-interest rate ceiling - the maximum interest rate that may be charged for an adjustable-rate mortgage (ARM), as specified in the mortgage note.
-interest rate floor - the minimum interest rate for an adjustable-rate mortgage (ARM), as specified in the mortgage note.
-interim financing - a short-term loan made during the building phase of a project; also known as a construction mortgage.
-interim use - temporary use until the property is ready for future highest and best use (e.g., farmland waiting for subdivision approval).
-internal rate of return (IRR) - annualized rate of return on capital that equates the value of cash returns over time with the cash invested; the discount rate that makes the net present value of an investment equal to zero.
-levy - to assess or collect a tax.
-license - (1) a revocable authorization to perform a particular act on another's property; (2) authorization granted by a state to act as a real estate broker or salesperson.
-lien - a legal claim against a property to secure payment of a financial obligation.
-life estate - a freehold estate in real property limited in duration to the lifetime of the holder of the life estate or another specified person.
-life tenant - one who holds a life estate.
-Meridian - a vertical (north-south) dividing line used in the rectangular survey method of land description. 
-metes and bounds method - legal description of land in which land boundaries are referred to by a point of beginning (POB), a line in a specified direction from this point (metes), and a point of change in direction in the boundary (bounds), until the line has returned to the point of beginning.
-mil or mill - one-tenth of one cent; used by some states to express or calculate property tax rates. 
-mill rate - calculated by dividing the tax rate by the assessed value of a property.
-millage - a tax rate on property, often expressed as mills per dollar value of the property.
-National Environmental Policy Act (NEPA) - provides environmental impact statements.
-negative amortization - occurs when an adjustable-rate mortgage is allowed to fluctuate independently of a required minimum payment. A gradual increase in mortgage debt happens when the monthly payment is not large enough to cover the entire principal and interest due. The amount of the shortfall is added to the remaining balance to create negative amortization.
-negative leverage - when the cost of borrowed money is more than the property yields.
-neighborhood - group of similar land uses within accepted geographical boundaries.
-net income - the income produced by a property, calculated by deducting operating expenses from gross income.
-
-extension agreement - an agreement between mortgagor and mortgagee to extend the maturity date of the mortgage after it is due.
-external obsolescence - a loss in value of a property because of factors outside the property, such as a change in surrounding land use.
-externality - appraisal principle that states that forces outside a property's boundaries may have a positive or negative effect on its value.
-extraction - variation of allocation; estimate the total contribution of improvements and deduct improvement value from the total value.
-extraordinary assumption - a presumption that, if discovered to be inaccurate, may change the opinions or conclusions of an appraiser.
-interval ownership - see time-sharing.
-intestate - the state of having died without having authored a valid will.
-invalid - not legally binding or enforceable.
-investment property - a property not occupied by the owner.
-investment value - the value of the property to a particular investor.
-investment yield - rate of return on an investment (effective rate). The highest investment yield will have the shortest compounding periods.
-limited common elements - items in a multiunit project that are available for use by one or more, but not all units (e.g., parking stalls or storage units).
-limited liability company (LLC) - a type of company that has the limited liability advantage of a corporation with the tax status of a sole proprietor or partnership.
-limited partnership - ownership arrangement that is passive; limited partners are liable only to the extent of their own capital contributions. Limited partnerships are managed by a general partner, who is individually liable for financial operations.
-liquidation value - the value based on a quick sale or less than adequate exposure in the open market. 
-minor - a person who has not attained the legal age of majority.
-misrepresentation - a misstatement of fact, either deliberate or unintentional.
-mode - the most frequent value in a set of numbers.
-modification - the act of changing any of the terms of the mortgage.
+1
+liquidity - the ability to convert an asset into cash.
+lis pendens-  a Latin phrase meaning "suit pending"; a public notice that a lawsuit has been filed that affect the title to a particular piece of property.
+listing agreement - a contract between the owner and a licensed real estate broker wherein the broker is employed to sell real estate on the owner's terms within a given time, for which service the owner agrees to pay the broker an agreed-upon fee.
+listing broker - a broker who contracts with a property owner to sell or lease the described property; the listing agreement typically may provide for the broker to make property available through a multiple-listing system.
+littoral rights - landowner's claim to use water in large, navigable lakes and oceans adjacent to property; ownership rights to land-bordering bodies of water up to the high-water mark.
 modified economic age-life method - a method of estimating accrued depreciation in which the ratio of effective age to total economic life is multiplied by the reproduction or replacement cost minus curable physical and functional obsolescence.
-net income multiplier (NIM) - property value or sales price divided by its net operating income for a given year. It is the reciprocal of the overall capitalization rate.
-net lease - a lease that requires the tenant to pay maintenance and operating expenses, as well as rent. 
-net listing - a listing in which the broker's fee is established as anything above a specified amount to be received by the seller from the sale of the property.
-net operating income (NOI) - effective gross income (EGI) minus operating expenses (OE). 
-net worth - the value of all of a person's assets.
+money judgment - a court order to settle a claim with a monetary payment rather than specific performance.
+money market - often referred to as the safe rate or risk free rate of return; investments in short-term debt securities such as CDs, government securities, and Treasury bills.
+month-to-month tenancy - tenancy in which the tenant rents for only one month at a time.
+monument - a fixed, visible marker used to establish boundaries for a survey.
+no cash out refinance - a refinance transaction in which the new mortgage amount is limited to the sum of the remaining balance of the existing first mortgage.non-conforming use a use of land that is permitted to continue, or grandfathered, even after a zoning ordinance is passed that prohibits the use.
+nonliquid asset - an asset that cannot easily be converted into cash.notarize to have a document certified by a notary public.
+notary public - a person who is authorized to administer oaths and take acknowledgments.
+note - a written instrument acknowledging a debt, with a promise to repay, including an outline of the terms of repayment.
+note rate - the interest rate on a promissory note.
+obligee - person on whose favor an obligation is entered. 
+obligor - person who is bound to another by an obligation.
+Obsolescence - a loss in the value of a property because of functional or external factors.
+offer - to propose as payment; to place a bid on property.
+offer and acceptance - two of the necessary elements for the creation of a contract. 
+
+2
+Loan - a sum of borrowed money, or principal, that is generally repaid with interest.
+loan officer - (or lender) serves several functions and has various responsibilities, such as soliciting loans; a loan officer both represents the lending institution and represents the borrower to the lending institution.
+loan-to-value ratio (LTV) - the ratio of the current loan balance to the property value.
+lock-in - an agreement in which the lender guarantees a specified interest rate for a certain period of time.
+lock-in period - the time period during which the lender has guaranteed an interest rate to a borrower. 
+lot and block description - a method of describing a particular property by referring to a lot and block number within a subdivision recorded in the public record.
+Mortgage - a written instrument that pledges property to secure payment of a debt obligation as evidenced by a promissory note. When duly recorded in the public record, a mortgage creates a lien against the title to a property.
+mortgage banker - an entity that originates, funds, and services loans to be sold into the secondary money market.
+mortgage broker - an entity that, for a fee, brings borrowers together with lenders.
+mortgage constant or mortgage capitalization rate - annual debt service divided bythe loan amount.
+notice of default - a formal written notice to a borrower that a default has occurred on a loan and that legal action may be taken.
+novation - the substitution of a new contract for an existing one; the new contract must reference the first and indicate that the first is being replaced and no longer has any force and effect.
+open-end mortgage - a loan containing a clause that allows the mortgagor to borrow additional funds from the lender, up to a specified amount, without rewriting the mortgage.
+open listing - a listing contract given to one or more brokers in which a commission is paid only to the broker who procures a sale. If the owner sells the house without the assistance of one of the brokers, no commission is due.
+operating expense ratio (OER) - total operating expenses divided by effective gross income (EGI). 
+operating expenses - expenses incurred to maintain the property plus an allowance for replacing certain items.
+opinion of title - an opinion, usually given by an attorney, regarding the status of a title to property. 
+opportunity cost - represents the cost of passing up an opportunity.
+option - an agreement that gives a prospective buyer the right to purchase a seller's property within a specified period of time for a specified price.
+Optionee - one who receives or holds an option.
+
+3
+mortgage lien - an encumbrance created by recording a mortgage.
+mortgagee - the lender who benefits from the mortgage.
+mortgagor - the borrower who pledges the property as collateral.
+most probable selling price - most likely price at which a property would sell if exposed in a competitive market for a reasonable period of time, under the market conditions at the date of the appraisal. See market value.
+multi-dwelling units - properties that provide separate housing units for more than one family that secure only a single mortgage. Apartment buildings are also considered multi-dwelling units.
+multiple-listing system (MLS; also multiple-listing service) - the method of marketing a property listing to all participants in the MLS.
+mutual rescission - an agreement by all parties to a contract to release one another from the obligations of the contract
+optionor - one who grants an option; the property owner.ordinance a municipal regulation
+original cost - actual cost of a property to its present owner.
+original principal balance - the total amount of principal owed on a loan before any payments are made; the amount borrowed.
+origination fee - the amount charged by a lender to cover the cost of assembling the loan package and originating the loan
+overage rent - amount paid over and above the minimum rent (e.g., percentage lease).
+overall capitalization rate (OAR) - net operating income from a single year or average of several years divided by the sales price or property value.
+owner financing - a real estate transaction in which the property seller provides all or part of the financing.
+ownership - the exclusive right to use, possess, control, and dispose of property.
+package mortgage - a mortgage that pledges both real and personal property as collateral to secure repayment of a loan.
+paired sales analysis - procedure used in the sales comparison approach to estimate values of specific property characteristics to find a value of the subject property; property sales are paired by similar property characteristics. Ideally, the properties are exactly the same except for one characteristic; the difference in sale price can then be attributed to the difference in this characteristic. However, several adjustments are usually made to paired sales to isolate the effect of one characteristic.
+parcel - a lot or specific portion of a large tract of real estate.
+partial release - mortgage clause in a blanket mortgage in which the lender agrees to release certain parcels from the mortgage lien upon payment by the mortgagor; frequently found in tract development construction loans.
+partial taking - in eminent domain, when only a portion of a parcel of land is taken
+
+4
+participation mortgage - a type of mortgage in which the lender receives a certain percentage of the income or resale proceeds from a property, as well as interest on the loan.
+partition - the division of property held by co-owners into individual shares.
+partnership - an agreement between two parties to conduct business for profit. In a partnership, property is owned by the partnership, not the individual partners, so partners cannot sell their interest in the property without the consent of the other partners.
+party wall - a common wall used to separate two adjoining properties.
+payee - one who receives payment from another.
+physical deterioration - a loss in the value of a property because of impairment of its physical condition. 
+PITI - principal, interest, taxes, and insurance-components of a regular mortgage payment.
+planned unit development (PUD) - a type of zoning that provides for residential and commercial uses within a specified area.
+Plat - a map of subdivided land showing the boundaries of individual parcels or lots.
+plat book - a group of maps located in the public record showing the division of land into subdivisions, blocks, and individual parcels or lots.
+range - (1) an area of land six miles wide, numbered east or west from a principal meridian in the rectangular survey system. (2) An interval of numbers ordered sequentially from lowest to highest value
+range lines - in the rectangular survey system, the north-south lines, spaced six miles apart, used to define a township.
+range of value - in an appraisal report, the confidence interval in which the final estimate of a property's value may lie.
+ready, willing, and able - the state of being able to pay the asking price for a property and being prepared to complete the transaction.
+real estate - land, the earth below it, the air above it, and anything permanently attached to it.
+safety clause - a contract provision that provides a time period following expiration of a listing agreement, during which the agent will be compensated if there is a transaction with a buyer who was initially introduced to the property by the agent.
+Sale-leaseback - a transaction in which the owner sells improved property and, as part of the same transaction, signs a long-term lease to remain in possession of its premises, thus becoming the tenant of the new owner.
+sale price - the amount of money paid or asked for in a specific transaction; the sale price may include nonrealty items such as personal property or a financing premium.
+sales comparison approach - one of three approaches to value in appraisal theory; value is estimated by comparing similar properties that have sold recently to the subject property.
+sales contract - a contract between a buyer and a seller outlining the terms of the sale
+
+5
+Payor - one who makes payment to another.
+percentage lease - a lease in which the rental rate is based on a percentage of the tenant's gross sales. This type of lease is most often used for retail space.
+periodic estate - tenancy that automatically renews itself until either the landlord or tenant gives notice to terminate it.
+personal property (hereditaments) - all items that are not permanently attached to real estate; also known as chattels
+physical age-life method - a method of estimating incurable physical deterioration in which the deterioration is calculated by multiplying the ratio of effective age divided by the total physical life of the item by the reproduction or replacement cost of the item minus any curable physical deterioration already charged. See incurable physical deterioration.
+plat number - a number that identifies a parcel of real estate for which a plat has been recorded in the public record
+plottage - increment of value that results when extra utility is created by combining two or more sites under a single ownership.
+point - 1% of the loan.
+point of beginning - the starting point for a survey using the metes and bounds method of description. 
+police power - the right of the government to enact laws, ordinances, and regulations to protect the public health, safety, welfare, and morals.
+real estate agent - a real estate broker who has been appointed to market a property for and represent the property owner (listing agent), or a broker who has been appointed to represent the interest of the buyer (buyer's agent).
+real estate board - an organization whose members consist primarily of real estate sales agents, brokers, and administrators.
+real estate broker - a licensed person, association, partnership, or corporation who negotiates real estate transactions for others for a fee.
+real estate market - interaction of buyers and sellers exchanging real property rights for money. It is not an efficient or perfect market.
+Real Estate Settlement Procedures Act (RESPA) - a consumer protection law that requires lenders to give borrowers advance notice of closing costs and prohibits certain abusive practices against buyers using federally related loans to purchase their homes.
+salesperson - one who is licensed to sell real estate in a given territory.
+salvage value - the value of a property at the end of its economic life.
+sandwich lease - sublease that occurs when a lessee leases a property to another and becomes a lessor. 
+satisfaction - an instrument acknowledging that a debt has been paid in full.
+scope of work - amount and type of information researched and the analysis applied in an assignment. See USPAP section, scope of work rule.
+
+6
+population - complete set of all items in a specific category.
+positive leverage - when the cost of borrowed money is less than the property yield
+potential gross income (PGI) - total operating income produced by a real property, assuming full occupancy and before operating expenses are deducted, including vending, garage fees, washer/dryers, etc.
+potential gross income multiplier (PGIM) - ratio of sales price or value to the potential gross income.
+Pottage - combining two or more parcels to make them more valuable for a particular purpose. 
+power of attorney - a legal document that authorizes someone to act on another's behalf. A power of attorney can grant complete authority or can be limited to certain acts and/or certain periods of time. 
+preapproval - condition where a borrower has completed a loan application and provided debt, income, and savings documentation that an underwriter has reviewed and approved. A preapproval is usually done at a certain loan amount, making assumptions about what the interest rate will actually be at the time the loan is actually made, as well as estimates for the amount that will be paid for property taxes, insurance, and so on. 
+prepayment – amount paid to reduce the outstanding principal balance of a loan before the due date. 
+prepayment penalty - a fee charged to a borrower by a lender for paying off a debt before the term of the loan expires.
+prequalification - a lender's opinion on the ability of a borrower to qualify for a loan, based on furnished information regarding debt, income, and available capital for down payment, closing costs, and prepaids. Prequalification is less formal than preapproval.prescription a method of acquiring an easement to property by prolonged, unauthorized use.
+real property - the rights of ownership to land and its improvements.
+REALTOR® - a registered trademark for use by members of the National Association of  REALTORS® and affiliated state and local associations.
+reconciliation - in the sales comparison approach, the reviewing of each sale and judging the comparability to the subject property.
+recorded plat (lot, block, subdivision system) - legal method of land description. 
+Recording - entering documents, such as deeds and mortgages, into the public record to give constructive notice.
+secondary mortgage - a mortgage that is in less than first lien position; see junior mortgage. 
+secondary mortgage market-  a market that exists for the sale and purchase of existing mortgages; it provides more liquidity for the mortgage market.
+Section - in the rectangular survey method of legally describing land, it equals one square mile, or 640 acres,orof a township.secured loan a loan that is backed by property or collateral.security property that is offered as collateral for a loan.
+selling broker - the broker who secures a buyer for a listed property; the selling broker may be the listing agent, a subagent, or a buyer's agent.
+separate property - property owned individually by a spouse, as opposed to community property. 
+
+7
+present value (PV) current worth of a payment or payments based on the time value of money; future payments are discounted to an equivalent current value by a discount rate based on the premise that cash flows received sooner are more valuable than cash flows received later.
+pre-tax cash flow - net operating income minus the debt service.
+price - the sum or amount of money for which property can be offered, bought, or sold. 
+primary mortgage - market the financial market in which loans are originated, funded, and serviced. 
+prime rate - the short-term interest rate that banks charge to their preferred customers. Changes in prime rate are used as the indexes in some adjustable-rate mortgages, such as home equity lines of credit. 
+principal - (1) one who authorizes another to act on his or her behalf; (2) one of the contracting parties to a transaction; (3) the amount of money borrowed in a loan, separate from the interest charged on it. 
+principal curtailment - an off-schedule mortgage payment applied only to the principal balance. 
+principal meridian - one of the 36 longitudinal lines used in the rectangular survey system method of land description.
+private mortgage insurance (PMI) - mortgage insurance offered by private companies to mitigate the risk of the first 20-25% of the mortgage amount.
+Probate - the judicial procedure of proving the validity of a will.
+rectangular survey system - a method of land description based on principal meridians (lines of longitude) and baselines (lines of latitude). Also called the government survey system.
+redemption period - the statutory period of time during which an owner can reclaim foreclosed property by paying the debt owed, plus court costs and other charges established by statute.
+redlining - the illegal practice of lending institutions refusing to provide certain financial services, such as mortgage loans, to property owners in certain areas.
+refinance transaction - the process of paying off one loan with the proceeds from a new loan using the same property as security or collateral.
+Regression - economic principle in which the value of over-improved property declines toward its surroundings.
+sequence of adjustments - in the sales comparison approach, adjustments to comparable characteristics should be made in the following order to find the appropriate value of the subject property: property rights, financing terms, conditions of sale, market conditions, location, and physical characteristics. 
+servient tenement - a property on which an easement or right-of-way for an adjacent (dominant) property passes.
+setback - the amount of space between the lot line and the building line, usually established by a local zoning ordinance or restrictive covenants; see deed restrictions.
+setback, side yard, or rear yard - restrictions on the amount of land required surrounding improvements; the amount of space required between the building and lot line.
+settlement statement (HUD-1) - the form used to itemize all costs related to closing of a residential transaction covered by RESPA regulations.
+
+8
+procuring cause - the action that brings about the desired result. For example, if a broker takes actions that result in a sale, the broker is the procuring cause of the sale.
+profit - also known as profit 'a prendre; right to remove items such as topsoil or minerals from land belonging to another.
+progression - economic principle in which the value of under-improved property increases toward its surroundings.
+promissory note - the debt instrument that details the terms of the loan. 
+property management - the operating of an income property for another. 
+property tax - a tax levied by the government on property, real or personal.
+property value - worth of a property; may have several different values depending on the interest or use involved. See market value, investment value, insurable value, assessed value, and going-concern value. 
+proprietary lease - in a cooperative building, the lease a corporation provides to the stockholders that allows them to use a specific unit under the conditions specified.
+prorate - to divide ongoing property costs such as taxes or maintenance fees proportionately between buyer and seller at closing.
+pur autre vie - a Latin phrase meaning "for the life of another." In a life estate pur autre vie, the term of the estate is measured by the life of a person other than the person who holds the life estate.
+regression analysis - mostly used for mass appraisals of single-family residences to determine assessed value
+Regulation Z - a Federal Reserve regulation that implements the federal Truth-in-Lending Act.
+release clause - a clause in a mortgage that releases a portion of the property upon payment of a portion of the loan.
+remainder estate - a future interest in an estate that takes effect upon the termination of a life estate. 
+remaining balance - in a mortgage, the amount of principal that has not yet been repaid.
+Severalty - the ownership of a property by only one legal entity.
+shared appreciation mortgage - loan made upon the security of an interest in real property that may obligate the borrower to pay to the lender a contingent deferred interest.
+sinking fund - account in which equal installments of funds are deposited periodically to accumulate enough money to replace an asset or reach a specified target sum. See real estate math review, compound interest tables.
+site - plot of land improved to the extent it is ready to be used for the purpose it was intended.
+site description - detailed listing of factual data, including a legal description, title and record data, and information on pertinent characteristics.
+
+9
+purchase agreement - a written contract signed by the buyer and seller stating the terms and conditions under which a property will be sold.
+purchase money mortgage - a mortgage given by a buyer to a seller to secure repayment of any loan used to pay part or all of the purchase price.
+qualifying ratio - a calculation to determine whether a borrower can qualify for a mortgage. There are two ratios. The top ratio is a calculation of the borrower's monthly housing costs (principal, taxes, insurance, mortgage insurance, homeowner's association fees) as a percentage of monthly income. The bottom ratio includes housing costs as well as all other monthly debt.
+quantity survey method - most comprehensive method of estimating building costs in which the quantity and quality of all materials and labor are estimated on a unit cost basis to arrive at a total cost estimate; it duplicates the contractor's method of developing a bid.
+quitclaim deed - a conveyance whereby the grantor transfers without warranty or obligations whatever interest or title he or she may have.
+remaining economic life - estimated time period during which operating income will be greater than operating expenses; the period over which improvements will continue to contribute to property value.
+remaining term - the original amortization term minus the number of payments that have been applied to it.
+renewal options - a lease clause that allows the lessee to extend the lease under specified terms for a certain period of time
+rent - a periodic payment paid by a lessee to a landlord for the use and possession of leased property. 
+replacement cost - the estimated current cost to replace an asset similar or equivalent to the one being appraised.
+replacement reserve money - set aside to replace certain items in the future (e.g., roof replacement, carpeting, kitchen appliances).
+reproduction cost - the cost to construct an exact duplicate of a building at current prices using the same materials, standards, design, layout, and quality, and embodying all the subject's deficiencies, superadequacies, and obsolescence.
+rescission - canceling or terminating a contract by mutual consent or by the action of one party on default by the other party
+reserve for replacement - accounting allowance to provide for the maintenance and replacement of short-lived items (carpets, drapes, blinds, roof, etc.).
+residual - value or income attributable to a component, such as financial, physical, or legal estate components, after deducting an amount necessary to meet a required return on the other component.
+six functions of a dollar - refers to compound interest and present value factors. See real estate math review, compound interest tables.
+social forces - in appraisal theory, one of four forces thought to influence property value; refers to population characteristics such as population age and distribution.
+sole proprietorship - a type of company that has one owner who assumes all responsibilities. 
+special assessment - a tax levied against only the specific properties that will benefit from a public improvement, such as a street or sewer; an assessment by a homeowners association for a capital improvement to the common areas for which no budgeted funds are available.
+special use - see conditional use.
+
+10
+residual techniques - processes used in the income approach in which the unknown income from one component is derived by subtracting the known income from another component from the net operating income. The derived (residual) income is then capitalized to find the value of the corresponding component. Can be used for land-building or mortgage-equity components.
+restriction (restrict covenant) - a limitation on the way a property can be used.
+reverse annuity mortgage - when a homeowner receives monthly checks or a lump sum with no repayment until property is sold; usually an agreement between mortgagor and elderly homeowners. 
+Reversion - a lessor's right to possess leased property at the termination of a lease. Also refers generally to sale of a property at the end of a holding period.
+review appraiser - an appraiser who inspects the reports of other appraisers to determine the validity of the conclusions and data given in the report.
+revision - a revised or new version, as in a contract. 
+rezoning - change or amendment to a zoning map.
+right of egress (or ingress) - the right to enter or leave designated premises.
+right of first refusal - the right of a person to have the first opportunity to purchase property before it is offered to anyone else.
+right of redemption - the statutory right to reclaim ownership of property after a foreclosure sale.
+special warranty deed - a deed in which the grantor guarantees the title only against the defects that may have occurred during the grantor's ownership and not against any defects that occurred prior to that time.
+specific date - data collected dealing with the subject property and the comparable properties. 
+specific lien - a lien, such as a mortgage, that attaches to one defined parcel of real estate.
+specific performance - a legal action in which a court compels a defaulted party to a contract to perform according to the terms of the contract, rather than awarding damages.
+Speculative use - property held primarily for future sale; value based on the future highest and best use.
+tax deed - in some states, an instrument given to the purchaser at the time of sale.
+tax lien - a charge against a property created by law or statue.Tax liens  take priority over all other types of liens.
+Tax rate - the rate applied to the assessed value of a property to determine the property taxes.
+tax sale - the court-ordered sale of a property after the owner fails to pay ad valorem taxes owed on the property.
+tenancy at sufferance - the tenancy of a party who unlawfully retains possession of a landlord's property after the term of the lease has expired.
+
+11
+right of survivorship - in joint tenancy, the right of survivors to acquire the interest of a deceased joint tenant.
+riparian rights - the rights of a landowner whose property is adjacent to a flowing waterway, such as a river,to access and use the water.
+Risk - principle that deals with the uncertainty of outcomes
+spot zoning - result by which one parcel is zoned differently than surrounding parcels.
+standard payment calculation - the method used to calculate the monthly payment required to repay the remaining balance of a mortgage in equal installments over the remaining term of the mortgage at the current interest rate.
+statute of frauds - the state law that requires certain contracts to be in writing to be enforceable.
+statute of limitations - the state law that requires that certain actions be brought to court within a specified period of time.
+statutory lien - a lien imposed on property by statute, such as a tax lien.
+Steering - the illegal practice of directing prospective homebuyers to or away from particular areas. 
+straight-line capitalization - method of developing an overall capitalization rate; the cap rate is calculated by adding an allowance for return of capital to the discount rate (return on capital). The allowance for return of capital assumes the capital is recaptured evenly over the holding period or economic life of the property. For example, if the economic life of the property is 50 years, the allowance for return of capital will be 1/50 or 2%. With a 10% discount rate, the overall cap rate is 12%. This method, which is not commonly used today, implicitly assumes that the property's income is declining each year.
+straight-line depreciation - a method of computing depreciation by decreasing value by an equal amount each year during the useful life of the property.
+strip center - commercial use of real estate, such as a neighborhood shopping center, in which the buildings are adjoining and narrow in depth relative to the length.
+Subdivision - large plot of land divided into small lots for sale or lease.
+subject property - the property being appraised.
+sublease - agreement in which the tenant (lessee) leases the property or part of the property to a third party, thus becoming a lessor.
+tenancy at will - an indefinite tenancy that can be terminated by either the landlord or the tenant at any time by giving notice to the other party one rental period in advance of the desired termination date. 
+tenancy by the entirety - ownership by a married couple of property acquired during the marriage with right of survivorship; not recognized by community property states.
+tenancy in common - a form of co-ownership in which two or more persons hold an undivided interest in property without the right of survivorship.
+tenant - one who holds or possesses the right of occupancy title.
+tenant improvements - in construction projects, the installation of finished tenant space by lessee or lessor; also may refer to fixed improvements installed and paid for by a lessee.
+
+12
+sublet - the act of a lessee transferring part or all of his or her lease to a third party while maintaining responsibility for all duties and obligations of the lease contract.
+subordinate - to accept, voluntarily, a lower priority lien position than that to which one would normally be entitled.
+Subrogation - the substitution of one party into another's legal role as the creditor for a particular debt. 
+substitution - the principle in appraising that a buyer will be willing to pay no more for the property being appraised than the cost of purchasing an equally desirable property.
+suit for possession - a lawsuit filed by a landlord to evict a tenant who has violated the terms of the lease or retained possession of the property after the lease has expired.
+suit for specific performance - a lawsuit filed for the purpose of compelling a party to perform particular acts rather than pay monetary damages to settle a dispute.
+super-adequacy - features that are not fully valued by the marketplace (e.g., 24-carat gold faucets). 
+supplemental standards - additional requirements that add to the development and reporting requirements of USPAP.
+supply and demand - in appraisal, a principle that states that the value of a property depends on the quantity and price of the property type available in the market and on the number of market participants and the price they are willing to pay.
+surplus productivity - the net income that remains after the costs of labor, capital, and coordination have been deducted from total income.
+tenement - the space that may be occupied by a tenant under the terms of a lease.
+testate - the state of dying after having created a valid will directing the testator's desires with regard to the disposition of the estate.
+time is of the essence - language in a contract that requires strict adherence to the dates listed in the contract as deadlines for the performance of specific acts.
+Time-sharing - Also called interval owning; undivided ownership of real estate for only an allotted portion of a year.
+title - a legal document that demonstrates a person's right to, or ownership of, a property. Note: Title is not an instrument. The instrument, such as a deed, gives evidence of title or ownership.
+
+13
+survey - a map that shows the exact legal boundaries of a property, the location of easements, encroachments, improvements, rights-of-way, and other physical features.
+syndicate - a group formed by a syndicator to combine funds for real estate investment.
+title insurance - an insurance policy that protects the holder from defects in a title, subject to the exceptions noted in the policy.
+title search - a check of public records to ensure that the seller is the legal owner of the property and that there are no liens or other outstanding claims.
+Torrens system - a system of registering titles to land with a public authority, who is usually called a registrar 
+township - a division of land, measuring 36 square miles, in the government survey system.
+township lines - in the rectangular survey system, the east-west lines, spaced six miles apart, used to define a township.
+Topography - contour, grade, soil conditions, and physical usability of a site.
+trade fixtures - an item of personal property installed by a commercial tenant and removable upon expi-ration of the lease.
+transfer tax - a state or municipal tax payable when the conveyancing instrument is recorded.
+trend - series of related changes brought about by a chain of causes and effects.
+Trust - an arrangement in which title to property is transferred from a grantor to a trustee, who holds title but not the right of possession for a third party, the beneficiary.
+trustee - a person who holds title to property for another person designated as the beneficiary.
+Truth-in-Lending Law - also known as Regulation Z; requires lenders to make full disclosure regarding the terms of a loan.
+underwriting - the process of evaluating a loan application to determine the risk involved for the lender. 
+undivided interest - the interest of co-owners to the use of an entire property despite the fractional interest owned.
+uniform residential appraisal report (URAR) - appraisal form requested by many federal agencies to value residential properties in a consistent manner.
+Uniform Standards of Professional Appraisal Practice (USPAP) - a manual of professional standards of practice for appraisers; contains ethical principals and codes of conduct for appraisers.
+unilateral contract - a one-sided contract in which one party is obligated to perform a particular act completely before the other party has any obligation to perform.
+unit-in-place method - also known as segregated cost method; a method of estimating building cost in which total building cost is estimated by summing prices for various building components as installed, based on specific units of use such as square footage or cubic footage.
+
+14
+units of comparison - physical or economic measure that can be divided into the property's price to provide a more standardized comparison of the properties. The measure should be one that accounts for differences in the price typically paid for the properties, such as price per square foot (office building), price per seat (theater), or price per gallon of gas pumped (gas station). Income can also be a unit of comparison, such as when price is divided by effective gross income to obtain an effective gross income multiplier.
+unsecured loan - a loan that is not backed by collateral or security.
+useful life - the period of time a property is expected to have economic utility. 
+usury - the practice of charging interest at a rate higher than that allowed by law.
+utility - also known as functional utility; measure of usefulness of a property
+vacancy and collection loss - the loss of income due to vacancy and nonpayment of rent. 
+VA-guaranteed loan - a mortgage loan made to a qualified veteran that is guaranteed by the Department of Veterans Affairs.
+valid contract - an agreement that is legally enforceable and binding on all parties.
+valuation - process of estimating a defined value of an identified interest in a specific parcel of real estate as of a given date.
+value in exchange - value of a property in a typical market; market value.
+Waiver - the surrender of a known right or claim.
+warranty deed - a deed in which the grantor fully warrants a good, clear title to the property.
+waste - the improper use of a property by a party with the right to possession, such as the holder of a life estate. 
+wear and tear - physical deterioration of property due to weathering, aging, and use.
+will - a written document that directs the distribution of a deceased person's property, real and personal. 
+
+15
+value in use - value of a property based on a specific use. This may differ from market value when the use is specialized and there is a limited market for the property based on that use.
+variable expense - expenses that vary depending on the level of occupancy (e.g., utilities, garbage removal).
+variance - permission obtained from zoning authorities to build a structure that is not in complete compliance with current zoning laws. A variance does not permit a non-conforming use of a property. 
+Vendee - a buyer.vendor a seller; the property owner.
+village - an incorporated minor municipality usually larger than a hamlet and smaller than a town.
+void contract - a contract that is not legally enforceable; the absence of a valid contract.
+voidable contract - a contract that appears to be valid but is subject to cancellation by one or both of the parties.
+wraparound mortgage - a mortgage that includes the remaining balance on an existing first mortgage, plus an additional amount. Full payments on both mortgages are made to the wraparound mortgagee, who then forwards the payments on the first mortgage to the first mortgagee.
+Write of execution - a court order to the sheriff or other officer to sell the property of a debtor to satisfy a previously rendered judgment.
+Yield - rate of return on an investment. Could be an overall yield for the property (yo), a yield for the equity investor (ye), or a yield for the lender (ym) mortgage component.
+yield capitalization - method used in the income approach to determine property value by discounting future cash flows at an appropriate discount rate (yield rate) that reflects the rate of return required by investors. The approach may or may not explicitly consider financing. See discounted cash flow analysis.
+Zone - an area reserved by authorities for specific use that is subject to certain restrictions.
+zoning ordinance - the exercise of regulating and controlling the use of a property in a municipality. 
+zoning restrictions - restrictions may be placed on issues such as height, density, use, or development of properties.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
