@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detective Quiz Bureau</title>
-    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Crimson+Text:wght@400;600;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <title>Galactic Command Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Audiowide&family=Electrolize:wght@400&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,49 +13,76 @@
         }
         
         body {
-            font-family: 'Crimson Text', serif;
-            background: linear-gradient(135deg, #2c1810 0%, #1a0f08 100%);
-            color: #f4f1e8;
+            font-family: 'Rajdhani', sans-serif;
+            background: radial-gradient(ellipse at center, #1a0033 0%, #000011 50%, #000000 100%);
+            color: #00d4ff;
             min-height: 100vh;
-            position: relative;
             overflow-x: hidden;
+            position: relative;
         }
         
-        body::before {
-            content: '';
+        .space-field {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(139, 69, 19, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(160, 82, 45, 0.1) 0%, transparent 50%);
             pointer-events: none;
             z-index: 1;
         }
         
-        .paper-texture {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(139, 69, 19, 0.03) 2px,
-                    rgba(139, 69, 19, 0.03) 4px
-                );
-            pointer-events: none;
-            z-index: 2;
+        .star-field {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: linear-gradient(45deg, #00d4ff, #ff00ff);
+            border-radius: 50%;
+            animation: neonTwinkle 3s infinite;
+            box-shadow: 0 0 10px currentColor;
+        }
+        
+        @keyframes neonTwinkle {
+            0%, 100% { opacity: 0.4; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+        
+        .satellite {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #ff00ff, #00d4ff);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            animation: hologramFloat 15s linear infinite;
+            filter: drop-shadow(0 0 15px #ff00ff);
+        }
+        
+        @keyframes hologramFloat {
+            0% { transform: translateX(-50px) translateY(0px) rotate(0deg); }
+            25% { transform: translateX(100vw) translateY(-80px) rotate(90deg); }
+            50% { transform: translateX(calc(100vw + 50px)) translateY(100vh) rotate(180deg); }
+            75% { transform: translateX(-50px) translateY(calc(100vh + 80px)) rotate(270deg); }
+            100% { transform: translateX(-50px) translateY(0px) rotate(360deg); }
+        }
+        
+        .radar-sweep {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 3px solid #00d4ff;
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: quantumScan 6s linear infinite;
+            box-shadow: 0 0 30px #00d4ff;
+        }
+        
+        @keyframes quantumScan {
+            0% { transform: scale(0.3) rotate(0deg); opacity: 0.6; }
+            100% { transform: scale(2.5) rotate(360deg); opacity: 0; }
         }
         
         .container {
             position: relative;
-            z-index: 3;
+            z-index: 2;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -63,594 +90,713 @@
             padding: 20px;
         }
         
-        .detective-bureau {
-            background: linear-gradient(145deg, #3d2914, #2c1810);
-            border: 4px solid #8b4513;
-            border-radius: 15px;
+        .mission-control {
+            background: linear-gradient(145deg, rgba(0, 0, 17, 0.9), rgba(26, 0, 51, 0.9));
+            border: 3px solid #00d4ff;
+            border-radius: 25px;
             box-shadow: 
-                0 20px 60px rgba(0, 0, 0, 0.7),
-                inset 0 0 30px rgba(139, 69, 19, 0.2);
-            max-width: 1100px;
+                0 0 80px rgba(0, 212, 255, 0.3),
+                inset 0 0 80px rgba(255, 0, 255, 0.1);
+            max-width: 1400px;
             width: 100%;
             overflow: hidden;
             position: relative;
+            backdrop-filter: blur(15px);
         }
         
-        .bureau-header {
-            background: linear-gradient(90deg, #8b4513, #a0522d, #8b4513);
-            padding: 40px;
+        .mission-control::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #ff00ff, #00d4ff, #ff00ff, #00d4ff);
+            background-size: 200% 100%;
+            animation: hologramLights 2s linear infinite;
+        }
+        
+        @keyframes hologramLights {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        
+        .control-header {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(255, 0, 255, 0.15));
+            padding: 50px;
             text-align: center;
             position: relative;
-            border-bottom: 3px solid #654321;
+            border-bottom: 4px solid #00d4ff;
         }
         
-        .bureau-header::before {
+        .control-header::before {
+            content: '◆ GALACTIC COMMAND ONLINE ◆';
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Electrolize', monospace;
+            font-size: 0.9rem;
+            color: #ff00ff;
+            animation: hologramBlink 1.5s infinite;
+        }
+        
+        @keyframes hologramBlink {
+            0%, 60% { opacity: 1; }
+            61%, 100% { opacity: 0.4; }
+        }
+        
+        .mission-title {
+            font-family: 'Audiowide', monospace;
+            font-size: 4rem;
+            font-weight: 400;
+            color: #00d4ff;
+            text-shadow: 0 0 40px rgba(0, 212, 255, 0.8);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .mission-subtitle {
+            font-family: 'Electrolize', monospace;
+            font-size: 1.3rem;
+            color: #ff00ff;
+            font-weight: 400;
+            text-shadow: 0 0 20px rgba(255, 0, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+        
+        .command-center {
+            padding: 50px;
+        }
+        
+        .mission-briefing {
+            background: linear-gradient(145deg, rgba(0, 212, 255, 0.08), rgba(255, 0, 255, 0.08));
+            border: 3px solid #00d4ff;
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 45px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mission-briefing::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
+            animation: hologramScan 4s infinite;
+        }
+        
+        @keyframes hologramScan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .briefing-text {
+            font-family: 'Electrolize', monospace;
+            font-size: 1.2rem;
+            color: #00d4ff;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .launch-status {
+            font-size: 1rem;
+            color: #ff00ff;
+            animation: quantumPulse 1.8s infinite;
+            position: relative;
+            z-index: 1;
+        }
+        
+        @keyframes quantumPulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .mission-module {
+            background: linear-gradient(145deg, rgba(0, 0, 17, 0.8), rgba(26, 0, 51, 0.8));
+            border: 2px solid #ff00ff;
+            border-radius: 25px;
+            padding: 40px 30px;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .mission-module::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="wood" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="20" height="20" fill="%23654321"/><path d="M0 10h20M0 20h20" stroke="%23543018" stroke-width="0.5" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23wood)"/></svg>');
-            opacity: 0.3;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 212, 255, 0.15) 3px, transparent 3px),
+                radial-gradient(circle at 75% 75%, rgba(255, 0, 255, 0.15) 3px, transparent 3px);
+            background-size: 40px 40px;
+            animation: hologramGrid 12s linear infinite;
+            pointer-events: none;
         }
         
-        .bureau-title {
-            font-family: 'Special Elite', cursive;
-            font-size: 3.2rem;
-            font-weight: 400;
-            color: #f4f1e8;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 1;
+        @keyframes hologramGrid {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(40px, 40px); }
         }
         
-        .bureau-subtitle {
-            font-size: 1.4rem;
-            color: #d4af37;
-            font-weight: 600;
-            position: relative;
-            z-index: 1;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        .mission-module:hover {
+            transform: translateY(-10px) scale(1.03);
+            border-color: #00d4ff;
+            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.4);
         }
         
-        .case-files {
-            padding: 40px;
-        }
-        
-        .files-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-        
-        .case-file {
-            background: linear-gradient(145deg, #f4f1e8, #e8e5d8);
-            color: #2c1810;
-            border: 2px solid #8b4513;
-            border-radius: 10px;
-            padding: 30px;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-        
-        .case-file::before {
-            content: '';
+        .module-indicator {
             position: absolute;
-            top: -5px;
-            left: 20px;
-            width: 40px;
-            height: 15px;
-            background: #d4af37;
-            border-radius: 0 0 5px 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        }
-        
-        .case-file::after {
-            content: '';
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            width: 30px;
-            height: 30px;
-            background: radial-gradient(circle, #dc143c 40%, transparent 40%);
-            border-radius: 50%;
-            opacity: 0.8;
-        }
-        
-        .case-file:hover {
-            transform: translateY(-8px) rotateX(5deg);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-            border-color: #d4af37;
-        }
-        
-        .case-stamp {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 60px;
-            height: 60px;
-            border: 3px solid #dc143c;
+            top: 20px;
+            right: 20px;
+            width: 55px;
+            height: 55px;
+            background: radial-gradient(circle at 30% 30%, #00d4ff, #ff00ff);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Special Elite', cursive;
-            font-size: 0.7rem;
-            font-weight: bold;
-            color: #dc143c;
-            transform: rotate(-15deg);
-            opacity: 0.7;
+            font-size: 1.3rem;
+            animation: hologramPulse 2.5s ease-in-out infinite;
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.6);
         }
         
-        .case-number {
-            font-family: 'Courier Prime', monospace;
-            font-size: 0.9rem;
-            color: #8b4513;
-            margin-bottom: 15px;
-            font-weight: 700;
+        @keyframes hologramPulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.15); opacity: 1; }
         }
         
-        .case-title {
-            font-family: 'Special Elite', cursive;
+        .module-icon {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 20px currentColor);
+            animation: quantumFloat 4s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+        
+        @keyframes quantumFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(8deg); }
+        }
+        
+        .module-name {
+            font-family: 'Rajdhani', sans-serif;
             font-size: 1.5rem;
-            font-weight: 400;
-            margin-bottom: 12px;
-            color: #2c1810;
-        }
-        
-        .case-description {
-            font-size: 1rem;
-            line-height: 1.5;
-            color: #4a3728;
-            margin-bottom: 15px;
-        }
-        
-        .case-difficulty {
-            display: inline-block;
-            background: #8b4513;
-            color: #f4f1e8;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
             font-weight: 600;
+            margin-bottom: 18px;
+            color: #00d4ff;
+            position: relative;
+            z-index: 1;
+            text-transform: uppercase;
         }
         
-        .investigation-section {
+        .module-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #ff00ff;
+            opacity: 0.85;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .difficulty-matrix {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 25px;
+        }
+        
+        .matrix-cell {
+            width: 18px;
+            height: 18px;
+            background: rgba(0, 0, 17, 0.8);
+            border: 2px solid #444;
+            border-radius: 3px;
+            transition: all 0.4s ease;
+        }
+        
+        .matrix-cell.active {
+            background: linear-gradient(45deg, #ff00ff, #00d4ff);
+            box-shadow: 0 0 15px #ff00ff;
+            animation: quantumGlow 2.2s ease-in-out infinite;
+            border-color: #00d4ff;
+        }
+        
+        @keyframes quantumGlow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .mission-session {
             display: none;
         }
         
-        .investigation-section.active {
+        .mission-session.active {
             display: block;
         }
         
-        .investigation-header {
+        .session-hud {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
             flex-wrap: wrap;
-            gap: 15px;
-        }
-        
-        .close-case-btn {
-            background: linear-gradient(45deg, #8b4513, #a0522d);
-            color: #f4f1e8;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-family: 'Special Elite', cursive;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .close-case-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-        }
-        
-        .case-info {
-            display: flex;
             gap: 20px;
+        }
+        
+        .abort-mission {
+            background: linear-gradient(45deg, #ff0000, #cc0000);
+            color: #ffffff;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+            animation: emergencyBlink 3s infinite;
+        }
+        
+        @keyframes emergencyBlink {
+            0%, 90% { opacity: 1; }
+            95% { opacity: 0.5; }
+        }
+        
+        .abort-mission:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
+        }
+        
+        .hud-displays {
+            display: flex;
+            gap: 25px;
             align-items: center;
         }
         
-        .info-badge {
-            background: linear-gradient(45deg, #d4af37, #b8941f);
-            color: #2c1810;
-            padding: 8px 16px;
+        .hud-screen {
+            background: linear-gradient(45deg, rgba(0, 255, 65, 0.2), rgba(0, 153, 255, 0.2));
+            border: 2px solid #00ff41;
+            color: #00ff41;
+            padding: 12px 25px;
             border-radius: 20px;
-            font-family: 'Courier Prime', monospace;
+            font-family: 'Share Tech Mono', monospace;
             font-size: 0.9rem;
-            font-weight: 700;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            font-weight: 600;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+            text-shadow: 0 0 8px rgba(0, 255, 65, 0.8);
+            text-transform: uppercase;
         }
         
-        .evidence-board {
-            background: linear-gradient(145deg, #654321, #4a3728);
-            border: 3px solid #8b4513;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 30px;
-            position: relative;
-        }
-        
-        .evidence-board::before {
-            content: 'EVIDENCE BOARD';
-            position: absolute;
-            top: -12px;
-            left: 20px;
-            background: #d4af37;
-            color: #2c1810;
-            padding: 5px 15px;
-            font-family: 'Special Elite', cursive;
-            font-size: 0.8rem;
-            font-weight: bold;
-            border-radius: 3px;
-        }
-        
-        .evidence-progress {
-            background: #2c1810;
-            height: 12px;
-            border-radius: 6px;
+        .mission-progress {
+            background: rgba(0, 0, 0, 0.8);
+            height: 30px;
+            border-radius: 15px;
             overflow: hidden;
-            border: 2px solid #8b4513;
+            border: 3px solid #00ff41;
+            margin-bottom: 40px;
+            box-shadow: inset 0 0 15px rgba(0, 255, 65, 0.3);
         }
         
-        .evidence-fill {
-            background: linear-gradient(90deg, #d4af37, #ffd700, #d4af37);
+        .progress-beam {
+            background: linear-gradient(90deg, #ff6b35, #ffff00, #00ff41, #0099ff);
+            background-size: 400% 100%;
             height: 100%;
-            transition: width 0.6s ease;
-            border-radius: 4px;
-            position: relative;
+            transition: width 1s ease;
+            border-radius: 12px;
+            animation: energyFlow 3s infinite;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.6);
         }
         
-        .evidence-fill::after {
+        @keyframes energyFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .command-display {
+            background: linear-gradient(145deg, rgba(0, 255, 65, 0.1), rgba(0, 153, 255, 0.1));
+            border: 3px solid #00ff41;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.2);
+            position: relative;
+            backdrop-filter: blur(5px);
+        }
+        
+        .command-display::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            animation: shimmer 2s infinite;
+            background: 
+                linear-gradient(45deg, transparent 49%, rgba(0, 255, 65, 0.05) 50%, transparent 51%);
+            background-size: 20px 20px;
+            animation: commandPattern 12s linear infinite;
+            pointer-events: none;
         }
         
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+        @keyframes commandPattern {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(20px, 20px) rotate(360deg); }
         }
         
-        .case-document {
-            background: linear-gradient(145deg, #f4f1e8, #e8e5d8);
-            color: #2c1810;
-            border: 3px solid #8b4513;
-            border-radius: 12px;
-            padding: 40px;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            position: relative;
-        }
-        
-        .case-document::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: repeating-linear-gradient(
-                90deg,
-                #dc143c 0px,
-                #dc143c 10px,
-                transparent 10px,
-                transparent 20px
-            );
-        }
-        
-        .question-text {
-            font-family: 'Special Elite', cursive;
+        .command-text {
+            font-family: 'Orbitron', monospace;
             font-size: 1.6rem;
-            font-weight: 400;
-            margin-bottom: 30px;
-            line-height: 1.4;
-            color: #2c1810;
-        }
-        
-        .clues-list {
-            display: grid;
-            gap: 15px;
-        }
-        
-        .clue-option {
-            background: linear-gradient(145deg, #3d2914, #2c1810);
-            color: #f4f1e8;
-            border: 2px solid #8b4513;
-            padding: 20px 25px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            text-align: left;
-            transition: all 0.3s ease;
+            font-weight: 600;
+            margin-bottom: 35px;
+            text-align: center;
+            color: #00ff41;
+            text-shadow: 0 0 15px rgba(0, 255, 65, 0.8);
             position: relative;
-            font-family: 'Crimson Text', serif;
+            z-index: 1;
+            line-height: 1.4;
         }
         
-        .clue-option::before {
-            content: '🔍';
+        .response-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .response-panel {
+            background: linear-gradient(145deg, rgba(12, 12, 12, 0.95), rgba(26, 26, 46, 0.95));
+            color: #ffffff;
+            border: 2px solid #0099ff;
+            padding: 30px 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+        }
+        
+        .response-panel::before {
+            content: '●';
             position: absolute;
-            left: -5px;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 15px;
+            left: 20px;
             font-size: 1.2rem;
-            opacity: 0;
-            transition: all 0.3s ease;
+            color: #0099ff;
+            animation: statusDot 2s ease-in-out infinite;
         }
         
-        .clue-option:hover::before {
-            opacity: 1;
-            left: 10px;
+        @keyframes statusDot {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
         
-        .clue-option:hover {
-            transform: translateX(15px);
-            border-color: #d4af37;
-            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
-            padding-left: 45px;
+        .response-panel:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: #00ff41;
+            box-shadow: 0 15px 40px rgba(0, 255, 65, 0.3);
         }
         
-        .clue-option.correct {
-            background: linear-gradient(145deg, #2d5016, #1a3009);
-            border-color: #4caf50;
-            animation: solvedCase 0.8s ease;
+        .response-panel.correct {
+            background: linear-gradient(145deg, rgba(0, 150, 0, 0.8), rgba(0, 100, 0, 0.8));
+            border-color: #00ff41;
+            animation: correctSignal 1s ease;
         }
         
-        .clue-option.incorrect {
-            background: linear-gradient(145deg, #5d1616, #3d0909);
-            border-color: #f44336;
-            animation: wrongClue 0.6s ease;
+        .response-panel.incorrect {
+            background: linear-gradient(145deg, rgba(150, 0, 0, 0.8), rgba(100, 0, 0, 0.8));
+            border-color: #ff0000;
+            animation: errorGlitch 0.8s ease;
         }
         
-        @keyframes solvedCase {
+        @keyframes correctSignal {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
         }
         
-        @keyframes wrongClue {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-10px); }
-            75% { transform: translateX(10px); }
+        @keyframes errorGlitch {
+            0%, 100% { transform: translateX(0) skew(0deg); }
+            20% { transform: translateX(-10px) skew(-2deg); }
+            40% { transform: translateX(10px) skew(2deg); }
+            60% { transform: translateX(-5px) skew(-1deg); }
+            80% { transform: translateX(5px) skew(1deg); }
         }
         
-        .investigation-controls {
+        .mission-controls {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 30px;
+            margin-top: 35px;
         }
         
-        .control-button {
-            background: linear-gradient(45deg, #654321, #4a3728);
-            color: #f4f1e8;
+        .control-btn {
+            background: linear-gradient(45deg, rgba(100, 100, 100, 0.8), rgba(50, 50, 50, 0.8));
+            color: #ffffff;
             border: none;
-            padding: 15px 25px;
-            border-radius: 8px;
+            padding: 15px 30px;
+            border-radius: 10px;
             cursor: pointer;
-            font-family: 'Special Elite', cursive;
-            font-size: 1rem;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
+            font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
         }
         
-        .control-button:hover {
+        .control-btn:hover {
+            background: linear-gradient(45deg, rgba(150, 150, 150, 0.8), rgba(100, 100, 100, 0.8));
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
         }
         
-        .control-button:disabled {
-            opacity: 0.5;
+        .control-btn:disabled {
+            opacity: 0.4;
             cursor: not-allowed;
             transform: none;
         }
         
-        .control-button.primary {
-            background: linear-gradient(45deg, #d4af37, #b8941f);
-            color: #2c1810;
+        .control-btn.primary {
+            background: linear-gradient(45deg, rgba(0, 255, 65, 0.8), rgba(0, 153, 255, 0.8));
+            color: #000000;
         }
         
-        .case-closed {
+        .control-btn.primary:hover {
+            box-shadow: 0 8px 25px rgba(0, 255, 65, 0.4);
+        }
+        
+        .mission-complete {
             text-align: center;
-            padding: 50px;
+            padding: 80px 40px;
         }
         
-        .case-status {
-            font-size: 5rem;
-            margin-bottom: 25px;
-            animation: caseClosedPulse 2s infinite;
-        }
-        
-        @keyframes caseClosedPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-        
-        .final-verdict {
-            font-family: 'Special Elite', cursive;
-            font-size: 2.8rem;
-            font-weight: 400;
-            margin-bottom: 20px;
-            color: #d4af37;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-        }
-        
-        .case-score {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: #4caf50;
-            margin-bottom: 15px;
-            font-family: 'Courier Prime', monospace;
-        }
-        
-        .solve-rate {
-            font-size: 2rem;
-            color: #8b4513;
-            margin-bottom: 30px;
-            font-weight: 600;
-        }
-        
-        .detective-rank {
-            font-size: 1.3rem;
+        .complete-icon {
+            font-size: 8rem;
             margin-bottom: 40px;
-            line-height: 1.6;
-            color: #f4f1e8;
+            animation: completePulse 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 40px currentColor);
         }
         
-        .new-case-btn {
-            background: linear-gradient(45deg, #d4af37, #ffd700);
-            color: #2c1810;
-            border: none;
-            padding: 20px 40px;
-            border-radius: 10px;
-            font-family: 'Special Elite', cursive;
+        @keyframes completePulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(10deg); }
+        }
+        
+        .complete-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+            color: #00ff41;
+            text-shadow: 0 0 40px rgba(0, 255, 65, 0.8);
+        }
+        
+        .mission-score {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #0099ff;
+            margin-bottom: 25px;
+            text-shadow: 0 0 30px rgba(0, 153, 255, 0.8);
+            font-family: 'Orbitron', monospace;
+        }
+        
+        .score-rating {
+            font-size: 2.5rem;
+            color: #ff6b35;
+            margin-bottom: 35px;
+            text-shadow: 0 0 25px rgba(255, 107, 53, 0.8);
+            font-weight: 700;
+        }
+        
+        .commander-report {
             font-size: 1.2rem;
-            font-weight: 400;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            margin-bottom: 50px;
+            line-height: 1.7;
+            color: #00ff41;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .new-case-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+        .new-mission-btn {
+            background: linear-gradient(45deg, #ff6b35, #00ff41, #0099ff);
+            background-size: 200% 100%;
+            color: #000000;
+            border: none;
+            padding: 25px 50px;
+            border-radius: 15px;
+            font-family: 'Orbitron', monospace;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+            animation: missionGlow 4s ease-in-out infinite;
+            text-transform: uppercase;
+        }
+        
+        @keyframes missionGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .new-mission-btn:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(255, 107, 53, 0.6);
         }
         
         @media (max-width: 768px) {
-            .bureau-title {
-                font-size: 2.2rem;
+            .mission-title {
+                font-size: 2.5rem;
             }
             
-            .case-files {
-                padding: 20px;
+            .command-center {
+                padding: 30px;
             }
             
-            .files-grid {
+            .mission-grid {
                 grid-template-columns: 1fr;
             }
             
-            .case-document {
+            .command-display {
                 padding: 25px;
             }
             
-            .question-text {
-                font-size: 1.3rem;
+            .command-text {
+                font-size: 1.2rem;
             }
             
-            .case-info {
+            .response-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hud-displays {
                 flex-direction: column;
-                gap: 10px;
+                gap: 15px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="paper-texture"></div>
+    <div class="space-field" id="spaceField"></div>
     
     <div class="container">
-        <div class="detective-bureau">
-            <div class="bureau-header">
-                <div class="bureau-title">🕵️ DETECTIVE QUIZ BUREAU 🕵️</div>
-                <div class="bureau-subtitle">Solve Mysteries Through Knowledge</div>
+        <div class="mission-control">
+            <div class="control-header">
+                <div class="mission-title">⚡ AZERON QUIZ GAME ⚡</div>
+                <div class="mission-subtitle">THESE TERMS WILL help you not only as you study for your appraisal exam, but also after you pass your exam and are on the job every day.</div>
             </div>
             
-            <div class="case-files">
-                <!-- Case Files Selection -->
-                <div id="caseFiles">
-                    <div class="files-grid">
-                        <div class="case-file" onclick="openCase('murder')">
-                            <div class="case-stamp">URGENT</div>
-                            <div class="case-number">CASE #001-M</div>
-                            <div class="case-title">Murder Mystery Cases</div>
-                            <div class="case-description">Investigate suspicious deaths and solve complex murder cases using forensic knowledge.</div>
-                            <div class="case-difficulty">EXPERT</div>
+            <div class="command-center">
+                <!-- Mission Selection -->
+                <div id="missionSelection">
+                    <div class="mission-briefing">
+                        <div class="briefing-text">Neural Link Established - Select Mission Protocol</div>
+                        <div class="launch-status">◆ Quantum Systems Online - Awaiting Command</div>
+                    </div>
+                    
+                    <div class="mission-grid">
+                        <div class="mission-module" onclick="launchMission('solar')">
+                            <div class="module-indicator">🪐</div>
+                            <div class="module-icon">🌌</div>
+                            <div class="module-name">MISSION 1</div>
+                            <div class="difficulty-matrix">
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell"></div>
+                                <div class="matrix-cell"></div>
+                                <div class="matrix-cell"></div>
+                            </div>
                         </div>
                         
-                        <div class="case-file" onclick="openCase('theft')">
-                            <div class="case-stamp">ACTIVE</div>
-                            <div class="case-number">CASE #002-T</div>
-                            <div class="case-title">Theft & Robbery Files</div>
-                            <div class="case-description">Track down stolen goods and identify perpetrators in these property crime cases.</div>
-                            <div class="case-difficulty">MEDIUM</div>
+                        <div class="mission-module" onclick="launchMission('rockets')">
+                            <div class="module-indicator">🚀</div>
+                            <div class="module-icon">🛰️</div>
+                            <div class="module-name">MISSION 2</div>
+                            <div class="difficulty-matrix">
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell"></div>
+                                <div class="matrix-cell"></div>
+                            </div>
                         </div>
                         
-                        <div class="case-file" onclick="openCase('missing')">
-                            <div class="case-stamp">PRIORITY</div>
-                            <div class="case-number">CASE #003-MP</div>
-                            <div class="case-title">Missing Person Reports</div>
-                            <div class="case-description">Find clues and piece together the disappearance of missing individuals.</div>
-                            <div class="case-difficulty">HARD</div>
-                        </div>
-                        
-                        <div class="case-file" onclick="openCase('fraud')">
-                            <div class="case-stamp">OPEN</div>
-                            <div class="case-number">CASE #004-F</div>
-                            <div class="case-title">Fraud Investigation</div>
-                            <div class="case-description">Uncover financial crimes and expose fraudulent schemes and scams.</div>
-                            <div class="case-difficulty">MEDIUM</div>
-                        </div>
-                        
-                        <div class="case-file" onclick="openCase('cold')">
-                            <div class="case-stamp">COLD</div>
-                            <div class="case-number">CASE #005-CC</div>
-                            <div class="case-title">Cold Case Files</div>
-                            <div class="case-description">Revisit unsolved cases with fresh eyes and new investigative techniques.</div>
-                            <div class="case-difficulty">EASY</div>
+                        <div class="mission-module" onclick="launchMission('astronauts')">
+                            <div class="module-indicator">👨‍🚀</div>
+                            <div class="module-icon">🧑‍🚀</div>
+                            <div class="module-name">MISSION 3</div>
+                            <div class="difficulty-matrix">
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Investigation Section -->
-                <div id="investigationSection" class="investigation-section">
-                    <div class="investigation-header">
-                        <button class="close-case-btn" onclick="closeCase()">← CLOSE CASE</button>
-                        <div class="case-info">
-                            <div class="info-badge" id="clueCounter">CLUE 1/5</div>
-                            <div class="info-badge" id="evidenceCounter">EVIDENCE: 0</div>
+                <!-- Mission Session -->
+                <div id="missionSession" class="mission-session">
+                    <div class="session-hud">
+                        <button class="abort-mission" onclick="abortMission()">⚠ ABORT MISSION</button>
+                        <div class="hud-displays">
+                            <div class="hud-screen" id="commandCounter">CMD: 1/6</div>
+                            <div class="hud-screen" id="successCounter">SUCCESS: 0</div>
                         </div>
                     </div>
                     
-                    <div class="evidence-board">
-                        <div class="evidence-progress">
-                            <div class="evidence-fill" id="evidenceFill"></div>
-                        </div>
+                    <div class="mission-progress">
+                        <div class="progress-beam" id="progressBeam"></div>
                     </div>
                     
-                    <div class="case-document">
-                        <div class="question-text" id="questionText"></div>
-                        <div class="clues-list" id="cluesList"></div>
+                    <div class="command-display">
+                        <div class="command-text" id="commandText"></div>
+                        <div class="response-grid" id="responseGrid"></div>
                     </div>
                     
-                    <div class="investigation-controls">
-                        <button class="control-button" id="prevClue" onclick="previousClue()" disabled>← PREVIOUS CLUE</button>
-                        <button class="control-button primary" id="nextClue" onclick="nextClue()" style="display: none;">NEXT CLUE →</button>
+                    <div class="mission-controls">
+                        <button class="control-btn" id="prevCommand" onclick="previousCommand()" disabled>← PREVIOUS</button>
+                        <button class="control-btn primary" id="nextCommand" onclick="nextCommand()" style="display: none;">NEXT COMMAND →</button>
                     </div>
                 </div>
                 
-                <!-- Case Closed Section -->
-                <div id="caseClosedSection" class="investigation-section">
-                    <div class="case-closed">
-                        <div class="case-status" id="caseStatusIcon">🎯</div>
-                        <div class="final-verdict">CASE CLOSED!</div>
-                        <div class="case-score" id="finalEvidence">0/5</div>
-                        <div class="solve-rate" id="solveRate">0%</div>
-                        <div class="detective-rank" id="detectiveRank"></div>
-                        <button class="new-case-btn" onclick="newCase()">INVESTIGATE NEW CASE</button>
+                <!-- Mission Complete -->
+                <div id="missionComplete" class="mission-session">
+                    <div class="mission-complete">
+                        <div class="complete-icon" id="completeIcon">🏆</div>
+                        <div class="complete-title">MISSION COMPLETE</div>
+                        <div class="mission-score" id="finalSuccess">0/6</div>
+                        <div class="score-rating" id="successRate">0%</div>
+                        <div class="commander-report" id="commanderReport"></div>
+                        <button class="new-mission-btn" onclick="newMission()">Launch New Mission</button>
                     </div>
                 </div>
             </div>
@@ -658,305 +804,579 @@
     </div>
 
     <script>
-        const caseData = {
-            murder: [
+        // Create space field
+        function createSpaceField() {
+            const spaceField = document.getElementById('spaceField');
+            
+            // Create stars
+            for (let i = 0; i < 150; i++) {
+                const star = document.createElement('div');
+                star.className = 'star-field';
+                
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 4 + 's';
+                star.style.animationDuration = (3 + Math.random() * 3) + 's';
+                
+                spaceField.appendChild(star);
+            }
+            
+            // Create satellites
+            for (let i = 0; i < 3; i++) {
+                const satellite = document.createElement('div');
+                satellite.className = 'satellite';
+                
+                satellite.style.left = Math.random() * 100 + '%';
+                satellite.style.top = Math.random() * 100 + '%';
+                satellite.style.animationDelay = Math.random() * 20 + 's';
+                satellite.style.animationDuration = (15 + Math.random() * 10) + 's';
+                
+                spaceField.appendChild(satellite);
+            }
+            
+            // Create radar sweeps
+            for (let i = 0; i < 4; i++) {
+                const radar = document.createElement('div');
+                radar.className = 'radar-sweep';
+                
+                radar.style.left = Math.random() * 100 + '%';
+                radar.style.top = Math.random() * 100 + '%';
+                radar.style.animationDelay = Math.random() * 8 + 's';
+                
+                spaceField.appendChild(radar);
+            }
+        }
+        
+        createSpaceField();
+
+        const missionData = {
+            solar: [
                 {
-                    question: "What is the most common cause of death in murder cases?",
-                    options: ["Poisoning", "Gunshot wounds", "Stabbing", "Strangulation"],
-                    correct: 1
+                  question: "residual techniques - processes used in the income approach in which the unknown income from one component is derived by subtracting the known income from another component from the net operating income. The derived (residual) income is then capitalized to find the value of the corresponding component. Can be used for land-building or mortgage-equity components.",
+                  options: ["Residual techniques", "Restriction", "Reverse annuity mortgage", "Review appraiser"],
+                  correct: 0
                 },
                 {
-                    question: "What does 'rigor mortis' refer to?",
-                    options: ["Time of death", "Stiffening of muscles after death", "Blood pooling", "Body temperature drop"],
-                    correct: 1
+                  question: "restriction (restrict covenant) - a limitation on the way a property can be used.",
+                  options: ["Restriction", "Residual techniques", "Reversion", "Review appraiser"],
+                  correct: 0
                 },
                 {
-                    question: "Which forensic technique is used to determine time of death?",
-                    options: ["DNA analysis", "Fingerprinting", "Body temperature measurement", "Blood spatter analysis"],
-                    correct: 2
+                  question: "reverse annuity mortgage - when a homeowner receives monthly checks or a lump sum with no repayment until property is sold; usually an agreement between mortgagor and elderly homeowners.",
+                  options: ["Reverse annuity mortgage", "Restriction", "Residual techniques", "Review appraiser"],
+                  correct: 0
                 },
                 {
-                    question: "What is the term for the pattern of blood at a crime scene?",
-                    options: ["Blood evidence", "Blood spatter", "Hemoglobin trace", "Plasma pattern"],
-                    correct: 1
+                  question: "Reversion - a lessor's right to possess leased property at the termination of a lease. Also refers generally to sale of a property at the end of a holding period.",
+                  options: ["Reversion", "Residual techniques", "Restriction", "Reverse annuity mortgage"],
+                  correct: 0
                 },
                 {
-                    question: "Which professional typically performs autopsies?",
-                    options: ["Detective", "Medical examiner", "Crime scene investigator", "Police officer"],
-                    correct: 1
+                  question: "review appraiser - an appraiser who inspects the reports of other appraisers to determine the validity of the conclusions and data given in the report.",
+                  options: ["Review appraiser", "Residual techniques", "Restriction", "Reverse annuity mortgage"],
+                  correct: 0
+                },
+                {
+                  question: "revision - a revised or new version, as in a contract.",
+                  options: ["Revision", "Review appraiser", "Reversion", "Residual techniques"],
+                  correct: 0
+                },
+                {
+                  question: "rezoning - change or amendment to a zoning map.",
+                  options: ["Rezoning", "Revision", "Review appraiser", "Restriction"],
+                  correct: 0
+                },
+                {
+                  question: "strip center - commercial use of real estate, such as a neighborhood shopping center, in which the buildings are adjoining and narrow in depth relative to the length.",
+                  options: ["Strip center", "Subdivision", "Subject property", "Sublease"],
+                  correct: 0
+                },
+                {
+                  question: "Subdivision - large plot of land divided into small lots for sale or lease.",
+                  options: ["Subdivision", "Strip center", "Subject property", "Sublease"],
+                  correct: 0
+                },
+                {
+                  question: "subject property - the property being appraised.",
+                  options: ["Subject property", "Subdivision", "Strip center", "Sublease"],
+                  correct: 0
+                },
+                {
+                  question: "sublease - agreement in which the tenant (lessee) leases the property or part of the property to a third party, thus becoming a lessor.",
+                  options: ["Sublease", "Sublet", "Transfer tax", "Trend"],
+                  correct: 0
+                },
+                {
+                  question: "sublet - the act of a lessee transferring part or all of his or her lease to a third party while maintaining responsibility for all duties and obligations of the lease contract.",
+                  options: ["Sublet", "Sublease", "Transfer tax", "Trend"],
+                  correct: 0
+                },
+                {
+                  question: "transfer tax - a state or municipal tax payable when the conveyancing instrument is recorded.",
+                  options: ["Transfer tax", "Trend", "Trust", "Trustee"],
+                  correct: 0
+                },
+                {
+                  question: "trend - series of related changes brought about by a chain of causes and effects.",
+                  options: ["Trend", "Transfer tax", "Trust", "Trustee"],
+                  correct: 0
+                },
+                {
+                  question: "Trust - an arrangement in which title to property is transferred from a grantor to a trustee, who holds title but not the right of possession for a third party, the beneficiary.",
+                  options: ["Trust", "Trustee", "Trend", "Transfer tax"],
+                  correct: 0
+                },
+                {
+                  question: "trustee - a person who holds title to property for another person designated as the beneficiary.",
+                  options: ["Trustee", "Trust", "Trend", "Transfer tax"],
+                  correct: 0
+                },
+                {
+                  question: "Truth-in-Lending Law - also known as Regulation Z; requires lenders to make full disclosure regarding the terms of a loan.",
+                  options: ["Truth-in-Lending Law", "Trust", "Trustee", "Trend"],
+                  correct: 0
+                },
+                {
+                  question: "unilateral contract - a one-sided contract in which one party is obligated to perform a particular act completely before the other party has any obligation to perform.",
+                  options: ["Unilateral contract", "Unit-in-place method", "Units of comparison", "Unsecured loan"],
+                  correct: 0
+                },
+                {
+                  question: "unit-in-place method - also known as segregated cost method; a method of estimating building cost in which total building cost is estimated by summing prices for various building components as installed, based on specific units of use such as square footage or cubic footage.",
+                  options: ["Unit-in-place method", "Units of comparison", "Unsecured loan", "Useful life"],
+                  correct: 0
+                },
+                {
+                  question: "units of comparison - physical or economic measure that can be divided into the property's price to provide a more standardized comparison of the properties. The measure should be one that accounts for differences in the price typically paid for the properties, such as price per square foot (office building), price per seat (theater), or price per gallon of gas pumped (gas station). Income can also be a unit of comparison, such as when price is divided by effective gross income to obtain an effective gross income multiplier.",
+                  options: ["Units of comparison", "Unit-in-place method", "Unsecured loan", "Useful life"],
+                  correct: 0
+                },
+                {
+                  question: "unsecured loan - a loan that is not backed by collateral or security.",
+                  options: ["Unsecured loan", "Units of comparison", "Useful life", "VA-guaranteed loan"],
+                  correct: 0
+                },
+                {
+                  question: "useful life - the period of time a property is expected to have economic utility.",
+                  options: ["Useful life", "Unsecured loan", "VA-guaranteed loan", "Vacancy and collection loss"],
+                  correct: 0
+                },
+                {
+                  question: "vacancy and collection loss - the loss of income due to vacancy and nonpayment of rent.",
+                  options: ["Vacancy and collection loss", "Useful life", "VA-guaranteed loan", "Valid contract"],
+                  correct: 0
+                }
+            
+            ],
+            rockets: [
+               {
+  question: "wear and tear - physical deterioration of property due to weathering, aging, and use.",
+  options: ["Wear and tear", "Will", "Suit for specific performance", "Super-adequacy"],
+  correct: 0
+},
+{
+  question: "will - a written document that directs the distribution of a deceased person's property, real and personal.",
+  options: ["Will", "Wear and tear", "Suit for specific performance", "Super-adequacy"],
+  correct: 0
+},
+{
+  question: "suit for specific performance - a lawsuit filed for the purpose of compelling a party to perform particular acts rather than pay monetary damages to settle a dispute.",
+  options: ["Suit for specific performance", "Will", "Super-adequacy", "Supplemental standards"],
+  correct: 0
+},
+{
+  question: "super-adequacy - features that are not fully valued by the marketplace (e.g., 24-carat gold faucets).",
+  options: ["Super-adequacy", "Suit for specific performance", "Supplemental standards", "Supply and demand"],
+  correct: 0
+},
+{
+  question: "supplemental standards - additional requirements that add to the development and reporting requirements of USPAP.",
+  options: ["Supplemental standards", "Super-adequacy", "Supply and demand", "Surplus productivity"],
+  correct: 0
+},
+{
+  question: "supply and demand - in appraisal, a principle that states that the value of a property depends on the quantity and price of the property type available in the market and on the number of market participants and the price they are willing to pay.",
+  options: ["Supply and demand", "Supplemental standards", "Surplus productivity", "Survey"],
+  correct: 0
+},
+{
+  question: "surplus productivity - the net income that remains after the costs of labor, capital, and coordination have been deducted from total income.",
+  options: ["Surplus productivity", "Supply and demand", "Survey", "Syndicate"],
+  correct: 0
+},
+{
+  question: "survey - a map that shows the exact legal boundaries of a property, the location of easements, encroachments, improvements, rights-of-way, and other physical features.",
+  options: ["Survey", "Surplus productivity", "Syndicate", "Village"],
+  correct: 0
+},
+{
+  question: "syndicate - a group formed by a syndicator to combine funds for real estate investment.",
+  options: ["Syndicate", "Survey", "Village", "Void contract"],
+  correct: 0
+},
+{
+  question: "village - an incorporated minor municipality usually larger than a hamlet and smaller than a town.",
+  options: ["Village", "Syndicate", "Void contract", "Voidable contract"],
+  correct: 0
+},
+{
+  question: "void contract - a contract that is not legally enforceable; the absence of a valid contract.",
+  options: ["Void contract", "Village", "Voidable contract", "Wraparound mortgage"],
+  correct: 0
+},
+{
+  question: "voidable contract - a contract that appears to be valid but is subject to cancellation by one or both of the parties.",
+  options: ["Voidable contract", "Void contract", "Wraparound mortgage", "Write of execution"],
+  correct: 0
+},
+{
+  question: "wraparound mortgage - a mortgage that includes the remaining balance on an existing first mortgage, plus an additional amount. Full payments on both mortgages are made to the wraparound mortgagee, who then forwards the payments on the first mortgage to the first mortgagee.",
+  options: ["Wraparound mortgage", "Voidable contract", "Write of execution", "Yield"],
+  correct: 0
+},
+{
+  question: "Write of execution - a court order to the sheriff or other officer to sell the property of a debtor to satisfy a previously rendered judgment.",
+  options: ["Write of execution", "Wraparound mortgage", "Yield", "Yield capitalization"],
+  correct: 0
+},
+{
+  question: "Yield - rate of return on an investment. Could be an overall yield for the property (yo), a yield for the equity investor (ye), or a yield for the lender (ym) mortgage component.",
+  options: ["Yield", "Write of execution", "Yield capitalization", "Zone"],
+  correct: 0
+},
+{
+  question: "yield capitalization - method used in the income approach to determine property value by discounting future cash flows at an appropriate discount rate (yield rate) that reflects the rate of return required by investors. The approach may or may not explicitly consider financing. See discounted cash flow analysis.",
+  options: ["Yield capitalization", "Yield", "Zone", "Zoning ordinance"],
+  correct: 0
+},
+{
+  question: "Zone - an area reserved by authorities for specific use that is subject to certain restrictions.",
+  options: ["Zone", "Yield capitalization", "Zoning ordinance", "Zoning restrictions"],
+  correct: 0
+},
+{
+  question: "zoning ordinance - the exercise of regulating and controlling the use of a property in a municipality.",
+  options: ["Zoning ordinance", "Zone", "Zoning restrictions", "USPAP"],
+  correct: 0
+},
+{
+  question: "zoning restrictions - restrictions may be placed on issues such as height, density, use, or development of properties.",
+  options: ["Zoning restrictions", "Zoning ordinance", "Zone", "USPAP"],
+  correct: 0
+},
+{
+  question: "Uniform Standards of Professional Appraisal Practice (USPAP) - a manual of professional standards of practice for appraisers; contains ethical principals and codes of conduct for appraisers.",
+  options: ["Uniform Standards of Professional Appraisal Practice (USPAP)", "Zoning restrictions", "Zoning ordinance", "Zone"],
+  correct: 0
+},
+{
+                  question: "VA-guaranteed loan - a mortgage loan made to a qualified veteran that is guaranteed by the Department of Veterans Affairs.",
+                  options: ["VA-guaranteed loan", "Vacancy and collection loss", "Valid contract", "Valuation"],
+                  correct: 0
+                },
+                {
+                  question: "valid contract - an agreement that is legally enforceable and binding on all parties.",
+                  options: ["Valid contract", "VA-guaranteed loan", "Vacancy and collection loss", "Valuation"],
+                  correct: 0
                 }
             ],
-            theft: [
+            astronauts: [
                 {
-                    question: "What is the difference between burglary and robbery?",
-                    options: ["Amount stolen", "Burglary involves breaking in, robbery involves force", "Time of day", "Type of property"],
-                    correct: 1
+                  question: "valuation - process of estimating a defined value of an identified interest in a specific parcel of real estate as of a given date.",
+                  options: ["Valuation", "Valid contract", "VA-guaranteed loan", "Vacancy and collection loss"],
+                  correct: 0
+                },          
+                {
+                      question: "What does SLS stand for in NASA's rocket program?",
+                      options: ["Space Launch System", "Super Large Spacecraft", "Stellar Launch Station", "Space Landing System"],
+                      correct: 0
                 },
                 {
-                    question: "What is the most commonly stolen item in home burglaries?",
-                    options: ["Jewelry", "Electronics", "Cash", "Artwork"],
-                    correct: 1
+                  question: "right of egress (or ingress) - the right to enter or leave designated premises.",
+                  options: ["Right of egress (or ingress)", "Right of first refusal", "Right of redemption", "Right of survivorship"],
+                  correct: 0
                 },
                 {
-                    question: "What does 'fence' mean in criminal terms?",
-                    options: ["Barrier", "Someone who sells stolen goods", "Prison wall", "Security system"],
-                    correct: 1
+                  question: "right of first refusal - the right of a person to have the first opportunity to purchase property before it is offered to anyone else.",
+                  options: ["Right of first refusal", "Right of redemption", "Right of egress (or ingress)", "Riparian rights"],
+                  correct: 0
                 },
                 {
-                    question: "Which type of theft involves using someone's credit card information?",
-                    options: ["Pickpocketing", "Identity theft", "Shoplifting", "Embezzlement"],
-                    correct: 1
+                  question: "right of redemption - the statutory right to reclaim ownership of property after a foreclosure sale.",
+                  options: ["Right of redemption", "Right of survivorship", "Right of first refusal", "Riparian rights"],
+                  correct: 0
                 },
                 {
-                    question: "What is grand theft typically defined by?",
-                    options: ["Type of item", "Value of stolen property", "Location of theft", "Method used"],
-                    correct: 1
-                }
-            ],
-            missing: [
-                {
-                    question: "How long must someone be missing before police will investigate?",
-                    options: ["24 hours", "48 hours", "72 hours", "Immediately if circumstances are suspicious"],
-                    correct: 3
+                  question: "right of survivorship - in joint tenancy, the right of survivors to acquire the interest of a deceased joint tenant.",
+                  options: ["Right of survivorship", "Right of redemption", "Right of first refusal", "Riparian rights"],
+                  correct: 0
                 },
                 {
-                    question: "What is an Amber Alert used for?",
-                    options: ["Missing adults", "Missing children", "Missing pets", "Missing vehicles"],
-                    correct: 1
+                  question: "riparian rights - the rights of a landowner whose property is adjacent to a flowing waterway, such as a river,to access and use the water.",
+                  options: ["Riparian rights", "Right of redemption", "Right of first refusal", "Right of survivorship"],
+                  correct: 0
                 },
                 {
-                    question: "What percentage of missing persons cases are resolved?",
-                    options: ["About 50%", "About 75%", "About 90%", "About 99%"],
-                    correct: 3
+                  question: "Risk - principle that deals with the uncertainty of outcomes",
+                  options: ["Risk", "Subordinate", "Subrogation", "Substitution"],
+                  correct: 0
                 },
                 {
-                    question: "What is the most common reason adults go missing?",
-                    options: ["Kidnapping", "Voluntary disappearance", "Accident", "Mental health issues"],
-                    correct: 1
+                  question: "subordinate - to accept, voluntarily, a lower priority lien position than that to which one would normally be entitled.",
+                  options: ["Subordinate", "Subrogation", "Substitution", "Suit for possession"],
+                  correct: 0
                 },
                 {
-                    question: "Which age group has the highest rate of missing persons?",
-                    options: ["Children under 12", "Teenagers", "Young adults 18-25", "Adults over 65"],
-                    correct: 1
-                }
-            ],
-            fraud: [
-                {
-                    question: "What is a Ponzi scheme?",
-                    options: ["Identity theft", "Investment fraud using new investors' money", "Credit card fraud", "Tax evasion"],
-                    correct: 1
+                  question: "Subrogation - the substitution of one party into another's legal role as the creditor for a particular debt.",
+                  options: ["Subrogation", "Subordinate", "Substitution", "Suit for possession"],
+                  correct: 0
                 },
                 {
-                    question: "What does 'phishing' refer to?",
-                    options: ["Fishing for information", "Stealing personal information online", "Bank robbery", "Insurance fraud"],
-                    correct: 1
+                  question: "substitution - the principle in appraising that a buyer will be willing to pay no more for the property being appraised than the cost of purchasing an equally desirable property.",
+                  options: ["Substitution", "Subordinate", "Subrogation", "Suit for possession"],
+                  correct: 0
                 },
                 {
-                    question: "What is embezzlement?",
-                    options: ["Stealing from strangers", "Stealing from your employer", "Tax fraud", "Insurance fraud"],
-                    correct: 1
+                  question: "suit for possession - a lawsuit filed by a landlord to evict a tenant who has violated the terms of the lease or retained possession of the property after the lease has expired.",
+                  options: ["Suit for possession", "Substitution", "Subrogation", "Usury"],
+                  correct: 0
                 },
                 {
-                    question: "What is the most common type of fraud?",
-                    options: ["Credit card fraud", "Identity theft", "Insurance fraud", "Investment fraud"],
-                    correct: 0
+                  question: "usury - the practice of charging interest at a rate higher than that allowed by law.",
+                  options: ["Usury", "Utility", "Value in exchange", "Value in use"],
+                  correct: 0
                 },
                 {
-                    question: "What is a 'shell company'?",
-                    options: ["Oil company", "Company with no real business operations", "Seafood business", "Construction company"],
-                    correct: 1
-                }
-            ],
-            cold: [
-                {
-                    question: "What makes a case 'cold'?",
-                    options: ["It happened in winter", "No active leads or suspects", "The victim died", "It's very old"],
-                    correct: 1
+                  question: "utility - also known as functional utility; measure of usefulness of a property.",
+                  options: ["Utility", "Usury", "Value in exchange", "Value in use"],
+                  correct: 0
                 },
                 {
-                    question: "Which technology has helped solve many cold cases?",
-                    options: ["Computers", "DNA analysis", "Cameras", "Phones"],
-                    correct: 1
+                  question: "value in exchange - value of a property in a typical market; market value.",
+                  options: ["Value in exchange", "Utility", "Value in use", "Variable expense"],
+                  correct: 0
                 },
                 {
-                    question: "How long do police typically keep evidence?",
-                    options: ["1 year", "5 years", "10 years", "Indefinitely for serious crimes"],
-                    correct: 3
+                  question: "value in use - value of a property based on a specific use. This may differ from market value when the use is specialized and there is a limited market for the property based on that use.",
+                  options: ["Value in use", "Value in exchange", "Utility", "Variable expense"],
+                  correct: 0
                 },
                 {
-                    question: "What is the oldest cold case ever solved?",
-                    options: ["10 years old", "25 years old", "50+ years old", "100+ years old"],
-                    correct: 2
+                  question: "variable expense - expenses that vary depending on the level of occupancy (e.g., utilities, garbage removal).",
+                  options: ["Variable expense", "Value in exchange", "Value in use", "Variance"],
+                  correct: 0
                 },
                 {
-                    question: "Who can reopen a cold case?",
-                    options: ["Only the original detective", "Any detective", "Only the family", "The district attorney"],
-                    correct: 1
+                  question: "variance - permission obtained from zoning authorities to build a structure that is not in complete compliance with current zoning laws. A variance does not permit a non-conforming use of a property.",
+                  options: ["Variance", "Variable expense", "Vendee", "Waiver"],
+                  correct: 0
+                },
+                {
+                  question: "Vendee - a buyer.vendor a seller; the property owner.",
+                  options: ["Vendee", "Variance", "Waiver", "Warranty deed"],
+                  correct: 0
+                },
+                {
+                  question: "Waiver - the surrender of a known right or claim.",
+                  options: ["Waiver", "Vendee", "Warranty deed", "Waste"],
+                  correct: 0
+                },
+                {
+                  question: "warranty deed - a deed in which the grantor fully warrants a good, clear title to the property.",
+                  options: ["Warranty deed", "Waiver", "Vendee", "Waste"],
+                  correct: 0
+                },
+                {
+                  question: "waste - the improper use of a property by a party with the right to possession, such as the holder of a life estate.",
+                  options: ["Waste", "Warranty deed", "Waiver", "Vendee"],
+                  correct: 0
                 }
             ]
         };
 
-        let currentCase = '';
-        let currentClue = 0;
-        let evidence = 0;
+        let currentMission = '';
+        let currentCommand = 0;
+        let successCount = 0;
         let answered = false;
         let userAnswers = [];
+        let shuffledQuestions = [];
 
-        function openCase(caseType) {
-            currentCase = caseType;
-            currentClue = 0;
-            evidence = 0;
+        // Shuffle function
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        function launchMission(missionType) {
+            currentMission = missionType;
+            currentCommand = 0;
+            successCount = 0;
             answered = false;
             userAnswers = [];
             
-            document.getElementById('caseFiles').style.display = 'none';
-            document.getElementById('investigationSection').classList.add('active');
-            
-            showClue();
-        }
-
-        function showClue() {
-            const clues = caseData[currentCase];
-            const clue = clues[currentClue];
-            
-            document.getElementById('questionText').textContent = clue.question;
-            
-            const cluesList = document.getElementById('cluesList');
-            cluesList.innerHTML = '';
-            
-            clue.options.forEach((option, index) => {
-                const button = document.createElement('button');
-                button.className = 'clue-option';
-                button.textContent = option;
+            // Shuffle questions and their choices
+            const originalQuestions = missionData[missionType];
+            shuffledQuestions = originalQuestions.map(q => {
+                const correctAnswer = q.options[q.correct];
+                const shuffledOptions = shuffleArray(q.options);
+                const newCorrectIndex = shuffledOptions.indexOf(correctAnswer);
                 
-                const previousAnswer = userAnswers[currentClue];
-                if (previousAnswer !== undefined) {
-                    if (index === clue.correct) {
-                        button.classList.add('correct');
-                    } else if (index === previousAnswer && index !== clue.correct) {
-                        button.classList.add('incorrect');
-                    }
-                    button.style.pointerEvents = 'none';
-                } else {
-                    button.onclick = () => selectClue(index);
-                }
-                
-                cluesList.appendChild(button);
+                return {
+                    question: q.question,
+                    options: shuffledOptions,
+                    correct: newCorrectIndex
+                };
             });
             
-            updateInvestigation();
+            // Shuffle the order of questions too
+            shuffledQuestions = shuffleArray(shuffledQuestions);
+            
+            document.getElementById('missionSelection').style.display = 'none';
+            document.getElementById('missionSession').classList.add('active');
+            
+            showCommand();
         }
 
-        function selectClue(selectedIndex) {
+        function showCommand() {
+            const command = shuffledQuestions[currentCommand];
+            
+            document.getElementById('commandText').textContent = command.question;
+            
+            const responseGrid = document.getElementById('responseGrid');
+            responseGrid.innerHTML = '';
+            
+            command.options.forEach((option, index) => {
+                const responseElement = document.createElement('button');
+                responseElement.className = 'response-panel';
+                responseElement.textContent = option;
+                
+                const previousAnswer = userAnswers[currentCommand];
+                if (previousAnswer !== undefined) {
+                    if (index === command.correct) {
+                        responseElement.classList.add('correct');
+                    } else if (index === previousAnswer && index !== command.correct) {
+                        responseElement.classList.add('incorrect');
+                    }
+                    responseElement.style.pointerEvents = 'none';
+                } else {
+                    responseElement.onclick = () => executeCommand(index);
+                }
+                
+                responseGrid.appendChild(responseElement);
+            });
+            
+            updateHUD();
+        }
+
+        function executeCommand(selectedIndex) {
             if (answered) return;
             
             answered = true;
-            const clues = caseData[currentCase];
-            const clue = clues[currentClue];
-            const buttons = document.querySelectorAll('.clue-option');
+            const command = shuffledQuestions[currentCommand];
+            const options = document.querySelectorAll('.response-panel');
             
-            userAnswers[currentClue] = selectedIndex;
+            userAnswers[currentCommand] = selectedIndex;
             
-            buttons.forEach((button, index) => {
-                if (index === clue.correct) {
-                    button.classList.add('correct');
-                } else if (index === selectedIndex && index !== clue.correct) {
-                    button.classList.add('incorrect');
+            options.forEach((option, index) => {
+                if (index === command.correct) {
+                    option.classList.add('correct');
+                } else if (index === selectedIndex && index !== command.correct) {
+                    option.classList.add('incorrect');
                 }
-                button.style.pointerEvents = 'none';
+                option.style.pointerEvents = 'none';
             });
             
-            if (selectedIndex === clue.correct) {
-                evidence++;
+            if (selectedIndex === command.correct) {
+                successCount++;
             }
             
-            document.getElementById('nextClue').style.display = 'block';
-            updateInvestigation();
+            document.getElementById('nextCommand').style.display = 'block';
+            updateHUD();
         }
 
-        function updateInvestigation() {
-            const clues = caseData[currentCase];
+        function updateHUD() {
+            document.getElementById('commandCounter').textContent = `CMD: ${currentCommand + 1}/${shuffledQuestions.length}`;
+            document.getElementById('successCounter').textContent = `SUCCESS: ${successCount}`;
             
-            document.getElementById('clueCounter').textContent = `CLUE ${currentClue + 1}/${clues.length}`;
-            document.getElementById('evidenceCounter').textContent = `EVIDENCE: ${evidence}`;
+            const progress = ((currentCommand + 1) / shuffledQuestions.length) * 100;
+            document.getElementById('progressBeam').style.width = progress + '%';
             
-            const progress = ((currentClue + 1) / clues.length) * 100;
-            document.getElementById('evidenceFill').style.width = progress + '%';
+            const prevBtn = document.getElementById('prevCommand');
+            prevBtn.disabled = currentCommand === 0;
             
-            const prevBtn = document.getElementById('prevClue');
-            prevBtn.disabled = currentClue === 0;
-            
-            const wasAnswered = userAnswers[currentClue] !== undefined;
+            const wasAnswered = userAnswers[currentCommand] !== undefined;
             if (wasAnswered) {
-                document.getElementById('nextClue').style.display = 'block';
+                document.getElementById('nextCommand').style.display = 'block';
                 answered = true;
             } else {
-                document.getElementById('nextClue').style.display = 'none';
+                document.getElementById('nextCommand').style.display = 'none';
                 answered = false;
             }
         }
 
-        function previousClue() {
-            if (currentClue > 0) {
-                currentClue--;
+        function previousCommand() {
+            if (currentCommand > 0) {
+                currentCommand--;
                 answered = false;
-                showClue();
+                showCommand();
             }
         }
 
-        function nextClue() {
-            currentClue++;
-            const clues = caseData[currentCase];
+        function nextCommand() {
+            currentCommand++;
             
-            if (currentClue < clues.length) {
+            if (currentCommand < shuffledQuestions.length) {
                 answered = false;
-                showClue();
+                showCommand();
             } else {
-                closeCaseResults();
+                completeMission();
             }
         }
 
-        function closeCaseResults() {
-            document.getElementById('investigationSection').classList.remove('active');
-            document.getElementById('caseClosedSection').classList.add('active');
+        function completeMission() {
+            document.getElementById('missionSession').classList.remove('active');
+            document.getElementById('missionComplete').classList.add('active');
             
-            const totalClues = caseData[currentCase].length;
-            const percentage = Math.round((evidence / totalClues) * 100);
+            const totalCommands = shuffledQuestions.length;
+            const percentage = Math.round((successCount / totalCommands) * 100);
             
-            document.getElementById('finalEvidence').textContent = `${evidence}/${totalClues}`;
-            document.getElementById('solveRate').textContent = `${percentage}%`;
+            document.getElementById('finalSuccess').textContent = `${successCount}/${totalCommands}`;
+            document.getElementById('successRate').textContent = `${percentage}%`;
             
-            let rank = '';
+            let report = '';
             let icon = '';
             
             if (percentage >= 80) {
-                rank = 'MASTER DETECTIVE! Your investigative skills are exceptional. You solved this case with remarkable precision.';
+                report = 'Outstanding performance, Commander! Your exceptional knowledge of space exploration has earned you the rank of Space Admiral. You are ready to lead humanity\'s next great adventure among the stars. Mission Control is impressed with your stellar results!';
                 icon = '🏆';
             } else if (percentage >= 60) {
-                rank = 'SKILLED INVESTIGATOR! You have strong detective abilities and solved most of the case successfully.';
-                icon = '🎯';
+                report = 'Excellent work, Commander! Your solid understanding of space science qualifies you for advanced missions. You have demonstrated the skills needed for deep space exploration. Continue your training to reach Admiral status!';
+                icon = '🚀';
             } else if (percentage >= 40) {
-                rank = 'JUNIOR DETECTIVE! You\'re developing good investigative instincts. Keep practicing your skills.';
-                icon = '🔍';
+                report = 'Good effort, Cadet! Your basic space knowledge shows promise for future missions. With additional study and training, you will be ready for more challenging space operations. Keep reaching for the stars!';
+                icon = '🛰️';
             } else {
-                rank = 'ROOKIE INVESTIGATOR! Every great detective started somewhere. Study the evidence more carefully next time.';
-                icon = '📋';
+                report = 'Mission incomplete, Recruit. Your space knowledge needs significant improvement before you can be cleared for orbital missions. Report to the training facility for additional preparation. Every astronaut started somewhere!';
+                icon = '📡';
             }
             
-            document.getElementById('detectiveRank').textContent = rank;
-            document.getElementById('caseStatusIcon').textContent = icon;
+            document.getElementById('commanderReport').textContent = report;
+            document.getElementById('completeIcon').textContent = icon;
         }
 
-        function closeCase() {
-            document.getElementById('investigationSection').classList.remove('active');
-            document.getElementById('caseFiles').style.display = 'block';
+        function abortMission() {
+            document.getElementById('missionSession').classList.remove('active');
+            document.getElementById('missionSelection').style.display = 'block';
         }
 
-        function newCase() {
-            document.getElementById('caseClosedSection').classList.remove('active');
-            document.getElementById('caseFiles').style.display = 'block';
+        function newMission() {
+            document.getElementById('missionComplete').classList.remove('active');
+            document.getElementById('missionSelection').style.display = 'block';
         }
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97feb641b4c6fed7',t:'MTc1ODAwODM4Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'986a0207b05afc92',t:'MTc1OTEzMzQ2Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-
