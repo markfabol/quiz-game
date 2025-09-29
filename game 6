@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trivia Battle Arena</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <title>Cosmic Mission Control</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,13 +14,14 @@
         
         body {
             font-family: 'Exo 2', sans-serif;
-            background: radial-gradient(ellipse at center, #1a0033 0%, #000000 100%);
-            color: #ffffff;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 25%, #16213e 50%, #0f3460 100%);
+            color: #00ff41;
             min-height: 100vh;
             overflow-x: hidden;
+            position: relative;
         }
         
-        .stars {
+        .space-field {
             position: fixed;
             top: 0;
             left: 0;
@@ -30,18 +31,51 @@
             z-index: 1;
         }
         
-        .star {
+        .star-field {
             position: absolute;
             width: 2px;
             height: 2px;
             background: #ffffff;
             border-radius: 50%;
-            animation: twinkle 3s infinite;
+            animation: starTwinkle 4s infinite;
         }
         
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+        
+        .satellite {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            animation: satelliteOrbit 20s linear infinite;
+            filter: drop-shadow(0 0 10px #ff6b35);
+        }
+        
+        @keyframes satelliteOrbit {
+            0% { transform: translateX(-100px) translateY(0px) rotate(0deg); }
+            25% { transform: translateX(100vw) translateY(-100px) rotate(90deg); }
+            50% { transform: translateX(calc(100vw + 100px)) translateY(100vh) rotate(180deg); }
+            75% { transform: translateX(-100px) translateY(calc(100vh + 100px)) rotate(270deg); }
+            100% { transform: translateX(-100px) translateY(0px) rotate(360deg); }
+        }
+        
+        .radar-sweep {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 2px solid #00ff41;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: radarScan 8s linear infinite;
+        }
+        
+        @keyframes radarScan {
+            0% { transform: scale(0.5) rotate(0deg); opacity: 0.8; }
+            100% { transform: scale(3) rotate(360deg); opacity: 0; }
         }
         
         .container {
@@ -54,217 +88,344 @@
             padding: 20px;
         }
         
-        .game-arena {
-            background: linear-gradient(145deg, #2a0845, #1a0033);
-            border: 3px solid #ff00ff;
-            border-radius: 30px;
+        .mission-control {
+            background: linear-gradient(145deg, rgba(12, 12, 12, 0.95), rgba(26, 26, 46, 0.95));
+            border: 4px solid #00ff41;
+            border-radius: 20px;
             box-shadow: 
-                0 0 50px rgba(255, 0, 255, 0.5),
-                inset 0 0 50px rgba(255, 0, 255, 0.1);
-            max-width: 1000px;
+                0 0 60px rgba(0, 255, 65, 0.4),
+                inset 0 0 60px rgba(0, 255, 65, 0.1);
+            max-width: 1400px;
             width: 100%;
             overflow: hidden;
             position: relative;
+            backdrop-filter: blur(10px);
         }
         
-        .arena-header {
-            background: linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff);
+        .mission-control::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #ff0000, #ff6b35, #ffff00, #00ff41, #0099ff, #6633ff);
+            background-size: 300% 100%;
+            animation: statusLights 3s linear infinite;
+        }
+        
+        @keyframes statusLights {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        .control-header {
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.2), rgba(0, 153, 255, 0.2));
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            border-bottom: 3px solid #00ff41;
+        }
+        
+        .control-header::before {
+            content: '◄ MISSION CONTROL ACTIVE ►';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.8rem;
+            color: #ff6b35;
+            animation: systemBlink 2s infinite;
+        }
+        
+        @keyframes systemBlink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+        
+        .mission-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #00ff41;
+            text-shadow: 0 0 30px rgba(0, 255, 65, 0.8);
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .mission-subtitle {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.2rem;
+            color: #0099ff;
+            font-weight: 400;
+            text-shadow: 0 0 15px rgba(0, 153, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .command-center {
+            padding: 50px;
+        }
+        
+        .mission-briefing {
+            background: linear-gradient(145deg, rgba(0, 255, 65, 0.1), rgba(0, 153, 255, 0.1));
+            border: 2px solid #00ff41;
+            border-radius: 15px;
             padding: 30px;
+            margin-bottom: 40px;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
         
-        .arena-header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            animation: shine 3s infinite;
-        }
-        
-        @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        }
-        
-        .game-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 3rem;
-            font-weight: 900;
-            color: #000;
-            text-shadow: 2px 2px 0px #fff;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .game-subtitle {
-            font-size: 1.3rem;
-            color: #000;
-            font-weight: 600;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .arena-content {
-            padding: 40px;
-        }
-        
-        .category-arena {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-        
-        .battle-card {
-            background: linear-gradient(145deg, #4a0e4e, #2a0845);
-            border: 2px solid #00ffff;
-            border-radius: 20px;
-            padding: 30px;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .battle-card::before {
+        .mission-briefing::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
-            transition: left 0.6s;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.2), transparent);
+            animation: scanLine 3s infinite;
         }
         
-        .battle-card:hover::before {
-            left: 100%;
+        @keyframes scanLine {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
         
-        .battle-card:hover {
-            transform: scale(1.05) rotateY(5deg);
-            border-color: #ff00ff;
-            box-shadow: 0 15px 40px rgba(255, 0, 255, 0.4);
+        .briefing-text {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.1rem;
+            color: #00ff41;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            display: block;
+        .launch-status {
+            font-size: 0.9rem;
+            color: #ff6b35;
+            animation: statusPulse 2s infinite;
+            position: relative;
+            z-index: 1;
+        }
+        
+        @keyframes statusPulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .mission-module {
+            background: linear-gradient(145deg, rgba(12, 12, 12, 0.9), rgba(26, 26, 46, 0.9));
+            border: 3px solid #0099ff;
+            border-radius: 20px;
+            padding: 35px 25px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
             text-align: center;
         }
         
-        .card-title {
+        .mission-module::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(0, 255, 65, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 80% 80%, rgba(0, 153, 255, 0.1) 2px, transparent 2px);
+            background-size: 30px 30px;
+            animation: gridPattern 10s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes gridPattern {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 30px); }
+        }
+        
+        .mission-module:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: #00ff41;
+            box-shadow: 0 15px 40px rgba(0, 255, 65, 0.3);
+        }
+        
+        .module-indicator {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle at 30% 30%, #00ff41, #0099ff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            animation: indicatorPulse 3s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+        }
+        
+        @keyframes indicatorPulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+        
+        .module-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px currentColor);
+            animation: iconHover 5s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+        
+        @keyframes iconHover {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+        
+        .module-name {
+            font-family: 'Orbitron', monospace;
             font-size: 1.4rem;
             font-weight: 700;
-            margin-bottom: 10px;
-            text-align: center;
-            color: #00ffff;
+            margin-bottom: 15px;
+            color: #00ff41;
+            position: relative;
+            z-index: 1;
+            text-transform: uppercase;
         }
         
-        .card-desc {
-            font-size: 1rem;
-            opacity: 0.8;
-            text-align: center;
-            line-height: 1.4;
+        .module-description {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #0099ff;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
         }
         
-        .battle-section {
+        .difficulty-matrix {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 20px;
+        }
+        
+        .matrix-cell {
+            width: 15px;
+            height: 15px;
+            background: #333;
+            border: 1px solid #555;
+            transition: all 0.3s ease;
+        }
+        
+        .matrix-cell.active {
+            background: linear-gradient(45deg, #ff6b35, #00ff41);
+            box-shadow: 0 0 10px #ff6b35;
+            animation: matrixGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes matrixGlow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        
+        .mission-session {
             display: none;
         }
         
-        .battle-section.active {
+        .mission-session.active {
             display: block;
         }
         
-        .battle-hud {
+        .session-hud {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
             flex-wrap: wrap;
-            gap: 15px;
-        }
-        
-        .exit-btn {
-            background: linear-gradient(45deg, #ff4444, #cc0000);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 15px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4);
-        }
-        
-        .exit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 68, 68, 0.6);
-        }
-        
-        .hud-stats {
-            display: flex;
             gap: 20px;
+        }
+        
+        .abort-mission {
+            background: linear-gradient(45deg, #ff0000, #cc0000);
+            color: #ffffff;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+            animation: emergencyBlink 3s infinite;
+        }
+        
+        @keyframes emergencyBlink {
+            0%, 90% { opacity: 1; }
+            95% { opacity: 0.5; }
+        }
+        
+        .abort-mission:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
+        }
+        
+        .hud-displays {
+            display: flex;
+            gap: 25px;
             align-items: center;
         }
         
-        .stat-display {
-            background: linear-gradient(45deg, #00ffff, #0099cc);
-            color: #000;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: 700;
-            font-size: 1rem;
-            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
+        .hud-screen {
+            background: linear-gradient(45deg, rgba(0, 255, 65, 0.2), rgba(0, 153, 255, 0.2));
+            border: 2px solid #00ff41;
+            color: #00ff41;
+            padding: 12px 25px;
+            border-radius: 20px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+            text-shadow: 0 0 8px rgba(0, 255, 65, 0.8);
+            text-transform: uppercase;
         }
         
-        .timer-display {
-            background: linear-gradient(45deg, #ffff00, #ff8800);
-            color: #000;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            box-shadow: 0 5px 15px rgba(255, 255, 0, 0.4);
-            min-width: 80px;
-            text-align: center;
-        }
-        
-        .timer-display.warning {
-            background: linear-gradient(45deg, #ff4444, #cc0000);
-            color: white;
-            animation: pulse 0.5s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-        
-        .energy-bar {
-            background: #1a0033;
-            height: 12px;
-            border-radius: 6px;
-            margin-bottom: 30px;
+        .mission-progress {
+            background: rgba(0, 0, 0, 0.8);
+            height: 30px;
+            border-radius: 15px;
             overflow: hidden;
-            border: 2px solid #00ffff;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            border: 3px solid #00ff41;
+            margin-bottom: 40px;
+            box-shadow: inset 0 0 15px rgba(0, 255, 65, 0.3);
         }
         
-        .energy-fill {
-            background: linear-gradient(90deg, #00ffff, #ff00ff, #00ffff);
+        .progress-beam {
+            background: linear-gradient(90deg, #ff6b35, #ffff00, #00ff41, #0099ff);
+            background-size: 400% 100%;
             height: 100%;
-            transition: width 0.8s ease;
-            border-radius: 4px;
-            animation: energyFlow 2s infinite;
+            transition: width 1s ease;
+            border-radius: 12px;
+            animation: energyFlow 3s infinite;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.6);
         }
         
         @keyframes energyFlow {
@@ -272,308 +433,392 @@
             50% { background-position: 100% 50%; }
         }
         
-        .battle-zone {
-            background: linear-gradient(145deg, #1a0033, #2a0845);
-            border: 3px solid #ff00ff;
-            border-radius: 25px;
+        .command-display {
+            background: linear-gradient(145deg, rgba(0, 255, 65, 0.1), rgba(0, 153, 255, 0.1));
+            border: 3px solid #00ff41;
+            border-radius: 20px;
             padding: 40px;
             margin-bottom: 25px;
-            box-shadow: inset 0 0 30px rgba(255, 0, 255, 0.2);
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.2);
+            position: relative;
+            backdrop-filter: blur(5px);
         }
         
-        .question-display {
+        .command-display::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, transparent 49%, rgba(0, 255, 65, 0.05) 50%, transparent 51%);
+            background-size: 20px 20px;
+            animation: commandPattern 12s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes commandPattern {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(20px, 20px) rotate(360deg); }
+        }
+        
+        .command-text {
+            font-family: 'Orbitron', monospace;
             font-size: 1.6rem;
-            font-weight: 700;
+            font-weight: 600;
             margin-bottom: 35px;
-            line-height: 1.5;
             text-align: center;
-            color: #00ffff;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            color: #00ff41;
+            text-shadow: 0 0 15px rgba(0, 255, 65, 0.8);
+            position: relative;
+            z-index: 1;
+            line-height: 1.4;
         }
         
-        .battle-options {
+        .response-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
         }
         
-        .battle-btn {
-            background: linear-gradient(145deg, #4a0e4e, #2a0845);
+        .response-panel {
+            background: linear-gradient(145deg, rgba(12, 12, 12, 0.95), rgba(26, 26, 46, 0.95));
             color: #ffffff;
-            border: 3px solid #00ffff;
-            padding: 25px 20px;
+            border: 2px solid #0099ff;
+            padding: 30px 20px;
             border-radius: 15px;
             cursor: pointer;
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 1rem;
+            font-weight: 500;
             text-align: center;
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(8px);
         }
         
-        .battle-btn::before {
-            content: '';
+        .response-panel::before {
+            content: '●';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: radial-gradient(circle, rgba(0, 255, 255, 0.3), transparent);
-            transition: all 0.4s ease;
-            transform: translate(-50%, -50%);
+            top: 15px;
+            left: 20px;
+            font-size: 1.2rem;
+            color: #0099ff;
+            animation: statusDot 2s ease-in-out infinite;
         }
         
-        .battle-btn:hover::before {
-            width: 300px;
-            height: 300px;
+        @keyframes statusDot {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
         
-        .battle-btn:hover {
-            transform: translateY(-5px);
-            border-color: #ff00ff;
-            box-shadow: 0 10px 30px rgba(255, 0, 255, 0.5);
+        .response-panel:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: #00ff41;
+            box-shadow: 0 15px 40px rgba(0, 255, 65, 0.3);
         }
         
-        .battle-btn.correct {
-            background: linear-gradient(145deg, #00ff00, #008800);
-            border-color: #00ff00;
-            animation: correctPulse 0.6s ease;
+        .response-panel.correct {
+            background: linear-gradient(145deg, rgba(0, 150, 0, 0.8), rgba(0, 100, 0, 0.8));
+            border-color: #00ff41;
+            animation: correctSignal 1s ease;
         }
         
-        .battle-btn.incorrect {
-            background: linear-gradient(145deg, #ff0000, #880000);
+        .response-panel.incorrect {
+            background: linear-gradient(145deg, rgba(150, 0, 0, 0.8), rgba(100, 0, 0, 0.8));
             border-color: #ff0000;
-            animation: incorrectShake 0.6s ease;
+            animation: errorGlitch 0.8s ease;
         }
         
-        @keyframes correctPulse {
+        @keyframes correctSignal {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            50% { transform: scale(1.05); }
         }
         
-        @keyframes incorrectShake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-10px); }
-            75% { transform: translateX(10px); }
+        @keyframes errorGlitch {
+            0%, 100% { transform: translateX(0) skew(0deg); }
+            20% { transform: translateX(-10px) skew(-2deg); }
+            40% { transform: translateX(10px) skew(2deg); }
+            60% { transform: translateX(-5px) skew(-1deg); }
+            80% { transform: translateX(5px) skew(1deg); }
         }
         
-        .battle-controls {
+        .mission-controls {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 30px;
+            margin-top: 35px;
         }
         
         .control-btn {
-            background: linear-gradient(45deg, #666666, #333333);
-            color: white;
+            background: linear-gradient(45deg, rgba(100, 100, 100, 0.8), rgba(50, 50, 50, 0.8));
+            color: #ffffff;
             border: none;
-            padding: 15px 25px;
-            border-radius: 12px;
+            padding: 15px 30px;
+            border-radius: 10px;
             cursor: pointer;
-            font-weight: 700;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
+            font-weight: 600;
             transition: all 0.3s ease;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
         }
         
         .control-btn:hover {
-            background: linear-gradient(45deg, #888888, #555555);
+            background: linear-gradient(45deg, rgba(150, 150, 150, 0.8), rgba(100, 100, 100, 0.8));
             transform: translateY(-2px);
         }
         
         .control-btn:disabled {
-            opacity: 0.5;
+            opacity: 0.4;
             cursor: not-allowed;
             transform: none;
         }
         
         .control-btn.primary {
-            background: linear-gradient(45deg, #ff00ff, #cc00cc);
+            background: linear-gradient(45deg, rgba(0, 255, 65, 0.8), rgba(0, 153, 255, 0.8));
+            color: #000000;
         }
         
         .control-btn.primary:hover {
-            background: linear-gradient(45deg, #ff44ff, #dd00dd);
+            box-shadow: 0 8px 25px rgba(0, 255, 65, 0.4);
         }
         
-        .victory-arena {
+        .mission-complete {
             text-align: center;
-            padding: 50px;
+            padding: 80px 40px;
         }
         
-        .victory-icon {
-            font-size: 5rem;
-            margin-bottom: 25px;
-            animation: bounce 2s infinite;
+        .complete-icon {
+            font-size: 8rem;
+            margin-bottom: 40px;
+            animation: completePulse 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 40px currentColor);
         }
         
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-20px); }
-            60% { transform: translateY(-10px); }
+        @keyframes completePulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(10deg); }
         }
         
-        .victory-title {
+        .complete-title {
             font-family: 'Orbitron', monospace;
             font-size: 3rem;
             font-weight: 900;
-            margin-bottom: 20px;
-            color: #00ffff;
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
-        }
-        
-        .victory-score {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: #ff00ff;
-            margin-bottom: 15px;
-            text-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
-        }
-        
-        .victory-percent {
-            font-size: 2rem;
-            color: #ffff00;
             margin-bottom: 30px;
-            text-shadow: 0 0 15px rgba(255, 255, 0, 0.8);
+            color: #00ff41;
+            text-shadow: 0 0 40px rgba(0, 255, 65, 0.8);
         }
         
-        .victory-message {
-            font-size: 1.3rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-        
-        .replay-btn {
-            background: linear-gradient(45deg, #ff00ff, #00ffff);
-            color: #000;
-            border: none;
-            padding: 20px 40px;
-            border-radius: 15px;
-            font-size: 1.2rem;
+        .mission-score {
+            font-size: 4rem;
             font-weight: 800;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            box-shadow: 0 10px 30px rgba(255, 0, 255, 0.4);
+            color: #0099ff;
+            margin-bottom: 25px;
+            text-shadow: 0 0 30px rgba(0, 153, 255, 0.8);
+            font-family: 'Orbitron', monospace;
         }
         
-        .replay-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(255, 0, 255, 0.6);
+        .score-rating {
+            font-size: 2.5rem;
+            color: #ff6b35;
+            margin-bottom: 35px;
+            text-shadow: 0 0 25px rgba(255, 107, 53, 0.8);
+            font-weight: 700;
+        }
+        
+        .commander-report {
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+            line-height: 1.7;
+            color: #00ff41;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .new-mission-btn {
+            background: linear-gradient(45deg, #ff6b35, #00ff41, #0099ff);
+            background-size: 200% 100%;
+            color: #000000;
+            border: none;
+            padding: 25px 50px;
+            border-radius: 15px;
+            font-family: 'Orbitron', monospace;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+            animation: missionGlow 4s ease-in-out infinite;
+            text-transform: uppercase;
+        }
+        
+        @keyframes missionGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .new-mission-btn:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(255, 107, 53, 0.6);
         }
         
         @media (max-width: 768px) {
-            .game-title {
-                font-size: 2rem;
+            .mission-title {
+                font-size: 2.5rem;
             }
             
-            .arena-content {
-                padding: 20px;
+            .command-center {
+                padding: 30px;
             }
             
-            .category-arena {
+            .mission-grid {
                 grid-template-columns: 1fr;
             }
             
-            .battle-zone {
+            .command-display {
                 padding: 25px;
             }
             
-            .question-display {
-                font-size: 1.3rem;
+            .command-text {
+                font-size: 1.2rem;
             }
             
-            .battle-options {
+            .response-grid {
                 grid-template-columns: 1fr;
             }
             
-            .hud-stats {
+            .hud-displays {
                 flex-direction: column;
-                gap: 10px;
+                gap: 15px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="stars" id="stars"></div>
+    <div class="space-field" id="spaceField"></div>
     
     <div class="container">
-        <div class="game-arena">
-            <div class="arena-header">
-                <div class="game-title">⚡ TRIVIA BATTLE ARENA ⚡</div>
-                <div class="game-subtitle">Ultimate Knowledge Showdown</div>
+        <div class="mission-control">
+            <div class="control-header">
+                <div class="mission-title">AZERON QUIZ GAME</div>
+                <div class="mission-subtitle">THESE TERMS WILL help you not only as you study for your appraisal exam, but also after you pass your exam and are on the job every day.</div>
             </div>
             
-            <div class="arena-content">
-                <!-- Category Selection -->
-                <div id="categoryArena">
-                    <div class="category-arena">
-                        <div class="battle-card" onclick="startBattle('popculture')">
-                            <span class="card-icon">🌟</span>
-                            <div class="card-title">Pop Culture & Celebrities</div>
-                            <div class="card-desc">Latest trends, famous people, and viral moments</div>
+            <div class="command-center">
+                <!-- Mission Selection -->
+                <div id="missionSelection">
+                    <div class="mission-briefing">
+                        <div class="briefing-text">Commander, select your mission parameters</div>
+                        <div class="launch-status">● All systems operational - Ready for launch</div>
+                    </div>
+                    
+                    <div class="mission-grid">
+                        <div class="mission-module" onclick="launchMission('solar')">
+                            <div class="module-indicator">🪐</div>
+                            <div class="module-icon">🌌</div>
+                            <div class="module-name">QUIZ 1</div>
+                            <div class="difficulty-matrix">
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell"></div>
+                                <div class="matrix-cell"></div>
+                                <div class="matrix-cell"></div>
+                            </div>
                         </div>
                         
-                        <div class="battle-card" onclick="startBattle('movies')">
-                            <span class="card-icon">🎬</span>
-                            <div class="card-title">Movies & TV Shows</div>
-                            <div class="card-desc">Hollywood blockbusters and binge-worthy series</div>
+                        <div class="mission-module" onclick="launchMission('rockets')">
+                            <div class="module-indicator">🚀</div>
+                            <div class="module-icon">🛰️</div>
+                            <div class="module-name">QUIZ 2</div>
+                            <div class="difficulty-matrix">
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell"></div>
+                                <div class="matrix-cell"></div>
+                            </div>
                         </div>
                         
-                        <div class="battle-card" onclick="startBattle('music')">
-                            <span class="card-icon">🎵</span>
-                            <div class="card-title">Music & Artists</div>
-                            <div class="card-desc">Chart-toppers, legends, and musical knowledge</div>
+                        <div class="mission-module" onclick="launchMission('astronauts')">
+                            <div class="module-indicator">👨‍🚀</div>
+                            <div class="module-icon">🧑‍🚀</div>
+                            <div class="module-name">QUIZ 3</div>
+                            <div class="difficulty-matrix">
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell"></div>
+                                <div class="matrix-cell"></div>
+                            </div>
                         </div>
                         
-                        <div class="battle-card" onclick="startBattle('gaming')">
-                            <span class="card-icon">🎮</span>
-                            <div class="card-title">Video Games</div>
-                            <div class="card-desc">Gaming culture, characters, and epic adventures</div>
+                        <div class="mission-module" onclick="launchMission('history')">
+                            <div class="module-indicator">📡</div>
+                            <div class="module-icon">🌍</div>
+                            <div class="module-name">QUIZ 4</div>
+                            <div class="difficulty-matrix">
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell"></div>
+                            </div>
                         </div>
                         
-                        <div class="battle-card" onclick="startBattle('internet')">
-                            <span class="card-icon">💻</span>
-                            <div class="card-title">Internet & Memes</div>
-                            <div class="card-desc">Digital culture, viral content, and online trends</div>
+                        <div class="mission-module" onclick="launchMission('aliens')">
+                            <div class="module-indicator">👽</div>
+                            <div class="module-icon">🛸</div>
+                            <div class="module-name">QUIZ 5</div>
+                            <div class="difficulty-matrix">
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Battle Section -->
-                <div id="battleSection" class="battle-section">
-                    <div class="battle-hud">
-                        <button class="exit-btn" onclick="exitBattle()">← EXIT ARENA</button>
-                        <div class="hud-stats">
-                            <div class="stat-display" id="roundDisplay">ROUND 1/5</div>
-                            <div class="stat-display" id="scoreDisplay">SCORE: 0</div>
-                            <div class="timer-display" id="timerDisplay">15</div>
+                <!-- Mission Session -->
+                <div id="missionSession" class="mission-session">
+                    <div class="session-hud">
+                        <button class="abort-mission" onclick="abortMission()">⚠ ABORT MISSION</button>
+                        <div class="hud-displays">
+                            <div class="hud-screen" id="commandCounter">CMD: 1/5</div>
+                            <div class="hud-screen" id="successCounter">SUCCESS: 0</div>
                         </div>
                     </div>
                     
-                    <div class="energy-bar">
-                        <div class="energy-fill" id="energyFill"></div>
+                    <div class="mission-progress">
+                        <div class="progress-beam" id="progressBeam"></div>
                     </div>
                     
-                    <div class="battle-zone">
-                        <div class="question-display" id="questionDisplay"></div>
-                        <div class="battle-options" id="battleOptions"></div>
+                    <div class="command-display">
+                        <div class="command-text" id="commandText"></div>
+                        <div class="response-grid" id="responseGrid"></div>
                     </div>
                     
-                    <div class="battle-controls">
-                        <button class="control-btn" id="prevBtn" onclick="previousRound()" disabled>← PREVIOUS</button>
-                        <button class="control-btn primary" id="nextBtn" onclick="nextRound()" style="display: none;">NEXT ROUND →</button>
+                    <div class="mission-controls">
+                        <button class="control-btn" id="prevCommand" onclick="previousCommand()" disabled>← PREVIOUS</button>
+                        <button class="control-btn primary" id="nextCommand" onclick="nextCommand()" style="display: none;">NEXT COMMAND →</button>
                     </div>
                 </div>
                 
-                <!-- Victory Section -->
-                <div id="victorySection" class="battle-section">
-                    <div class="victory-arena">
-                        <div class="victory-icon" id="victoryIcon">🏆</div>
-                        <div class="victory-title">BATTLE COMPLETE!</div>
-                        <div class="victory-score" id="finalScore">0/5</div>
-                        <div class="victory-percent" id="finalPercent">0%</div>
-                        <div class="victory-message" id="victoryMessage"></div>
-                        <button class="replay-btn" onclick="returnToArena()">ENTER NEW BATTLE</button>
+                <!-- Mission Complete -->
+                <div id="missionComplete" class="mission-session">
+                    <div class="mission-complete">
+                        <div class="complete-icon" id="completeIcon">🏆</div>
+                        <div class="complete-title">MISSION COMPLETE</div>
+                        <div class="mission-score" id="finalSuccess">0/5</div>
+                        <div class="score-rating" id="successRate">0%</div>
+                        <div class="commander-report" id="commanderReport"></div>
+                        <button class="new-mission-btn" onclick="newMission()">Launch New Mission</button>
                     </div>
                 </div>
             </div>
@@ -581,356 +826,875 @@
     </div>
 
     <script>
-        // Create animated stars
-        function createStars() {
-            const starsContainer = document.getElementById('stars');
-            for (let i = 0; i < 100; i++) {
+        // Create space field
+        function createSpaceField() {
+            const spaceField = document.getElementById('spaceField');
+            
+            // Create stars
+            for (let i = 0; i < 150; i++) {
                 const star = document.createElement('div');
-                star.className = 'star';
+                star.className = 'star-field';
+                
                 star.style.left = Math.random() * 100 + '%';
                 star.style.top = Math.random() * 100 + '%';
-                star.style.animationDelay = Math.random() * 3 + 's';
-                starsContainer.appendChild(star);
+                star.style.animationDelay = Math.random() * 4 + 's';
+                star.style.animationDuration = (3 + Math.random() * 3) + 's';
+                
+                spaceField.appendChild(star);
+            }
+            
+            // Create satellites
+            for (let i = 0; i < 3; i++) {
+                const satellite = document.createElement('div');
+                satellite.className = 'satellite';
+                
+                satellite.style.left = Math.random() * 100 + '%';
+                satellite.style.top = Math.random() * 100 + '%';
+                satellite.style.animationDelay = Math.random() * 20 + 's';
+                satellite.style.animationDuration = (15 + Math.random() * 10) + 's';
+                
+                spaceField.appendChild(satellite);
+            }
+            
+            // Create radar sweeps
+            for (let i = 0; i < 4; i++) {
+                const radar = document.createElement('div');
+                radar.className = 'radar-sweep';
+                
+                radar.style.left = Math.random() * 100 + '%';
+                radar.style.top = Math.random() * 100 + '%';
+                radar.style.animationDelay = Math.random() * 8 + 's';
+                
+                spaceField.appendChild(radar);
             }
         }
         
-        createStars();
+        createSpaceField();
 
-        const battleData = {
-            popculture: [
+        const missionData = {
+            solar: [
                 {
-                    question: "Which social media platform is known for its 15-second videos?",
-                    options: ["Instagram", "TikTok", "Snapchat", "Twitter"],
-                    correct: 1
-                },
-                {
-                    question: "Who is known as 'Queen B' in the music industry?",
-                    options: ["Britney Spears", "Beyoncé", "Billie Eilish", "Barbra Streisand"],
-                    correct: 1
-                },
-                {
-                    question: "What does 'going viral' mean on the internet?",
-                    options: ["Getting sick", "Spreading rapidly online", "Computer virus", "Video quality"],
-                    correct: 1
-                },
-                {
-                    question: "Which reality TV family is famous for 'Keeping Up'?",
-                    options: ["The Smiths", "The Kardashians", "The Johnsons", "The Williams"],
-                    correct: 1
-                },
-                {
-                    question: "What platform is known for 280-character messages?",
-                    options: ["Facebook", "Instagram", "Twitter", "LinkedIn"],
-                    correct: 2
-                }
-            ],
-            movies: [
-                {
-                    question: "Which movie features the line 'May the Force be with you'?",
-                    options: ["Star Trek", "Star Wars", "Guardians of the Galaxy", "Interstellar"],
-                    correct: 1
-                },
-                {
-                    question: "In 'The Lion King', what kind of animal is Timon?",
-                    options: ["Warthog", "Meerkat", "Mongoose", "Prairie Dog"],
-                    correct: 1
-                },
-                {
-                    question: "Which superhero is known as the 'Dark Knight'?",
-                    options: ["Superman", "Spider-Man", "Batman", "Iron Man"],
-                    correct: 2
-                },
-                {
-                    question: "What streaming service produced 'Stranger Things'?",
-                    options: ["Hulu", "Netflix", "Amazon Prime", "Disney+"],
-                    correct: 1
-                },
-                {
-                    question: "In 'Finding Nemo', what type of fish is Nemo?",
-                    options: ["Angelfish", "Clownfish", "Goldfish", "Pufferfish"],
-                    correct: 1
-                }
-            ],
-            music: [
-                {
-                    question: "Which instrument does Ed Sheeran primarily play?",
-                    options: ["Piano", "Drums", "Guitar", "Violin"],
-                    correct: 2
-                },
-                {
-                    question: "What genre of music did Elvis Presley help popularize?",
-                    options: ["Jazz", "Rock and Roll", "Country", "Blues"],
-                    correct: 1
-                },
-                {
-                    question: "Which artist released the album 'Thriller'?",
-                    options: ["Prince", "Michael Jackson", "Whitney Houston", "Stevie Wonder"],
-                    correct: 1
-                },
-                {
-                    question: "What does 'BTS' stand for?",
-                    options: ["Behind The Scenes", "Bangtan Sonyeondan", "Best Top Songs", "Big Time Stars"],
-                    correct: 1
-                },
-                {
-                    question: "Which music streaming service is known for its green logo?",
-                    options: ["Apple Music", "Spotify", "Pandora", "YouTube Music"],
-                    correct: 1
-                }
-            ],
-            gaming: [
-                {
-                    question: "Which game features characters named Mario and Luigi?",
-                    options: ["Sonic", "Super Mario Bros", "Pac-Man", "Donkey Kong"],
-                    correct: 1
-                },
-                {
-                    question: "What is the best-selling video game of all time?",
-                    options: ["Tetris", "Minecraft", "Grand Theft Auto V", "Fortnite"],
-                    correct: 1
-                },
-                {
-                    question: "Which company created the PlayStation?",
-                    options: ["Nintendo", "Microsoft", "Sony", "Sega"],
-                    correct: 2
-                },
-                {
-                    question: "In Pokémon, what type is Pikachu?",
-                    options: ["Fire", "Water", "Electric", "Grass"],
-                    correct: 2
-                },
-                {
-                    question: "What does 'RPG' stand for in gaming?",
-                    options: ["Real Player Game", "Role Playing Game", "Rapid Play Gaming", "Random Player Generator"],
-                    correct: 1
-                }
-            ],
-            internet: [
-                {
-                    question: "What does 'LOL' commonly mean online?",
-                    options: ["Lots of Love", "Laugh Out Loud", "Loss of Life", "Level of Learning"],
-                    correct: 1
-                },
-                {
-                    question: "Which meme features a dog with broken English?",
-                    options: ["Grumpy Cat", "Doge", "Success Kid", "Distracted Boyfriend"],
-                    correct: 1
-                },
-                {
-                    question: "What does 'WWW' stand for?",
-                    options: ["World Wide Web", "World War Won", "Wild Wild West", "We Will Win"],
+                    question: "Power of attorney - A legal document that authorizes someone to act on another's behalf. It can grant complete authority or be limited to certain acts and/or certain periods of time.",
+                    options: ["Power of attorney", "Agency Agreement", "Grant of Deed", "Trust Deed"],
                     correct: 0
                 },
                 {
-                    question: "Which platform is known for professional networking?",
-                    options: ["Facebook", "Instagram", "LinkedIn", "Snapchat"],
-                    correct: 2
+                    question: "Preapproval - Condition where a borrower has completed a loan application and provided debt, income, and savings documentation that an underwriter has reviewed and approved.",
+                    options: ["Preapproval", "Prequalification", "Loan Commitment", "Conditional Approval"],
+                    correct: 0
                 },
                 {
-                    question: "What does 'DM' mean on social media?",
-                    options: ["Don't Message", "Direct Message", "Daily Message", "Delete Message"],
-                    correct: 1
+                    question: "Prepayment - Amount paid to reduce the outstanding principal balance of a loan before the due date.",
+                    options: ["Prepayment", "Down Payment", "Balloon Payment", "Installment"],
+                    correct: 0
+                },
+                {
+                    question: "Prepayment penalty - A fee charged to a borrower by a lender for paying off a debt before the term of the loan expires.",
+                    options: ["Prepayment penalty", "Late Fee", "Loan Origination Fee", "Service Charge"],
+                    correct: 0
+                },
+                {
+                    question: "Prequalification - A lender's opinion on the ability of a borrower to qualify for a loan, based on furnished information regarding debt, income, and available capital.",
+                    options: ["Prequalification", "Preapproval", "Loan Estimate", "Credit Analysis"],
+                    correct: 0
+                },
+                {
+                    question: "Prescription - A method of acquiring an easement to property by prolonged, unauthorized use.",
+                    options: ["Prescription", "Adverse Possession", "Condemnation", "Eminent Domain"],
+                    correct: 0
+                },
+                {
+                    question: "Present value (PV) - Current worth of a payment or payments based on the time value of money.",
+                    options: ["Present value", "Future Value", "Net Worth", "Amortized Value"],
+                    correct: 0
+                },
+                {
+                    question: "Pre-tax cash flow - Net operating income minus the debt service.",
+                    options: ["Pre-tax cash flow", "Net Income", "Capital Gain", "Gross Revenue"],
+                    correct: 0
+                },
+                {
+                    question: "Price - The sum or amount of money for which property can be offered, bought, or sold.",
+                    options: ["Price", "Cost", "Value", "Equity"],
+                    correct: 0
+                },
+                {
+                    question: "Primary mortgage market - The financial market in which loans are originated, funded, and serviced.",
+                    options: ["Primary mortgage market", "Secondary mortgage market", "Bond Market", "Money Market"],
+                    correct: 0
+                },
+                {
+                    question: "Prime rate - The short-term interest rate that banks charge to their preferred customers.",
+                    options: ["Prime rate", "Discount Rate", "Federal Funds Rate", "LIBOR"],
+                    correct: 0
+                },
+                {
+                    question: "Real estate agent - A real estate broker who has been appointed to market a property for and represent the property owner (listing agent), or a broker who has been appointed to represent the interest of the buyer (buyer's agent).",
+                    options: ["Real estate agent", "Real estate broker", "Listing manager", "Property consultant"],
+                    correct: 0
+                },
+                {
+                    question: "Real estate board - An organization whose members consist primarily of real estate sales agents, brokers, and administrators.",
+                    options: ["Real estate board", "Real estate commission", "Multiple Listing Service (MLS)", "Housing authority"],
+                    correct: 0
+                },
+                {
+                    question: "Real estate broker - A licensed person, association, partnership, or corporation who negotiates real estate transactions for others for a fee.",
+                    options: ["Real estate broker", "Real estate agent", "Escrow officer", "Property manager"],
+                    correct: 0
+                },
+                {
+                    question: "Real estate market - Interaction of buyers and sellers exchanging real property rights for money. It is not an efficient or perfect market.",
+                    options: ["Real estate market", "Capital market", "Mortgage market", "Commodity market"],
+                    correct: 0
+                },
+                {
+                    question: "Real Estate Settlement Procedures Act (RESPA) - A consumer protection law that requires lenders to give borrowers advance notice of closing costs and prohibits certain abusive practices against buyers using federally related loans to purchase their homes.",
+                    options: ["Real Estate Settlement Procedures Act (RESPA)", "Truth in Lending Act (TILA)", "Dodd-Frank Act", "Fair Housing Act"],
+                    correct: 0
+                },
+                {
+                    question: "Secondary mortgage - A mortgage that is in less than first lien position; see junior mortgage.",
+                    options: ["Secondary mortgage", "Primary mortgage", "Reverse mortgage", "Blanket mortgage"],
+                    correct: 0
+                },
+                {
+                    question: "Secondary mortgage market - A market that exists for the sale and purchase of existing mortgages; it provides more liquidity for the mortgage market.",
+                    options: ["Secondary mortgage market", "Primary mortgage market", "Capital market", "Money market"],
+                    correct: 0
+                },
+                {
+                    question: "Section - In the rectangular survey method of legally describing land, it equals one square mile, or 640 acres, or 1/36 of a township.",
+                    options: ["Section", "Acre", "Range", "Lot"],
+                    correct: 0
+                },
+                {
+                    question: "Secured loan - A loan that is backed by property or collateral.",
+                    options: ["Secured loan", "Unsecured loan", "Equity loan", "Personal loan"],
+                    correct: 0
+                },
+                {
+                    question: "Security - Property that is offered as collateral for a loan.",
+                    options: ["Security", "Equity", "Lien", "Note"],
+                    correct: 0
+                },
+                {
+                    question: "Selling broker - The broker who secures a buyer for a listed property; the selling broker may be the listing agent, a subagent, or a buyer's agent.",
+                    options: ["Selling broker", "Listing broker", "Cooperating broker", "Dual agent"],
+                    correct: 0
+                },
+                {
+                    question: "Separate property - Property owned individually by a spouse, as opposed to community property.",
+                    options: ["Separate property", "Community property", "Joint tenancy", "Tenancy by the entirety"],
+                    correct: 0
+                },
+                {
+                    question: "Sequence of adjustments - In the sales comparison approach, adjustments to comparable characteristics should be made in the following order to find the appropriate value of the subject property: property rights, financing terms, conditions of sale, market conditions, location, and physical characteristics.",
+                    options: ["Sequence of adjustments", "Adjustment order", "Sales comparison steps", "Valuation process"],
+                    correct: 0
+                },
+                {
+                    question: "Servient tenement - A property on which an easement or right-of-way for an adjacent (dominant) property passes.",
+                    options: ["Servient tenement", "Dominant tenement", "Easement holder", "Leasehold estate"],
+                    correct: 0
                 }
+            ],
+            rockets: [
+                {
+                    question: "Principal - (1) One who authorizes another to act on his or her behalf; (2) one of the contracting parties to a transaction; (3) the amount of money borrowed in a loan, separate from the interest charged on it.",
+                    options: ["Principal", "Agent", "Trustee", "Borrower"],
+                    correct: 0
+                },
+                {
+                    question: "Principal curtailment - An off-schedule mortgage payment applied only to the principal balance.",
+                    options: ["Principal curtailment", "Balloon payment", "Prepayment penalty", "Amortization"],
+                    correct: 0
+                },
+                {
+                    question: "Principal meridian - One of the 36 longitudinal lines used in the rectangular survey system method of land description.",
+                    options: ["Principal meridian", "Base line", "Range line", "Township line"],
+                    correct: 0
+                },
+                {
+                    question: "Private mortgage insurance (PMI) - Mortgage insurance offered by private companies to mitigate the risk of the first 20-25% of the mortgage amount.",
+                    options: ["Private mortgage insurance (PMI)", "FHA insurance", "Mortgage guarantee", "Equity insurance"],
+                    correct: 0
+                },
+                {
+                    question: "Probate - The judicial procedure of proving the validity of a will.",
+                    options: ["Probate", "Escheat", "Conveyance", "Intestate"],
+                    correct: 0
+                },
+                {
+                    question: "Real property - The rights of ownership to land and its improvements.",
+                    options: ["Real property", "Personal property", "Fixture", "Chattel"],
+                    correct: 0
+                },
+                {
+                    question: "REALTOR® - A registered trademark for use by members of the National Association of REALTORS® and affiliated state and local associations.",
+                    options: ["REALTOR®", "Real estate agent", "Broker", "Property manager"],
+                    correct: 0
+                },
+                {
+                    question: "Reconciliation - In the sales comparison approach, the reviewing of each sale and judging the comparability to the subject property.",
+                    options: ["Reconciliation", "Appraisal", "Adjustment", "Valuation"],
+                    correct: 0
+                },
+                {
+                    question: "Recorded plat (lot, block, subdivision system) - Legal method of land description.",
+                    options: ["Recorded plat", "Metes and bounds", "Government survey", "Benchmark"],
+                    correct: 0
+                },
+                {
+                    question: "Recording - Entering documents, such as deeds and mortgages, into the public record to give constructive notice.",
+                    options: ["Recording", "Notarizing", "Executing", "Endorsing"],
+                    correct: 0
+                },
+                {
+                    question: "Real property - The rights of ownership to land and its improvements.",
+                    options: ["Real property", "Personal property", "Fixture", "Chattel"],
+                    correct: 0
+                },
+                {
+                    question: "REALTOR® - A registered trademark for use by members of the National Association of REALTORS® and affiliated state and local associations.",
+                    options: ["REALTOR®", "Real estate agent", "Broker", "Property manager"],
+                    correct: 0
+                },
+                {
+                    question: "Reconciliation - In the sales comparison approach, the reviewing of each sale and judging the comparability to the subject property.",
+                    options: ["Reconciliation", "Appraisal", "Adjustment", "Valuation"],
+                    correct: 0
+                },
+                {
+                    question: "Recorded plat (lot, block, subdivision system) - Legal method of land description.",
+                    options: ["Recorded plat", "Metes and bounds", "Government survey", "Benchmark"],
+                    correct: 0
+                },
+                {
+                    question: "Recording - Entering documents, such as deeds and mortgages, into the public record to give constructive notice.",
+                    options: ["Recording", "Notarizing", "Executing", "Endorsing"],
+                    correct: 0
+                },
+                {
+                    question: "Setback - The amount of space between the lot line and the building line, usually established by a local zoning ordinance or restrictive covenants.",
+                    options: ["Setback", "Easement", "Boundary line", "Encroachment"],
+                    correct: 0
+                },
+                {
+                    question: "Setback, side yard, o rear yard - Mga limitasyon sa dami ng lupang kailangang nakapaligid sa mga istruktura; ang distansya na kinakailangan sa pagitan ng gusali at ng hangganan ng lote.",
+                    options: ["Setback, side yard, o rear yard", "Easement", "Buffer zone", "Encroachment"],
+                    correct: 0
+                },
+                {
+                    question: "Settlement statement (HUD-1) - Ang dokumentong ginagamit upang isa-isahin ang lahat ng gastusin na may kaugnayan sa pagsasara ng isang residential na transaksyon alinsunod sa mga regulasyon ng RESPA.",
+                    options: ["Settlement statement (HUD-1)", "Good Faith Estimate", "Closing Disclosure", "Deed of Trust"],
+                    correct: 0
+                },
+                {
+                    question: "Severalty - Pagmamay-ari ng isang ari-arian ng iisang legal na entidad lamang.",
+                    options: ["Severalty", "Joint tenancy", "Tenancy in common", "Community property"],
+                    correct: 0
+                },
+                {
+                    question: "Shared appreciation mortgage - Isang uri ng pautang na nakaseguro sa isang interes sa real property kung saan maaaring obligahin ang nanghihiram na magbayad ng karagdagang interes sa hinaharap.",
+                    options: ["Shared appreciation mortgage", "Reverse mortgage", "Graduated payment mortgage", "Balloon mortgage"],
+                    correct: 0
+                },
+                {
+                    question: "Tax deed - Sa ilang estado, ito ay isang dokumento na ibinibigay sa mamimili sa oras ng pagbebenta ng ari-arian.",
+                    options: ["Tax deed", "Warranty deed", "Quitclaim deed", "Trust deed"],
+                    correct: 0
+                },
+                {
+                    question: "Tax lien - Isang singil laban sa ari-arian na nilikha sa pamamagitan ng batas. Ang mga tax lien ay may mas mataas na prioridad kaysa sa ibang uri ng lien.",
+                    options: ["Tax lien", "Mechanic's lien", "Judgment lien", "Mortgage lien"],
+                    correct: 0
+                },
+                {
+                    question: "Tax rate - Ang rate na inilalapat sa tinatayang halaga ng ari-arian upang matukoy ang buwis sa ari-arian.",
+                    options: ["Tax rate", "Mill rate", "Assessment ratio", "Capital gains rate"],
+                    correct: 0
+                },
+                {
+                    question: "Tax sale - Ang pagbebenta ng ari-arian na iniutos ng korte matapos mabigong magbayad ng ad valorem taxes ang may-ari.",
+                    options: ["Tax sale", "Foreclosure sale", "Short sale", "Auction sale"],
+                    correct: 0
+                },
+                {
+                    question: "Tenancy at sufferance - Ang pananatili ng isang tao sa ari-arian ng landlord pagkatapos mag-expire ang lease, nang walang pahintulot.",
+                    options: ["Tenancy at sufferance", "Tenancy at will", "Periodic tenancy", "Estate for years"],
+                    correct: 0
+                }
+            ],
+            astronauts: [
+               {
+    question: "Procuring cause - Ang aksyon na nagdudulot ng inaasahang resulta. Halimbawa, kung ang isang broker ay gumawa ng mga hakbang na nagresulta sa isang bentahan, siya ang procuring cause ng bentahan.",
+    options: ["Procuring cause", "Brokerage", "Agency", "Listing"],
+    correct: 0
+},
+{
+    question: "Profit - Kilala rin bilang 'profit à prendre'; ang karapatang mag-alis ng mga bagay tulad ng topsoil o mineral mula sa lupa ng iba.",
+    options: ["Profit", "Easement", "Encumbrance", "Fixture"],
+    correct: 0
+},
+{
+    question: "Progression - Prinsipyong pang-ekonomiya kung saan ang halaga ng kulang sa pagkakaayos na ari-arian ay tumataas ayon sa kapaligiran nito.",
+    options: ["Progression", "Regression", "Appreciation", "Depreciation"],
+    correct: 0
+},
+{
+    question: "Promissory note - Ang dokumento ng utang na nagdedetalye ng mga tuntunin ng loan.",
+    options: ["Promissory note", "Mortgage", "Deed of trust", "Bond"],
+    correct: 0
+},
+{
+    question: "Property management - Ang pamamahala ng isang income property para sa iba.",
+    options: ["Property management", "Real estate brokerage", "Leasing", "Asset disposition"],
+    correct: 0
+},
+{
+    question: "Qualifying ratio - Isang kalkulasyon upang malaman kung kwalipikado ang isang borrower para sa mortgage batay sa kanyang kita at gastos.",
+    options: ["Qualifying ratio", "Debt-to-income ratio", "Loan-to-value ratio", "Cap rate"],
+    correct: 0
+},
+{
+    question: "Quantity survey method - Pinaka-komprehensibong paraan ng pagtatantiya ng gastos sa pagtatayo batay sa dami at kalidad ng materyales at paggawa.",
+    options: ["Quantity survey method", "Unit-in-place method", "Cost approach", "Square-foot method"],
+    correct: 0
+},
+{
+    question: "Quitclaim deed - Isang conveyance kung saan inililipat ng grantor ang anumang interes o titulo na mayroon siya, nang walang warranty o obligasyon.",
+    options: ["Quitclaim deed", "Warranty deed", "Special warranty deed", "Grant deed"],
+    correct: 0
+},
+{
+    question: "Rectangular survey system - Isang paraan ng paglalarawan ng lupa batay sa mga pangunahing meridian at baseline; kilala rin bilang government survey system.",
+    options: ["Rectangular survey system", "Lot and block", "Metes and bounds", "Subdivision system"],
+    correct: 0
+},
+{
+    question: "Redemption period - Panahong itinakda ng batas kung saan maaaring mabawi ng may-ari ang na-foreclose na ari-arian sa pamamagitan ng pagbabayad ng utang at mga kaukulang bayarin.",
+    options: ["Redemption period", "Statutory right of rescission", "Equitable right of redemption", "Foreclosure moratorium"],
+    correct: 0
+},
+{
+    question: "Redlining - Ang ilegal na gawain ng mga institusyong nagpapautang na tumangging magbigay ng ilang serbisyong pinansyal sa mga ari-arian sa ilang lugar.",
+    options: ["Redlining", "Blockbusting", "Steering", "Panic selling"],
+    correct: 0
+},
+{
+    question: "Refinance transaction - Proseso ng pagbabayad ng isang loan gamit ang bagong loan na may parehong ari-arian bilang collateral.",
+    options: ["Refinance transaction", "Assumption", "Subordination", "Recourse loan"],
+    correct: 0
+},
+{
+    question: "Regression - Prinsipyong pang-ekonomiya kung saan ang halaga ng sobrang inayos na ari-arian ay bumababa ayon sa kapaligiran nito.",
+    options: ["Regression", "Progression", "Depreciation", "Capital loss"],
+    correct: 0
+},
+{
+    question: "Sinking fund - Isang account kung saan ang pantay-pantay na halaga ng pera ay idinedeposito nang pana-panahon upang makalikom ng sapat na pondo para palitan ang isang asset o maabot ang isang target na halaga.",
+    options: ["Sinking fund", "Reserve account", "Escrow account", "Trust fund"],
+    correct: 0
+},
+{
+    question: "Site - Isang lote ng lupa na na-improve o naihanda upang magamit para sa layunin nitong itinatag.",
+    options: ["Site", "Parcel", "Lot", "Block"],
+    correct: 0
+},
+{
+    question: "Site description - Isang detalyadong listahan ng mga aktwal na datos, kabilang ang legal na paglalarawan, titulo, rekord, at iba pang katangian.",
+    options: ["Site description", "Legal description", "Property profile", "Survey report"],
+    correct: 0
+},
+{
+    question: "Six functions of a dollar - Tumutukoy sa mga salik ng compound interest at present value sa pagsusuri ng real estate.",
+    options: ["Six functions of a dollar", "Time value of money", "Capitalization", "Discount rate"],
+    correct: 0
+},
+{
+    question: "Social forces - Sa appraisal theory, isa sa apat na puwersang nakakaapekto sa halaga ng ari-arian; tumutukoy sa katangian ng populasyon tulad ng edad at distribusyon.",
+    options: ["Social forces", "Economic forces", "Physical forces", "Governmental forces"],
+    correct: 0
+},
+{
+    question: "Sole proprietorship - Isang uri ng negosyo na may iisang may-ari na may buong pananagutan.",
+    options: ["Sole proprietorship", "Partnership", "Corporation", "LLC"],
+    correct: 0
+},
+{
+    question: "Special assessment - Isang buwis na ipinapataw lamang sa mga ari-ariang makikinabang sa isang pampublikong proyekto, tulad ng kalsada o sewer.",
+    options: ["Special assessment", "Ad valorem tax", "Excise tax", "Transfer tax"],
+    correct: 0
+},
+{
+    question: "Tenancy at will - Isang uri ng tenancy na walang tiyak na tagal at maaaring wakasan ng alinmang partido anumang oras sa pamamagitan ng abiso.",
+    options: ["Tenancy at will", "Tenancy at sufferance", "Estate for years", "Periodic tenancy"],
+    correct: 0
+},
+{
+    question: "Tenancy by the entirety - Pagmamay-ari ng mag-asawa ng ari-ariang nakuha sa panahon ng kasal na may karapatang mana.",
+    options: ["Tenancy by the entirety", "Joint tenancy", "Tenancy in common", "Community property"],
+    correct: 0
+},
+{
+    question: "Tenancy in common - Isang uri ng co-ownership kung saan dalawa o higit pang tao ang may hindi nababahaging interes sa ari-arian nang walang karapatang mana.",
+    options: ["Tenancy in common", "Joint tenancy", "Tenancy by the entirety", "Community ownership"],
+    correct: 0
+},
+{
+    question: "Tenant - Isang taong may hawak o karapatang manirahan sa isang ari-arian.",
+    options: ["Tenant", "Landlord", "Lessor", "Grantor"],
+    correct: 0
+},
+{
+    question: "Tenant improvements - Sa mga proyekto sa konstruksyon, ang pag-install ng natapos na espasyo para sa tenant na maaaring gawin ng lessee o lessor.",
+    options: ["Tenant improvements", "Leasehold improvements", "Capital improvements", "Structural renovations"],
+    correct: 0
+}
+            ],
+            history: [
+                {
+    question: "Property tax - Isang buwis na ipinapataw ng pamahalaan sa ari-arian, maging ito ay real o personal.",
+    options: ["Property tax", "Special assessment", "Excise tax", "Transfer tax"],
+    correct: 0
+},
+{
+    question: "Property value - Ang halaga o worth ng isang ari-arian; maaaring magkaroon ng iba't ibang halaga depende sa interes o paggamit nito.",
+    options: ["Property value", "Market value", "Assessed value", "Investment value"],
+    correct: 0
+},
+{
+    question: "Proprietary lease - Sa isang cooperative building, ang lease na ibinibigay ng korporasyon sa mga stockholder na nagbibigay-daan upang magamit nila ang isang partikular na unit.",
+    options: ["Proprietary lease", "Ground lease", "Net lease", "Percentage lease"],
+    correct: 0
+},
+{
+    question: "Prorate - Ang paghahati ng mga tuloy-tuloy na gastos sa ari-arian tulad ng buwis o bayad sa maintenance sa pagitan ng buyer at seller sa pagsasara.",
+    options: ["Prorate", "Assess", "Allocate", "Adjust"],
+    correct: 0
+},
+{
+    question: "Pur autre vie - Isang pariralang Latin na nangangahulugang 'para sa buhay ng iba'; sa isang life estate pur autre vie, sinusukat ang termino batay sa buhay ng ibang tao.",
+    options: ["Pur autre vie", "Life estate", "Fee simple", "Tenancy for years"],
+    correct: 0
+},
+{
+    question: "Purchase agreement - Isang nakasulat na kontrata na nilagdaan ng buyer at seller na nagsasaad ng mga kondisyon kung paano ibebenta ang isang ari-arian.",
+    options: ["Purchase agreement", "Deed", "Option contract", "Listing agreement"],
+    correct: 0
+},
+{
+    question: "Purchase money mortgage - Isang mortgage na ibinibigay ng buyer sa seller bilang seguridad para sa pagbabayad ng pautang na ginamit sa pagbili ng ari-arian.",
+    options: ["Purchase money mortgage", "Assumption mortgage", "Wraparound mortgage", "Reverse mortgage"],
+    correct: 0
+},
+{
+    question: "Regression analysis - Karaniwang ginagamit sa mass appraisals ng mga single-family residences upang matukoy ang assessed value.",
+    options: ["Regression analysis", "Market analysis", "Cost approach", "Income capitalization"],
+    correct: 0
+},
+{
+    question: "Regulation Z - Isang regulasyon ng Federal Reserve na nagpapatupad ng federal Truth-in-Lending Act.",
+    options: ["Regulation Z", "RESPA", "ECOA", "HUD Act"],
+    correct: 0
+},
+{
+    question: "Release clause - Isang probisyon sa mortgage na naglalabas ng bahagi ng ari-arian kapag nabayaran ang kaukulang bahagi ng utang.",
+    options: ["Release clause", "Defeasance clause", "Acceleration clause", "Alienation clause"],
+    correct: 0
+},
+{
+    question: "Remainder estate - Isang hinaharap na interes sa isang estate na nagkakaroon ng bisa matapos ang pagtatapos ng isang life estate.",
+    options: ["Remainder estate", "Reversionary interest", "Fee simple", "Contingent estate"],
+    correct: 0
+},
+{
+    question: "Remaining balance - Sa isang mortgage, ito ang halaga ng prinsipal na hindi pa nababayaran.",
+    options: ["Remaining balance", "Loan-to-value", "Equity", "Principal balance"],
+    correct: 0
+},
+{
+    question: "Special use - Tumutukoy sa conditional use ng isang ari-arian ayon sa zoning regulations.",
+    options: ["Special use", "Variance", "Nonconforming use", "Easement"],
+    correct: 0
+},
+{
+    question: "Special warranty deed - Isang deed kung saan ginagarantiya ng grantor ang titulo laban sa mga depekto lamang na maaaring naganap habang siya ang may-ari.",
+    options: ["Special warranty deed", "General warranty deed", "Quitclaim deed", "Bargain and sale deed"],
+    correct: 0
+},
+{
+    question: "Specific data - Mga datos na nakolekta tungkol sa subject property at mga comparable properties.",
+    options: ["Specific data", "General data", "Market data", "Sales data"],
+    correct: 0
+},
+{
+    question: "Specific lien - Isang lien, tulad ng mortgage, na nakakabit lamang sa isang partikular na bahagi ng real estate.",
+    options: ["Specific lien", "General lien", "Statutory lien", "Mechanic's lien"],
+    correct: 0
+},
+{
+    question: "Specific performance - Isang legal na aksyon kung saan inuutusan ng korte ang isang partido na tuparin ang kontrata sa halip na magbayad lamang ng danyos.",
+    options: ["Specific performance", "Damages", "Rescission", "Novation"],
+    correct: 0
+},
+{
+    question: "Speculative use - Ari-ariang hawak para sa pagbebenta sa hinaharap; ang halaga nito ay nakabatay sa pinakamataas at pinakamahusay na paggamit sa hinaharap.",
+    options: ["Speculative use", "Special use", "Public use", "Current use"],
+    correct: 0
+},
+{
+    question: "Spot zoning - Resulta kung saan ang isang parsela ng lupa ay nai-zoned nang iba kaysa sa mga kalapit na parsela.",
+    options: ["Spot zoning", "Downzoning", "Upzoning", "Bulk zoning"],
+    correct: 0
+},
+{
+    question: "Standard payment calculation - Ang paraan na ginagamit upang kalkulahin ang buwanang bayad para mabayaran ang natitirang balanse ng mortgage sa pantay na installment.",
+    options: ["Standard payment calculation", "Balloon payment", "Amortization schedule", "Negative amortization"],
+    correct: 0
+},
+{
+    question: "Statute of frauds - Ang batas ng estado na nangangailangan na ang ilang kontrata ay nakasulat upang ito ay maipatupad.",
+    options: ["Statute of frauds", "Statute of limitations", "Parol evidence rule", "Doctrine of laches"],
+    correct: 0
+},
+{
+    question: "Tenement - Ang espasyo na maaaring okupahan ng isang tenant ayon sa mga termino ng lease.",
+    options: ["Tenement", "Premises", "Parcel", "Lot"],
+    correct: 0
+},
+{
+    question: "Testate - Ang estado ng pagkamatay ng isang tao na mayroong valid na last will and testament.",
+    options: ["Testate", "Intestate", "Probate", "Escheat"],
+    correct: 0
+},
+{
+    question: "Time is of the essence - Wika sa isang kontrata na nangangailangan ng mahigpit na pagsunod sa mga petsa bilang mga deadline para sa pagtupad ng partikular na gawain.",
+    options: ["Time is of the essence", "Condition precedent", "Due diligence", "Performance clause"],
+    correct: 0
+},
+{
+    question: "Time-sharing - Tinatawag ding interval ownership; hindi nahahating pagmamay-ari ng real estate para lamang sa isang nakatalagang bahagi ng taon.",
+    options: ["Time-sharing", "Joint tenancy", "Cooperative ownership", "Tenancy in common"],
+    correct: 0
+}
+            ],
+            aliens: [
+  {
+    question: "Remaining economic life - tinatayang panahon kung saan ang kita sa operasyon ay mas mataas kaysa sa gastos at patuloy na mag-aambag sa halaga ng ari-arian.",
+    options: ["Remaining economic life", "Remaining term", "Residual", "Reproduction cost"],
+    correct: 0
+  },
+  {
+    question: "Remaining term - ang orihinal na termino ng amortization minus ang bilang ng mga bayad na nagawa.",
+    options: ["Remaining term", "Renewal options", "Replacement cost", "Reserve for replacement"],
+    correct: 0
+  },
+  {
+    question: "Renewal options - isang clause sa lease na nagpapahintulot sa lessee na palawigin ang lease sa ilalim ng mga tinukoy na termino.",
+    options: ["Renewal options", "Rent", "Residual", "Reproduction cost"],
+    correct: 0
+  },
+  {
+    question: "Rent - pana-panahong bayad ng lessee sa landlord para sa paggamit ng ari-arian.",
+    options: ["Rent", "Replacement cost", "Residual", "Reproduction cost"],
+    correct: 0
+  },
+  {
+    question: "Replacement cost - tinatayang kasalukuyang halaga para palitan ang isang asset na katulad ng isa na tinataya.",
+    options: ["Replacement cost", "Reproduction cost", "Residual", "Reserve for replacement"],
+    correct: 0
+  },
+  {
+    question: "Replacement reserve money - perang nakalaan upang palitan ang ilang item sa hinaharap gaya ng bubong o appliances.",
+    options: ["Replacement reserve money", "Reserve for replacement", "Residual", "Reproduction cost"],
+    correct: 0
+  },
+  {
+    question: "Reproduction cost - halaga ng paggawa ng eksaktong kopya ng gusali gamit ang parehong materyales at disenyo.",
+    options: ["Reproduction cost", "Replacement cost", "Residual", "Reserve for replacement"],
+    correct: 0
+  },
+  {
+    question: "Rescission - pagkansela o pagtatapos ng kontrata sa pamamagitan ng mutual consent o aksyon dahil sa default.",
+    options: ["Rescission", "Renewal options", "Residual", "Reserve for replacement"],
+    correct: 0
+  },
+  {
+    question: "Reserve for replacement - accounting allowance para sa maintenance at pagpapalit ng maikling-buhay na item.",
+    options: ["Reserve for replacement", "Residual", "Rent", "Reproduction cost"],
+    correct: 0
+  },
+  {
+    question: "Residual - halaga o kita na maiuugnay sa isang bahagi matapos ibawas ang kinakailangang pagbabalik sa iba pang bahagi.",
+    options: ["Residual", "Reserve for replacement", "Replacement cost", "Rescission"],
+    correct: 0
+  },
+  {
+    question: "Statute of limitations - batas na nangangailangan na ang ilang aksyon ay ihain sa korte sa loob ng takdang panahon.",
+    options: ["Statute of limitations", "Statutory lien", "Steering", "Straight-line capitalization"],
+    correct: 0
+  },
+  {
+    question: "Statutory lien - lien na ipinapataw sa ari-arian sa pamamagitan ng batas tulad ng tax lien.",
+    options: ["Statutory lien", "Specific lien", "Special lien", "Statute of limitations"],
+    correct: 0
+  },
+  {
+    question: "Steering - ilegal na gawain ng pagdidirekta ng mga mamimili ng bahay patungo o palayo sa mga partikular na lugar.",
+    options: ["Steering", "Redlining", "Spot zoning", "Specific performance"],
+    correct: 0
+  },
+  {
+    question: "Straight-line capitalization - paraan ng pagkalkula ng kabuuang capitalization rate sa pamamagitan ng pagdaragdag ng allowance para sa return of capital.",
+    options: ["Straight-line capitalization", "Straight-line depreciation", "Residual capitalization", "Standard payment calculation"],
+    correct: 0
+  },
+  {
+    question: "Straight-line depreciation - paraan ng pagkalkula ng depreciation sa pamamagitan ng pagbabawas ng pantay na halaga bawat taon.",
+    options: ["Straight-line depreciation", "Straight-line capitalization", "Replacement depreciation", "Depreciation reserve"],
+    correct: 0
+  },
+  {
+    question: "Title insurance - patakaran ng insurance na nagpoprotekta laban sa mga depekto sa titulo.",
+    options: ["Title insurance", "Title search", "Torrens system", "Tenement"],
+    correct: 0
+  },
+  {
+    question: "Title search - pagsusuri ng pampublikong tala upang matiyak ang legal na pagmamay-ari ng nagbebenta at kawalan ng lien.",
+    options: ["Title search", "Title insurance", "Torrens system", "Specific lien"],
+    correct: 0
+  },
+  {
+    question: "Torrens system - sistema ng pagrerehistro ng mga titulo sa lupa sa isang pampublikong awtoridad.",
+    options: ["Torrens system", "Rectangular survey system", "Government survey", "Title insurance"],
+    correct: 0
+  },
+  {
+    question: "Township - dibisyon ng lupa na may sukat na 36 square miles sa ilalim ng government survey system.",
+    options: ["Township", "Section", "Acreage", "Baseline"],
+    correct: 0
+  },
+  {
+    question: "Township lines - mga linyang silangan-kanluran sa rectangular survey system na anim na milya ang pagitan upang tukuyin ang isang township.",
+    options: ["Township lines", "Base lines", "Range lines", "Meridian lines"],
+    correct: 0
+  },
+  {
+    question: "Topography - hugis, antas, kondisyon ng lupa, at pisikal na kakayahang gamitin ng isang site.",
+    options: ["Topography", "Site", "Soil condition", "Contour map"],
+    correct: 0
+  },
+  {
+    question: "Trade fixtures - personal property na in-install ng isang commercial tenant at maaaring alisin pagkatapos ng lease.",
+    options: ["Trade fixtures", "Fixture", "Real property", "Permanent improvement"],
+    correct: 0
+  },
+  {
+    question: "Underwriting - proseso ng pagsusuri ng loan application upang matukoy ang panganib para sa nagpapahiram.",
+    options: ["Underwriting", "Appraisal", "Financing", "Loan servicing"],
+    correct: 0
+  },
+  {
+    question: "Undivided interest - interes ng mga co-owner sa paggamit ng buong ari-arian kahit may fractional share lamang.",
+    options: ["Undivided interest", "Joint tenancy", "Tenancy in common", "Co-ownership"],
+    correct: 0
+  },
+  {
+    question: "Uniform residential appraisal report (URAR) - appraisal form na ginagamit ng maraming ahensya ng gobyerno upang suriin ang halaga ng residential properties.",
+    options: ["Uniform residential appraisal report (URAR)", "USPAP", "Appraisal certificate", "Property valuation report"],
+    correct: 0
+  },
+
             ]
         };
 
-        let currentCategory = '';
-        let currentRound = 0;
-        let score = 0;
+        let currentMission = '';
+        let currentCommand = 0;
+        let successCount = 0;
         let answered = false;
         let userAnswers = [];
-        let timer = 15;
-        let timerInterval;
+        let shuffledQuestions = [];
 
-        function startBattle(category) {
-            currentCategory = category;
-            currentRound = 0;
-            score = 0;
+        // Shuffle function
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        function launchMission(missionType) {
+            currentMission = missionType;
+            currentCommand = 0;
+            successCount = 0;
             answered = false;
             userAnswers = [];
             
-            document.getElementById('categoryArena').style.display = 'none';
-            document.getElementById('battleSection').classList.add('active');
-            
-            showRound();
-        }
-
-        function showRound() {
-            const questions = battleData[currentCategory];
-            const question = questions[currentRound];
-            
-            document.getElementById('questionDisplay').textContent = question.question;
-            
-            const optionsContainer = document.getElementById('battleOptions');
-            optionsContainer.innerHTML = '';
-            
-            question.options.forEach((option, index) => {
-                const button = document.createElement('button');
-                button.className = 'battle-btn';
-                button.textContent = option;
+            // Shuffle questions and their choices
+            const originalQuestions = missionData[missionType];
+            shuffledQuestions = originalQuestions.map(q => {
+                const correctAnswer = q.options[q.correct];
+                const shuffledOptions = shuffleArray(q.options);
+                const newCorrectIndex = shuffledOptions.indexOf(correctAnswer);
                 
-                const previousAnswer = userAnswers[currentRound];
-                if (previousAnswer !== undefined) {
-                    if (index === question.correct) {
-                        button.classList.add('correct');
-                    } else if (index === previousAnswer && index !== question.correct) {
-                        button.classList.add('incorrect');
-                    }
-                    button.style.pointerEvents = 'none';
-                } else {
-                    button.onclick = () => selectAnswer(index);
-                }
-                
-                optionsContainer.appendChild(button);
+                return {
+                    question: q.question,
+                    options: shuffledOptions,
+                    correct: newCorrectIndex
+                };
             });
             
-            startTimer();
+            // Shuffle the order of questions too
+            shuffledQuestions = shuffleArray(shuffledQuestions);
+            
+            document.getElementById('missionSelection').style.display = 'none';
+            document.getElementById('missionSession').classList.add('active');
+            
+            showCommand();
+        }
+
+        function showCommand() {
+            const command = shuffledQuestions[currentCommand];
+            
+            document.getElementById('commandText').textContent = command.question;
+            
+            const responseGrid = document.getElementById('responseGrid');
+            responseGrid.innerHTML = '';
+            
+            command.options.forEach((option, index) => {
+                const responseElement = document.createElement('button');
+                responseElement.className = 'response-panel';
+                responseElement.textContent = option;
+                
+                const previousAnswer = userAnswers[currentCommand];
+                if (previousAnswer !== undefined) {
+                    if (index === command.correct) {
+                        responseElement.classList.add('correct');
+                    } else if (index === previousAnswer && index !== command.correct) {
+                        responseElement.classList.add('incorrect');
+                    }
+                    responseElement.style.pointerEvents = 'none';
+                } else {
+                    responseElement.onclick = () => executeCommand(index);
+                }
+                
+                responseGrid.appendChild(responseElement);
+            });
+            
             updateHUD();
         }
 
-        function startTimer() {
-            if (userAnswers[currentRound] !== undefined) {
-                document.getElementById('timerDisplay').textContent = '--';
-                return;
-            }
-            
-            timer = 15;
-            const timerDisplay = document.getElementById('timerDisplay');
-            
-            timerInterval = setInterval(() => {
-                timer--;
-                timerDisplay.textContent = timer;
-                
-                if (timer <= 5) {
-                    timerDisplay.classList.add('warning');
-                } else {
-                    timerDisplay.classList.remove('warning');
-                }
-                
-                if (timer <= 0) {
-                    clearInterval(timerInterval);
-                    if (!answered) {
-                        selectAnswer(-1); // Auto-fail on timeout
-                    }
-                }
-            }, 1000);
-        }
-
-        function selectAnswer(selectedIndex) {
+        function executeCommand(selectedIndex) {
             if (answered) return;
             
-            clearInterval(timerInterval);
             answered = true;
-            const questions = battleData[currentCategory];
-            const question = questions[currentRound];
-            const buttons = document.querySelectorAll('.battle-btn');
+            const command = shuffledQuestions[currentCommand];
+            const options = document.querySelectorAll('.response-panel');
             
-            userAnswers[currentRound] = selectedIndex;
+            userAnswers[currentCommand] = selectedIndex;
             
-            buttons.forEach((button, index) => {
-                if (index === question.correct) {
-                    button.classList.add('correct');
-                } else if (index === selectedIndex && index !== question.correct) {
-                    button.classList.add('incorrect');
+            options.forEach((option, index) => {
+                if (index === command.correct) {
+                    option.classList.add('correct');
+                } else if (index === selectedIndex && index !== command.correct) {
+                    option.classList.add('incorrect');
                 }
-                button.style.pointerEvents = 'none';
+                option.style.pointerEvents = 'none';
             });
             
-            if (selectedIndex === question.correct) {
-                score++;
+            if (selectedIndex === command.correct) {
+                successCount++;
             }
             
-            document.getElementById('nextBtn').style.display = 'block';
-            document.getElementById('timerDisplay').textContent = '--';
+            document.getElementById('nextCommand').style.display = 'block';
             updateHUD();
         }
 
         function updateHUD() {
-            const questions = battleData[currentCategory];
+            document.getElementById('commandCounter').textContent = `CMD: ${currentCommand + 1}/${shuffledQuestions.length}`;
+            document.getElementById('successCounter').textContent = `SUCCESS: ${successCount}`;
             
-            document.getElementById('roundDisplay').textContent = `ROUND ${currentRound + 1}/${questions.length}`;
-            document.getElementById('scoreDisplay').textContent = `SCORE: ${score}`;
+            const progress = ((currentCommand + 1) / shuffledQuestions.length) * 100;
+            document.getElementById('progressBeam').style.width = progress + '%';
             
-            const progress = ((currentRound + 1) / questions.length) * 100;
-            document.getElementById('energyFill').style.width = progress + '%';
+            const prevBtn = document.getElementById('prevCommand');
+            prevBtn.disabled = currentCommand === 0;
             
-            const prevBtn = document.getElementById('prevBtn');
-            prevBtn.disabled = currentRound === 0;
-            
-            const wasAnswered = userAnswers[currentRound] !== undefined;
+            const wasAnswered = userAnswers[currentCommand] !== undefined;
             if (wasAnswered) {
-                document.getElementById('nextBtn').style.display = 'block';
+                document.getElementById('nextCommand').style.display = 'block';
                 answered = true;
             } else {
-                document.getElementById('nextBtn').style.display = 'none';
+                document.getElementById('nextCommand').style.display = 'none';
                 answered = false;
             }
         }
 
-        function previousRound() {
-            if (currentRound > 0) {
-                clearInterval(timerInterval);
-                currentRound--;
+        function previousCommand() {
+            if (currentCommand > 0) {
+                currentCommand--;
                 answered = false;
-                showRound();
+                showCommand();
             }
         }
 
-        function nextRound() {
-            clearInterval(timerInterval);
-            currentRound++;
-            const questions = battleData[currentCategory];
+        function nextCommand() {
+            currentCommand++;
             
-            if (currentRound < questions.length) {
+            if (currentCommand < shuffledQuestions.length) {
                 answered = false;
-                showRound();
+                showCommand();
             } else {
-                showVictory();
+                completeMission();
             }
         }
 
-        function showVictory() {
-            document.getElementById('battleSection').classList.remove('active');
-            document.getElementById('victorySection').classList.add('active');
+        function completeMission() {
+            document.getElementById('missionSession').classList.remove('active');
+            document.getElementById('missionComplete').classList.add('active');
             
-            const totalQuestions = battleData[currentCategory].length;
-            const percentage = Math.round((score / totalQuestions) * 100);
+            const totalCommands = shuffledQuestions.length;
+            const percentage = Math.round((successCount / totalCommands) * 100);
             
-            document.getElementById('finalScore').textContent = `${score}/${totalQuestions}`;
-            document.getElementById('finalPercent').textContent = `${percentage}%`;
+            document.getElementById('finalSuccess').textContent = `${successCount}/${totalCommands}`;
+            document.getElementById('successRate').textContent = `${percentage}%`;
             
-            let message = '';
+            let report = '';
             let icon = '';
             
             if (percentage >= 80) {
-                message = 'LEGENDARY PERFORMANCE! You are a true trivia champion!';
-                icon = '👑';
-            } else if (percentage >= 60) {
-                message = 'EXCELLENT BATTLE! You fought well in the arena!';
+                report = 'Outstanding performance, Commander! Your exceptional knowledge of space exploration has earned you the rank of Space Admiral. You are ready to lead humanity\'s next great adventure among the stars. Mission Control is impressed with your stellar results!';
                 icon = '🏆';
+            } else if (percentage >= 60) {
+                report = 'Excellent work, Commander! Your solid understanding of space science qualifies you for advanced missions. You have demonstrated the skills needed for deep space exploration. Continue your training to reach Admiral status!';
+                icon = '🚀';
             } else if (percentage >= 40) {
-                message = 'GOOD EFFORT! Train harder for your next battle!';
-                icon = '⚔️';
+                report = 'Good effort, Cadet! Your basic space knowledge shows promise for future missions. With additional study and training, you will be ready for more challenging space operations. Keep reaching for the stars!';
+                icon = '🛰️';
             } else {
-                message = 'KEEP FIGHTING! Every champion started somewhere!';
-                icon = '🛡️';
+                report = 'Mission incomplete, Recruit. Your space knowledge needs significant improvement before you can be cleared for orbital missions. Report to the training facility for additional preparation. Every astronaut started somewhere!';
+                icon = '📡';
             }
             
-            document.getElementById('victoryMessage').textContent = message;
-            document.getElementById('victoryIcon').textContent = icon;
+            document.getElementById('commanderReport').textContent = report;
+            document.getElementById('completeIcon').textContent = icon;
         }
 
-        function exitBattle() {
-            clearInterval(timerInterval);
-            document.getElementById('battleSection').classList.remove('active');
-            document.getElementById('categoryArena').style.display = 'block';
+        function abortMission() {
+            document.getElementById('missionSession').classList.remove('active');
+            document.getElementById('missionSelection').style.display = 'block';
         }
 
-        function returnToArena() {
-            document.getElementById('victorySection').classList.remove('active');
-            document.getElementById('categoryArena').style.display = 'block';
+        function newMission() {
+            document.getElementById('missionComplete').classList.remove('active');
+            document.getElementById('missionSelection').style.display = 'block';
         }
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97fea0cfb653fecc',t:'MTc1ODAwNzUwOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98690d3281154045',t:'MTc1OTEyMzQzOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
 
