@@ -851,346 +851,376 @@
 
         const missionData = {
             solar: [
-                {
-                  question: "residual techniques - processes used in the income approach in which the unknown income from one component is derived by subtracting the known income from another component from the net operating income. The derived (residual) income is then capitalized to find the value of the corresponding component. Can be used for land-building or mortgage-equity components.",
-                  options: ["Residual techniques", "Restriction", "Reverse annuity mortgage", "Review appraiser"],
-                  correct: 0
-                },
-                {
-                  question: "restriction (restrict covenant) - a limitation on the way a property can be used.",
-                  options: ["Restriction", "Residual techniques", "Reversion", "Review appraiser"],
-                  correct: 0
-                },
-                {
-                  question: "reverse annuity mortgage - when a homeowner receives monthly checks or a lump sum with no repayment until property is sold; usually an agreement between mortgagor and elderly homeowners.",
-                  options: ["Reverse annuity mortgage", "Restriction", "Residual techniques", "Review appraiser"],
-                  correct: 0
-                },
-                {
-                  question: "Reversion - a lessor's right to possess leased property at the termination of a lease. Also refers generally to sale of a property at the end of a holding period.",
-                  options: ["Reversion", "Residual techniques", "Restriction", "Reverse annuity mortgage"],
-                  correct: 0
-                },
-                {
-                  question: "review appraiser - an appraiser who inspects the reports of other appraisers to determine the validity of the conclusions and data given in the report.",
-                  options: ["Review appraiser", "Residual techniques", "Restriction", "Reverse annuity mortgage"],
-                  correct: 0
-                },
-                {
-                  question: "revision - a revised or new version, as in a contract.",
-                  options: ["Revision", "Review appraiser", "Reversion", "Residual techniques"],
-                  correct: 0
-                },
-                {
-                  question: "rezoning - change or amendment to a zoning map.",
-                  options: ["Rezoning", "Revision", "Review appraiser", "Restriction"],
-                  correct: 0
-                },
-                {
-                  question: "strip center - commercial use of real estate, such as a neighborhood shopping center, in which the buildings are adjoining and narrow in depth relative to the length.",
-                  options: ["Strip center", "Subdivision", "Subject property", "Sublease"],
-                  correct: 0
-                },
-                {
-                  question: "Subdivision - large plot of land divided into small lots for sale or lease.",
-                  options: ["Subdivision", "Strip center", "Subject property", "Sublease"],
-                  correct: 0
-                },
-                {
-                  question: "subject property - the property being appraised.",
-                  options: ["Subject property", "Subdivision", "Strip center", "Sublease"],
-                  correct: 0
-                },
-                {
-                  question: "sublease - agreement in which the tenant (lessee) leases the property or part of the property to a third party, thus becoming a lessor.",
-                  options: ["Sublease", "Sublet", "Transfer tax", "Trend"],
-                  correct: 0
-                },
-                {
-                  question: "sublet - the act of a lessee transferring part or all of his or her lease to a third party while maintaining responsibility for all duties and obligations of the lease contract.",
-                  options: ["Sublet", "Sublease", "Transfer tax", "Trend"],
-                  correct: 0
-                },
-                {
-                  question: "transfer tax - a state or municipal tax payable when the conveyancing instrument is recorded.",
-                  options: ["Transfer tax", "Trend", "Trust", "Trustee"],
-                  correct: 0
-                },
-                {
-                  question: "trend - series of related changes brought about by a chain of causes and effects.",
-                  options: ["Trend", "Transfer tax", "Trust", "Trustee"],
-                  correct: 0
-                },
-                {
-                  question: "Trust - an arrangement in which title to property is transferred from a grantor to a trustee, who holds title but not the right of possession for a third party, the beneficiary.",
-                  options: ["Trust", "Trustee", "Trend", "Transfer tax"],
-                  correct: 0
-                },
-                {
-                  question: "trustee - a person who holds title to property for another person designated as the beneficiary.",
-                  options: ["Trustee", "Trust", "Trend", "Transfer tax"],
-                  correct: 0
-                },
-                {
-                  question: "Truth-in-Lending Law - also known as Regulation Z; requires lenders to make full disclosure regarding the terms of a loan.",
-                  options: ["Truth-in-Lending Law", "Trust", "Trustee", "Trend"],
-                  correct: 0
-                },
-                {
-                  question: "unilateral contract - a one-sided contract in which one party is obligated to perform a particular act completely before the other party has any obligation to perform.",
-                  options: ["Unilateral contract", "Unit-in-place method", "Units of comparison", "Unsecured loan"],
-                  correct: 0
-                },
-                {
-                  question: "unit-in-place method - also known as segregated cost method; a method of estimating building cost in which total building cost is estimated by summing prices for various building components as installed, based on specific units of use such as square footage or cubic footage.",
-                  options: ["Unit-in-place method", "Units of comparison", "Unsecured loan", "Useful life"],
-                  correct: 0
-                },
-                {
-                  question: "units of comparison - physical or economic measure that can be divided into the property's price to provide a more standardized comparison of the properties. The measure should be one that accounts for differences in the price typically paid for the properties, such as price per square foot (office building), price per seat (theater), or price per gallon of gas pumped (gas station). Income can also be a unit of comparison, such as when price is divided by effective gross income to obtain an effective gross income multiplier.",
-                  options: ["Units of comparison", "Unit-in-place method", "Unsecured loan", "Useful life"],
-                  correct: 0
-                },
-                {
-                  question: "unsecured loan - a loan that is not backed by collateral or security.",
-                  options: ["Unsecured loan", "Units of comparison", "Useful life", "VA-guaranteed loan"],
-                  correct: 0
-                },
-                {
-                  question: "useful life - the period of time a property is expected to have economic utility.",
-                  options: ["Useful life", "Unsecured loan", "VA-guaranteed loan", "Vacancy and collection loss"],
-                  correct: 0
-                },
-                {
-                  question: "vacancy and collection loss - the loss of income due to vacancy and nonpayment of rent.",
-                  options: ["Vacancy and collection loss", "Useful life", "VA-guaranteed loan", "Valid contract"],
-                  correct: 0
-                }
+ {
+    question: "Processes used in the income approach in which the unknown income from one component is derived by subtracting the known income from another component from the net operating income. The derived (residual) income is then capitalized to find the value of the corresponding component. Can be used for land-building or mortgage-equity components.",
+    options: ["Residual techniques", "Capitalization method", "Income approach", "Cost approach"],
+    correct: 0
+},
+{
+    question: "A limitation on the way a property can be used.",
+    options: ["Restriction ", "Easement", "Zoning", "Encroachment"],
+    correct: 0
+},
+{
+    question: "When a homeowner receives monthly checks or a lump sum with no repayment until property is sold; usually an agreement between mortgagor and elderly homeowners.",
+    options: ["Reverse annuity mortgage", "Graduated payment mortgage", "Equity loan", "Balloon mortgage"],
+    correct: 0
+},
+{
+    question: "A lessor's right to possess leased property at the termination of a lease. Also refers generally to sale of a property at the end of a holding period.",
+    options: ["Reversion", "Remainder estate", "Life estate", "Fee simple"],
+    correct: 0
+},
+{
+    question: "An appraiser who inspects the reports of other appraisers to determine the validity of the conclusions and data given in the report.",
+    options: ["Review appraiser", "Supervising appraiser", "Field appraiser", "Certified appraiser"],
+    correct: 0
+},
+{
+    question: "A revised or new version, as in a contract.",
+    options: ["Revision", "Amendment", "Addendum", "Modification"],
+    correct: 0
+},
+{
+    question: "Change or amendment to a zoning map.",
+    options: ["Rezoning", "Variance", "Special use", "Conditional use"],
+    correct: 0
+},
+{
+    question: "The right to enter or leave designated premises.",
+    options: ["Right of egress ", "Easement", "Access right", "Right of way"],
+    correct: 0
+},
+{
+    question: "The right of a person to have the first opportunity to purchase property before it is offered to anyone else.",
+    options: ["Right of first refusal", "Option to purchase", "Purchase agreement", "Leasehold right"],
+    correct: 0
+},
+{
+    question: "The statutory right to reclaim ownership of property after a foreclosure sale.",
+    options: ["Right of redemption", "Equity of redemption", "Foreclosure right", "Right of reversion"],
+    correct: 0
+},
+{
+    question: "A deed in which the grantor guarantees the title only against the defects that may have occurred during the grantor's ownership and not against any defects that occurred prior to that time.",
+    options: ["Special warranty deed", "General warranty deed", "Quitclaim deed", "Bargain and sale deed"],
+    correct: 0
+},
+{
+    question: "Data collected dealing with the subject property and the comparable properties.",
+    options: ["Specific date", "Effective date", "Valuation date", "Closing date"],
+    correct: 0
+},
+{
+    question: "A lien, such as a mortgage, that attaches to one defined parcel of real estate.",
+    options: ["Specific lien", "General lien", "Judgment lien", "Mechanic's lien"],
+    correct: 0
+},
+{
+    question: "A legal action in which a court compels a defaulted party to a contract to perform according to the terms of the contract, rather than awarding damages.",
+    options: ["Specific performance", "Rescission", "Reformation", "Compensatory damages"],
+    correct: 0
+},
+{
+    question: "Property held primarily for future sale; value based on the future highest and best use.",
+    options: ["Speculative use", "Investment use", "Special use", "Industrial use"],
+    correct: 0
+},
+{
+    question: "In some states, an instrument given to the purchaser at the time of sale.",
+    options: ["Tax deed", "Warranty deed", "Quitclaim deed", "Deed of trust"],
+    correct: 0
+},
+{
+    question: "A charge against a property created by law or statue.Tax liens take priority over all other types of liens.",
+    options: ["Tax lien", "Mortgage lien", "Judgment lien", "Mechanic's lien"],
+    correct: 0
+},
+{
+    question: "The rate applied to the assessed value of a property to determine the property taxes.",
+    options: ["Tax rate", "Millage rate", "Assessment rate", "Effective rate"],
+    correct: 0
+},
+{
+    question: "The court-ordered sale of a property after the owner fails to pay ad valorem taxes owed on the property.",
+    options: ["Tax sale", "Foreclosure sale", "Auction sale", "Judicial sale"],
+    correct: 0
+},
+{
+    question: "The tenancy of a party who unlawfully retains possession of a landlord's property after the term of the lease has expired.",
+    options: ["Tenancy at sufferance", "Tenancy at will", "Periodic tenancy", "Tenancy for years"],
+    correct: 0
+}
             
             ],
             rockets: [
-               {
-  question: "wear and tear - physical deterioration of property due to weathering, aging, and use.",
-  options: ["Wear and tear", "Will", "Suit for specific performance", "Super-adequacy"],
-  correct: 0
+ {
+    question: "The act of a lessee transferring part or all of his or her lease to a third party while maintaining responsibility for all duties and obligations of the lease contract.",
+    options: ["Sublet", "Assignment", "Surrender", "Leaseback"],
+    correct: 0
 },
 {
-  question: "will - a written document that directs the distribution of a deceased person's property, real and personal.",
-  options: ["Will", "Wear and tear", "Suit for specific performance", "Super-adequacy"],
-  correct: 0
+    question: "To accept, voluntarily, a lower priority lien position than that to which one would normally be entitled.",
+    options: ["Subordinate", "Subjugate", "Refinance", "Release"],
+    correct: 0
 },
 {
-  question: "suit for specific performance - a lawsuit filed for the purpose of compelling a party to perform particular acts rather than pay monetary damages to settle a dispute.",
-  options: ["Suit for specific performance", "Will", "Super-adequacy", "Supplemental standards"],
-  correct: 0
+    question: "The substitution of one party into another's legal role as the creditor for a particular debt.",
+    options: ["Subrogation", "Subordination", "Substitution", "Delegation"],
+    correct: 0
 },
 {
-  question: "super-adequacy - features that are not fully valued by the marketplace (e.g., 24-carat gold faucets).",
-  options: ["Super-adequacy", "Suit for specific performance", "Supplemental standards", "Supply and demand"],
-  correct: 0
+    question: "The principle in appraising that a buyer will be willing to pay no more for the property being appraised than the cost of purchasing an equally desirable property.",
+    options: ["Substitution", "Contribution", "Progression", "Regression"],
+    correct: 0
 },
 {
-  question: "supplemental standards - additional requirements that add to the development and reporting requirements of USPAP.",
-  options: ["Supplemental standards", "Super-adequacy", "Supply and demand", "Surplus productivity"],
-  correct: 0
+    question: "A lawsuit filed by a landlord to evict a tenant who has violated the terms of the lease or retained possession of the property after the lease has expired.",
+    options: ["Suit for possession", "Unlawful detainer", "Constructive eviction", "Summary judgment"],
+    correct: 0
 },
 {
-  question: "supply and demand - in appraisal, a principle that states that the value of a property depends on the quantity and price of the property type available in the market and on the number of market participants and the price they are willing to pay.",
-  options: ["Supply and demand", "Supplemental standards", "Surplus productivity", "Survey"],
-  correct: 0
+    question: "A lawsuit filed for the purpose of compelling a party to perform particular acts rather than pay monetary damages to settle a dispute.",
+    options: ["Suit for specific performance", "Breach of contract", "Rescission", "Forcible detainer"],
+    correct: 0
 },
 {
-  question: "surplus productivity - the net income that remains after the costs of labor, capital, and coordination have been deducted from total income.",
-  options: ["Surplus productivity", "Supply and demand", "Survey", "Syndicate"],
-  correct: 0
+    question: "Features that are not fully valued by the marketplace (e.g., 24-carat gold faucets).",
+    options: ["Super-adequacy", "Overimprovement", "Functional obsolescence", "External obsolescence"],
+    correct: 0
 },
 {
-  question: "survey - a map that shows the exact legal boundaries of a property, the location of easements, encroachments, improvements, rights-of-way, and other physical features.",
-  options: ["Survey", "Surplus productivity", "Syndicate", "Village"],
-  correct: 0
+    question: "Additional requirements that add to the development and reporting requirements of USPAP.",
+    options: ["Supplemental standards", "Additional clauses", "Reporting guidelines", "Minimum standards"],
+    correct: 0
 },
 {
-  question: "syndicate - a group formed by a syndicator to combine funds for real estate investment.",
-  options: ["Syndicate", "Survey", "Village", "Void contract"],
-  correct: 0
+    question: "In appraisal, a principle that states that the value of a property depends on the quantity and price of the property type available in the market and on the number of market participants and the price they are willing to pay.",
+    options: ["Supply and demand", "Competition", "Contribution", "Balance"],
+    correct: 0
 },
 {
-  question: "village - an incorporated minor municipality usually larger than a hamlet and smaller than a town.",
-  options: ["Village", "Syndicate", "Void contract", "Voidable contract"],
-  correct: 0
+    question: "The net income that remains after the costs of labor, capital, and coordination have been deducted from total income.",
+    options: ["Surplus productivity", "Net yield", "Residual income", "Economic rent"],
+    correct: 0
 },
 {
-  question: "void contract - a contract that is not legally enforceable; the absence of a valid contract.",
-  options: ["Void contract", "Village", "Voidable contract", "Wraparound mortgage"],
-  correct: 0
+    question: "The space that may be occupied by a tenant under the terms of a lease.",
+    options: ["Tenement", "Leasehold", "Premises", "Estate for years"],
+    correct: 0
 },
 {
-  question: "voidable contract - a contract that appears to be valid but is subject to cancellation by one or both of the parties.",
-  options: ["Voidable contract", "Void contract", "Wraparound mortgage", "Write of execution"],
-  correct: 0
+    question: "The state of dying after having created a valid will directing the testator's desires with regard to the disposition of the estate.",
+    options: ["Testate", "Intestate", "Probate", "Devise"],
+    correct: 0
 },
 {
-  question: "wraparound mortgage - a mortgage that includes the remaining balance on an existing first mortgage, plus an additional amount. Full payments on both mortgages are made to the wraparound mortgagee, who then forwards the payments on the first mortgage to the first mortgagee.",
-  options: ["Wraparound mortgage", "Voidable contract", "Write of execution", "Yield"],
-  correct: 0
+    question: "Language in a contract that requires strict adherence to the dates listed in the contract as deadlines for the performance of specific acts.",
+    options: ["Time is of the essence", "Specific performance", "Liquidated damages", "Acceleration clause"],
+    correct: 0
 },
 {
-  question: "Write of execution - a court order to the sheriff or other officer to sell the property of a debtor to satisfy a previously rendered judgment.",
-  options: ["Write of execution", "Wraparound mortgage", "Yield", "Yield capitalization"],
-  correct: 0
+    question: "Also called interval owning; undivided ownership of real estate for only an allotted portion of a year.",
+    options: ["Time-sharing", "Co-ownership", "Joint tenancy", "Cooperative"],
+    correct: 0
 },
 {
-  question: "Yield - rate of return on an investment. Could be an overall yield for the property (yo), a yield for the equity investor (ye), or a yield for the lender (ym) mortgage component.",
-  options: ["Yield", "Write of execution", "Yield capitalization", "Zone"],
-  correct: 0
+    question: "A legal document that demonstrates a person's right to, or ownership of, a property. Note: Title is not an instrument. The instrument, such as a deed, gives evidence of title or ownership.",
+    options: ["Title", "Deed", "Abstract", "Certificate of occupancy"],
+    correct: 0
 },
 {
-  question: "yield capitalization - method used in the income approach to determine property value by discounting future cash flows at an appropriate discount rate (yield rate) that reflects the rate of return required by investors. The approach may or may not explicitly consider financing. See discounted cash flow analysis.",
-  options: ["Yield capitalization", "Yield", "Zone", "Zoning ordinance"],
-  correct: 0
+    question: "An incorporated minor municipality usually larger than a hamlet and smaller than a town.",
+    options: ["Village", "Hamlet", "Town", "City"],
+    correct: 0
 },
 {
-  question: "Zone - an area reserved by authorities for specific use that is subject to certain restrictions.",
-  options: ["Zone", "Yield capitalization", "Zoning ordinance", "Zoning restrictions"],
-  correct: 0
+    question: "A contract that is not legally enforceable; the absence of a valid contract.",
+    options: ["Void contract", "Voidable contract", "Executed contract", "Unilateral contract"],
+    correct: 0
 },
 {
-  question: "zoning ordinance - the exercise of regulating and controlling the use of a property in a municipality.",
-  options: ["Zoning ordinance", "Zone", "Zoning restrictions", "USPAP"],
-  correct: 0
+    question: "A contract that appears to be valid but is subject to cancellation by one or both of the parties.",
+    options: ["Voidable contract", "Void contract", "Bilateral contract", "Executed contract"],
+    correct: 0
 },
 {
-  question: "zoning restrictions - restrictions may be placed on issues such as height, density, use, or development of properties.",
-  options: ["Zoning restrictions", "Zoning ordinance", "Zone", "USPAP"],
-  correct: 0
+    question: "A mortgage that includes the remaining balance on an existing first mortgage, plus an additional amount. Full payments on both mortgages are made to the wraparound mortgagee, who then forwards the payments on the first mortgage to the first mortgagee.",
+    options: ["Wraparound mortgage", "Package mortgage", "Blanket mortgage", "Reverse mortgage"],
+    correct: 0
 },
 {
-  question: "Uniform Standards of Professional Appraisal Practice (USPAP) - a manual of professional standards of practice for appraisers; contains ethical principals and codes of conduct for appraisers.",
-  options: ["Uniform Standards of Professional Appraisal Practice (USPAP)", "Zoning restrictions", "Zoning ordinance", "Zone"],
-  correct: 0
+    question: "A court order to the sheriff or other officer to sell the property of a debtor to satisfy a previously rendered judgment.",
+    options: ["Write of execution", "Writ of possession", "Judgment order", "Sheriff's sale"],
+    correct: 0
 },
 {
-                  question: "VA-guaranteed loan - a mortgage loan made to a qualified veteran that is guaranteed by the Department of Veterans Affairs.",
-                  options: ["VA-guaranteed loan", "Vacancy and collection loss", "Valid contract", "Valuation"],
-                  correct: 0
-                },
-                {
-                  question: "valid contract - an agreement that is legally enforceable and binding on all parties.",
-                  options: ["Valid contract", "VA-guaranteed loan", "Vacancy and collection loss", "Valuation"],
-                  correct: 0
-                }
+    question: "The surrender of a known right or claim.",
+    options: ["Waiver", "Release", "Estoppel", "Renunciation"],
+    correct: 0
+},
+{
+    question: "A deed in which the grantor fully warrants a good, clear title to the property.",
+    options: ["Warranty deed", "Special warranty deed", "Quitclaim deed", "Bargain and sale deed"],
+    correct: 0
+},
+{
+    question: "The improper use of a property by a party with the right to possession, such as the holder of a life estate.",
+    options: ["Waste", "Negligence", "Abandonment", "Encroachment"],
+    correct: 0
+},
+{
+    question: "Physical deterioration of property due to weathering, aging, and use.",
+    options: ["Wear and tear", "Functional obsolescence", "Depreciation", "Deterioration"],
+    correct: 0
+},
+{
+    question: "A written document that directs the distribution of a deceased person's property, real and personal.",
+    options: ["Will", "Codicil", "Trust", "Deed"],
+    correct: 0
+},
+{
+    question: "The practice of charging interest at a rate higher than that allowed by law.",
+    options: ["Usury", "Interest", "Equity", "Lien"],
+    correct: 0
+},
+{
+    question: "Also known as functional utility; measure of usefulness of a property",
+    options: ["Utility", "Value", "Productivity", "Demand"],
+    correct: 0
+},
+{
+    question: "Value of a property based on a specific use. This may differ from market value when the use is specialized and there is a limited market for the property based on that use.",
+    options: ["Value in use", "Market value", "Investment value", "Insurable value"],
+    correct: 0
+}
             ],
             astronauts: [
-                {
-                  question: "valuation - process of estimating a defined value of an identified interest in a specific parcel of real estate as of a given date.",
-                  options: ["Valuation", "Valid contract", "VA-guaranteed loan", "Vacancy and collection loss"],
-                  correct: 0
-                },          
-                {
-                      question: "What does SLS stand for in NASA's rocket program?",
-                      options: ["Space Launch System", "Super Large Spacecraft", "Stellar Launch Station", "Space Landing System"],
-                      correct: 0
-                },
-                {
-                  question: "right of egress (or ingress) - the right to enter or leave designated premises.",
-                  options: ["Right of egress (or ingress)", "Right of first refusal", "Right of redemption", "Right of survivorship"],
-                  correct: 0
-                },
-                {
-                  question: "right of first refusal - the right of a person to have the first opportunity to purchase property before it is offered to anyone else.",
-                  options: ["Right of first refusal", "Right of redemption", "Right of egress (or ingress)", "Riparian rights"],
-                  correct: 0
-                },
-                {
-                  question: "right of redemption - the statutory right to reclaim ownership of property after a foreclosure sale.",
-                  options: ["Right of redemption", "Right of survivorship", "Right of first refusal", "Riparian rights"],
-                  correct: 0
-                },
-                {
-                  question: "right of survivorship - in joint tenancy, the right of survivors to acquire the interest of a deceased joint tenant.",
-                  options: ["Right of survivorship", "Right of redemption", "Right of first refusal", "Riparian rights"],
-                  correct: 0
-                },
-                {
-                  question: "riparian rights - the rights of a landowner whose property is adjacent to a flowing waterway, such as a river,to access and use the water.",
-                  options: ["Riparian rights", "Right of redemption", "Right of first refusal", "Right of survivorship"],
-                  correct: 0
-                },
-                {
-                  question: "Risk - principle that deals with the uncertainty of outcomes",
-                  options: ["Risk", "Subordinate", "Subrogation", "Substitution"],
-                  correct: 0
-                },
-                {
-                  question: "subordinate - to accept, voluntarily, a lower priority lien position than that to which one would normally be entitled.",
-                  options: ["Subordinate", "Subrogation", "Substitution", "Suit for possession"],
-                  correct: 0
-                },
-                {
-                  question: "Subrogation - the substitution of one party into another's legal role as the creditor for a particular debt.",
-                  options: ["Subrogation", "Subordinate", "Substitution", "Suit for possession"],
-                  correct: 0
-                },
-                {
-                  question: "substitution - the principle in appraising that a buyer will be willing to pay no more for the property being appraised than the cost of purchasing an equally desirable property.",
-                  options: ["Substitution", "Subordinate", "Subrogation", "Suit for possession"],
-                  correct: 0
-                },
-                {
-                  question: "suit for possession - a lawsuit filed by a landlord to evict a tenant who has violated the terms of the lease or retained possession of the property after the lease has expired.",
-                  options: ["Suit for possession", "Substitution", "Subrogation", "Usury"],
-                  correct: 0
-                },
-                {
-                  question: "usury - the practice of charging interest at a rate higher than that allowed by law.",
-                  options: ["Usury", "Utility", "Value in exchange", "Value in use"],
-                  correct: 0
-                },
-                {
-                  question: "utility - also known as functional utility; measure of usefulness of a property.",
-                  options: ["Utility", "Usury", "Value in exchange", "Value in use"],
-                  correct: 0
-                },
-                {
-                  question: "value in exchange - value of a property in a typical market; market value.",
-                  options: ["Value in exchange", "Utility", "Value in use", "Variable expense"],
-                  correct: 0
-                },
-                {
-                  question: "value in use - value of a property based on a specific use. This may differ from market value when the use is specialized and there is a limited market for the property based on that use.",
-                  options: ["Value in use", "Value in exchange", "Utility", "Variable expense"],
-                  correct: 0
-                },
-                {
-                  question: "variable expense - expenses that vary depending on the level of occupancy (e.g., utilities, garbage removal).",
-                  options: ["Variable expense", "Value in exchange", "Value in use", "Variance"],
-                  correct: 0
-                },
-                {
-                  question: "variance - permission obtained from zoning authorities to build a structure that is not in complete compliance with current zoning laws. A variance does not permit a non-conforming use of a property.",
-                  options: ["Variance", "Variable expense", "Vendee", "Waiver"],
-                  correct: 0
-                },
-                {
-                  question: "Vendee - a buyer.vendor a seller; the property owner.",
-                  options: ["Vendee", "Variance", "Waiver", "Warranty deed"],
-                  correct: 0
-                },
-                {
-                  question: "Waiver - the surrender of a known right or claim.",
-                  options: ["Waiver", "Vendee", "Warranty deed", "Waste"],
-                  correct: 0
-                },
-                {
-                  question: "warranty deed - a deed in which the grantor fully warrants a good, clear title to the property.",
-                  options: ["Warranty deed", "Waiver", "Vendee", "Waste"],
-                  correct: 0
-                },
-                {
-                  question: "waste - the improper use of a property by a party with the right to possession, such as the holder of a life estate.",
-                  options: ["Waste", "Warranty deed", "Waiver", "Vendee"],
-                  correct: 0
-                }
+{
+    question: "A map that shows the exact legal boundaries of a property, the location of easements, encroachments, improvements, rights-of-way, and other physical features.",
+    options: ["Survey", "Topography", "Boundary", "Plat"],
+    correct: 0
+},
+{
+    question: "A group formed by a syndicator to combine funds for real estate investment.",
+    options: ["Syndicate", "Partnership", "Cooperative", "Corporation"],
+    correct: 0
+},
+{
+    question: "An insurance policy that protects the holder from defects in a title, subject to the exceptions noted in the policy.",
+    options: ["Title Insurance", "Homeowner Insurance", "Mortgage Insurance", "Property Warranty"],
+    correct: 0
+},
+{
+    question: "A check of public records to ensure that the seller is the legal owner of the property and that there are no liens or other outstanding claims.",
+    options: ["Title Search", "Background Check", "Lien Release", "Ownership Report"],
+    correct: 0
+},
+{
+    question: "A system of registering titles to land with a public authority, who is usually called a registrar ",
+    options: ["Torrens System", "Land Registration", "Public Deed", "Title Book"],
+    correct: 0
+},
+{
+    question: "A division of land, measuring 36 square miles, in the government survey system.",
+    options: ["Township", "District", "Section", "County"],
+    correct: 0
+},
+{
+    question: "In the rectangular survey system, the east-west lines, spaced six miles apart, used to define a township.",
+    options: ["Township Lines", "Baseline", "Meridian", "Range Lines"],
+    correct: 0
+},
+{
+    question: "Contour, grade, soil conditions, and physical usability of a site.",
+    options: ["Topography", "Survey", "Elevation", "Zoning"],
+    correct: 0
+},
+{
+    question: "An item of personal property installed by a commercial tenant and removable upon expi-ration of the lease.",
+    options: ["Trade Fixtures", "Improvements", "Real Property", "Leasehold"],
+    correct: 0
+},
+{
+    question: "A state or municipal tax payable when the conveyancing instrument is recorded.",
+    options: ["Transfer Tax", "Property Tax", "Documentary Tax", "Excise Tax"],
+    correct: 0
+},
+{
+    question: "Series of related changes brought about by a chain of causes and effects.",
+    options: ["Trend", "Pattern", "Cycle", "Growth"],
+    correct: 0
+},
+{
+    question: "An arrangement in which title to property is transferred from a grantor to a trustee, who holds title but not the right of possession for a third party, the beneficiary.",
+    options: ["Trust", "Deed", "Will", "Escrow"],
+    correct: 0
+},
+{
+    question: "A person who holds title to property for another person designated as the beneficiary.",
+    options: ["Trustee", "Grantor", "Beneficiary", "Agent"],
+    correct: 0
+},
+{
+    question: "Also known as Regulation Z; requires lenders to make full disclosure regarding the terms of a loan.",
+    options: ["Truth-in-Lending Law", "Equal Credit Opportunity Act", "Fair Housing Act", "Usury Law"],
+    correct: 0
+},
+{
+    question: "The process of evaluating a loan application to determine the risk involved for the lender. ",
+    options: ["Underwriting", "Loan Processing", "Pre-Approval", "Escrow"],
+    correct: 0
+},
+{
+    question: "The interest of co-owners to the use of an entire property despite the fractional interest owned.",
+    options: ["Undivided Interest", "Joint Tenancy", "Tenancy in Common", "Fee Simple"],
+    correct: 0
+},
+{
+    question: "Appraisal form requested by many federal agencies to value residential properties in a consistent manner.",
+    options: ["Uniform Residential Appraisal Report ", "BPO", "CMA", "Sales Comparison"],
+    correct: 0
+},
+{
+    question: "A manual of professional standards of practice for appraisers; contains ethical principals and codes of conduct for appraisers.",
+    options: ["Uniform Standards of Professional Appraisal Practice", "Fannie Mae Guide", "Federal Register", "MLS Standards"],
+    correct: 0
+},
+{
+    question: "A one-sided contract in which one party is obligated to perform a particular act completely before the other party has any obligation to perform.",
+    options: ["Unilateral Contract", "Bilateral Contract", "Valid Contract", "Voidable Contract"],
+    correct: 0
+},
+{
+    question: "Also known as segregated cost method; a method of estimating building cost in which total building cost is estimated by summing prices for various building components as installed, based on specific units of use such as square footage or cubic footage.",
+    options: ["Unit-in-Place Method", "Quantity Survey", "Cost Approach", "Sales Comparison"],
+    correct: 0
+},
+{
+    question: "The loss of income due to vacancy and nonpayment of rent. ",
+    options: ["Vacancy and Collection Loss", "Gross Income", "Net Operating Income", "Effective Gross Income"],
+    correct: 0
+},
+{
+    question: "A mortgage loan made to a qualified veteran that is guaranteed by the Department of Veterans Affairs.",
+    options: ["VA-Guaranteed Loan", "FHA Loan", "Conventional Loan", "USDA Loan"],
+    correct: 0
+},
+{
+    question: "An agreement that is legally enforceable and binding on all parties.",
+    options: ["Valid Contract", "Void Contract", "Voidable Contract", "Executed Contract"],
+    correct: 0
+},
+{
+    question: "Process of estimating a defined value of an identified interest in a specific parcel of real estate as of a given date.",
+    options: ["Valuation", "Appraisal", "Market Study", "Assessment"],
+    correct: 0
+},
+{
+    question: "Value of a property in a typical market; market value.",
+    options: ["Value in Exchange", "Intrinsic Value", "Replacement Value", "Investment Value"],
+    correct: 0
+}
             ]
         };
 
