@@ -433,37 +433,37 @@
                 statement: "RA 9646", 
                 back: "REAL ESTATE SERVICE ACT [RESA]", 
                 answer: true,
-                explanation: "PROFESSIONALIZING REAL ESTATE SERVICE"
+                explanation: "PROFESSIONALIZING REAL ESTATE SERVICE",
             },
             { 
                 statement: "PD 1529", 
                 back: "PROPERTY REGISTRATION DECREE", 
                 answer: true,
-                explanation: "LAND MANAGEMENT ACT"
+                explanation: "LAND MANAGEMENT ACT",
             }, 
             { 
                 statement: "ACT 496", 
                 back: "SUBDIVISION AND CONDOMINIUM BUYERS PROTECTIVE DECREE", 
                 answer: false,
-                explanation: "LAND REGISTRATION ACT - TORRENS SYSTEM, COURT OF LAND REGISTRATION"
-            }
-                        { 
+                explanation: "LAND REGISTRATION ACT - TORRENS SYSTEM, COURT OF LAND REGISTRATION",
+            },
+            {
                 statement: "PD 1529", 
                 back: "PROPERTY REGISTRATION DECREE", 
                 answer: true,
-                explanation: "LAND MANAGEMENT ACT"
-            }, 
-                        { 
+                explanation: "LAND MANAGEMENT ACT",
+            },
+            {
                 statement: "PD 1529", 
                 back: "PROPERTY REGISTRATION DECREE", 
                 answer: true,
-                explanation: "LAND MANAGEMENT ACT"
+                explanation: "LAND MANAGEMENT ACT",
             }, 
             { 
                 statement: "PD 1529", 
                 back: "PROPERTY REGISTRATION DECREE", 
                 answer: true,
-                explanation: "LAND MANAGEMENT ACT"
+                explanation: "LAND MANAGEMENT ACT",
             }, 
         ];
 
