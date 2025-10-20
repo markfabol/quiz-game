@@ -354,21 +354,21 @@
                     },
                     {
                         id: 22,
-                        definition: "the indication by a party receiving an offer that they agree to the terms of the offer. In most states, the offer and acceptance must be reduced to writing when real property is involved.",
+                        definition: "the means of physical entrance into or upon a property",
                         options: ["Acceptance","Access","Agency","Alienation"],
                         correct: 1
                     },
                     {
                         id: 23,
-                        definition: "the means of physical entrance into or upon a property.",
-                        options: ["A. Accession","Accessibility","Access","Adjustment date"],
-                        correct: 2
+                        definition: "the ease with which a person can enter or exit a particular tract of land.",
+                        options: ["Accession","Accessibility","Access","Adjustment date"],
+                        correct: 1
                     },
                     {
                         id: 24,
-                        definition: "the ease with which a person can enter or exit a particular tract of land.",
+                        definition: "the increase or addition of land resulting from the natural deposit of sand or soil by streams, lakes, or rivers.",
                         options: ["Access","Accessibility","Accretion","Ad valorem tax"],
-                        correct: 1
+                        correct: 2
                     },
                     {
                         id: 25,
@@ -383,20 +383,20 @@
                 questions: [
                     {
                         id: 1,
-                        definition: " the increase or addition of land resulting from the natural deposit of sand or soil by streams, lakes, or rivers.",
-                        options: [" Accretion, Accrued items", "Accessibility", "Ad valorem tax"],
+                        definition: " a clause in a note, mortgage, or deed of trust that permits the lender to declare the entire amount of principal and accrued interest due and payable immediately in the event of default.",
+                        options: ["Acceleration clause, Accrued items", "Accessibility", "Ad valorem tax"],
                         correct: 0
                     },
                     {
                         id: 2,
-                        definition: "the difference between an improvement's reproduction or replacement cost and its market value as of the date of appraisal. It represents the total depreciation accumulated since the improvement was constructed.",
-                        options: ["Accrued depreciation", "Accumulated depreciation", "Abstraction", "Actual age"],
+                        definition: "the indication by a party receiving an offer that they agree to the terms of the offer. In most states, the offer and acceptance must be reduced to writing when real property is involved. access - the means of physical entrance into or upon a property.",
+                        options: ["Acceptance", "Accumulated depreciation", "Abstraction", "Actual age"],
                         correct: 0
                     },
                     {
                         id: 3,
-                        definition: "a list of expenses that have been incurred but have not yet been paid, such as interest on a mortgage loan, that are included on a closing statement.",
-                        options: ["Accrued items", "Accrued depreciation", "Adjusted sales price"," Affidavit"],
+                        definition: "the ease with which a person can enter or exit a particular tract of land.",
+                        options: ["Accessibility", "Accrued depreciation", "Adjusted sales price"," Affidavit"],
                         correct: 0
                     },
                     {
@@ -712,7 +712,7 @@
                     {
                         id: 4,
                         definition: "The cash flow remaining after debt service and ordinary income tax on operations are subtracted from net operating income.",
-                        options: ["After-Tax Cash Flow (ATCF)", "Adverse Possession", "Advocacy", "Affidavit"],
+                        options: ["After-Tax Cash Flow ", "Adverse Possession", "Advocacy", "Affidavit"],
                         correct: 0
                     },
                     {
