@@ -423,7 +423,7 @@
 
     <script>
         const flashcards = [
-            { 
+{ 
                 statement: "RA 386", 
                 back: "CIVIL CODE OF THE PHILIPPINES", 
                 answer: true,
@@ -448,23 +448,167 @@
                 explanation: "LAND REGISTRATION ACT - TORRENS SYSTEM, COURT OF LAND REGISTRATION",
             },
             {
-                statement: "PD 1529", 
-                back: "PROPERTY REGISTRATION DECREE", 
-                answer: true,
-                explanation: "LAND MANAGEMENT ACT",
+                statement: "ACT 3344", 
+                back: "PRIORITIES FOR LAND CONVERSION", 
+                answer: false,
+                explanation: "RECORDING OF INSTRUMENTS OR DEEDS RELATING TO UNREGISTERED LAND - FIXING FEES TO BE COLLECTED BY RD",
             },
             {
-                statement: "PD 1529", 
-                back: "PROPERTY REGISTRATION DECREE", 
+                statement: "RA 3844", 
+                back: "AGRARIAN LAND REFORM CODE", 
                 answer: true,
-                explanation: "LAND MANAGEMENT ACT",
+                explanation: "ABOLISHED THE SHARE TENANCY",
             }, 
             { 
-                statement: "PD 1529", 
-                back: "PROPERTY REGISTRATION DECREE", 
+                statement: "PD 892", 
+                back: "DISCONTINUING SPANISH TITLES", 
                 answer: true,
-                explanation: "LAND MANAGEMENT ACT",
+                explanation: "SPANISH TITLES DECLARED UNREGISTERED LAND",
             }, 
+            { 
+                statement: "ACT 926", 
+                back: "1ST PUBLIC LAND ACT", 
+                answer: true,
+                explanation: "HOMESTEAD, 16 HECTARES",
+            }, 
+            { 
+                statement: "CA 141", 
+                back: "2ND PUBLIC LAND ACT", 
+                answer: true,
+                explanation: "JUDICIAL CONFIRMATION OF TITLES",
+            }, 
+            { 
+                statement: "ACT 2259", 
+                back: "STANDARDS FOR ECONOMIC AND SOCIALIZED HOUSING", 
+                answer: false,
+                explanation: "CADASTRAL ACT - SYSTEMATIC SURVEY AND REGISTRATION OF LAND",
+            }, 
+            { 
+                statement: "PD 27", 
+                back: "PROPERTY REGISTRATION DECREE", 
+                answer: false,
+                explanation: "EMANCIPATION OF TENANTS - RICE AND CORN AGRICULTURAL",
+            }, 
+            {
+                statement: "PD 1517", 
+                back: "URBAN LAND REFORM ACT", 
+                answer: true,
+                explanation: "GOV’T ACQUISITION OF URBAN LAND",
+            },
+            {
+                statement: "RA 7279", 
+                back: "UDHA OF 1992, LINA LAW", 
+                answer: true,
+                explanation: "LAW ON SQUATTERS",
+            }, 
+            { 
+                statement: "RA 6657", 
+                back: "COMPREHENSIVE AGRARIAN REFORM LAW", 
+                answer: true,
+                explanation: "ALL AGRICULTURAL LAND COVERED",
+            }, 
+            { 
+                statement: "RA 8532", 
+                back: "1ST EXTENSION OF CARP", 
+                answer: true,
+                explanation: "EXTENDED CARP FOR 10 YEARS UNTIL 2009",
+            },
+            { 
+                statement: "RA 9700", 
+                back: "CARPER, 2ND EXTENSION CARP", 
+                answer: true,
+                explanation: "EXTENDED CARP FOR 5 YEARS UNTIL 2014",
+            },
+            { 
+                statement: "BP 220", 
+                back: "SUBDIVISION AND CONDOMINIUM BUYERS PROTECTIVE DECREE", 
+                answer: true,
+                explanation: "REGISTRATION, DESIGN, GUIDELINES",
+            },
+            { 
+                statement: "PD 1216", 
+                back: "OPEN SPACE ACT", 
+                answer: true,
+                explanation: "DEFINING OPEN SPACE IN A RESIDENTIAL SUBDIVISION",
+            },
+            { 
+                statement: "RA 7042", 
+                back: "FOREIGN INVESTMENT ACT", 
+                answer: true,
+                explanation: "FORMER FILIPINOS, 5,000SQM URBAN, 3HAS RURAL",
+            },
+            { 
+                statement: "RA 8179", 
+                back: "AMENDING RA 7042", 
+                answer: true,
+                explanation: "FORMER FILIPINOS WHO CAN OWN LAND FOR BUSINESS PURPOSES",
+            },
+            { 
+                statement: "BP 185", 
+                back: "IMPLEMENTING ART XIV, SEC 15 OF THE PHIL CONSTITUTION", 
+                answer: true,
+                explanation: "FORMER FILIPINOS WHO CAN OWN LAND FOR RESIDENTIAL PURPOSES",
+            },
+            { 
+                statement: "RA 4726", 
+                back: "THE CONDOMINIUM ACT", 
+                answer: true,
+                explanation: "CONDOMINIUM CONCEPTS",
+            },
+            { 
+                statement: "RA 7899", 
+                back: "THE CONDOMINIUM ACT AMENDMENT", 
+                answer: true,
+                explanation: "AMENDING OR REVOKING THE ENABLING OR MASTER DEED",
+            },
+            { 
+                statement: "", 
+                back: "", 
+                answer: true,
+                explanation: "",
+            },
+            { 
+                statement:  "", 
+                back: "", 
+                answer: true,
+                explanation: "",
+            },
+            { 
+                statement:  "", 
+                back: "", 
+                answer: true,
+                explanation: "",
+            },
+            { 
+                statement: ", 
+                back: "", 
+                answer: true,
+                explanation: "",
+            },
+            { 
+                statement: "", 
+                back: "", 
+                answer: true,
+                explanation: "",
+            },
+            { 
+                statement:  "", 
+                back: "", 
+                answer: true,
+                explanation: "",
+            },
+            { 
+                statement: "", 
+                back: "", 
+                answer: true,
+                explanation: "",
+            },
+            { 
+                statement: "", 
+                back: "", 
+                answer: true,
+                explanation: "",
+            },
         ];
 
         let currentCardIndex = 0;
