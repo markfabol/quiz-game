@@ -362,8 +362,8 @@
 
             <div class="controls">
                 <button class="btn btn-flip" onclick="flipCard()" id="flipBtn">🔄 Flip Card</button>
-                <button class="btn btn-true" onclick="answerTrue()" id="trueBtn" disabled>✓ TAMA</button>
-                <button class="btn btn-false" onclick="answerFalse()" id="falseBtn" disabled>✗ MALI</button>
+                <button class="btn btn-true" onclick="answerTrue()" id="trueBtn" disabled>✓ TRUE</button>
+                <button class="btn btn-false" onclick="answerFalse()" id="falseBtn" disabled>✗ FALSE</button>
                 <button class="btn btn-next" onclick="nextCard()" id="nextBtn" disabled>➡️ Next</button>
             </div>
 
@@ -509,15 +509,15 @@
             }, 
             { 
                 statement: "RA 8532", 
-                back: "1ST EXTENSION OF CARP", 
-                answer: true,
-                explanation: "EXTENDED CARP FOR 10 YEARS UNTIL 2009",
+                back: "SALE OF PUBLIC LANDS WITHOUT AUCTION", 
+                answer: false,
+                explanation: "1ST EXTENSION OF CARP - EXTENDED CARP FOR 10 YEARS UNTIL 2009",
             },
             { 
                 statement: "RA 9700", 
-                back: "CARPER, 2ND EXTENSION CARP", 
-                answer: true,
-                explanation: "EXTENDED CARP FOR 5 YEARS UNTIL 2014",
+                back: "HDMF LAW OF 1980", 
+                answer: false,
+                explanation: "CARPER, 2ND EXTENSION CARP - EXTENDED CARP FOR 5 YEARS UNTIL 2014",
             },
             { 
                 statement: "BP 220", 
@@ -539,9 +539,9 @@
             },
             { 
                 statement: "RA 8179", 
-                back: "AMENDING RA 7042", 
-                answer: true,
-                explanation: "FORMER FILIPINOS WHO CAN OWN LAND FOR BUSINESS PURPOSES",
+                back: "RENT CONTROL ACT OF 2009", 
+                answer: false,
+                explanation: "AMENDING RA 7042 - FORMER FILIPINOS WHO CAN OWN LAND FOR BUSINESS PURPOSES",
             },
             { 
                 statement: "BP 185", 
@@ -557,58 +557,196 @@
             },
             { 
                 statement: "RA 7899", 
-                back: "THE CONDOMINIUM ACT AMENDMENT", 
-                answer: true,
-                explanation: "AMENDING OR REVOKING THE ENABLING OR MASTER DEED",
+                back: "REIT LAW", 
+                answer: false,
+                explanation: "THE CONDOMINIUM ACT AMENDMENT - AMENDING OR REVOKING THE ENABLING OR MASTER DEED",
             },
             { 
-                statement: "", 
-                back: "", 
+                statement: "RA 7160", 
+                back: "CREATING THE HUMAN SETTLEMENT COMM", 
                 answer: true,
-                explanation: "",
+                explanation: "LOCAL GOVERNMENT CODE - GOVERNING LOCAL GOVERNMENT",
             },
             { 
-                statement:  "", 
-                back: "", 
-                answer: true,
-                explanation: "",
+                statement:  "EO 648", 
+                back: "TAX REFORM ACT OF 1997", 
+                answer: false,
+                explanation: "REORGANIZED THE HSRC - RENAMED THE HLURB",
             },
             { 
-                statement:  "", 
-                back: "", 
+                statement:  "EO 71", 
+                back: "DEVOLUTION OF HLURB POWERS TO APPROVE SUBDIVISION PLANS TO LGU", 
                 answer: true,
-                explanation: "",
+                explanation: "LGU TO ISSUE DEVELOPMENT PERMITS",
             },
             { 
-                statement: ", 
-                back: "", 
+                statement: "EO 124", 
+                back: "PRIORITIES FOR LAND CONVERSION", 
                 answer: true,
-                explanation: "",
+                explanation: "SET UP CONVERSION REGULATIONS",
             },
             { 
-                statement: "", 
-                back: "", 
+                statement: "ACT 3135", 
+                back: "THE EXTRAJUDICIAL FORECLOSURE LAW", 
                 answer: true,
-                explanation: "",
+                explanation: "AN ACT TO REGULATE THE SALE OF PROPERTY UNDER SPECIAL POWERS INSERTED OR ANNEXED TO REAL ESTATE MORTGAGES",
             },
             { 
-                statement:  "", 
-                back: "", 
+                statement:  "EO 209", 
+                back: "FAMILY CODE OF THE PHIL", 
                 answer: true,
-                explanation: "",
+                explanation: "GOVERNING MARRIAGE, FAMILY RELATIONS, AND PROPERTY RELATIONS",
             },
             { 
-                statement: "", 
-                back: "", 
-                answer: true,
-                explanation: "",
+                statement: "EO 227", 
+                back: "AGRARIAN LAND REFORM CODE", 
+                answer: false,
+                explanation: "AMENDING FAMILY CODE - RIGHT TO REMARRY, NO PRESCRIPTION FOR DECLARATION OF NULLITY UNDER ART 36",
             },
             { 
-                statement: "", 
-                back: "", 
-                answer: true,
-                explanation: "",
+                statement: "RA 8763", 
+                back: "1ST PUBLIC LAND ACT", 
+                answer: false,
+                explanation: "HOME GUARANTEE CORPORATION - LOAN TO CMP",
             },
+            { 
+                statement: "PD 0933", 
+                back: "EMANCIPATION OF TENANTS", 
+                answer: false,
+                explanation: "CREATING THE HUMAN SETTLEMENT COMM - NEW GOVT AGENCY FOR URBAN PLANNING",
+            },
+            { 
+                statement: "RA 8981", 
+                back: "PRC MODERNIZATION ACT", 
+                answer: true,
+                explanation: "AUTHORITY AND POWERS OF PRC",
+            },
+            { 
+                statement: "RA 8424", 
+                back: "UDHA OF 1992, LINA LAW", 
+                answer: false,
+                explanation: "TAX REFORM ACT OF 1997 - AMENDED NIRC PD 1158 OF 1994, EO273",
+            },
+            { 
+                statement: "RA 9856", 
+                back: "REIT LAW", 
+                answer: true,
+                explanation: "CREATED THE REAL ESTATE INVESTMENT TRUST",
+            },
+            { 
+                statement: "RA 10023", 
+                back: "FREE PATENT LAW", 
+                answer: true,
+                explanation: "TITLING FOR 10YEARS OCCUPATION, 200-1000SQM",
+            },
+            { 
+                statement: "RA 9341", 
+                back: "RENT CONTROL ACT OF 2005", 
+                answer: true,
+                explanation: "REGULATIONS OF RENT ON RESIDENTIAL UNITS",
+            },
+            { 
+                statement: "RA 9653", 
+                back: "RENT CONTROL ACT OF 2009", 
+                answer: true,
+                explanation: "AMENDED RA 9341 OF 2005",
+            },
+            { 
+                statement: "RA 9160", 
+                back: "ANTI-MONEY LAUNDERING ACT OF 2001", 
+                answer: true,
+                explanation: "RULES ON MONEY LAUNDERING",
+            },
+            { 
+                statement: "RA 9194", 
+                back: "AMENDING THE AMLA ACT", 
+                answer: true,
+                explanation: "REVISED AMLA LAW",
+            },
+            { 
+                statement: "RA 7652", 
+                back: "PAG-IBIG FUND, AMENDING PD 1752", 
+                answer: false,
+                explanation: "INVESTOR'S LEASE ACT - A PERIOD IS 50 YRS RENEWABLE FOR 25 YEARS",
+            },
+            { 
+                statement: "PD 471", 
+                back: "LEASE TO ALIENS", 
+                answer: true,
+                explanation: "PERIOD 25 YEARS RENEWABLE ONCE FOR 25 YEARS",
+            },
+            { 
+                statement: "PD 1752", 
+                back: "HDMF LAW OF 1980", 
+                answer: true,
+                explanation: "STRENGTHEN THE HDMF",
+            },
+            { 
+                statement: "RA 7742", 
+                back: "PAG-IBIG FUND, AMENDING PD 1752", 
+                answer: true,
+                explanation: "MAKING PAG-IBIG MANDATORY",
+            },
+            { 
+                statement: "RA 8974", 
+                back: "EXPROPRIATION ACT", 
+                answer: true,
+                explanation: "FOR GOVERNMENT PROJECTS",
+            },
+            { 
+                statement: "PD 1344", 
+                back: "EMPOWERING NHA ISSUE WRITS", 
+                answer: true,
+                explanation: "NHA RULES & REGULATIONS",
+            },
+            { 
+                statement: "RA 6732", 
+                back: "ADMINISTRATIVE RECONSTITUTION", 
+                answer: true,
+                explanation: "ADMINISTRATIVE RECONSTITUTION - RCT'S MADE IF MORE THAN 10% LOST",
+            },
+            { 
+                statement: "RA 9225", 
+                back: "CITIZENSHIP RETENTION AND REACQUISITION ACT", 
+                answer: true,
+                explanation: "DUAL CITIZENSHIP FOR FILIPINOS",
+            },
+            { 
+                statement: "RA 9397", 
+                back: "AMENDING RA 7279", 
+                answer: true,
+                explanation: "LAND FOR SOCIALIZED HOUSING",
+            },
+            { 
+                statement: "RA 730", 
+                back: "SALE OF PUBLIC LANDS WITHOUT AUCTION", 
+                answer: true,
+                explanation: "UP TO 1,000 SQM OF RESIDENTIAL PURPOSE",
+            },
+            { 
+                statement: "RA 9139", 
+                back: "ADMINISTRATIVE NATURALIZATION LAW", 
+                answer: true,
+                explanation: "SETTING UP REGULATIONS",
+            },
+            { 
+                statement: "RA 9507", 
+                back: "LOAN RESTRUCTURING AND CONDONATION ACT OF 2008", 
+                answer: true,
+                explanation: "SOCIALIZED AND LOW-COST HOUSING LOAN RESTRUCTURING",
+            },
+            { 
+                statement: "RA 7916", 
+                back: "SPECIAL ECONOMIC ZONE ACT", 
+                answer: true,
+                explanation: "CREATED THE PEZA",
+            },
+            { 
+                statement: "RA 6809", 
+                back: "LOWERING THE AGE OF MAJORITY TO 18", 
+                answer: true,
+                explanation: "FROM PREVIOUSLY 21",
+            }
         ];
 
         let currentCardIndex = 0;
