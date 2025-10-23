@@ -375,7 +375,7 @@
                     <div class="stat-label">Current</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number" id="totalCards">15</div>
+                    <div class="stat-number" id="totalCards">54</div>
                     <div class="stat-label">Total</div>
                 </div>
                 <div class="stat-item">
